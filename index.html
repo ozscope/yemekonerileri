@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Apple Color Emoji'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="tr"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Yemek Yanı Önerileri&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Inter fontunu kullan */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f7f9fb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Mobile first yaklaşım: Karta sabit genişlik verme, geniş ekranlarda max-width kullan */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'primary-blue': '#1e40af',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'primary-light': '#eff6ff',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'secondary-green': '#059669',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>'accent-orange': '#f97316'</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-50"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="app-container p-6 bg-white shadow-xl rounded-2xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="mb-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-3xl font-extrabold text-primary-blue mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span><span class="s1">🍽️</span> Yanında Ne Gider?</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-600 text-sm"&gt;Mutfak seçimi yapın ve ana yemeği yazın.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="space-y-3 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="cuisineFilter" onchange="searchDish()"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value=""&gt;Tüm Mutfaklar&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Türk Mutfağı"&gt;<span class="s1">🇹🇷</span> Türk Mutfağı&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="İtalyan Mutfağı"&gt;<span class="s1">🇮🇹</span> İtalyan Mutfağı&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Asya Mutfağı"&gt;<span class="s1">🍣</span> Asya Mutfağı&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Akdeniz Mutfağı"&gt;<span class="s1">🌍</span> Akdeniz Mutfağı&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id="mainDishInput"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>type="text"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>placeholder="Yemek adını girin (Örn: Fasulye, Sarma, Köfte...)"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>aria-label="Ana yemek adını girin"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>onkeypress="if(event.key === 'Enter') searchDish()"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>id="searchButton"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>onclick="searchDish()"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Ara</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="initialMessage" class="text-gray-500 italic"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Aramaya başlayın. Önerileriniz burada görünecektir.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Uygulamanın ana veri seti: Ana Yemekler ve Kategorik Yan Lezzet Önerileri</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const dishSuggestions = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// TÜRK MUTFAĞI</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Hünkar Beğendi", keywords: ["hünkar beğendi", "et", "beğendi", "patlıcan"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Mercimek Çorbası", "Peynirli Yeşil Salata"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Köz Biber ve Domates", "Turşu Çeşitleri"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran", "Şıra"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Kazandibi"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Tas Kebabı", keywords: ["tas kebabı", "et", "sulu", "dana"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Tereyağlı Pirinç Pilavı", "Çoban Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Cacık", "Turşu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Karnıyarık", keywords: ["karnıyarık", "patlıcan", "dolma", "zeytinyağlı"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Sade Pirinç Pilavı", "Mevsim Yeşillikleri Salatası (Az Soslu)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Cacık", "Domates Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Adana Kebap", keywords: ["adana", "kebap", "et", "acılı"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Lavaş veya Pide", "Gavurdağı Salatası (Nar Ekşili)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Sumaklı Soğan Salatası", "Humus"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Şalgam Suyu (Acılı)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Halka Tatlısı"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Kuru Fasulye (Sulu)", keywords: ["fasulye", "baklagil", "klasik", "kuru"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Bulgur Pilavı (Tereyağlı)", "Kuru Soğan (Sumaklı)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Acılı Ezme", "Cacık"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Kemalpaşa Tatlısı"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Sulu Köfte (Ekşili/Terbiyeli)", keywords: ["sulu köfte", "ekşili", "terbiyeli", "sulu", "misket köfte"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Pirinç Pilavı (Sade)", "Marul Salatası veya Roka"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Fırınlanmış Patates Kızartması", "Turşu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Fırın Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Lahmacun", keywords: ["lahmacun", "pide", "kebap"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Bol Yeşillik (Maydanoz, Roka)", "Limon"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Acılı Ezme", "Soğan Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Bol Köpüklü Ayran", "Şalgam Suyu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Küçük Porsiyon Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Menemen", keywords: ["menemen", "kahvaltı", "yumurta"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Taze Ekmek (Bolca)", "Beyaz Peynir"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Zeytin Çeşitleri", "Taze Yeşillikler"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Siyah Çay"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Filtre Kahve (Tatlı yerine)"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Fırında Tavuk Baget", keywords: ["tavuk baget", "fırın tavuk", "beyaz et"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Yoğurtlu Yeşil Salata", "Mercimek Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Baharatlı Pirinç Pilavı", "Havuç Tarator"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Antrikot (Izgara)", keywords: ["antrikot", "biftek", "et", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Roka Salatası (Parmesanlı)", "Sade Domates Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Kremalı Mantar Sosu", "Tereyağlı Püre", "Közlenmiş Kuşkonmaz"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sufle"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Biftek (Izgara/Tava)", keywords: ["biftek", "et", "steak", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Mevsim Yeşillikleri Salatası (Hardal Soslu)", "Ezogelin Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Sebzeli Püre", "Izgara Kuşkonmaz ve Mantar"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Trileçe"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Tavuk Sote", keywords: ["tavuk sote", "beyaz et", "sote"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Tereyağlı Pirinç Pilavı", "Mevsim Yeşillikleri Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Yoğurtlu Havuç Tarator", "Domates Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Pirinç Pilavı (Sade)", keywords: ["pilav", "pirinç", "sade", "lapa"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Kuru Fasulye Yemeği", "Cacık"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Fırın Tavuk (Sulu)", "Hoşaf veya Komposto"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Mercimek Çorbası", keywords: ["mercimek çorbası", "çorba", "kırmızı"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Limon Dilimleri", "Taze Ekmek"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Pul Biberli Nane Yağı", "Mevsim Salata"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Su"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Kazandibi"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Ezogelin Çorbası", keywords: ["ezogelin", "çorba", "acılı"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Nane ve Limon", "Taze Pide"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Zeytin Ezmesi", "Turşu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Su"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Un Helvası"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Nohut Yemeği", keywords: ["nohut", "baklagil", "etli", "sulu"], cuisine: "Türk Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Pirinç Pilavı", "Marul Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Turşu (Lahana veya Salatalık)", "Acılı Ezme"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Havuç Dilimi Baklava"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// İTALYAN MUTFAĞI</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Lazanya", keywords: ["makarna", "italyan", "fırın"], cuisine: "İtalyan Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Zeytinyağlı Roka ve Domates Salatası", "Domates Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Sarımsaklı Ekmek", "İtalyan Usulü Turşu (Giardiniera)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Soda"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Tiramisu"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Kıymalı Makarna", keywords: ["kıymalı makarna", "soslu", "fırın"], cuisine: "İtalyan Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Sarımsaklı Yoğurt", "Yeşil Mercimek Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Turşu", "Roka Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Supangle"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// ASYA MUTFAĞI</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Suşi Çeşitleri", keywords: ["suşi", "japon", "deniz ürünü", "nigiri", "maki"], cuisine: "Asya Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Edamame", "Deniz Yosunu Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Soya Sosu", "Wasabi", "Zencefil Turşusu (Gari)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Yeşil Çay (Sıcak/Soğuk)"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Mochi"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// AKDENİZ MUTFAĞI</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Levrek Izgara", keywords: ["balık", "levrek", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Roka Salatası (Hardallı Soslu)", "Ezogelin Çorbası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Limon ve Kekikli Fırın Patates", "Haydari"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Şalgam Suyu", "Soda"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Helva (İrmik veya Un)"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "İmam Bayıldı", keywords: ["imam bayıldı", "zeytinyağlı", "patlıcan", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Sade Yoğurt (Misket Limonlu)", "Zeytinli ve Peynirli Salata"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Taze Ekmek", "Bol Siyah Zeytin"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Kabak Tatlısı"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Zeytinyağlı Bamya", keywords: ["bamya", "zeytinyağlı", "soğuk", "sebze"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Limon Soslu Çoban Salata", "Sarımsaklı Yoğurt"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Taze Ekmek Dilimleri", "Kırmızı Biber Turşusu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sütlaç"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Zeytinyağlı Fasulye (Taze)", keywords: ["fasulye", "zeytinyağlı", "taze", "sebze", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Sade Yoğurt", "Limonlu Roka Salatası"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Pirinç Pilavı (Soğuk servis)", "Kırmızı Biber Turşusu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Komposto"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Omlet (Sade/Peynirli)", keywords: ["omlet", "kahvaltı", "yumurta", "hafif"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Taze Yeşillikler", "Domates ve Salatalık Dilimleri"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Tost Ekmeği veya Simit", "Zeytin"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Siyah Çay", "Taze Sıkılmış Portakal Suyu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Meyveli Yoğurt"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ main: "Mücver", keywords: ["mücver", "kabak", "kızartma"], cuisine: "Akdeniz Mutfağı", suggestions: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>complement: ["Sarımsaklı Yoğurt", "Domates Sosu"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>side: ["Marul Salatası", "Acılı Ezme"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drink: ["Ayran"],</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dessert: ["Sufle"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Öneri başlıkları ve ikonları</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const suggestionCategories = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ key: 'complement', title: 'Tamamlayıcı Yemek (Başlangıç/Zeytinyağlı/Salata)', icon: '<span class="s1">🥗</span>', color: 'text-secondary-green' },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ key: 'side', title: 'Yan Ürün / Garnitür (Pilav/Püre/Ekmek)', icon: '<span class="s1">🍚</span>', color: 'text-accent-orange' },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ key: 'drink', title: 'İçecek Önerisi', icon: '<span class="s1">🥤</span>', color: 'text-primary-blue' },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ key: 'dessert', title: 'Tatlı Önerisi', icon: '<span class="s1">🍰</span>', color: 'text-pink-500' }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/**</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* Metni küçük harfe çevirip, Türkçe karakterleri normalize eden yardımcı fonksiyon.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>*/</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const normalizeText = (text) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!text) return '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return text.toLowerCase()</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ı/g, 'i')</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ğ/g, 'g')</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ü/g, 'u')</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ş/g, 's')</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ö/g, 'o')</p>
+<p class="p1"><span class="Apple-converted-space">                       </span>.replace(/ç/g, 'c');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/**</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* Verilen öneri listesini HTML formatında hazırlar.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>*/</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function createListHtml(items, colorClass) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return items.map(item =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li class="flex items-start p-3 bg-white rounded-lg shadow-sm border ${colorClass}/20 hover:bg-gray-50 transition duration-150"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-gray-700 font-medium"&gt;${item}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/**</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* Kullanıcının girdiği yemeğe uygun önerileri arar ve sonuçları ekranda gösterir.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>*/</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function searchDish() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const inputElement = document.getElementById('mainDishInput');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const filterElement = document.getElementById('cuisineFilter');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resultsContainer = document.getElementById('resultsContainer');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rawQuery = inputElement.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const selectedCuisine = filterElement.value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const query = normalizeText(rawQuery);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultsContainer.innerHTML = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Arama ve Filtreleme Başlatma Kontrolü</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (query.length &lt; 2 &amp;&amp; selectedCuisine === "") {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>resultsContainer.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-500 italic"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Aramaya başlayın. Önerileriniz burada görünecektir.</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Arama mantığı: Mutfak filtresini ve yemeği kontrol et</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const foundDish = dishSuggestions.find(dish =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Mutfak filtresi kontrolü</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (selectedCuisine &amp;&amp; dish.cuisine !== selectedCuisine) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return false; // Mutfak eşleşmiyorsa bu yemeği atla</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Yemek adı veya anahtar kelime kontrolü</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (query.length &gt;= 2) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const normalizedMain = normalizeText(dish.main);</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// 1. Ana yemeğin adında kelime geçiyor mu?</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (normalizedMain.includes(query)) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// 2. Anahtar kelimelerde kelime geçiyor mu? (Esnek arama için)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (dish.keywords &amp;&amp; dish.keywords.some(keyword =&gt; normalizeText(keyword).includes(query))) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Eğer filtre seçili ama arama yapılmadıysa (veya arama başarısızsa), genel bir mesaj göster.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!foundDish &amp;&amp; selectedCuisine &amp;&amp; query.length &lt; 2) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>resultsContainer.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-800 font-semibold mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>"${selectedCuisine}" seçili. Lütfen bir yemek adı girmeye başlayın.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-gray-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Örn: Karnıyarık, Lazanya, Suşi...</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (foundDish) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let htmlContent = `&lt;div class="w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-extrabold text-primary-blue mb-4 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-base font-medium text-gray-600"&gt;(${foundDish.cuisine})&lt;/span&gt; &lt;br&gt;"${foundDish.main}" Yanına Ne Gider?</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/h3&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Kategorileri belirtilen sıraya göre dolaş</p>
+<p class="p1"><span class="Apple-converted-space">                </span>suggestionCategories.forEach(category =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const items = foundDish.suggestions[category.key];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (items &amp;&amp; items.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Kategori Başlığı</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>htmlContent += `</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="mb-5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h4 class="flex items-center text-lg font-bold ${category.color} mb-3 border-b-2 border-dashed ${category.color}/30 pb-1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="mr-2"&gt;${category.icon}&lt;/span&gt; ${category.title}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;ul class="space-y-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>${createListHtml(items, category.color)}</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>htmlContent += `&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultsContainer.innerHTML = htmlContent;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Sonuç bulunamadı</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resultsContainer.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-800 font-semibold mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Üzgünüz, aradığınız "${rawQuery}" yemeği için ${selectedCuisine ? `(${selectedCuisine} içinde)` : ''} bir öneri bulamadık.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-gray-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>inputElement.value = ''; // Arama yaptıktan sonra input'u temizle</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
