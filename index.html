@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yanında Ne Var? - Yemek Yanı Önerileri</title>
-    <!-- Tailwind CSS CDN -->
+    
+    <!-- ========================================== -->
+    <!-- GOOGLE ADSENSE KODU BURAYA GELECEK -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4702518283120384"
+     crossorigin="anonymous"></script>
+    <!-- ========================================== -->
+
+  <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Inter fontunu kullan */
@@ -28,6 +35,12 @@
 
         .ad-placeholder {
             min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6;
+            border: 1px dashed #cbd5e1;
+            color: #9ca3af;
         }
 
         /* Sidebar Animasyonları */
@@ -48,20 +61,20 @@
             transition: opacity 0.3s ease-in-out, visibility 0.3s;
         }
 
-        /* Blog içeriği için stiller */
-        .blog-content h4 {
+        /* Blog ve Gizlilik İçerik Stilleri */
+        .content-area h4 {
             font-weight: bold;
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
             color: #1e40af;
         }
-        .blog-content ul {
+        .content-area ul {
             list-style: disc;
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
-        .blog-content p {
+        .content-area p {
             margin-bottom: 1rem;
             line-height: 1.6;
         }
@@ -139,15 +152,21 @@
             </svg>
         </button>
         
-        <ul class="space-y-2">
+        <ul class="space-y-2 mt-4">
             <li>
                 <button onclick="showPage('home')" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
-                    <span class="mr-3">🏠</span> Ana Sayfa
+                    <span class="mr-3">🏠</span> Menü Önerileri
                 </button>
             </li>
             <li>
                 <button onclick="showPage('blog')" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
                     <span class="mr-3">📝</span> Blog & Yazılar
+                </button>
+            </li>
+            <hr class="my-2">
+            <li>
+                <button onclick="showPage('privacy')" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-600 font-medium flex items-center text-sm">
+                    <span class="mr-3">🔒</span> Gizlilik Politikası
                 </button>
             </li>
         </ul>
@@ -224,13 +243,29 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Yemek Blogu</h2>
             <div id="blog-posts-container" class="space-y-6"></div>
         </div>
-
+       
+        <!-- SAYFA: GİZLİLİK POLİTİKASI -->
+        <div id="page-privacy" class="hidden content-area bg-white p-6 rounded-xl shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Gizlilik Politikası</h2>
+            <p class="text-sm text-gray-600 mb-4">Son Güncelleme: 28 Kasım 2025</p>
+            <div class="text-gray-700 text-sm space-y-4">
+                <p>yanindanevar.com ("biz", "sitemiz") olarak kişisel verilerinizin güvenliğine önem veriyoruz. Bu Gizlilik Politikası, sitemizi kullandığınızda hangi verilerin toplandığını açıklar.</p>
+                <h4>1. Toplanan Veriler</h4>
+                <p>Sitemiz, kullanıcı deneyimini iyileştirmek ve trafik analizi yapmak amacıyla çerezler (cookies) ve benzeri teknolojiler kullanabilir. Toplanan veriler anonimdir ve kişisel kimliğinizi doğrudan belirlemez.</p>
+                <h4>2. Reklamlar (Google AdSense)</h4>
+                <p>Sitemizde reklam hizmeti vermek için Google AdSense gibi üçüncü taraf tedarikçiler kullanılmaktadır. Google, sitemizi ve internetteki diğer siteleri ziyaretlerinize dayalı olarak reklam sunmak için çerezleri kullanır.</p>
+                <h4>3. İletişim</h4>
+                <p>Gizlilik politikamızla ilgili sorularınız için bize GitHub profilimiz üzerinden ulaşabilirsiniz.</p>
+            </div>
+        </div>
+        
     </div>
 
-    <!-- SAYFA ALTI REKLAM -->
+ <!-- SAYFA ALTI REKLAM ALANI -->
     <div class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4">
         <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Sayfa Altı)</p>
+            <!-- BURAYA ADSENSE MANUEL REKLAM KODUNU YAPIŞTIRABİLİRSİNİZ -->
+            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI</p>
         </div>
     </div>
 
