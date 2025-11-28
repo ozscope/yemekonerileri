@@ -24,6 +24,13 @@
             margin-top: 2rem;
         }
     </style>
+    <!-- Sosyal Medya ve SEO için Gerekli Etiketler -->
+    <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik (Pilav, Salata, Meze, İçecek) yan lezzet önerileri sunan mobil uyumlu web uygulaması.">
+    <meta property="og:title" content="🍽️ Yanında Ne Gider? - En Kapsamlı Menü Planlayıcı">
+    <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! Tüm yan lezzetler tek bir başlık altında.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ozscope.github.io/yemekonerileri/">
+    <!-- Varsayılan Tailwind yapılandırması -->
     <script>
         tailwind.config = {
             theme: {
@@ -1030,7 +1037,7 @@
                                 <h4 class="flex items-center text-lg font-bold ${category.color} mb-3 border-b-2 border-dashed ${category.color}/30 pb-1">
                                     <span class="mr-2">${category.icon}</span> ${category.title}
                                 </h4>
-                                <ul class="space-y-3">
+                                <ul class="space-space-y-3">
                                     ${createListHtml(items, category.color)}
                                 </ul>
                             </div>
