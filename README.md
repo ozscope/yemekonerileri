@@ -6,19 +6,20 @@ Bu proje, seçtiğiniz ana yemeğin yanına lezzet ve menü uyumu açısından e
 
 Kategorik Öneri Sistemi: Öneriler, rastgele değil, belirli menü mantığına göre dört ana başlık altında sunulur:
 
-Tamamlayıcı Yemek (Başlangıç/Zeytinyağlı/Salata)
+    Tamamlayıcı Yemek (Başlangıç/Zeytinyağlı/Salata)
 
-Yan Ürün / Garnitür (Pilav/Püre/Ekmek)
+    Yan Ürün / Garnitür (Pilav/Püre/Ekmek)
 
-İçecek Önerisi
+    İçecek Önerisi
 
-Tatlı Önerisi
+    Tatlı Önerisi
 
 Mutfak Filtreleme: Önerileri Türk Mutfağı, İtalyan Mutfağı, Asya Mutfağı ve Akdeniz Mutfağı gibi kategorilere göre filtreleyebilme.
 
 Esnek Arama: Yemeğin tam adını yazmasanız bile ("Fasulye", "Bamya", "Sarma" gibi kısa anahtar kelimelerle) ilgili yemeği bulma yeteneği.
 
 Tamamen Tek Dosya: Tüm kod (HTML, CSS ve JavaScript) tek bir index.html dosyasında bulunur.
+
 
 🛠️ Kullanılan Teknolojiler
 
@@ -27,6 +28,7 @@ HTML5: Uygulamanın temel yapısı.
 JavaScript (Vanilla): Arama ve filtreleme mantığı ile öneri sistemini yönetmek için kullanılmıştır.
 
 Tailwind CSS: Hızlı ve tamamen mobil uyumlu (responsive) modern bir arayüz oluşturmak için kullanılmıştır.
+
 
 🚀 Nasıl Çalıştırılır?
 
@@ -39,6 +41,7 @@ index.html dosyasını çift tıklayarak herhangi bir web tarayıcısında (Chro
 Yayınlama (Hosting)
 
 Uygulamanızı arkadaşlarınızla paylaşmak isterseniz, bu depoyu GitHub Pages üzerinden yayınlamanız en hızlı ve ücretsiz yöntemdir. GitHub, size kalıcı bir web adresi sağlayacaktır.
+
 
 📝 Katkıda Bulunma
 
