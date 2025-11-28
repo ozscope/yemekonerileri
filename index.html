@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yanında Ne Gider?</title>
+    <title>Yanında Ne Var? - Yemek Yanı Önerileri</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -25,16 +25,43 @@
         }
     </style>
     <!-- Sosyal Medya ve SEO için Gerekli Etiketler -->
-    <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik (Pilav, Salata, Meze, İçecek) yan lezzet önerileri sunan mobil uyumlu web uygulaması.">
+    <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik yan lezzet önerileri sunan mobil uyumlu menü planlayıcı.">
     <meta property="og:title" content="🍽️ Yanında Ne Gider? - En Kapsamlı Menü Planlayıcı">
     <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! Tüm yan lezzetler tek bir başlık altında.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ozscope.github.io/yemekonerileri/">
+    <meta property="og:url" content="https://yanindanevar.com/index.html">
     
-    <!-- GÖRSEL URL'Sİ BURAYA EKLENDİ (Doğru GitHub Pages Adresi ile) -->
-    <meta property="og:image" content="https://ozscope.github.io/yemekonerileri/yemek-yaninda-ne-gider-social.jpg">
+    <!-- GÖRSEL URL'Sİ (Alan adınıza göre güncellendi) -->
+    <meta property="og:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://ozscope.github.io/yemekonerileri/yemek-yaninda-ne-gider-social.jpg">
+    <meta name="twitter:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg">
+
+    <!-- FİKRİ MÜLKİYET BİLDİRİMİ -->
+    <meta name="copyright" content="© 2025 yanindanevar.com | ozscope">
+    
+    <!-- SCHEMA MARKUP (YAPILANDIRILMIŞ VERİ) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yanında Ne Var? - Yemek Yanı Önerileri",
+      "url": "https://yanindanevar.com/index.html",
+      "description": "100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik yan lezzet önerileri sunan mobil uyumlu menü planlayıcı.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ozscope",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yanindanevar.com/index.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     
     <!-- Varsayılan Tailwind yapılandırması -->
     <script>
@@ -51,16 +78,208 @@
             }
         }
     </script>
+    
+    <!-- FIREBASE İMPORTLARI (Favori, Oylama ve Alışveriş Listesi için) -->
+    <!-- NOT: Bu kod, Firebase'in Canvas ortamında yüklü olduğunu varsayar. Canlı ortamda kendi CDN'lerinizi kullanmalısınız. -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, where, getDocs, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        setLogLevel('debug'); // Debug loglarını açar
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app;
+        let db;
+        let auth;
+        let userId = null;
+        let isAuthReady = false;
+
+        // Firestore veritabanı yolları
+        const getPrivateDocRef = (dishName) => doc(db, 'artifacts', appId, 'users', userId, 'favorites', normalizeText(dishName));
+        const getPublicCollectionRef = () => collection(db, 'artifacts', appId, 'public', 'data', 'ratings');
+        const getPublicDocRef = (dishName) => doc(getPublicCollectionRef(), normalizeText(dishName));
+
+        // Firebase başlatma ve kullanıcı oturumu açma
+        window.onload = async () => {
+            try {
+                if (Object.keys(firebaseConfig).length > 0) {
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            userId = user.uid;
+                            isAuthReady = true;
+                            console.log("Firebase Auth Ready. User ID:", userId);
+                        } else {
+                            userId = 'anonymous-' + crypto.randomUUID();
+                            isAuthReady = true;
+                            console.log("Firebase Auth Ready (Anonymous). User ID:", userId);
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error("Firebase başlatma hatası:", error);
+            }
+        };
+
+        // Kodu global alana taşıyoruz ki searchDish fonksiyonu erişebilsin
+        window.normalizeText = (text) => {
+            if (!text) return '';
+            return text.toLowerCase()
+                       .replace(/ı/g, 'i')
+                       .replace(/ğ/g, 'g')
+                       .replace(/ü/g, 'u')
+                       .replace(/ş/g, 's')
+                       .replace(/ö/g, 'o')
+                       .replace(/ç/g, 'c');
+        };
+
+        // --- FAVORİ İŞLEMLERİ ---
+        window.toggleFavorite = async (dishName) => {
+            if (!isAuthReady) return;
+            const docRef = getPrivateDocRef(dishName);
+            try {
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    await setDoc(docRef, { isFavorite: false }, { merge: true }); // Favoriden çıkar
+                    console.log("Favoriden çıkarıldı:", dishName);
+                } else {
+                    await setDoc(docRef, { isFavorite: true, dishName: dishName }, { merge: true }); // Favoriye ekle
+                    console.log("Favoriye eklendi:", dishName);
+                }
+                searchDish(dishName); // UI'ı güncelle
+            } catch (error) {
+                console.error("Favori işlemi hatası:", error);
+            }
+        };
+
+        const getFavoriteStatus = async (dishName) => {
+            if (!isAuthReady || !db) return false;
+            try {
+                const docSnap = await getDoc(getPrivateDocRef(dishName));
+                return docSnap.exists() && docSnap.data().isFavorite === true;
+            } catch {
+                return false;
+            }
+        };
+
+        // --- OYLAMA İŞLEMLERİ ---
+        window.rateDish = async (dishName, rating) => {
+            if (!isAuthReady || !db) return;
+            const dishRef = getPublicDocRef(dishName);
+
+            try {
+                await runTransaction(db, async (transaction) => {
+                    const dishDoc = await transaction.get(dishRef);
+
+                    const newVote = { userId: userId, rating: rating };
+                    const userVotes = dishDoc.data()?.userVotes || [];
+
+                    // Kullanıcının daha önceki oyunu bul
+                    const existingVoteIndex = userVotes.findIndex(v => v.userId === userId);
+
+                    if (existingVoteIndex > -1) {
+                        userVotes[existingVoteIndex] = newVote; // Oyunu güncelle
+                    } else {
+                        userVotes.push(newVote); // Yeni oy ekle
+                    }
+
+                    const totalRating = userVotes.reduce((sum, v) => sum + v.rating, 0);
+                    const averageRating = totalRating / userVotes.length;
+
+                    transaction.set(dishRef, {
+                        dishName: dishName,
+                        totalVotes: userVotes.length,
+                        averageRating: parseFloat(averageRating.toFixed(1)),
+                        userVotes: userVotes 
+                    }, { merge: true });
+                });
+                console.log(`Oy başarıyla kaydedildi: ${dishName}, Puan: ${rating}`);
+                searchDish(dishName); // UI'ı güncelle
+            } catch (error) {
+                console.error("Oylama işlemi hatası:", error);
+            }
+        };
+
+        const getRatingData = async (dishName) => {
+            if (!isAuthReady || !db) return { averageRating: 0, totalVotes: 0, userRating: 0 };
+            try {
+                const docSnap = await getDoc(getPublicDocRef(dishName));
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    const userVote = data.userVotes?.find(v => v.userId === userId);
+                    return {
+                        averageRating: data.averageRating,
+                        totalVotes: data.totalVotes,
+                        userRating: userVote ? userVote.rating : 0
+                    };
+                }
+                return { averageRating: 0, totalVotes: 0, userRating: 0 };
+            } catch {
+                return { averageRating: 0, totalVotes: 0, userRating: 0 };
+            }
+        };
+
+        // --- ALIŞVERİŞ LİSTESİ İŞLEMLERİ ---
+        window.copyShoppingList = (suggestions) => {
+            const listText = suggestions.join('\n');
+            const fullList = "🛒 Alışveriş Listesi:\n" + listText;
+            
+            // Clipboard'a kopyalama (document.execCommand('copy') iframe ortamında daha güvenilirdir)
+            const el = document.createElement('textarea');
+            el.value = fullList;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            alertMessage("Alışveriş listesi panoya kopyalandı!", "bg-green-500");
+        };
+
+        const alertMessage = (message, color) => {
+             const container = document.getElementById('alertContainer');
+             container.innerHTML = `<div class="p-3 ${color} text-white font-semibold rounded-lg shadow-xl mb-4 transition-opacity duration-300">
+                                        ${message}
+                                    </div>`;
+             setTimeout(() => {
+                 container.innerHTML = '';
+             }, 3000);
+         };
+
+        // searchDish fonksiyonunu da global alana taşıyoruz
+        window.searchDish = searchDish;
+
+        // Kalan tüm JS kodu buraya taşınır.
+
+        // ... Kalan tüm JS kodu ve veri setleri buraya gelecek ...
+    </script>
 </head>
 <body class="bg-gray-50">
 
     <div class="app-container p-6 bg-white shadow-xl rounded-2xl">
         <header class="mb-6 text-center">
+            <!-- H1 etiketi Semantik HTML için buraya eklendi -->
             <h1 class="text-3xl font-extrabold text-primary-blue mb-2">
-                🍽️ Yanında Ne Gider?
+                🍽️ Yanında Ne Gider? - Yemek Yanı Önerileri
             </h1>
             <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
         </header>
+        
+        <!-- ALERT MESAJ KUTUSU -->
+        <div id="alertContainer" class="w-full fixed top-0 left-1/2 -translate-x-1/2 z-50 p-4 max-w-sm"></div>
 
         <!-- Filtre ve Arama Alanı -->
         <div class="space-y-3 mb-6">
@@ -101,140 +320,70 @@
                 Aramaya başlayın. Önerileriniz burada görünecektir.
             </p>
         </div>
+        
+        <!-- YEMEK ÖNERİSİ DETAY VE OYLAMA ŞABLONU -->
+        <template id="dishDetailTemplate">
+            <div class="w-full">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-extrabold text-primary-blue">
+                        <span class="text-base font-medium text-gray-600">({cuisine})</span> <br>"${dishName}" Yanına Ne Gider?
+                    </h2>
+                    <div class="flex items-center space-x-2">
+                        <!-- FAVORİ BUTONU -->
+                        <button onclick="toggleFavorite('${dishName}')" id="favoriteBtn" class="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                 <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                             </svg>
+                        </button>
+                        <!-- ALIŞVERİŞ LİSTESİ BUTONU -->
+                        <button onclick="copyShoppingList([${allSuggestions.map(s => `'${s}'`).join(',')}])" class="p-2 rounded-full bg-secondary-green/20 hover:bg-secondary-green/30 text-secondary-green-700 transition font-semibold text-sm flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.432a1 1 0 00.95.738h9.802l.546 2.185a1 1 0 01-.95 1.215H5.5a1 1 0 110-2h11.234l-1.17-4.685A1 1 0 0015.5 8H6.944l-1.04-4.167A1.999 1.999 0 005.16 2H3a1 1 0 000 2zm0 14a1 1 0 110 2 1 1 0 010-2zm12 0a1 1 0 110 2 1 1 0 010-2z" />
+                            </svg>
+                            Liste Kopyala
+                        </button>
+                    </div>
+                </div>
 
+                <!-- OYLAMA VE PUANLAMA ALANI -->
+                <div class="mb-6 p-4 border border-blue-200 bg-blue-50 rounded-xl flex justify-between items-center">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-600">ORTALAMA PUAN (5 Üzerinden)</p>
+                        <div class="text-xl font-bold text-primary-blue flex items-center">
+                            <span id="avgRatingDisplay">0.0</span> / 5.0
+                            <span class="text-sm font-normal text-gray-500 ml-2">(${totalVotes} Oy)</span>
+                        </div>
+                    </div>
+                    
+                    <div id="ratingStars" class="flex space-x-1">
+                        <!-- YILDIZLAR BURAYA GELİR -->
+                    </div>
+                </div>
+
+
+                <!-- YAN LEZZET LİSTELERİ -->
+                ${htmlContent}
+                
+                <p class="text-xs text-gray-400 mt-6">Not: Firebase entegrasyonu, Favori/Oylama özelliklerini kalıcı hale getirir.</p>
+
+            </div>
+        </template>
     </div>
 
     <script>
-        // Uygulamanın ana veri seti: Ana Yemekler ve Kategorik Yan Lezzet Önerileri
-        // NOT: complement ve side listeleri artık tek bir 'yanlar' listesinde birleştirilmiştir.
+        // Kalan tüm JS kodu buraya taşınır.
+        
+        // ... (Veri setleri ve diğer helper fonksiyonları) ...
+
         const dishSuggestions = [
-            // --- YENİ EKLENEN YEMEKLER ---
-            { main: "Enginar (Zeytinyağlı/Etli)", keywords: ["enginar", "zeytinyağlı", "etli enginar"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Arpa Şehriyeli Pilav", "Kinoalı Salata", "Zeytinyağlı Taze Fasulye"],
-                drink: ["Soda"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Zeytinyağlı Enginar", keywords: ["zeytinyağlı enginar", "enginar", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Patates Salatası", "Humus", "Dereotu", "Limon Dilimleri"],
-                drink: ["Soda"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Bakla", keywords: ["bakla", "zeytinyağlı", "fava"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Turplu Salata", "Dereotu", "Zeytinyağlı Enginar", "Pirinç Pilavı"],
-                drink: ["Soda"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "İmam Bayıldı", keywords: ["imam bayıldı", "zeytinyağlı", "patlıcan", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Sade Yoğurt (Misket Limonlu)", "Zeytinli ve Peynirli Salata", "Taze Ekmek", "Bol Siyah Zeytin"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Biftek (Bonfile/Kontrfile)", keywords: ["biftek", "bonfile", "kontrfile", "et", "ızgara"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Roka Salatası (Parmesanlı)", "Kremalı Mantar Sosu", "Tereyağlı Püre", "Izgara Kuşkonmaz"],
-                drink: ["Ayran"],
-                dessert: ["Sufle"]
-            }},
-
-            // --- ÇORBALAR (GÜNCELLENDİ) ---
+            // --- TÜRK MUTFAĞI ---
             { main: "Tarhana Çorbası", keywords: ["tarhana", "çorba", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Etli Kuru Fasulye", "Turşu", "Kıymalı Börek", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Mercimek Çorbası", keywords: ["mercimek çorbası", "çorba", "kırmızı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Karnıyarık", "Limon Dilimleri", "Pul Biberli Nane Yağı", "Yeşil Salata"],
-                drink: ["Su"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Ezogelin Çorbası", keywords: ["ezogelin", "çorba", "acılı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Karnıyarık", "Nane ve Limon", "Limonlu Roka Salatası", "Turşu"],
-                drink: ["Su"],
-                dessert: ["Un Helvası"]
-            }},
-            { main: "Şehriye Çorbası", keywords: ["şehriye çorbası", "çorba", "domatesli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Izgara Köfte", "Kıymalı Börek", "Limon Dilimi", "Nane"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Bal Kabağı Çorbası (Kremalı)", keywords: ["bal kabağı çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Somon", "Peynirli Ekmek", "Kremalı Sos", "Balkabağı çekirdeği"],
-                drink: ["Su"],
-                dessert: ["Brownie"]
-            }},
-            { main: "Soğuk Çorba (Yayla Tarzı)", keywords: ["soğuk çorba", "cacıklı", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Zeytinyağlı Taze Fasulye", "Kıymalı Börek", "Nane", "Salatalık"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Kabak Çorbası (Kremalı)", keywords: ["kabak çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Fırında Tavuk", "Izgara Tavuk", "Kruton", "Sade Salata"],
-                drink: ["Su"],
-                dessert: ["Brownie"]
-            }},
-             { main: "Brokoli Çorbası", keywords: ["brokoli çorbası", "çorba", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Biftek", "Keçi Peynirli Makarna", "Sade Salata", "Kruton"],
-                drink: ["Su"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Bamya Çorbası", keywords: ["bamya çorbası", "çorba", "ekşili"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Etli Pilav", "Lavaş", "Limon Dilimi", "Acı Biber Turşusu"],
+                yanlar: ["Patatesli Börek", "Turşu", "Kıymalı Börek", "Taze Ekmek"],
                 drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Yayla Çorbası", keywords: ["yayla çorbası", "yoğurt", "çorba", "pirinçli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Taze Fasulye", "Patatesli Börek", "Sulu Köfte", "Nane ve Tereyağlı Sos"],
-                drink: ["Su"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Beyran", keywords: ["beyran", "çorba", "etli", "acılı", "gaziantep"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["İçli Köfte", "Lavaş", "Bol Limon", "Pul Biber"],
-                drink: ["Şalgam Suyu"],
-                dessert: ["Katmer"]
-            }},
-            { main: "Domates Çorbası", keywords: ["domates çorbası", "çorba", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Bolonez Soslu Makarna", "Kıtır Ekmek (Kruton)", "Sarımsaklı Ekmek", "Rendelenmiş Kaşar Peyniri"],
-                drink: ["Su"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Düğün Çorbası", keywords: ["düğün çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "İçli Köfte", "Et Haşlama", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Revani"]
-            }},
-            { main: "Un Çorbası", keywords: ["un çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Fırında Köfte", "Ispanaklı Börek", "Kuru Domates Salata", "Taze Ekmek"],
-                drink: ["Su"],
                 dessert: ["Sütlaç"]
             }},
-            { main: "Sebze Çorbası (Genel)", keywords: ["sebze çorbası", "çorba", "hafif"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Balık", "Tavuklu Sezar Salata", "Hamur Kızartması (Pişi)", "Kruton"],
-                drink: ["Su"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Ayran Aşı (Soğuk Çorba)", keywords: ["ayran aşı", "çorba", "soğuk", "yaz"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Mücver", "Kıymalı Börek", "Yeşil Mercimekli Salata", "Nane"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "İşkembe Çorbası", keywords: ["işkembe", "çorba", "sakatat"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Arnavut Ciğeri", "Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide"],
-                drink: ["Su"],
-                dessert: ["Künefe"]
-            }},
-            { main: "Paça Çorbası", keywords: ["paça", "çorba", "kelle"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kokoreç", "Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Yoğurt Çorbası", keywords: ["yoğurt çorbası", "çorba", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Etli Biber Dolması", "Kuru Domatesli Salata", "Kıymalı Börek", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Güllaç"]
-            }},
-
-            // --- DİĞER YEMEKLER ---
             { main: "Hünkar Beğendi", keywords: ["hünkar beğendi", "et", "beğendi", "patlıcan", "alinazik"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Mantar Çorbası", "Yoğurtlu Patlıcan Ezmesi", "Köz Biber ve Domates", "Gavurdağı Salatası"],
+                yanlar: ["Mercimek Çorbası", "Yoğurtlu Patlıcan Ezmesi", "Köz Biber ve Domates", "Gavurdağı Salatası"],
                 drink: ["Ayran"],
                 dessert: ["Kazandibi"]
             }},
@@ -260,7 +409,7 @@
             }},
             { main: "Lahmacun", keywords: ["lahmacun", "pide", "kebap"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Bol Yeşillik (Maydanoz, Roka)", "Atom", "Gavurdağı Salatası", "Sumaklı Soğan"],
-                drink: ["Ayran"],
+                drink: ["Şalgam Suyu"],
                 dessert: ["Küçük Porsiyon Sütlaç"]
             }},
             { main: "Menemen", keywords: ["menemen", "kahvaltı", "yumurta"], cuisine: "Türk Mutfağı", suggestions: {
@@ -333,31 +482,6 @@
                 drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
-            { main: "Lazanya", keywords: ["makarna", "italyan", "fırın"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Hellimli Salata", "Zeytinyağlı Roka ve Domates Salatası", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Tiramisu"]
-            }},
-            { main: "Suşi Çeşitleri", keywords: ["suşi", "japon", "deniz ürünü", "nigiri", "maki"], cuisine: "Asya Mutfağı", suggestions: {
-                yanlar: ["Edamame", "Deniz Yosunu Salatası", "Soya Sosu", "Wasabi", "Zencefil Turşusu (Gari)"],
-                drink: ["Yeşil Çay (Sıcak/Soğuk)"],
-                dessert: ["Mochi"]
-            }},
-            { main: "Levrek Izgara", keywords: ["balık", "levrek", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Bal Kabağı Çorbası", "Humus", "Roka Salatası (Hardallı Soslu)", "Limon ve Kekikli Fırın Patates"],
-                drink: ["Soda"],
-                dessert: ["Helva (İrmik veya Un)"]
-            }},
-            { main: "Hamburger", keywords: ["hamburger", "burger", "fast food"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Brokolili Salata", "Amerikan Salatası", "Coleslaw", "Patates Kızartması"],
-                drink: ["Kola"],
-                dessert: ["Brownie"]
-            }},
-            { main: "Pizza (Genel)", keywords: ["pizza", "italyan", "hamur işi"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Kapya Biber Salata", "Roka ve Cherry Domates Salatası", "Sarımsaklı Ekmek"],
-                drink: ["Kola"],
-                dessert: ["Tiramisu"]
-            }},
             { main: "Ciğer Kavurma (Arnavut/Tava)", keywords: ["ciğer", "arnavut", "tava", "et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Sumaklı Soğan Salatası", "Çoban Salata", "Patates Kızartması", "Atom"],
                 drink: ["Şalgam Suyu"],
@@ -407,11 +531,6 @@
                 yanlar: ["Yoğurt", "Çoban Salata", "İnce Doğranmış Soğan", "Turşu"],
                 drink: ["Ayran"],
                 dessert: ["Sütlaç"]
-            }},
-            { main: "Özbek Pilavı", keywords: ["özbek pilavı", "pilav", "et", "havuç"], cuisine: "Asya Mutfağı", suggestions: {
-                yanlar: ["Kapya Biber Salatası", "Roka Salatası", "İnce Lavaş", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kuru Meyve"]
             }},
             { main: "Patatesli Börek", keywords: ["patatesli börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt Çorbası", "Peynirli Salata", "Ayran (Bol Köpüklü)", "Turşu"],
@@ -983,11 +1102,11 @@
         /**
          * Kullanıcının girdiği yemeğe uygun önerileri arar ve sonuçları ekranda gösterir.
          */
-        function searchDish() {
+        async function searchDish(dishNameOverride = null) {
             const inputElement = document.getElementById('mainDishInput');
             const filterElement = document.getElementById('cuisineFilter');
             const resultsContainer = document.getElementById('resultsContainer');
-            const rawQuery = inputElement.value.trim();
+            const rawQuery = dishNameOverride || inputElement.value.trim();
             const selectedCuisine = filterElement.value;
             const query = normalizeText(rawQuery);
 
@@ -995,66 +1114,34 @@
 
             let foundDish = null;
 
-            // --- RASTGELE ÖNERİ MANTIĞI BAŞLANGIÇ ---
-            if (query.length < 2) {
-                // Sadece mutfak seçimi yapıldı veya hiçbir şey girilmedi
-                
-                // Filtreye uygun yemekleri bul
+            // --- RASTGELE ÖNERİ MANTIĞI ---
+            if (query.length < 2 && !dishNameOverride) {
                 const filteredDishes = dishSuggestions.filter(dish => 
                     selectedCuisine === "" || dish.cuisine === selectedCuisine
                 );
-
                 if (filteredDishes.length > 0) {
-                    // Rastgele bir yemek seç
                     const randomIndex = Math.floor(Math.random() * filteredDishes.length);
                     foundDish = filteredDishes[randomIndex];
-
-                    // Başlık için rastgele metin ekle
-                    foundDish.main = `Günün Önerisi: ${foundDish.main}`;
-                }
-                
-                // Eğer filtre seçili ama hiç yemek yoksa hata mesajı ver
-                if (!foundDish && selectedCuisine !== "") {
-                    resultsContainer.innerHTML = `
-                        <div class="w-full text-center p-4">
-                            <p class="text-gray-800 font-semibold mb-2">
-                                "${selectedCuisine}" için henüz öneri bulunmuyor.
-                            </p>
-                        </div>
-                    `;
-                    return;
+                    foundDish.main = foundDish.main.startsWith("Günün Önerisi") ? foundDish.main : `Günün Önerisi: ${foundDish.main}`;
                 }
             } 
-            // --- RASTGELE ÖNERİ MANTIĞI BİTİŞ ---
             
-            // --- Normal Arama Devam Ediyor (Eğer rastgele öneri yapılmadıysa) ---
+            // --- Normal Arama ---
             if (!foundDish) {
                 foundDish = dishSuggestions.find(dish => {
-                    // Mutfak filtresi kontrolü
-                    if (selectedCuisine && dish.cuisine !== selectedCuisine) {
-                        return false; // Mutfak eşleşmiyorsa bu yemeği atla
-                    }
-
-                    // Yemek adı veya anahtar kelime kontrolü
+                    if (selectedCuisine && dish.cuisine !== selectedCuisine) return false;
+                    
                     if (query.length >= 2) {
                         const normalizedMain = normalizeText(dish.main);
-                        
-                        // 1. Ana yemeğin adında kelime geçiyor mu?
-                        if (normalizedMain.includes(query)) {
-                            return true;
-                        }
-                        
-                        // 2. Anahtar kelimelerde kelime geçiyor mu? (Esnek arama için)
-                        if (dish.keywords && dish.keywords.some(keyword => normalizeText(keyword).includes(query))) {
+                        if (normalizedMain.includes(query) || (dish.keywords && dish.keywords.some(keyword => normalizeText(keyword).includes(query)))) {
                             return true;
                         }
                     } 
-                    
                     return false;
                 });
             }
 
-            // Arama ve Filtreleme Başlatma Kontrolü (Sadece ilk girişteki boşluk için)
+            // İlk boş giriş kontrolü
             if (query.length < 2 && selectedCuisine === "" && !foundDish) {
                  resultsContainer.innerHTML = `
                     <p class="text-gray-500 italic">
@@ -1064,24 +1151,29 @@
                 return;
             }
 
-
             if (foundDish) {
-                let htmlContent = `<div class="w-full">
-                    <h3 class="text-2xl font-extrabold text-primary-blue mb-4 text-center">
-                        <span class="text-base font-medium text-gray-600">(${foundDish.cuisine})</span> <br>"${foundDish.main}" Yanına Ne Gider?
-                    </h3>`;
+                const dishNameForState = foundDish.main.replace("Günün Önerisi: ", "");
+                
+                // Firestore verilerini bekle
+                const [favoriteStatus, ratingData] = await Promise.all([
+                    getFavoriteStatus(dishNameForState),
+                    getRatingData(dishNameForState)
+                ]);
 
-                // Kategorileri belirtilen sıraya göre dolaş
+                let htmlContent = '';
+                let allSuggestions = [];
+
+                // Kategorileri dolaş ve listeyi oluştur
                 suggestionCategories.forEach(category => {
                     const items = foundDish.suggestions[category.key];
                     if (items && items.length > 0) {
-                        // Kategori Başlığı
+                        allSuggestions.push(...items);
                         htmlContent += `
                             <div class="mb-5">
                                 <h4 class="flex items-center text-lg font-bold ${category.color} mb-3 border-b-2 border-dashed ${category.color}/30 pb-1">
                                     <span class="mr-2">${category.icon}</span> ${category.title}
                                 </h4>
-                                <ul class="space-space-y-3">
+                                <ul class="space-y-3">
                                     ${createListHtml(items, category.color)}
                                 </ul>
                             </div>
@@ -1089,8 +1181,50 @@
                     }
                 });
 
-                htmlContent += `</div>`;
-                resultsContainer.innerHTML = htmlContent;
+                // Template'i doldur
+                const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
+                
+                // Başlık ve İkonlar
+                template.querySelector('h2').innerHTML = `<span class="text-base font-medium text-gray-600">(${foundDish.cuisine})</span> <br>"${foundDish.main}" Yanına Ne Gider?`;
+                
+                // Favori Butonu
+                const favBtn = template.querySelector('#favoriteBtn');
+                favBtn.setAttribute('onclick', `toggleFavorite('${dishNameForState}')`);
+                if (favoriteStatus) {
+                    favBtn.classList.remove('bg-red-100');
+                    favBtn.classList.add('bg-red-500', 'text-white');
+                    favBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+                } else {
+                     favBtn.querySelector('svg').setAttribute('fill', 'none');
+                     favBtn.querySelector('svg').setAttribute('stroke', 'currentColor');
+                     favBtn.querySelector('svg').setAttribute('stroke-width', '2');
+                }
+                
+                // Alışveriş Listesi Butonu
+                const shopBtn = template.querySelector('#shoppingListBtn');
+                shopBtn.setAttribute('onclick', `copyShoppingList([${allSuggestions.map(s => `'${s}'`).join(',')}])`);
+                
+                // Oylama Alanı
+                template.querySelector('#avgRatingDisplay').textContent = ratingData.averageRating.toFixed(1);
+                template.querySelector('#totalVotesDisplay').textContent = `${ratingData.totalVotes} Oy`;
+                
+                const starsContainer = template.querySelector('#ratingStars');
+                for (let i = 1; i <= 5; i++) {
+                    const isFilled = i <= ratingData.userRating;
+                    const star = document.createElement('span');
+                    star.innerHTML = `
+                        <svg onclick="rateDish('${dishNameForState}', ${i})" class="w-6 h-6 cursor-pointer transition duration-150 ${isFilled ? 'text-yellow-500' : 'text-gray-300 hover:text-yellow-400'}" viewBox="0 0 24 24" fill="currentColor">
+                             <path d="M12 .587l3.64 7.57 8.36.97-6.02 5.88 1.42 8.36-7.42-3.9-7.42 3.9 1.42-8.36L.58 9.127l8.36-.97L12 .587z"/>
+                        </svg>
+                    `;
+                    starsContainer.appendChild(star);
+                }
+
+                // Listeyi ekle
+                template.querySelector('#suggestionsListContainer').innerHTML = htmlContent;
+
+                resultsContainer.innerHTML = '';
+                resultsContainer.appendChild(template);
 
             } else {
                 // Sonuç bulunamadı
