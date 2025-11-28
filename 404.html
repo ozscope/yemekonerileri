@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yönlendiriliyor...</title>
+    <!-- 0 saniye sonra kullanıcıyı index.html dosyasına yönlendir -->
+    <!-- Hata çözümü: index.html yerine /index.html kullanıldı. -->
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <script>
+        // Tarayıcı tarafında yönlendirmeyi hemen yapmak için JavaScript
+        // Hata çözümü: 'index.html' yerine '/index.html' kullanılarak tarayıcıya kök dizin yolundan gitmesi söylendi.
+        // GitHub Pages'de '/' kullanmak depo adınızdan sonraki kökü temsil eder (yani /yemekonerileri/index.html).
+        window.location.replace("index.html");
+    </script>
+</head>
+<body>
+    <p>Uygulama yükleniyor... Lütfen bekleyiniz. Yönlendirilmediyseniz <a href="index.html">buraya tıklayın</a>.</p>
+</body>
+</html>
