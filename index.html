@@ -7,27 +7,64 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CSS Başlangıç */
+        /* Inter fontunu kullan */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f9fb;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
-            padding: 1rem;
+            margin: 0;
         }
 
         .app-container {
             width: 100%;
             max-width: 600px;
-            margin-top: 2rem;
+            padding: 1rem;
+            margin-top: 4rem; /* Üst bar için boşluk */
+            flex-grow: 1;
         }
 
         .ad-placeholder {
             min-height: 100px;
         }
-        /* CSS Bitiş */
+
+        /* Sidebar Animasyonları */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .sidebar-open {
+            transform: translateX(0);
+        }
+        
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+
+        /* Overlay */
+        #overlay {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+        }
+
+        /* Blog içeriği için stiller */
+        .blog-content h4 {
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #1e40af;
+        }
+        .blog-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .blog-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
     </style>
 
     <!-- SEO ETİKETLERİ -->
@@ -65,7 +102,6 @@
     }
     </script>
 
-    <!-- Tailwind config -->
     <script>
         tailwind.config = {
             theme: {
@@ -83,74 +119,124 @@
 </head>
 <body class="bg-gray-50">
 
-    <div class="app-container p-6 bg-white shadow-xl rounded-2xl">
-        <header class="mb-6 text-center">
-            <h1 class="text-3xl font-extrabold text-primary-blue mb-2">
-                🍽️ Yanında Ne Gider? - Yemek Yanı Önerileri
-            </h1>
-            <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
-        </header>
+    <!-- ÜST BAR (Header & Hamburger Menü) -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 h-16 flex items-center px-4 justify-between">
+        <div class="flex items-center">
+            <button id="menuBtn" onclick="toggleSidebar()" class="p-2 rounded-md hover:bg-gray-100 focus:outline-none mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="text-xl font-bold text-primary-blue cursor-pointer" onclick="showPage('home')">Yanında Ne Gider?</h1>
+        </div>
+    </nav>
 
-        <!-- Filtre ve Arama Alanı -->
-        <div class="space-y-3 mb-6">
-            <!-- Mutfak Filtresi -->
-            <select id="cuisineFilter" onchange="searchDish()"
-                class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
-                <option value="">Tüm Mutfaklar</option>
-                <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
-                <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
-                <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
-                <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
-                <option value="Uluslararası">🌐 Uluslararası</option>
-            </select>
-            
-            <!-- Arama Input'u -->
-            <div class="flex">
-                <input
-                    id="mainDishInput"
-                    type="text"
-                    placeholder="Yemek adını girin (Örn: Köfte, Levrek, Portakallı Kereviz...)"
-                    class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
-                    aria-label="Ana yemek adını girin"
-                    onkeypress="if(event.key === 'Enter') searchDish()"
-                />
-                <button
-                    id="searchButton"
-                    onclick="searchDish()"
-                    class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
-                >
-                    Ara
+    <!-- YAN MENÜ (Sidebar) -->
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 sidebar-closed pt-20 px-4 flex flex-col">
+        <button onclick="toggleSidebar()" class="absolute top-4 right-4 p-2 rounded-md hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        
+        <ul class="space-y-2">
+            <li>
+                <button onclick="showPage('home')" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
+                    <span class="mr-3">🏠</span> Ana Sayfa
                 </button>
-            </div>
+            </li>
+            <li>
+                <button onclick="showPage('blog')" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
+                    <span class="mr-3">📝</span> Blog & Yazılar
+                </button>
+            </li>
+        </ul>
+        
+        <div class="mt-auto mb-6 text-xs text-gray-400 text-center">
+            &copy; 2025 yanindanevar.com
         </div>
-
-        <!-- Sonuç Alanı -->
-        <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
-            <p id="initialMessage" class="text-gray-500 italic">
-                Aramaya başlayın. Önerileriniz burada görünecektir.
-            </p>
-        </div>
-
-        <!-- YEMEK ÖNERİSİ DETAY ŞABLONU -->
-        <template id="dishDetailTemplate">
-            <div class="w-full">
-                <!-- Başlık -->
-                <h2 class="text-2xl font-extrabold text-primary-blue mb-4"></h2>
-                
-                <!-- ÖNERİ LİSTESİ -->
-                <div id="suggestionsListContainer"></div>
-                
-                <!-- REKLAM ALANI (Sadece Altta) -->
-                <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-                    <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI</p>
-                </div>
-            </div>
-        </template>
     </div>
 
-    <!-- UYGULAMA JS VE VERİ SETİ -->
+    <!-- KARARTMA KATMANI -->
+    <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0"></div>
+
+    <!-- ANA İÇERİK -->
+    <div id="main-content" class="app-container">
+        
+        <!-- SAYFA: ANA SAYFA -->
+        <div id="page-home" class="block">
+            <header class="mb-6 text-center">
+                <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
+            </header>
+
+            <!-- Filtre ve Arama -->
+            <div class="space-y-3 mb-6">
+                <select id="cuisineFilter" onchange="searchDish()"
+                    class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
+                    <option value="">Tüm Mutfaklar</option>
+                    <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
+                    <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
+                    <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
+                    <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
+                    <option value="Uluslararası">🌐 Uluslararası</option>
+                </select>
+                
+                <div class="flex">
+                    <input
+                        id="mainDishInput"
+                        type="text"
+                        placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
+                        class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
+                        aria-label="Ana yemek adını girin"
+                        onkeypress="if(event.key === 'Enter') searchDish()"
+                    />
+                    <button
+                        id="searchButton"
+                        onclick="searchDish()"
+                        class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
+                    >
+                        Ara
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sonuç Alanı -->
+            <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
+                <p id="initialMessage" class="text-gray-500 italic">
+                    Aramaya başlayın. Önerileriniz burada görünecektir.
+                </p>
+            </div>
+
+            <!-- YEMEK DETAY ŞABLONU -->
+            <template id="dishDetailTemplate">
+                <div class="w-full">
+                    <h2 class="text-2xl font-extrabold text-primary-blue mb-4"></h2>
+                    <div id="suggestionsListContainer"></div>
+                    <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
+                        <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Öneri Altı)</p>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <!-- SAYFA: BLOG -->
+        <div id="page-blog" class="hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Yemek Blogu</h2>
+            <div id="blog-posts-container" class="space-y-6"></div>
+        </div>
+
+    </div>
+
+    <!-- SAYFA ALTI REKLAM -->
+    <div class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4">
+        <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
+            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Sayfa Altı)</p>
+        </div>
+    </div>
+
+    <!-- JS KODLARI -->
     <script>
-        // Metni küçük harfe çevirip, Türkçe karakterleri normalize eden yardımcı fonksiyon.
+        // --- YARDIMCI FONKSİYONLAR ---
         const normalizeText = (text) => {
             if (!text) return '';
             return text.toLowerCase()
@@ -162,8 +248,8 @@
                        .replace(/ç/g, 'c');
         };
 
-        // DOM elementlerini oluşturmak için helper
-        const createListHtml = (items, colorClass) => {
+        // createListHtml fonksiyonunu global hale getiriyoruz
+        window.createListHtml = (items, colorClass) => {
             return items.map(item => `
                 <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border ${colorClass}/20 hover:bg-gray-50 transition duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
@@ -174,14 +260,169 @@
             `).join('');
         };
 
-        // Öneri Kategorileri
-        const suggestionCategories = [
-            { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
-            { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
-            { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
+        // toggleSidebar ve showPage fonksiyonlarını global hale getiriyoruz
+        window.toggleSidebar = () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.classList.contains('sidebar-closed')) {
+                sidebar.classList.remove('sidebar-closed');
+                sidebar.classList.add('sidebar-open');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.add('sidebar-closed');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        window.showPage = (pageId) => {
+            document.getElementById('page-home').classList.add('hidden');
+            document.getElementById('page-blog').classList.add('hidden');
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            if (pageId === 'blog') window.loadBlogContent();
+            window.toggleSidebar();
+            window.scrollTo(0, 0);
+            
+            // URL Yönetimi
+            try {
+                const url = new URL(window.location);
+                if (pageId === 'blog') url.searchParams.set('page', 'blog');
+                else url.searchParams.delete('page');
+                window.history.pushState({}, '', url);
+            } catch (e) {
+                console.log("URL güncelleme bu ortamda desteklenmiyor");
+            }
+        }
+
+        // --- BLOG VERİSİ (Gömülü) ---
+        const blogPostsData = [
+            {
+                id: 2,
+                category: "Mutfak Sırları",
+                title: "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
+                content: `
+                    <p>Türk mutfağının en hafif, en zarif lezzetleri arasında yer alan zeytinyağlılar; hem sıcak yaz sofralarının hem de dört mevsim kurulan geleneksel yemek masalarının vazgeçilmezidir. Dolma, enginar, barbunya, pırasa, bamya veya taze fasulye… Hepsi hafif oldukları kadar besleyicidir. Peki zeytinyağlı yemeklerin yanına en çok ne yakışır?</p>
+                    <p>İşte sofrayı tamamlayan en iyi eşlikçi önerileri…</p>
+                    
+                    <h4>1. Pirinç veya Bulgur Pilavı</h4>
+                    <p>Zeytinyağlıların hafif dokusunu dengeleyerek öğünü daha doyurucu hale getirir.</p>
+                    <ul>
+                        <li>Tane tane pirinç pilavı</li>
+                        <li>Nohutlu bulgur pilavı</li>
+                        <li>Sebzeli pilav</li>
+                    </ul>
+                    <p>Özellikle dolma, taze fasulye ve barbunya ile mükemmel bir uyum yakalar.</p>
+
+                    <h4>2. Cacık</h4>
+                    <p>Yoğurt ve salatalığın ferahlığı, zeytinyağlıların aromasıyla birleştiğinde sofrada harika bir denge oluşturur. Nane, dereotu veya sarımsakla tatlandırılabilir.</p>
+
+                    <h4>3. Yoğurt Çeşitleri</h4>
+                    <p>Yoğurt, neredeyse tüm zeytinyağlı yemeklerle uyumludur:</p>
+                    <ul>
+                        <li>Süzme yoğurt</li>
+                        <li>Sarımsaklı yoğurt</li>
+                        <li>Otlu yoğurt</li>
+                    </ul>
+                    <p>Özellikle pırasa, kabak ve enginar yanında tercih edilir.</p>
+
+                    <h4>4. Mevsim Salatası</h4>
+                    <p>Taze ve çıtır bir salata, zeytinyağlı yemeklerle birlikte hem renk hem de lezzet dengesi sağlar. Nar ekşisi veya limon sosuyla tatlandırabilirsiniz.</p>
+
+                    <h4>5. Kızarmış Ekmek veya Lavaş</h4>
+                    <p>Zeytinyağlıların suyuna batırmak için idealdir.</p>
+                    <ul>
+                        <li>Kıtır baget dilimleri</li>
+                        <li>Fırınlanmış lavaş</li>
+                        <li>Tahıllı ekmekler</li>
+                    </ul>
+                    <p>Özellikle zeytinyağlı patlıcan, fasulye ve kereviz yemekleriyle çok yakışır.</p>
+
+                    <h4>6. Peynir Tabağı</h4>
+                    <p>Hafif tuzlu peynirler zeytinyağlıların aromasını destekler.</p>
+                    <ul>
+                        <li>Ezine peynir</li>
+                        <li>İzmir tulumu</li>
+                        <li>Beyaz peynir</li>
+                    </ul>
+                    <p>Bu eşlikçi özellikle kalabalık yaz sofralarında güzel bir alternatif olur.</p>
+
+                    <h4>7. Zeytin & Zeytinyağı Soslu Mezeler</h4>
+                    <p>Zeytin tabakları ve hafif mezeler sofrada bütünlük sağlar:</p>
+                    <ul>
+                        <li>Zeytinyağlı zeytin salatası</li>
+                        <li>Zahter</li>
+                        <li>Nar ekşili zeytin</li>
+                    </ul>
+                    <p>Bu seçenekler zeytinyağlı ana yemeğin yanına hoş bir ara tat ekler.</p>
+
+                    <h4>8. Çorba (Başlangıç Olarak)</h4>
+                    <p>Özellikle yaz aylarında soğuk çorbalar, kışın ise hafif sebze çorbaları sofrayı tamamlar:</p>
+                    <ul>
+                        <li>Ayran aşı (soğuk)</li>
+                        <li>Mercimek çorbası</li>
+                        <li>Sebze çorbası</li>
+                    </ul>
+
+                    <h4>9. Limonlu veya Dereotlu Garnitürler</h4>
+                    <p>Zeytinyağlılara ferahlık katan bu küçük dokunuşlar sofrayı zenginleştirir:</p>
+                    <ul>
+                        <li>Limon dilimleri</li>
+                        <li>Taze dereotu</li>
+                        <li>Kapari</li>
+                        <li>Turşu çeşitleri</li>
+                    </ul>
+                `
+            },
+            {
+                id: 1,
+                category: "İpucu",
+                title: "Etin Yanında En İyi Ne Gider? Sofraları Tamamlayan En İyi 12 Lezzet",
+                content: `
+                    <p>Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik.</p>
+                    <h4>1. Közlenmiş Sebzeler</h4>
+                    <p>Köz patlıcan, biber, kabak ve domates; etin yoğun aromasını hafifletir.</p>
+                    <h4>2. Patates Püresi</h4>
+                    <p>Yumuşak dokusu ve hafif tereyağı aromasıyla özellikle <b>bonfile ve rosto</b> yanında harika bir tamamlayıcıdır.</p>
+                    <h4>3. Fırınlanmış Patates</h4>
+                    <p>Kıtır dışı ve yumuşak iç dokusuyla etin ağırlığını dengeler.</p>
+                    <h4>4. Pilav Çeşitleri</h4>
+                    <p>Et yemeklerinin en klasik eşlikçisi pilavdır.</p>
+                    <ul>
+                        <li>Tereyağlı pirinç pilavı</li>
+                        <li>Arpa şehriyeli pilav</li>
+                        <li>Bulgur pilavı</li>
+                    </ul>
+                    <h4>5. Mevsim Salatası</h4>
+                    <p>Zeytinyağı, limon ve nar ekşili soslarla ferahlık katar.</p>
+                    <h4>6. Roka Salatası</h4>
+                    <p>Roka'nın <i>acımsı</i> aroması kırmızı etle muhteşem uyum sağlar.</p>
+                    <h4>7. Soğan Halkaları</h4>
+                    <p>Özellikle <b>steak ve burger</b> yanında tercih edilir.</p>
+                    <h4>8. Yoğurtlu Mezeler</h4>
+                    <ul>
+                        <li>Haydari</li>
+                        <li>Cacık</li>
+                        <li>Köz patlıcan yoğurtlama</li>
+                    </ul>
+                    <h4>9. Humus</h4>
+                    <p>Nohut ve tahinin aromasıyla et yemekleri için ideal bir mezedir.</p>
+                    <h4>10. Tandır Lavaşı</h4>
+                    <p>Izgara etlerin suyunu içine çeker.</p>
+                    <h4>11. Mantar Sote</h4>
+                    <p>Sarımsak ve tereyağı ile etin yanına çok yakışır.</p>
+                    <h4>12. Soslar</h4>
+                    <ul>
+                        <li>Biberiye sosu</li>
+                        <li>Barbekü sos</li>
+                        <li>Hardal</li>
+                    </ul>
+                `
+            }
         ];
 
-        // --- ANA VERİ SETİ (Genişletilmiş ve Düzenlenmiş) ---
+// --- ANA VERİ SETİ (Genişletilmiş ve Düzenlenmiş) ---
         const dishSuggestions = [
             // --- ÇORBALAR (Her birine ana yemek eklendi) ---
             { main: "Tarhana Çorbası", keywords: ["tarhana", "çorba", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
@@ -252,8 +493,8 @@
             { main: "Izgara Köfte", keywords: ["ızgara köfte", "köfte", "et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Piyaz", "Pirinç Pilavı", "Izgara Biber"], drink: ["Ayran"], dessert: ["Kemalpaşa"]
             }},
-            { main: "Fırında Köfte", keywords: ["fırında köfte", "köfte", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Domatesli Bulgur Pilavı", "Cacık"], drink: ["Ayran"], dessert: ["Sütlaç"]
+            { main: "Fırında Köfte", keywords: ["fırında köfte", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Domatesli Bulgur Pilavı","Fırında Patates", "Cacık"], drink: ["Ayran"], dessert: ["Sütlaç"]
             }},
             { main: "Sulu Köfte", keywords: ["sulu köfte", "ekşili", "terbiyeli", "misket"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Sade Pirinç Pilavı", "Turşu", "Taze Ekmek"], drink: ["Ayran"], dessert: ["Fırın Sütlaç"]
@@ -280,7 +521,7 @@
                 yanlar: ["Sade Makarna", "Salata"], drink: ["Ayran"], dessert: ["Şekerpare"]
             }},
              { main: "Fırında Köfte Patates", keywords: ["fırında köfte patates", "köfte", "patates"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Pirinç Pilavı", "Cacık", "Turşu"], drink: ["Ayran"], dessert: ["Sütlaç"]
+                yanlar: ["Püre", "Cacık", "Turşu"], drink: ["Ayran"], dessert: ["Sütlaç"]
             }},
 
 
@@ -614,10 +855,10 @@
             { main: "Izgara Levrek", keywords: ["levrek", "ızgara levrek"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Patates", "Roka"], drink: ["Rakı (Öneri)"], dessert: ["Fırın Helva"]
             }},
-             { main: "Izgara Çinekop", keywords: ["çinekop", "ızgara çinekop"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Salata", "Kırmızı Soğan"], drink: ["Şalgam Suyu"], dessert: ["Helva"]
+             { main: "Izgara Çipura", keywords: ["çipura", "ızgara çipura"], cuisine: "Akdeniz Mutfağı", suggestions: {
+                yanlar: ["Roka Salatası", "Patates Salatası", "Kırmızı Soğan"], drink: ["Şalgam Suyu"], dessert: ["Helva"]
             }},
-            { main: "Lüfer Tava ", keywords: ["lüfer", "ızgara lüfer"], cuisine: "Akdeniz Mutfağı", suggestions: {
+            { main: "Lüfer/Çinekop Tava ", keywords: ["lüfer", "ızgara lüfer","çinekop"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Yeşil Salata", "Limon"], drink: ["Soda"], dessert: ["Helva"]
             }},
              { main: "Fırında Somon", keywords: ["somon", "fırın somon"], cuisine: "Uluslararası", suggestions: {
@@ -743,8 +984,173 @@
                 yanlar: ["Çörek Otu", "Zeytinyağı"], drink: ["Çay"], dessert: ["-"]
             }},
         ];
+        
+        // Öneri Kategorileri
+        const suggestionCategories = [
+            // DÜZELTME YAPILDI: Pilav/Salata Yan Ürüne aittir.
+            { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
+            { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
+            { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
+        ];
 
-        // Ana arama fonksiyonu
+        // --- FONKSİYONLAR ---
+        
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.classList.contains('sidebar-closed')) {
+                sidebar.classList.remove('sidebar-closed');
+                sidebar.classList.add('sidebar-open');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.add('sidebar-closed');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function showPage(pageId) {
+            document.getElementById('page-home').classList.add('hidden');
+            document.getElementById('page-blog').classList.add('hidden');
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            if (pageId === 'blog') loadBlogContent();
+            toggleSidebar();
+            window.scrollTo(0, 0);
+            
+            // URL Yönetimi
+            try {
+                const url = new URL(window.location);
+                if (pageId === 'blog') url.searchParams.set('page', 'blog');
+                else url.searchParams.delete('page');
+                window.history.pushState({}, '', url);
+            } catch (e) {
+                console.log("URL güncelleme bu ortamda desteklenmiyor");
+            }
+        }
+
+        function loadBlogContent(postId = null) {
+            const container = document.getElementById('blog-posts-container');
+            container.innerHTML = '';
+            
+            if (postId) {
+                const post = blogPostsData.find(p => p.id === postId);
+                if (post) {
+                    container.innerHTML = `
+                        <button onclick="loadBlogContent()" class="text-primary-blue font-semibold mb-4">← Geri Dön</button>
+                        <article class="bg-white p-6 rounded-2xl shadow-xl blog-content">
+                            <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
+                            <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
+                            ${post.content}
+                        </article>
+                        <!-- REKLAM ALANI (Blog Altı) -->
+                        <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
+                            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
+                        </div>
+                    `;
+                }
+            } else {
+                blogPostsData.forEach(post => {
+                    // Önizleme metnini daha temiz al
+                    const tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = post.content;
+                    const firstP = tempDiv.querySelector("p");
+                    const previewText = firstP ? firstP.innerText.substring(0, 100) : "İçerik önizlemesi...";
+
+                    container.innerHTML += `
+                        <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
+                            <span class="text-xs font-bold text-secondary-green uppercase">${post.category}</span>
+                            <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
+                            <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
+                            <button onclick="loadBlogContent(${post.id})" class="text-primary-blue font-semibold text-sm hover:underline">Devamını Oku →</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function searchDish() {
+            const input = document.getElementById('mainDishInput');
+            const filter = document.getElementById('cuisineFilter');
+            const container = document.getElementById('resultsContainer');
+            
+            const rawQuery = input.value.trim();
+            const cuisine = filter.value;
+            const query = normalizeText(rawQuery);
+
+            container.innerHTML = '';
+
+            let foundDish = null;
+
+            // --- RASTGELE ÖNERİ VEYA ARAMA ---
+            if (query.length < 2) {
+                const filteredDishes = dishSuggestions.filter(dish => 
+                    selectedCuisine === "" || dish.cuisine === selectedCuisine
+                );
+                if (filteredDishes.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * filteredDishes.length);
+                    foundDish = { ...filteredDishes[randomIndex] };
+                    if (!foundDish.main.startsWith("Günün Önerisi")) {
+                        foundDish.main = `Günün Önerisi: ${foundDish.main}`;
+                    }
+                }
+            } else {
+                // Normal Arama
+                foundDish = dishSuggestions.find(d => {
+                    if (cuisine && d.cuisine !== cuisine) return false;
+                    const normMain = normalizeText(d.main);
+                    return normMain.includes(query) || (d.keywords && d.keywords.some(k => normalizeText(k).includes(query)));
+                });
+            }
+
+            if (!foundDish && query.length < 2 && cuisine === "") {
+                container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
+                return;
+            }
+
+            if (foundDish) {
+                let html = '';
+                suggestionCategories.forEach(cat => {
+                    const items = foundDish.suggestions[cat.key];
+                    if (items && items.length) {
+                        html += `<div class="mb-4"><h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4><ul class="space-y-2">${createListHtml(items, cat.color)}</ul></div>`;
+                    }
+                });
+                
+                const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
+                template.querySelector('h2').innerHTML = `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
+                template.querySelector('#suggestionsListContainer').innerHTML = html;
+                container.appendChild(template);
+            } else {
+                container.innerHTML = `
+                    <div class="w-full text-center p-4">
+                        <p class="text-gray-800 font-semibold mb-2">Üzgünüz, aradığınız "${rawQuery}" yemeği için öneri bulamadık.</p>
+                        <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
+                    </div>
+                `;
+            }
+            
+            // Mobilde klavyeyi kapatmak için input odağını kaldır
+            if(window.innerWidth < 768) {
+                input.blur();
+            }
+            
+            input.value = '';
+        }
+
+        // Fonksiyonları global scope'a ata (ReferenceError düzeltmesi)
+        window.toggleSidebar = toggleSidebar;
+        window.showPage = showPage;
+        window.loadBlogContent = loadBlogContent;
+        window.searchDish = searchDish;
+
+        // Sayfa Yüklendiğinde URL Kontrolü
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('page') === 'blog') showPage('blog');
+        });
+            // Ana arama fonksiyonu
         function searchDish() {
             const inputElement = document.getElementById('mainDishInput');
             const filterElement = document.getElementById('cuisineFilter');
