@@ -80,7 +80,7 @@
                 <input
                     id="mainDishInput"
                     type="text"
-                    placeholder="Yemek adını girin (Örn: Köfte, Pizza, Çorba...)"
+                    placeholder="Yemek adını girin (Örn: Tarhana, Köfte, Pizza...)"
                     class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
                     aria-label="Ana yemek adını girin"
                     onkeypress="if(event.key === 'Enter') searchDish()"
@@ -108,10 +108,134 @@
         // Uygulamanın ana veri seti: Ana Yemekler ve Kategorik Yan Lezzet Önerileri
         // NOT: complement ve side listeleri artık tek bir 'yanlar' listesinde birleştirilmiştir.
         const dishSuggestions = [
-            // --- TÜRK MUTFAĞI ---
+            // --- YENİ EKLENEN YEMEKLER ---
+            { main: "Enginar (Zeytinyağlı/Etli)", keywords: ["enginar", "zeytinyağlı", "etli enginar"], cuisine: "Akdeniz Mutfağı", suggestions: {
+                yanlar: ["Çoban Salata", "Arpa Şehriyeli Pilav", "Kinoalı Salata", "Zeytinyağlı Taze Fasulye"],
+                drink: ["Soda"],
+                dessert: ["Meyve Tabağı"]
+            }},
+            { main: "Zeytinyağlı Enginar", keywords: ["zeytinyağlı enginar", "enginar", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
+                yanlar: ["Patates Salatası", "Humus", "Dereotu", "Limon Dilimleri"],
+                drink: ["Soda"],
+                dessert: ["Meyveli Yoğurt"]
+            }},
+            { main: "Bakla", keywords: ["bakla", "zeytinyağlı", "fava"], cuisine: "Akdeniz Mutfağı", suggestions: {
+                yanlar: ["Turplu Salata", "Dereotu", "Zeytinyağlı Enginar", "Pirinç Pilavı"],
+                drink: ["Soda"],
+                dessert: ["Kabak Tatlısı"]
+            }},
+            { main: "İmam Bayıldı", keywords: ["imam bayıldı", "zeytinyağlı", "patlıcan", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
+                yanlar: ["Sade Yoğurt (Misket Limonlu)", "Zeytinli ve Peynirli Salata", "Taze Ekmek", "Bol Siyah Zeytin"],
+                drink: ["Ayran"],
+                dessert: ["Kabak Tatlısı"]
+            }},
+            { main: "Biftek (Bonfile/Kontrfile)", keywords: ["biftek", "bonfile", "kontrfile", "et", "ızgara"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Roka Salatası (Parmesanlı)", "Kremalı Mantar Sosu", "Tereyağlı Püre", "Izgara Kuşkonmaz"],
+                drink: ["Ayran"],
+                dessert: ["Sufle"]
+            }},
+
+            // --- ÇORBALAR (GÜNCELLENDİ) ---
+            { main: "Tarhana Çorbası", keywords: ["tarhana", "çorba", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Etli Kuru Fasulye", "Turşu", "Kıymalı Börek", "Taze Ekmek"],
+                drink: ["Su"],
+                dessert: ["Sütlaç"]
+            }},
+            { main: "Mercimek Çorbası", keywords: ["mercimek çorbası", "çorba", "kırmızı"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Karnıyarık", "Limon Dilimleri", "Pul Biberli Nane Yağı", "Yeşil Salata"],
+                drink: ["Su"],
+                dessert: ["Kazandibi"]
+            }},
+            { main: "Ezogelin Çorbası", keywords: ["ezogelin", "çorba", "acılı"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Karnıyarık", "Nane ve Limon", "Limonlu Roka Salatası", "Turşu"],
+                drink: ["Su"],
+                dessert: ["Un Helvası"]
+            }},
+            { main: "Şehriye Çorbası", keywords: ["şehriye çorbası", "çorba", "domatesli"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Izgara Köfte", "Kıymalı Börek", "Limon Dilimi", "Nane"],
+                drink: ["Su"],
+                dessert: ["Sütlaç"]
+            }},
+            { main: "Bal Kabağı Çorbası (Kremalı)", keywords: ["bal kabağı çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Izgara Somon", "Peynirli Ekmek", "Kremalı Sos", "Balkabağı çekirdeği"],
+                drink: ["Su"],
+                dessert: ["Brownie"]
+            }},
+            { main: "Soğuk Çorba (Yayla Tarzı)", keywords: ["soğuk çorba", "cacıklı", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Zeytinyağlı Taze Fasulye", "Kıymalı Börek", "Nane", "Salatalık"],
+                drink: ["Su"],
+                dessert: ["Meyve Tabağı"]
+            }},
+            { main: "Kabak Çorbası (Kremalı)", keywords: ["kabak çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Fırında Tavuk", "Izgara Tavuk", "Kruton", "Sade Salata"],
+                drink: ["Su"],
+                dessert: ["Brownie"]
+            }},
+             { main: "Brokoli Çorbası", keywords: ["brokoli çorbası", "çorba", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Izgara Biftek", "Keçi Peynirli Makarna", "Sade Salata", "Kruton"],
+                drink: ["Su"],
+                dessert: ["Sufle"]
+            }},
+            { main: "Bamya Çorbası", keywords: ["bamya çorbası", "çorba", "ekşili"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Etli Pilav", "Lavaş", "Limon Dilimi", "Acı Biber Turşusu"],
+                drink: ["Ayran"],
+                dessert: ["Kabak Tatlısı"]
+            }},
+            { main: "Yayla Çorbası", keywords: ["yayla çorbası", "yoğurt", "çorba", "pirinçli"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Taze Fasulye", "Patatesli Börek", "Sulu Köfte", "Nane ve Tereyağlı Sos"],
+                drink: ["Su"],
+                dessert: ["Güllaç"]
+            }},
+            { main: "Beyran", keywords: ["beyran", "çorba", "etli", "acılı", "gaziantep"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["İçli Köfte", "Lavaş", "Bol Limon", "Pul Biber"],
+                drink: ["Şalgam Suyu"],
+                dessert: ["Katmer"]
+            }},
+            { main: "Domates Çorbası", keywords: ["domates çorbası", "çorba", "kremalı"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Bolonez Soslu Makarna", "Kıtır Ekmek (Kruton)", "Sarımsaklı Ekmek", "Rendelenmiş Kaşar Peyniri"],
+                drink: ["Su"],
+                dessert: ["Sufle"]
+            }},
+            { main: "Düğün Çorbası", keywords: ["düğün çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Gavurdağı Salatası", "İçli Köfte", "Et Haşlama", "Taze Ekmek"],
+                drink: ["Su"],
+                dessert: ["Revani"]
+            }},
+            { main: "Un Çorbası", keywords: ["un çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Fırında Köfte", "Ispanaklı Börek", "Kuru Domates Salata", "Taze Ekmek"],
+                drink: ["Su"],
+                dessert: ["Sütlaç"]
+            }},
+            { main: "Sebze Çorbası (Genel)", keywords: ["sebze çorbası", "çorba", "hafif"], cuisine: "Uluslararası", suggestions: {
+                yanlar: ["Izgara Balık", "Tavuklu Sezar Salata", "Hamur Kızartması (Pişi)", "Kruton"],
+                drink: ["Su"],
+                dessert: ["Meyveli Yoğurt"]
+            }},
+            { main: "Ayran Aşı (Soğuk Çorba)", keywords: ["ayran aşı", "çorba", "soğuk", "yaz"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Mücver", "Kıymalı Börek", "Yeşil Mercimekli Salata", "Nane"],
+                drink: ["Su"],
+                dessert: ["Meyve Tabağı"]
+            }},
+            { main: "İşkembe Çorbası", keywords: ["işkembe", "çorba", "sakatat"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Arnavut Ciğeri", "Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide"],
+                drink: ["Su"],
+                dessert: ["Künefe"]
+            }},
+            { main: "Paça Çorbası", keywords: ["paça", "çorba", "kelle"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Kokoreç", "Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide"],
+                drink: ["Su"],
+                dessert: ["Sütlaç"]
+            }},
+            { main: "Yoğurt Çorbası", keywords: ["yoğurt çorbası", "çorba", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Etli Biber Dolması", "Kuru Domatesli Salata", "Kıymalı Börek", "Taze Ekmek"],
+                drink: ["Su"],
+                dessert: ["Güllaç"]
+            }},
+
+            // --- DİĞER YEMEKLER ---
             { main: "Hünkar Beğendi", keywords: ["hünkar beğendi", "et", "beğendi", "patlıcan", "alinazik"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Mantar Çorbası", "Yoğurtlu Patlıcan Ezmesi", "Köz Biber ve Domates", "Gavurdağı Salatası"],
-                drink: ["Şıra", "Ayran"],
+                drink: ["Ayran"],
                 dessert: ["Kazandibi"]
             }},
             { main: "Tas Kebabı", keywords: ["tas kebabı", "et", "sulu", "dana"], cuisine: "Türk Mutfağı", suggestions: {
@@ -136,7 +260,7 @@
             }},
             { main: "Lahmacun", keywords: ["lahmacun", "pide", "kebap"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Bol Yeşillik (Maydanoz, Roka)", "Atom", "Gavurdağı Salatası", "Sumaklı Soğan"],
-                drink: ["Bol Köpüklü Ayran", "Şalgam Suyu"],
+                drink: ["Ayran"],
                 dessert: ["Küçük Porsiyon Sütlaç"]
             }},
             { main: "Menemen", keywords: ["menemen", "kahvaltı", "yumurta"], cuisine: "Türk Mutfağı", suggestions: {
@@ -164,17 +288,7 @@
                 drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
-            { main: "Mercimek Çorbası", keywords: ["mercimek çorbası", "çorba", "kırmızı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Limon Dilimleri", "Pul Biberli Nane Yağı", "Taze Ekmek", "Yeşil Salata"],
-                drink: ["Su"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Ezogelin Çorbası", keywords: ["ezogelin", "çorba", "acılı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Nane ve Limon", "Zeytin Ezmesi", "Taze Pide", "Turşu"],
-                drink: ["Su"],
-                dessert: ["Un Helvası"]
-            }},
-            { main: "Nohut Yemeği", keywords: ["nohut", "baklagil", "etli", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
+            { main: "Nohut Yemeği", keywords: ["nohut", "baklagil", "etli nohut", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Acılı Ezme", "Pirinç Pilavı", "Turşu (Lahana veya Salatalık)"],
                 drink: ["Ayran"],
                 dessert: ["Havuç Dilimi Baklava"]
@@ -184,19 +298,19 @@
                 drink: ["Ayran"],
                 dessert: ["Güllaç"]
             }},
-            { main: "Mantı", keywords: ["mantı", "hamur işi", "kıyma", "yoğurtlu"], cuisine: "Türk Mutfağı", suggestions: {
+            { main: "Mantı", keywords: ["mantı", "hamur işi", "sosyete mantısı", "yoğurtlu"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Ezogelin Çorbası", "Yoğurt ve Sarımsak", "Turplu Salata", "Haydari"],
                 drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
-            { main: "İç Pilav", keywords: ["iç pilav", "pilav", "dolma", "etli"], cuisine: "Türk Mutfağı", suggestions: {
+            { main: "İç Pilav", keywords: ["iç pilav", "pilav", "dolma"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Fırında Tavuk", "Kuzu Tandır", "Çoban Salata", "Ayran"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Adana Kebap", keywords: ["adanakebap", "kebap", "et", "acılı"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Lavaş veya Pide", "Sumaklı Soğan Salatası", "Gavurdağı Salatası (Nar Ekşili)", "Humus"],
-                drink: ["Şalgam Suyu (Acılı)"],
+                drink: ["Şalgam Suyu"],
                 dessert: ["Halka Tatlısı"]
             }},
             { main: "Fırında Sebze (Etli/Sade)", keywords: ["fırında sebze", "sebze", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
@@ -219,7 +333,6 @@
                 drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
-            // --- MAKARNA VE ULUSLARARASI ---
             { main: "Lazanya", keywords: ["makarna", "italyan", "fırın"], cuisine: "İtalyan Mutfağı", suggestions: {
                 yanlar: ["Domates Çorbası", "Hellimli Salata", "Zeytinyağlı Roka ve Domates Salatası", "Sarımsaklı Ekmek"],
                 drink: ["Soda"],
@@ -232,39 +345,28 @@
             }},
             { main: "Levrek Izgara", keywords: ["balık", "levrek", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Bal Kabağı Çorbası", "Humus", "Roka Salatası (Hardallı Soslu)", "Limon ve Kekikli Fırın Patates"],
-                drink: ["Şalgam Suyu", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Helva (İrmik veya Un)"]
             }},
             { main: "Hamburger", keywords: ["hamburger", "burger", "fast food"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Brokolili Salata", "Amerikan Salatası", "Coleslaw", "Patates Kızartması"],
-                drink: ["Kola", "Milkshake"],
+                drink: ["Kola"],
                 dessert: ["Brownie"]
             }},
             { main: "Pizza (Genel)", keywords: ["pizza", "italyan", "hamur işi"], cuisine: "İtalyan Mutfağı", suggestions: {
                 yanlar: ["Domates Çorbası", "Kapya Biber Salata", "Roka ve Cherry Domates Salatası", "Sarımsaklı Ekmek"],
-                drink: ["Kola", "Ayran"],
+                drink: ["Kola"],
                 dessert: ["Tiramisu"]
             }},
-            // --- KAVURMA / GÜNEYDOĞU / SAKATAT ---
             { main: "Ciğer Kavurma (Arnavut/Tava)", keywords: ["ciğer", "arnavut", "tava", "et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Sumaklı Soğan Salatası", "Çoban Salata", "Patates Kızartması", "Atom"],
-                drink: ["Şalgam Suyu", "Ayran"],
+                drink: ["Şalgam Suyu"],
                 dessert: ["Küçük Kemalpaşa"]
             }},
             { main: "Ciğer Sote", keywords: ["ciğer sote", "ciğer", "sote", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Lavaş veya Pide", "Muhammara", "Domatesli Bulgur Pilavı", "Sumaklı Soğan"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Un Helvası"]
-            }},
-            { main: "İşkembe Çorbası", keywords: ["işkembe", "çorba", "sakatat"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide veya Lavaş", "Acı Biber Turşusu"],
-                drink: ["Su"],
-                dessert: ["Künefe"]
-            }},
-            { main: "Paça Çorbası", keywords: ["paça", "çorba", "kelle"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Sirke Sosu", "Bol Limon", "Taze Pide", "Pul Biber"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
             }},
             { main: "Kokoreç", keywords: ["kokoreç", "sokak yemeği", "sakatat"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Bol Domates ve Maydanoz", "Közlenmiş Biber", "Ayran", "Şalgam Suyu"],
@@ -281,17 +383,10 @@
                 drink: ["Ayran"],
                 dessert: ["Kemalpaşa"]
             }},
-
-            // YÖRESEL VE KLASİK TÜRK
             { main: "Kuymak (Mıhlama)", keywords: ["kuymak", "mıhlama", "karadeniz", "peynir", "kahvaltı"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Siyah Çay", "Zeytin ve Peynir", "Pişi (Hamur Kızartması)", "Taze Ekmek"],
                 drink: ["Siyah Çay"],
                 dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Ayran Aşı (Soğuk Çorba)", keywords: ["ayran aşı", "çorba", "soğuk", "yaz"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Yeşil Mercimekli Salata", "Nane", "Salatalık"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
             }},
             { main: "Keşkek", keywords: ["keşkek", "buğday", "yöresel", "et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Gavurdağı Salatası", "Kırmızı Et Sote", "Pul Biberli Tereyağ Sosu", "Turşu"],
@@ -308,11 +403,6 @@
                 drink: ["Çay"],
                 dessert: ["Nutellalı Pankek"]
             }},
-            { main: "Fava (İç Bakla Ezmesi)", keywords: ["fava", "bakla", "meze", "zeytinyağlı", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Limon Dilimleri", "Dereotu", "Zeytinyağlı Taze Fasulye", "Tuzlu Krakerler"],
-                drink: ["Rakı (Yanında)", "Soda"],
-                dessert: ["Meyve Tabağı"]
-            }},
             { main: "Meyhane Pilavı", keywords: ["meyhane pilavı", "bulgur", "etli"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt", "Çoban Salata", "İnce Doğranmış Soğan", "Turşu"],
                 drink: ["Ayran"],
@@ -320,16 +410,14 @@
             }},
             { main: "Özbek Pilavı", keywords: ["özbek pilavı", "pilav", "et", "havuç"], cuisine: "Asya Mutfağı", suggestions: {
                 yanlar: ["Kapya Biber Salatası", "Roka Salatası", "İnce Lavaş", "Turşu"],
-                drink: ["Ayran", "Yeşil Çay"],
+                drink: ["Ayran"],
                 dessert: ["Kuru Meyve"]
             }},
             { main: "Patatesli Börek", keywords: ["patatesli börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt Çorbası", "Peynirli Salata", "Ayran (Bol Köpüklü)", "Turşu"],
-                drink: ["Çay", "Ayran"],
+                drink: ["Ayran"],
                 dessert: ["Kazandibi"]
             }},
-
-            // KEBAPLAR VE SOKAK YEMEKLERİ
             { main: "İslim Kebabı (Kürdan)", keywords: ["islim kebabı", "kürdan kebabı", "köfte", "patlıcan"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Cacık", "Tereyağlı Pirinç Pilavı", "Domates Sosu"],
                 drink: ["Ayran"],
@@ -360,16 +448,14 @@
                 drink: ["Ayran"],
                 dessert: ["Met Helvası"]
             }},
-
-            // KÖFTE ÇEŞİTLERİ
             { main: "İnegöl Köfte", keywords: ["inegöl köfte", "köfte", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Piyaz", "Izgara Domates Biber", "Pirinç Pilavı", "Acı Sos"],
-                drink: ["Ayran", "Boza"],
+                drink: ["Ayran"],
                 dessert: ["Kemalpaşa Tatlısı"]
             }},
             { main: "Tekirdağ Köftesi", keywords: ["tekirdağ köfte", "köfte", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Ezme Salata", "Izgara Biber", "Pirinç Pilavı", "Yoğurt"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Hayrabolu Tatlısı"]
             }},
             { main: "İzmir Köfte", keywords: ["izmir köfte", "köfte", "patates", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
@@ -382,31 +468,29 @@
                 drink: ["Ayran"],
                 dessert: ["Kazandibi"]
             }},
-
-            // DENİZ ÜRÜNLERİ VE BALIKLAR
             { main: "Somon Izgara", keywords: ["somon", "balık", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Brokolili Salata", "Kremalı Kabak Çorbası", "Fırınlanmış Kuşkonmaz", "Patates Püresi"],
-                drink: ["Beyaz Şarap (Yanında)", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Fırında Somon", keywords: ["fırında somon", "balık", "deniz ürünü", "fırın"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Roka ve Cherry Domates Salatası", "Yoğurtlu Kereviz", "Haşlanmış Patates", "Limon Dilimleri"],
-                drink: ["Soda", "Beyaz Şıra"],
+                drink: ["Soda"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Hamsi Tava/Izgara", keywords: ["hamsi", "balık", "deniz ürünü", "tava"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Mısır Ekmeği", "Tahin Helvası (Yemek Sonrası)", "Çoban Salata", "Limon"],
-                drink: ["Şalgam Suyu", "Ayran"],
+                drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
             { main: "Hamsili Pilav", keywords: ["hamsili pilav", "pilav", "balık", "karadeniz"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurtlu Semizotu", "Roka Salata", "Turşu", "Mısır Ekmeği"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Lüfer/Çinekop Izgara", keywords: ["lüfer", "çinekop", "balık", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Turplu Salata", "Zeytinyağlı Enginar", "Deniz Mahsülleri Çorbası", "Limon Dilimleri"],
-                drink: ["Rakı (Yanında)", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Helva (İrmik veya Un)"]
             }},
             { main: "Barbun Izgara/Tava", keywords: ["barbun", "balık", "tava", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {
@@ -416,14 +500,12 @@
             }},
             { main: "Ton Balığı (Salata)", keywords: ["ton balığı", "balık", "salata", "hafif"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Zeytinli Baget Ekmek", "Mercimek Çorbası", "Haşlanmış Yumurta", "Mısır"],
-                drink: ["Limonata", "Su"],
+                drink: ["Su"],
                 dessert: ["Meyve Tabağı"]
             }},
-
-            // FIRIN VE TAVUK YEMEKLERİ
             { main: "Pane Tavuk", keywords: ["pane tavuk", "tavuk", "kızartma", "beyaz et"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Brokoli Çorbası", "Mayonezli Dip Sos", "Patates Püresi", "Coleslaw"],
-                drink: ["Kola", "Ayran"],
+                drink: ["Kola"],
                 dessert: ["Brownie"]
             }},
             { main: "Fırında Tavuk", keywords: ["fırında tavuk", "bütün tavuk", "tavuk"], cuisine: "Türk Mutfağı", suggestions: {
@@ -438,7 +520,7 @@
             }},
             { main: "Fırında Hindi", keywords: ["fırında hindi", "hindi", "yılbaşı", "beyaz et"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Kestaneli İç Pilav", "Cranberry Sos", "Patates Püresi", "Fırında Kuşkonmaz"],
-                drink: ["Şıra", "Kırmızı Şarap (Yanında)"],
+                drink: ["Şıra"],
                 dessert: ["Balkabağı Tatlısı"]
             }},
             { main: "Çerkez Tavuğu", keywords: ["çerkez tavuğu", "meze", "tavuk", "ceviz", "soğuk"], cuisine: "Türk Mutfağı", suggestions: {
@@ -446,8 +528,6 @@
                 drink: ["Ayran"],
                 dessert: ["Güllaç"]
             }},
-
-            // YAHNİ VE HAŞLAMA
             { main: "Et Yahni", keywords: ["et yahni", "et", "sulu", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Piyaz", "Cacık", "Tereyağlı Pirinç Pilavı", "Turşu"],
                 drink: ["Ayran"],
@@ -463,8 +543,6 @@
                 drink: ["Ayran"],
                 dessert: ["Künefe"]
             }},
-
-            // GRATEN VE SEBZE YEMEKLERİ
             { main: "Karnabahar Pane", keywords: ["karnabahar pane", "kızartma", "sebze"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurtlu Havuç Tarator", "Mercimek Çorbası", "Limon", "Domates Sosu"],
                 drink: ["Ayran"],
@@ -477,7 +555,7 @@
             }},
             { main: "Sebze Graten", keywords: ["sebze graten", "fırın", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Göbek Salata", "Roka Salata", "Izgara Tavuk", "Sarımsaklı Ekmek"],
-                drink: ["Soda", "Ayran"],
+                drink: ["Soda"],
                 dessert: ["Panna Cotta"]
             }},
             { main: "Kapuska", keywords: ["kapuska", "lahana", "sulu", "etli"], cuisine: "Türk Mutfağı", suggestions: {
@@ -492,7 +570,7 @@
             }},
             { main: "Semizotu (Yoğurtlu)", keywords: ["semizotu", "yoğurtlu", "salata", "meze"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Kıymalı Börek", "Sarımsak", "Izgara Köfte", "Pul Biberli Yağ"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Ayran"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Ispanak Yemeği", keywords: ["ıspanak", "sulu", "sebze"], cuisine: "Türk Mutfağı", suggestions: {
@@ -502,19 +580,17 @@
             }},
             { main: "Bakla (Zeytinyağlı/Fava)", keywords: ["bakla", "zeytinyağlı", "fava", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Turplu Salata", "Dereotu", "Pirinç Pilavı", "Taze Soğan"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Kabak Tatlısı"]
             }},
-
-            // --- KEREVİZ VE ZEYTİNYAĞLILAR ---
             { main: "Zeytinyağlı Kereviz", keywords: ["kereviz", "zeytinyağlı kereviz", "portakallı", "portakallı kereviz", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Sade Yoğurt", "Taze Ekmek", "Arpa Şehriyeli Pilav", "Kinoalı Salata"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Ayva Tatlısı"]
             }},
             { main: "Portakallı Kereviz", keywords: ["portakallı kereviz", "kereviz", "zeytinyağlı", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Taze Soğan", "Bulgur Pilavı", "Turşu"],
-                drink: ["Su", "Limonata"],
+                drink: ["Su"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Kereviz (Sulu/Etli)", keywords: ["kereviz", "sulu kereviz", "etli"], cuisine: "Türk Mutfağı", suggestions: {
@@ -522,32 +598,10 @@
                 drink: ["Ayran"],
                 dessert: ["Kemalpaşa Tatlısı"]
             }},
-
-            // ÇORBALAR VE DİĞERLERİ
-            { main: "Şehriye Çorbası", keywords: ["şehriye çorbası", "çorba", "domatesli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Limon Dilimi", "Arpa Şehriyeli Salata", "Nane"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Bal Kabağı Çorbası (Kremalı)", keywords: ["bal kabağı çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Peynirli Ekmek", "Kremalı Sos", "Izgara Somon", "Balkabağı çekirdeği"],
-                drink: ["Su"],
-                dessert: ["Brownie"]
-            }},
             { main: "Kremalı Makarna", keywords: ["kremalı makarna", "makarna", "kremalı", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
                 yanlar: ["Domates Çorbası", "Sezar Salata", "Sarımsaklı Ekmek", "Parmesan Peyniri"],
-                drink: ["Soda", "Ayran"],
+                drink: ["Soda"],
                 dessert: ["Tiramisu"]
-            }},
-            { main: "Soğuk Çorba (Yayla Tarzı)", keywords: ["soğuk çorba", "cacıklı", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Zeytinyağlı Dolma", "Nane", "Salatalık"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Kabak Çorbası (Kremalı)", keywords: ["kabak çorbası", "çorba", "kremalı", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Tavuk", "Kruton", "Sade Salata", "Kremalı Peynir"],
-                drink: ["Su"],
-                dessert: ["Brownie"]
             }},
             { main: "Etli Patates Yemeği", keywords: ["etli patates", "patates", "sulu", "etli"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
@@ -561,7 +615,7 @@
             }},
             { main: "Fırında Patates", keywords: ["fırında patates", "patates", "garnitür"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Izgara Köfte", "Biftek", "Coleslaw", "Yoğurtlu Dip Sos"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Patates Köfte (Sulu)", keywords: ["patates köfte", "sulu", "köfte"], cuisine: "Türk Mutfağı", suggestions: {
@@ -574,7 +628,6 @@
                 drink: ["Ayran"],
                 dessert: ["Kemalpaşa Tatlısı"]
             }},
-            
             { main: "Lahana Dolması", keywords: ["lahana dolması", "dolma", "sarma", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt", "Acılı Ezme", "Sade Pilav", "Turşu"],
                 drink: ["Ayran"],
@@ -587,7 +640,7 @@
             }},
             { main: "Kısır", keywords: ["kısır", "bulgur", "meze", "salata", "soğuk"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Zeytinyağlı Yaprak Sarma", "Peynir", "Marul Yaprağı", "Turşu", "Ayran"],
-                drink: ["Ayran", "Çay"],
+                drink: ["Ayran"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Fellah Köftesi", keywords: ["fellah köftesi", "köfte", "yöresel", "bulgur"], cuisine: "Türk Mutfağı", suggestions: {
@@ -595,50 +648,49 @@
                 drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
-            // --- EK SALATA VE MEZE GÜNCELLEMELERİ ---
             { main: "İçli Köfte", keywords: ["içli köfte", "kızartma", "hamur", "bulgur"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Mercimek Çorbası", "Yoğurt", "Limon"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Halka Tatlısı"]
             }},
             { main: "Fırında Makarna", keywords: ["fırında makarna", "beşamel", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
                 yanlar: ["Yeşil Mercimekli Salata", "Domates Çorbası", "Sarımsaklı Ekmek", "Göbek Salata"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Trileçe"]
             }},
             { main: "Döner (Et/Tavuk)", keywords: ["döner", "kebap", "sokak"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Atom", "Patates Kızartması", "Ayran"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Pide (Kıymalı/Kuşbaşılı)", keywords: ["pide", "kıymalı pide", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Gavurdağı Salatası", "Acılı Ezme", "Ayran", "Turşu"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Küçük Künefe"]
             }},
             { main: "Patates Püresi", keywords: ["patates püresi", "garnitür", "hafif"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Izgara Et Çeşitleri", "Kremalı Mantar Sosu", "Coleslaw", "Somon Izgara"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Karnabahar Graten", keywords: ["karnabahar graten", "fırın", "sebze"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Meksika Fasulyeli Salata", "Hafif Yeşil Salata", "Izgara Tavuk", "Sarımsaklı Ekmek"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Kinoa Salatası", keywords: ["kinoa salatası", "salata", "sağlıklı", "hafif"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Tavuk veya Balık", "Humus", "Zeytinyağı ve Limon", "Taze Nane"],
-                drink: ["Su", "Limonata"],
+                drink: ["Su"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Sezar Salata", keywords: ["sezar salata", "tavuklu salata", "yeşil salata"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Kremalı Makarna", "Domates Çorbası", "Sarımsaklı Ekmek", "Kruton"],
-                drink: ["Limonata", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Meksika Fasulyeli Salata", keywords: ["meksika fasulyeli salata", "fasulye", "salata"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Hamburger", "Taco", "Yoğurtlu Dip Sos", "Mısır Cipsi"],
-                drink: ["Ayran", "Kola"],
+                drink: ["Kola"],
                 dessert: ["Meyveli Yoğurt"]
             }},
             { main: "Yoğurtlu Semizotu", keywords: ["yoğurtlu semizotu", "meze", "salata"], cuisine: "Akdeniz Mutfağı", suggestions: {
@@ -648,24 +700,22 @@
             }},
             { main: "Akdeniz Salata", keywords: ["akdeniz salata", "peynirli", "zeytinli"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Tavuk veya Balık", "Humus", "Zeytinyağı ve Kekik", "Sarımsaklı Ekmek"],
-                drink: ["Soda", "Ayran"],
+                drink: ["Soda"],
                 dessert: ["Meyve Tabağı"]
             }},
-
-            // --- YENİ EKLENEN ANA YEMEKLER (Son liste) ---
             { main: "Beşamel Soslu Tavuk", keywords: ["beşamel soslu tavuk", "beşamel", "tavuk", "fırın"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Yeşil Salata (limon soslu)", "Domates Çorbası", "Pirinç Pilavı", "Patates Püresi"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Kumpir", keywords: ["kumpir", "patates", "sokak yemeği", "fırın"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Yoğurtlu Semizotu", "Çoban Salata", "Coleslaw", "Rus Salatası"],
-                drink: ["Ayran", "Kola"],
+                drink: ["Kola"],
                 dessert: ["Waffle"]
             }},
             { main: "Kaşarlı Mantar", keywords: ["kaşarlı mantar", "mantar", "meze", "başlangıç"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Izgara Köfte", "Biftek", "Roka Salata", "Sarımsaklı Ekmek"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Sufle"]
             }},
             { main: "Domatesli Bulgur Pilavı", keywords: ["domatesli bulgur pilavı", "bulgur", "pilav"], cuisine: "Türk Mutfağı", suggestions: {
@@ -675,12 +725,12 @@
             }},
             { main: "Salçalı Makarna", keywords: ["salçalı makarna", "makarna", "domatesli"], cuisine: "İtalyan Mutfağı", suggestions: {
                 yanlar: ["Izgara Köfte", "Sezar Salata", "Yoğurt", "Ezogelin Çorbası"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Ratatouille", keywords: ["ratatouille", "sebze", "akdeniz"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Somon", "Humus", "Sade Pilav", "Taze Ekmek"],
-                drink: ["Su", "Soda"],
+                drink: ["Su"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Bezeyle (Sulu/Etli)", keywords: ["bezelye", "sulu yemek", "etli bezelye"], cuisine: "Türk Mutfağı", suggestions: {
@@ -690,7 +740,7 @@
             }},
             { main: "Falafel", keywords: ["falafel", "nohut", "vejetaryen", "orta doğu"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Humus", "Akdeniz Salata", "Pita Ekmek", "Tahini Sos"],
-                drink: ["Ayran", "Limonata"],
+                drink: ["Limonata"],
                 dessert: ["Baklava"]
             }},
             { main: "Penne Makarna", keywords: ["penne makarna", "makarna", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
@@ -710,17 +760,17 @@
             }},
             { main: "Patates Salatası", keywords: ["patates salatası", "salata", "meze", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Köfte", "Hamburger", "Turşu", "Zeytinyağlı Enginar"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Humus", keywords: ["humus", "meze", "nohut", "orta doğu", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Pita Ekmek", "Falafel", "Zeytinyağı ve Pul Biber", "Kinoa Salatası"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "İstiridye Mantarı Sote", keywords: ["istiridye mantarı", "mantar", "sote", "sebze"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Izgara Et", "Patates Püresi", "Yeşil Salata", "Sarımsaklı Ekmek"],
-                drink: ["Soda", "Ayran"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Düğün Çorbası", keywords: ["düğün çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
@@ -738,21 +788,19 @@
                 drink: ["Su"],
                 dessert: ["Meyveli Yoğurt"]
             }},
-            // --- EK BALIKLAR VE DENİZ ÜRÜNLERİ ---
             { main: "Lüfer Izgara", keywords: ["lüfer", "balık", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Roka Salatası", "Humus", "Limon Dilimleri", "Turplu Salata"],
-                drink: ["Soda", "Şalgam"],
+                drink: ["Soda"],
                 dessert: ["İrmik Helvası"]
             }},
             { main: "Hamsi", keywords: ["hamsi", "tava", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Mısır Ekmeği", "Çoban Salata", "Tahini Sos", "Turşu"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
-            // --- KIZARTMALAR VE MEZELER ---
             { main: "Karnabahar Kızartması", keywords: ["karnabahar kızartması", "sebze", "kızartma"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Sarımsaklı Yoğurt", "Yeşil Mercimekli Salata", "Domates Sosu", "Acı Ezme"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Domates Biber Patlıcan Kızartma", keywords: ["domates biber patlıcan kızartma", "kızartma", "sebze", "meze"], cuisine: "Akdeniz Mutfağı", suggestions: {
@@ -762,7 +810,7 @@
             }},
             { main: "Köz Patlıcan", keywords: ["köz patlıcan", "patlıcan", "meze", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Et", "Lüfer Izgara", "Yoğurtlu Patlıcan Ezmesi", "Pita Ekmek"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Meyve Tabağı"]
             }},
             { main: "Köz Biber", keywords: ["köz biber", "meze", "salata", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
@@ -770,10 +818,9 @@
                 drink: ["Soda"],
                 dessert: ["Sütlaç"]
             }},
-            // --- MAKARNA SALATALARI VE KÖFTE ÇEŞİTLERİ ---
             { main: "Makarna Salatası", keywords: ["makarna salatası", "salata", "soğuk"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Izgara Tavuk", "Mercimek Çorbası", "Yoğurtlu Dip Sos", "Amerikan Salata"],
-                drink: ["Limonata", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Sufle"]
             }},
             { main: "Fırında Köfte Patates", keywords: ["fırında köfte patates", "köfte", "patates", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
@@ -786,7 +833,6 @@
                 drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
-            // --- BÖREKLER VE HAMUR İŞLERİ ---
             { main: "Ispanaklı Börek", keywords: ["ıspanaklı börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt", "Ayran Aşı", "Çay", "Domates Biber Söğüş"],
                 drink: ["Ayran"],
@@ -794,13 +840,12 @@
             }},
             { main: "Kıymalı Börek", keywords: ["kıymalı börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Yoğurt Çorbası", "Çoban Salata", "Ayran (Bol Köpüklü)", "Turşu"],
-                drink: ["Ayran", "Çay"],
+                drink: ["Ayran"],
                 dessert: ["Kazandibi"]
             }},
-            // --- YENİ EKLENEN YEMEKLER (2. Set) ---
             { main: "Izgara Köfte", keywords: ["ızgara köfte", "köfte", "et"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Piyaz", "Izgara Domates/Biber", "Pirinç Pilavı", "Patates Kızartması"],
-                drink: ["Ayran", "Şalgam"],
+                drink: ["Ayran"],
                 dessert: ["Kemalpaşa Tatlısı"]
             }},
             { main: "Fırında Köfte", keywords: ["fırında köfte", "köfte", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
@@ -815,18 +860,13 @@
             }},
             { main: "Noodle (Tavuklu/Sebzeli)", keywords: ["noodle", "makarna", "asya"], cuisine: "Asya Mutfağı", suggestions: {
                 yanlar: ["Deniz Yosunu Salatası", "Edamame", "Acı Sos (Sriracha)", "Soya Sosu"],
-                drink: ["Yeşil Çay", "Soda"],
+                drink: ["Yeşil Çay (Sıcak/Soğuk)"],
                 dessert: ["Mochi"]
             }},
             { main: "Mac and Cheese", keywords: ["mac and cheese", "makarna", "peynir", "abd"], cuisine: "Uluslararası", suggestions: {
                 yanlar: ["Izgara Sosis veya Bacon", "Coleslaw", "Yeşil Salata (Hafif soslu)", "Sarımsaklı Ekmek"],
-                drink: ["Kola", "Limonata"],
+                drink: ["Kola"],
                 dessert: ["Brownie"]
-            }},
-            { main: "Domates Çorbası", keywords: ["domates çorbası", "çorba", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Kaşarlı Tost", "Sarımsaklı Ekmere", "Rendelenmiş Kaşar Peyniri", "Kruton"],
-                drink: ["Su"],
-                dessert: ["Sufle"]
             }},
             { main: "Yayla Çorbası", keywords: ["yayla çorbası", "yoğurt", "çorba", "pirinçli"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Kıymalı Börek", "Taze Pide", "Nane ve Tereyağlı Sos", "Mevsim Salata"],
@@ -834,13 +874,13 @@
                 dessert: ["Güllaç"]
             }},
             { main: "Beyran", keywords: ["beyran", "çorba", "etli", "acılı", "gaziantep"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Lavaş", "Bol Limon", "Pul Biber", "Taze Soğan"],
+                yanlar: ["İçli Köfte", "Lavaş", "Bol Limon", "Pul Biber"],
                 drink: ["Şalgam Suyu"],
                 dessert: ["Katmer"]
             }},
             { main: "Et Sote", keywords: ["et sote", "kırmızı et", "sote", "dana"], cuisine: "Türk Mutfağı", suggestions: {
                 yanlar: ["Gavurdağı Salatası", "Yoğurtlu Patlıcan", "Pirinç Pilavı", "Lavaş"],
-                drink: ["Ayran", "Şıra"],
+                drink: ["Ayran"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Ispanak (Genel)", keywords: ["ıspanak", "sebze", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
@@ -850,16 +890,16 @@
             }},
             { main: "Brokoli (Haşlanmış/Fırın)", keywords: ["brokoli", "sebze", "haşlanmış", "fırın"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Izgara Somon", "Izgara Tavuk", "Sarımsaklı Yoğurt Sosu", "Zeytinyağı ve Limon"],
-                drink: ["Soda", "Su"],
+                drink: ["Soda"],
                 dessert: ["Meyve Tabağı"]
             }},
              { main: "Brokoli Çorbası", keywords: ["brokoli çorbası", "çorba", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Keçi Peynirli Tost", "Sade Salata", "Kruton", "Fesleğen"],
+                yanlar: ["Izgara Biftek", "Keçi Peynirli Tost", "Sade Salata", "Kruton"],
                 drink: ["Su"],
                 dessert: ["Sufle"]
             }},
             { main: "Bamya Çorbası", keywords: ["bamya çorbası", "çorba", "ekşili"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Lavaş", "Limon Dilimi", "Pirinç Pilavı", "Acı Biber Turşusu"],
+                yanlar: ["Etli Pilav", "Lavaş", "Limon Dilimi", "Acı Biber Turşusu"],
                 drink: ["Ayran"],
                 dessert: ["Kabak Tatlısı"]
             }},
@@ -888,15 +928,14 @@
                 drink: ["Su"],
                 dessert: ["Güllaç"]
             }},
-            // --- KEREVİZ VE ZEYTİNYAĞLILAR ---
             { main: "Zeytinyağlı Kereviz", keywords: ["kereviz", "zeytinyağlı kereviz", "portakallı", "portakallı kereviz", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Sade Yoğurt", "Taze Ekmek", "Arpa Şehriyeli Pilav", "Kinoalı Salata"],
-                drink: ["Ayran", "Soda"],
+                drink: ["Soda"],
                 dessert: ["Ayva Tatlısı"]
             }},
             { main: "Portakallı Kereviz", keywords: ["portakallı kereviz", "kereviz", "zeytinyağlı", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Çoban Salata", "Taze Soğan", "Bulgur Pilavı", "Turşu"],
-                drink: ["Su", "Limonata"],
+                drink: ["Su"],
                 dessert: ["Sütlaç"]
             }},
             { main: "Kereviz (Sulu/Etli)", keywords: ["kereviz", "sulu kereviz", "etli"], cuisine: "Türk Mutfağı", suggestions: {
@@ -907,7 +946,6 @@
         ];
 
         // Öneri başlıkları ve ikonları
-        // İki kategoriyi (complement ve side) tek bir çatı altında birleştiriyoruz.
         const suggestionCategories = [
             { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
             { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
