@@ -7,7 +7,6 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Inter fontunu kullan */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f9fb;
@@ -17,33 +16,30 @@
             min-height: 100vh;
             padding: 1rem;
         }
-        /* Mobile first yaklaşım: Karta sabit genişlik verme, geniş ekranlarda max-width kullan */
+
         .app-container {
             width: 100%;
             max-width: 600px;
             margin-top: 2rem;
         }
-        /* Reklam alanı yer tutucusu için stil */
+
         .ad-placeholder {
-            min-height: 100px; /* Standart mobil reklam alanı yüksekliği */
+            min-height: 100px;
         }
     </style>
-    <!-- Sosyal Medya ve SEO için Gerekli Etiketler -->
+
+    <!-- SEO -->
     <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik yan lezzet önerileri sunan mobil uyumlu menü planlayıcı.">
     <meta property="og:title" content="🍽️ Yanında Ne Gider? - En Kapsamlı Menü Planlayıcı">
     <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! Tüm yan lezzetler tek bir başlık altında.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yanindanevar.com/index.html">
-    
-    <!-- GÖRSEL URL'Sİ (Alan adınıza göre güncellendi) -->
     <meta property="og:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg">
-
-    <!-- FİKRİ MÜLKİYET BİLDİRİMİ -->
     <meta name="copyright" content="© 2025 yanindanevar.com | ozscope">
-    
-    <!-- SCHEMA MARKUP (YAPILANDIRILMIŞ VERİ) -->
+
+    <!-- SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,8 +62,8 @@
       }
     }
     </script>
-    
-    <!-- Varsayılan Tailwind yapılandırması -->
+
+    <!-- Tailwind config -->
     <script>
         tailwind.config = {
             theme: {
@@ -82,16 +78,22 @@
             }
         }
     </script>
-    
-    <!-- FIREBASE İMPORTLARI (Favori, Oylama ve Alışveriş Listesi için) -->
-    <!-- NOT: Bu kod, Firebase'in Canvas ortamında yüklü olduğunu varsayar. Canlı ortamda kendi CDN'lerinizi kullanmalısınız. -->
+
+    <!-- FIREBASE (module) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, where, getDocs, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import {
+            getFirestore,
+            doc,
+            getDoc,
+            setDoc,
+            collection,
+            runTransaction,
+            setLogLevel
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        setLogLevel('debug'); // Debug loglarını açar
+        setLogLevel('debug');
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
@@ -103,19 +105,35 @@
         let userId = null;
         let isAuthReady = false;
 
-        // Firestore veritabanı yolları
-        const getPrivateDocRef = (dishName) => doc(db, 'artifacts', appId, 'users', userId, 'favorites', normalizeText(dishName));
-        const getPublicCollectionRef = () => collection(db, 'artifacts', appId, 'public', 'data', 'ratings');
-        const getPublicDocRef = (dishName) => doc(getPublicCollectionRef(), normalizeText(dishName));
+        const normalizeText = (text) => {
+            if (!text) return '';
+            return text.toLowerCase()
+                       .replace(/ı/g, 'i')
+                       .replace(/ğ/g, 'g')
+                       .replace(/ü/g, 'u')
+                       .replace(/ş/g, 's')
+                       .replace(/ö/g, 'o')
+                       .replace(/ç/g, 'c');
+        };
 
-        // Firebase başlatma ve kullanıcı oturumu açma
-        window.onload = async () => {
+        window.normalizeText = normalizeText;
+
+        const getPrivateDocRef = (dishName) =>
+            doc(db, 'artifacts', appId, 'users', userId, 'favorites', normalizeText(dishName));
+
+        const getPublicCollectionRef = () =>
+            collection(db, 'artifacts', appId, 'public', 'data', 'ratings');
+
+        const getPublicDocRef = (dishName) =>
+            doc(getPublicCollectionRef(), normalizeText(dishName));
+
+        window.addEventListener('load', async () => {
             try {
                 if (Object.keys(firebaseConfig).length > 0) {
                     app = initializeApp(firebaseConfig);
                     db = getFirestore(app);
                     auth = getAuth(app);
-                    
+
                     if (initialAuthToken) {
                         await signInWithCustomToken(auth, initialAuthToken);
                     } else {
@@ -133,38 +151,31 @@
                             console.log("Firebase Auth Ready (Anonymous). User ID:", userId);
                         }
                     });
+                } else {
+                    console.warn("Firebase config boş, offline mod.");
+                    userId = 'anonymous-' + crypto.randomUUID();
+                    isAuthReady = true;
                 }
             } catch (error) {
                 console.error("Firebase başlatma hatası:", error);
             }
-        };
+        });
 
-        // Kodu global alana taşıyoruz ki searchDish fonksiyonu erişebilsin
-        window.normalizeText = (text) => {
-            if (!text) return '';
-            return text.toLowerCase()
-                       .replace(/ı/g, 'i')
-                       .replace(/ğ/g, 'g')
-                       .replace(/ü/g, 'u')
-                       .replace(/ş/g, 's')
-                       .replace(/ö/g, 'o')
-                       .replace(/ç/g, 'c');
-        };
-
-        // --- FAVORİ İŞLEMLERİ ---
         window.toggleFavorite = async (dishName) => {
-            if (!isAuthReady) return;
+            if (!isAuthReady || !db) return;
             const docRef = getPrivateDocRef(dishName);
             try {
                 const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    await setDoc(docRef, { isFavorite: false }, { merge: true }); // Favoriden çıkar
+                if (docSnap.exists() && docSnap.data().isFavorite) {
+                    await setDoc(docRef, { isFavorite: false }, { merge: true });
                     console.log("Favoriden çıkarıldı:", dishName);
                 } else {
-                    await setDoc(docRef, { isFavorite: true, dishName: dishName }, { merge: true }); // Favoriye ekle
+                    await setDoc(docRef, { isFavorite: true, dishName: dishName }, { merge: true });
                     console.log("Favoriye eklendi:", dishName);
                 }
-                searchDish(dishName); // UI'ı güncelle
+                if (window.searchDish) {
+                    window.searchDish(dishName);
+                }
             } catch (error) {
                 console.error("Favori işlemi hatası:", error);
             }
@@ -180,7 +191,6 @@
             }
         };
 
-        // --- OYLAMA İŞLEMLERİ ---
         window.rateDish = async (dishName, rating) => {
             if (!isAuthReady || !db) return;
             const dishRef = getPublicDocRef(dishName);
@@ -190,15 +200,16 @@
                     const dishDoc = await transaction.get(dishRef);
 
                     const newVote = { userId: userId, rating: rating };
-                    const userVotes = dishDoc.data()?.userVotes || [];
+                    const userVotes = dishDoc.exists() && dishDoc.data().userVotes
+                        ? [...dishDoc.data().userVotes]
+                        : [];
 
-                    // Kullanıcının daha önceki oyunu bul
                     const existingVoteIndex = userVotes.findIndex(v => v.userId === userId);
 
                     if (existingVoteIndex > -1) {
-                        userVotes[existingVoteIndex] = newVote; // Oyunu güncelle
+                        userVotes[existingVoteIndex] = newVote;
                     } else {
-                        userVotes.push(newVote); // Yeni oy ekle
+                        userVotes.push(newVote);
                     }
 
                     const totalRating = userVotes.reduce((sum, v) => sum + v.rating, 0);
@@ -208,11 +219,13 @@
                         dishName: dishName,
                         totalVotes: userVotes.length,
                         averageRating: parseFloat(averageRating.toFixed(1)),
-                        userVotes: userVotes 
+                        userVotes: userVotes
                     }, { merge: true });
                 });
-                console.log(`Oy başarıyla kaydedildi: ${dishName}, Puan: ${rating}`);
-                searchDish(dishName); // UI'ı güncelle
+                console.log(`Oy kaydedildi: ${dishName}, Puan: ${rating}`);
+                if (window.searchDish) {
+                    window.searchDish(dishName);
+                }
             } catch (error) {
                 console.error("Oylama işlemi hatası:", error);
             }
@@ -226,8 +239,8 @@
                     const data = docSnap.data();
                     const userVote = data.userVotes?.find(v => v.userId === userId);
                     return {
-                        averageRating: data.averageRating,
-                        totalVotes: data.totalVotes,
+                        averageRating: data.averageRating || 0,
+                        totalVotes: data.totalVotes || 0,
                         userRating: userVote ? userVote.rating : 0
                     };
                 }
@@ -237,12 +250,10 @@
             }
         };
 
-        // --- ALIŞVERİŞ LİSTESİ İŞLEMLERİ ---
         window.copyShoppingList = (suggestions) => {
             const listText = suggestions.join('\n');
             const fullList = "🛒 Alışveriş Listesi:\n" + listText;
-            
-            // Clipboard'a kopyalama (document.execCommand('copy') iframe ortamında daha güvenilirdir)
+
             const el = document.createElement('textarea');
             el.value = fullList;
             document.body.appendChild(el);
@@ -250,50 +261,30 @@
             document.execCommand('copy');
             document.body.removeChild(el);
 
-            alertMessage("Alışveriş listesi panoya kopyalandı!", "bg-green-500");
+            if (window.alertMessage) {
+                window.alertMessage("Alışveriş listesi panoya kopyalandı!", "bg-green-500");
+            }
         };
 
-        const alertMessage = (message, color) => {
-             const container = document.getElementById('alertContainer');
-             container.innerHTML = `<div class="p-3 ${color} text-white font-semibold rounded-lg shadow-xl mb-4 transition-opacity duration-300">
-                                        ${message}
-                                    </div>`;
-             setTimeout(() => {
-                 container.innerHTML = '';
-             }, 3000);
-         };
-
-        // searchDish fonksiyonunu da global alana taşıyoruz
-        window.searchDish = searchDish;
-
-        // Kalan tüm JS kodu buraya taşınır.
-
-        // ... Kalan tüm JS kodu ve veri setleri buraya gelecek ...
+        window.getFavoriteStatus = getFavoriteStatus;
+        window.getRatingData = getRatingData;
     </script>
 </head>
 <body class="bg-gray-50">
 
     <div class="app-container p-6 bg-white shadow-xl rounded-2xl">
         <header class="mb-6 text-center">
-            <!-- H1 etiketi Semantik HTML için buraya eklendi -->
             <h1 class="text-3xl font-extrabold text-primary-blue mb-2">
                 🍽️ Yanında Ne Gider? - Yemek Yanı Önerileri
             </h1>
             <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
         </header>
-        
-        <!-- REKLAM ALANI 1: ARAMA BÖLÜMÜNÜN HEMEN ALTINDA (Sabit reklam alanı) -->
-        <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <!-- BURAYA GOOGLE ADSENSE VEYA BAĞLI KURULUŞ REKLAM KODU GELECEK (Örn: 300x100) -->
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Günün Sponsoru)</p>
-        </div>
 
-        <!-- ALERT MESAJ KUTUSU -->
+        <!-- ALERT -->
         <div id="alertContainer" class="w-full fixed top-0 left-1/2 -translate-x-1/2 z-50 p-4 max-w-sm"></div>
 
-        <!-- Filtre ve Arama Alanı -->
+        <!-- Filtre + Arama -->
         <div class="space-y-3 mb-6">
-            <!-- Mutfak Filtresi -->
             <select id="cuisineFilter" onchange="searchDish()"
                 class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
                 <option value="">Tüm Mutfaklar</option>
@@ -304,7 +295,6 @@
                 <option value="Uluslararası">🌐 Uluslararası</option>
             </select>
             
-            <!-- Arama Input'u -->
             <div class="flex">
                 <input
                     id="mainDishInput"
@@ -324,28 +314,26 @@
             </div>
         </div>
 
-        <!-- Sonuç Alanı -->
+        <!-- Sonuç -->
         <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
             <p id="initialMessage" class="text-gray-500 italic">
                 Aramaya başlayın. Önerileriniz burada görünecektir.
             </p>
         </div>
         
-        <!-- YEMEK ÖNERİSİ DETAY VE OYLAMA ŞABLONU -->
+        <!-- DETAY TEMPLATE -->
         <template id="dishDetailTemplate">
             <div class="w-full">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-2xl font-extrabold text-primary-blue">
-                        <span class="text-base font-medium text-gray-600">({cuisine})</span> <br>"${dishName}" Yanına Ne Gider?
-                    </h2>
+                    <h2 class="text-2xl font-extrabold text-primary-blue"></h2>
                     <div class="flex items-center space-x-2">
-                        <!-- FAVORİ BUTONU -->
-                        <button onclick="toggleFavorite('${dishName}')" id="favoriteBtn" class="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <!-- FAVORİ -->
+                        <button id="favoriteBtn" class="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 transition">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20">
                                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
                              </svg>
                         </button>
-                        <!-- ALIŞVERİŞ LİSTESİ BUTONU -->
+                        <!-- ALIŞVERİŞ -->
                         <button id="shoppingListBtn" class="p-2 rounded-full bg-secondary-green/20 hover:bg-secondary-green/30 text-secondary-green-700 transition font-semibold text-sm flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.432a1 1 0 00.95.738h9.802l.546 2.185a1 1 0 01-.95 1.215H5.5a1 1 0 110-2h11.234l-1.17-4.685A1 1 0 0015.5 8H6.944l-1.04-4.167A1.999 1.999 0 005.16 2H3a1 1 0 000 2zm0 14a1 1 0 110 2 1 1 0 010-2zm12 0a1 1 0 110 2 1 1 0 010-2z" />
@@ -355,7 +343,7 @@
                     </div>
                 </div>
 
-                <!-- OYLAMA VE PUANLAMA ALANI -->
+                <!-- RATING -->
                 <div class="mb-6 p-4 border border-blue-200 bg-blue-50 rounded-xl flex justify-between items-center">
                     <div>
                         <p class="text-xs font-semibold text-gray-600">ORTALAMA PUAN (5 Üzerinden)</p>
@@ -365,745 +353,46 @@
                         </div>
                     </div>
                     
-                    <div id="ratingStars" class="flex space-x-1">
-                        <!-- YILDIZLAR BURAYA GELİR -->
-                    </div>
+                    <div id="ratingStars" class="flex space-x-1"></div>
                 </div>
 
-
-                <!-- YAN LEZZET LİSTELERİ -->
-                <div id="suggestionsListContainer">${htmlContent}</div>
-                
-                <!-- REKLAM ALANI 2: LİSTENİN HEMEN ALTINDA -->
-                <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-                    <!-- BURAYA GOOGLE ADSENSE VEYA BAĞLI KURULUŞ REKLAM KODU GELECEK (Örn: 300x250) -->
-                    <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Öneri Altı)</p>
-                </div>
+                <!-- ÖNERİLER -->
+                <div id="suggestionsListContainer"></div>
                 
                 <p class="text-xs text-gray-400 mt-6">Not: Firebase entegrasyonu, Favori/Oylama özelliklerini kalıcı hale getirir.</p>
-
             </div>
         </template>
     </div>
 
+    <!-- SAYFA ALTI REKLAM ALANI -->
+    <div class="w-full max-w-3xl mx-auto mt-4">
+        <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
+            <!-- Buraya Google AdSense veya bağlı kuruluş reklam kodu gelecek -->
+            <p class="text-xs text-gray-500 font-semibold">
+                REKLAM ALANI (Sayfa Altı)
+            </p>
+        </div>
+    </div>
+
+    <!-- UYGULAMA JS -->
     <script>
-        // Kalan tüm JS kodu buraya taşınır.
-        
-        // ... (Veri setleri ve diğer helper fonksiyonları) ...
+        window.alertMessage = (message, color) => {
+            const container = document.getElementById('alertContainer');
+            container.innerHTML = `
+                <div class="p-3 ${color} text-white font-semibold rounded-lg shadow-xl mb-4 transition-opacity duration-300">
+                    ${message}
+                </div>`;
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        };
 
-        const dishSuggestions = [
-            // --- TÜRK MUTFAĞI ---
-            { main: "Tarhana Çorbası", keywords: ["tarhana", "çorba", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Patatesli Börek", "Turşu", "Kıymalı Börek", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Hünkar Beğendi", keywords: ["hünkar beğendi", "et", "beğendi", "patlıcan", "alinazik"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Mercimek Çorbası", "Yoğurtlu Patlıcan Ezmesi", "Köz Biber ve Domates", "Gavurdağı Salatası"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Tas Kebabı", keywords: ["tas kebabı", "et", "sulu", "dana"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salatası", "Yoğurtlu Havuç", "Tereyağlı Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Karnıyarık", keywords: ["karnıyarık", "patlıcan", "dolma", "zeytinyağlı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç Tarator", "Cacık", "Sade Pirinç Pilavı", "Domates Biber Söğüş"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kuru Fasulye (Sulu)", keywords: ["fasulye", "baklagil", "klasik", "kuru"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kuru Domates Salatası", "Acılı Ezme", "Bulgur Pilavı (Tereyağlı)", "Cacık", "Kuru Soğan (Sumaklı)"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Sulu Köfte (Ekşili/Terbiyeli)", keywords: ["sulu köfte", "ekşili", "terbiyeli", "sulu", "misket köfte", "analı kızlı", "yuvalama"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Arpa Şehriyeli Salata", "Fırınlanmış Patates Kızartması", "Pirinç Pilavı (Sade)", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Fırın Sütlaç"]
-            }},
-            { main: "Lahmacun", keywords: ["lahmacun", "pide", "kebap"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Bol Yeşillik (Maydanoz, Roka)", "Atom", "Gavurdağı Salatası", "Sumaklı Soğan"],
-                drink: ["Şalgam Suyu"],
-                dessert: ["Küçük Porsiyon Sütlaç"]
-            }},
-            { main: "Menemen", keywords: ["menemen", "kahvaltı", "yumurta"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Taze Ekmek (Bolca)", "Lor Ezmesi", "Zeytin Çeşitleri", "Domates Biber Söğüş"],
-                drink: ["Siyah Çay"],
-                dessert: ["Filtre Kahve (Tatlı yerine)"]
-            }},
-            { main: "Antrikot (Izgara)", keywords: ["antrikot", "biftek", "et", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Roka Salatası (Parmesanlı)", "Kremalı Mantar Sosu", "Tereyağlı Püre", "Kapya Biber Salata"],
-                drink: ["Ayran"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Biftek (Izgara/Tava)", keywords: ["biftek", "et", "steak", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Ezogelin Çorbası", "Elmalı Kerevizli Salata", "Sebzeli Püre", "Izgara Kuşkonmaz ve Mantar"],
-                drink: ["Ayran"],
-                dessert: ["Trileçe"]
-            }},
-            { main: "Tavuk Sote", keywords: ["tavuk sote", "beyaz et", "sote"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç", "Yoğurtlu Havuç Tarator", "Tereyağlı Pirinç Pilavı", "Mevsim Yeşillikleri Salatası"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Pirinç Pilavı (Sade)", keywords: ["pilav", "pirinç", "sade", "lapa"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kuru Fasulye Yemeği", "Fırın Tavuk (Sulu)", "Cacık", "Hoşaf veya Komposto"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Nohut Yemeği", keywords: ["nohut", "baklagil", "etli nohut", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Acılı Ezme", "Pirinç Pilavı", "Turşu (Lahana veya Salatalık)"],
-                drink: ["Ayran"],
-                dessert: ["Havuç Dilimi Baklava"]
-            }},
-            { main: "Türlü (Etli)", keywords: ["türlü", "sebze", "patlıcan", "kabak", "biber", "patates", "sulu", "et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Semizotu", "Cacık veya Yoğurt", "Sade Pirinç Pilavı", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Mantı", keywords: ["mantı", "hamur işi", "sosyete mantısı", "yoğurtlu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Ezogelin Çorbası", "Yoğurt ve Sarımsak", "Turplu Salata", "Haydari"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "İç Pilav", keywords: ["iç pilav", "pilav", "dolma"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Fırında Tavuk", "Kuzu Tandır", "Çoban Salata", "Ayran"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Adana Kebap", keywords: ["adanakebap", "kebap", "et", "acılı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Lavaş veya Pide", "Sumaklı Soğan Salatası", "Gavurdağı Salatası (Nar Ekşili)", "Humus"],
-                drink: ["Şalgam Suyu"],
-                dessert: ["Halka Tatlısı"]
-            }},
-            { main: "Fırında Sebze (Etli/Sade)", keywords: ["fırında sebze", "sebze", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Cacık", "Yoğurt", "Pirinç Pilavı", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Barbunya (Zeytinyağlı)", keywords: ["barbunya", "zeytinyağlı", "soğuk", "baklagil"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Limon Dilimleri", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Kuzu İncik", keywords: ["kuzu incik", "et", "tandır"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["İç Pilav", "Çoban Salata", "Patates Püresi", "Fırında Sebze"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kuru Patlıcan Dolması", keywords: ["kuru patlıcan dolması", "dolma", "kurutulmuş"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Yoğurt", "Ezogelin Çorbası", "Nar Ekşisi", "Limon"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Ciğer Kavurma (Arnavut/Tava)", keywords: ["ciğer", "arnavut", "tava", "et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sumaklı Soğan Salatası", "Çoban Salata", "Patates Kızartması", "Atom"],
-                drink: ["Şalgam Suyu"],
-                dessert: ["Küçük Kemalpaşa"]
-            }},
-            { main: "Ciğer Sote", keywords: ["ciğer sote", "ciğer", "sote", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Lavaş veya Pide", "Muhammara", "Domatesli Bulgur Pilavı", "Sumaklı Soğan"],
-                drink: ["Ayran"],
-                dessert: ["Un Helvası"]
-            }},
-            { main: "Kokoreç", keywords: ["kokoreç", "sokak yemeği", "sakatat"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Bol Domates ve Maydanoz", "Közlenmiş Biber", "Ayran", "Şalgam Suyu"],
-                drink: ["Ayran"],
-                dessert: ["Halka Tatlısı"]
-            }},
-            { main: "Sac Kavurma", keywords: ["sac kavurma", "kavurma", "et", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Haydari", "Tereyağlı Pirinç Pilavı", "Lavaş"],
-                drink: ["Ayran"],
-                dessert: ["Küçük Künefe"]
-            }},
-            { main: "Et Kavurma", keywords: ["et kavurma", "dana", "kırmızı et", "tava"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Yoğurtlu Havuç", "Domatesli Bulgur Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa"]
-            }},
-            { main: "Kuymak (Mıhlama)", keywords: ["kuymak", "mıhlama", "karadeniz", "peynir", "kahvaltı"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Siyah Çay", "Zeytin ve Peynir", "Pişi (Hamur Kızartması)", "Taze Ekmek"],
-                drink: ["Siyah Çay"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Keşkek", keywords: ["keşkek", "buğday", "yöresel", "et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Kırmızı Et Sote", "Pul Biberli Tereyağ Sosu", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Aşure"]
-            }},
-            { main: "Kayseri Yağlaması", keywords: ["kayseri yağlaması", "yağlama", "hamur işi", "kıyma"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Bol Sarımsaklı Yoğurt", "Acı Sos", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Nevzine Tatlısı"]
-            }},
-            { main: "Pişi (Hamur Kızartması)", keywords: ["pişi", "hamur kızartması", "kahvaltı", "börek"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Beyaz Peynir ve Zeytin", "Domates Biber Söğüş", "Bal/Reçel", "Tulum Peyniri"],
-                drink: ["Çay"],
-                dessert: ["Nutellalı Pankek"]
-            }},
-            { main: "Meyhane Pilavı", keywords: ["meyhane pilavı", "bulgur", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt", "Çoban Salata", "İnce Doğranmış Soğan", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Patatesli Börek", keywords: ["patatesli börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt Çorbası", "Peynirli Salata", "Ayran (Bol Köpüklü)", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "İslim Kebabı (Kürdan)", keywords: ["islim kebabı", "kürdan kebabı", "köfte", "patlıcan"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Cacık", "Tereyağlı Pirinç Pilavı", "Domates Sosu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Çökertme Kebabı", keywords: ["çökertme kebabı", "kebap", "patates", "yoğurt"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Ezogelin Çorbası", "Akdeniz Salata", "Sarımsaklı Yoğurt", "Lavaş (Altta)"],
-                drink: ["Ayran"],
-                dessert: ["Künefe"]
-            }},
-            { main: "Tantuni", keywords: ["tantuni", "dürüm", "sokak yemeği", "et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Bol Limonlu Yeşillik", "Atom", "Ayran", "Şalgam Suyu"],
-                drink: ["Ayran"],
-                dessert: ["Cezerye"]
-            }},
-            { main: "Orman Kebabı", keywords: ["orman kebabı", "kebap", "etli", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Cacık", "Pirinç Pilavı (Sade)", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Revani"]
-            }},
-            { main: "Sultan Kebabı", keywords: ["sultan kebabı", "tavuk", "krep", "fırın", "beyaz et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Mercimek Çorbası", "Yoğurt", "Roka Salata", "Sade Pirinç Pilavı"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Balaban Kebabı", keywords: ["balaban kebabı", "köfte", "kebap", "eskişehir"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Yeşil Salata", "Pide Altı", "Yoğurt", "Tereyağlı Sos"],
-                drink: ["Ayran"],
-                dessert: ["Met Helvası"]
-            }},
-            { main: "İnegöl Köfte", keywords: ["inegöl köfte", "köfte", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Piyaz", "Izgara Domates Biber", "Pirinç Pilavı", "Acı Sos"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Tekirdağ Köftesi", keywords: ["tekirdağ köfte", "köfte", "ızgara"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Ezme Salata", "Izgara Biber", "Pirinç Pilavı", "Yoğurt"],
-                drink: ["Ayran"],
-                dessert: ["Hayrabolu Tatlısı"]
-            }},
-            { main: "İzmir Köfte", keywords: ["izmir köfte", "köfte", "patates", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Göbek Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ekşili Köfte", keywords: ["ekşili köfte", "sulu köfte", "limonlu", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Taze Nane", "Sade Pirinç Pilavı", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Somon Izgara", keywords: ["somon", "balık", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Brokolili Salata", "Kremalı Kabak Çorbası", "Fırınlanmış Kuşkonmaz", "Patates Püresi"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Fırında Somon", keywords: ["fırında somon", "balık", "deniz ürünü", "fırın"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Roka ve Cherry Domates Salatası", "Yoğurtlu Kereviz", "Haşlanmış Patates", "Limon Dilimleri"],
-                drink: ["Soda"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Hamsi Tava/Izgara", keywords: ["hamsi", "balık", "deniz ürünü", "tava"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Mısır Ekmeği", "Tahin Helvası (Yemek Sonrası)", "Çoban Salata", "Limon"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Hamsili Pilav", keywords: ["hamsili pilav", "pilav", "balık", "karadeniz"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Semizotu", "Roka Salata", "Turşu", "Mısır Ekmeği"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Lüfer/Çinekop Izgara", keywords: ["lüfer", "balık", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Turplu Salata", "Zeytinyağlı Enginar", "Deniz Mahsülleri Çorbası", "Limon Dilimleri"],
-                drink: ["Soda"],
-                dessert: ["Helva (İrmik veya Un)"]
-            }},
-            { main: "Barbun Izgara/Tava", keywords: ["barbun", "balık", "tava", "ızgara"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Rus Salatası", "Limon ve Maydanoz", "Çoban Salata", "Kremalı Mantar"],
-                drink: ["Soda"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ton Balığı (Salata)", keywords: ["ton balığı", "balık", "salata", "hafif"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Zeytinli Baget Ekmek", "Mercimek Çorbası", "Haşlanmış Yumurta", "Mısır"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Pane Tavuk", keywords: ["pane tavuk", "tavuk", "kızartma", "beyaz et"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Brokoli Çorbası", "Mayonezli Dip Sos", "Patates Püresi", "Coleslaw"],
-                drink: ["Kola"],
-                dessert: ["Brownie"]
-            }},
-            { main: "Fırında Tavuk", keywords: ["fırında tavuk", "bütün tavuk", "tavuk"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Havuç Tarator", "Yeşil Salata", "İç Pilav veya Pilav", "Fırınlanmış Baharatlı Patates"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Fırında Bütün Tavuk", keywords: ["fırında bütün tavuk", "tavuk", "bütün", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Yoğurtlu Havuç", "İç Pilav", "Fırın Sebzeleri"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Fırında Hindi", keywords: ["fırında hindi", "hindi", "yılbaşı", "beyaz et"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Kestaneli İç Pilav", "Cranberry Sos", "Patates Püresi", "Fırında Kuşkonmaz"],
-                drink: ["Şıra"],
-                dessert: ["Balkabağı Tatlısı"]
-            }},
-            { main: "Çerkez Tavuğu", keywords: ["çerkez tavuğu", "meze", "tavuk", "ceviz", "soğuk"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Pancarlı Salata", "Ceviz Yağı ve Pul Biber", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Et Yahni", keywords: ["et yahni", "et", "sulu", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Piyaz", "Cacık", "Tereyağlı Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Et Haşlama", keywords: ["et haşlama", "haşlama", "sulu", "kırmızı et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kereviz Salatası", "Sirke ve Sarımsak Sosu", "Limonlu Pilav", "Havuç ve Patates (Yemeğin Yanı)"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Şıhıl Mahşi", keywords: ["şıhıl mahşi", "dolma", "kabak", "kıyma", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Yoğurt", "Tane Tane Pirinç Pilavı", "Limon"],
-                drink: ["Ayran"],
-                dessert: ["Künefe"]
-            }},
-            { main: "Karnabahar Pane", keywords: ["karnabahar pane", "kızartma", "sebze"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç Tarator", "Mercimek Çorbası", "Limon", "Domates Sosu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Patates Graten", keywords: ["patates graten", "fırın", "kremalı", "patates"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Hafif Yeşil Salata", "Kremalı Mantar Sosu", "Izgara Biftek veya Tavuk", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Sebze Graten", keywords: ["sebze graten", "fırın", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Göbek Salata", "Roka Salata", "Izgara Tavuk", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Panna Cotta"]
-            }},
-            { main: "Kapuska", keywords: ["kapuska", "lahana", "sulu", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Semizotu", "Acı Turşu", "Pirinç Pilavı (Sade)", "Kuru Soğan"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Etli Kuru Fasulye", keywords: ["etli kuru fasulye", "kuru fasulye", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Turşu", "Bulgur Pilavı", "Cacık", "Kuru Soğan (Sumaklı)"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Semizotu (Yoğurtlu)", keywords: ["semizotu", "yoğurtlu", "salata", "meze"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Sarımsak", "Izgara Köfte", "Pul Biberli Yağ"],
-                drink: ["Ayran"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Ispanak Yemeği", keywords: ["ıspanak", "sulu", "sebze"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt", "Kırmızı Biberli Yağ", "Bulgur Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Bakla (Zeytinyağlı/Fava)", keywords: ["bakla", "zeytinyağlı", "fava", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Turplu Salata", "Dereotu", "Pirinç Pilavı", "Taze Soğan"],
-                drink: ["Soda"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Zeytinyağlı Kereviz", keywords: ["kereviz", "zeytinyağlı kereviz", "portakallı", "portakallı kereviz", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Sade Yoğurt", "Taze Ekmek", "Arpa Şehriyeli Pilav", "Kinoalı Salata"],
-                drink: ["Soda"],
-                dessert: ["Ayva Tatlısı"]
-            }},
-            { main: "Portakallı Kereviz", keywords: ["portakallı kereviz", "kereviz", "zeytinyağlı", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Taze Soğan", "Bulgur Pilavı", "Turşu"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kereviz (Sulu/Etli)", keywords: ["kereviz", "sulu kereviz", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç", "Cacık", "Pirinç Pilavı", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Kremalı Makarna", keywords: ["kremalı makarna", "makarna", "kremalı", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Domates Çorbası", "Sezar Salata", "Sarımsaklı Ekmek", "Parmesan Peyniri"],
-                drink: ["Soda"],
-                dessert: ["Tiramisu"]
-            }},
-            { main: "Etli Patates Yemeği", keywords: ["etli patates", "patates", "sulu", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ispanaklı Yumurta", keywords: ["ıspanaklı yumurta", "kahvaltı", "tava"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Taze Ekmek", "Beyaz Peynir", "Zeytin Çeşitleri", "Domates Biber Söğüş"],
-                drink: ["Çay"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Fırında Patates", keywords: ["fırında patates", "patates", "garnitür"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Köfte", "Biftek", "Coleslaw", "Yoğurtlu Dip Sos"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Patates Köfte (Sulu)", keywords: ["patates köfte", "sulu", "köfte"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Maş Fasulyeli Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Fırın Sütlaç"]
-            }},
-            { main: "Etli Kuru Fasulye", keywords: ["etli kuru fasulye", "kuru fasulye", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Turşu", "Bulgur Pilavı", "Cacık", "Kuru Soğan (Sumaklı)"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Lahana Dolması", keywords: ["lahana dolması", "dolma", "sarma", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt", "Acılı Ezme", "Sade Pilav", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Pırasa Yemeği", keywords: ["pırasa", "zeytinyağlı", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Limonlu Yoğurt", "Havuç Tarator", "Hafif Pilav", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Komposto"]
-            }},
-            { main: "Kısır", keywords: ["kısır", "bulgur", "meze", "salata", "soğuk"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Zeytinyağlı Yaprak Sarma", "Peynir", "Marul Yaprağı", "Turşu", "Ayran"],
-                drink: ["Ayran"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Fellah Köftesi", keywords: ["fellah köftesi", "köfte", "yöresel", "bulgur"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Kereviz", "Sarımsaklı Yoğurt", "Yeşil Salata", "Baharatlı Sos"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "İçli Köfte", keywords: ["içli köfte", "kızartma", "hamur", "bulgur"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Mercimek Çorbası", "Yoğurt", "Limon"],
-                drink: ["Ayran"],
-                dessert: ["Halka Tatlısı"]
-            }},
-            { main: "Fırında Makarna", keywords: ["fırında makarna", "beşamel", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Yeşil Mercimekli Salata", "Domates Çorbası", "Sarımsaklı Ekmek", "Göbek Salata"],
-                drink: ["Soda"],
-                dessert: ["Trileçe"]
-            }},
-            { main: "Döner (Et/Tavuk)", keywords: ["döner", "kebap", "sokak"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Atom", "Patates Kızartması", "Ayran"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Pide (Kıymalı/Kuşbaşılı)", keywords: ["pide", "kıymalı pide", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Acılı Ezme", "Ayran", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Küçük Künefe"]
-            }},
-            { main: "Patates Püresi", keywords: ["patates püresi", "garnitür", "hafif"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Et Çeşitleri", "Kremalı Mantar Sosu", "Coleslaw", "Somon Izgara"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Karnabahar Graten", keywords: ["karnabahar graten", "fırın", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Meksika Fasulyeli Salata", "Hafif Yeşil Salata", "Izgara Tavuk", "Sarımsaklı Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kinoa Salatası", keywords: ["kinoa salatası", "salata", "sağlıklı", "hafif"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Tavuk veya Balık", "Humus", "Zeytinyağı ve Limon", "Taze Nane"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Sezar Salata", keywords: ["sezar salata", "tavuklu salata", "yeşil salata"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Kremalı Makarna", "Domates Çorbası", "Sarımsaklı Ekmek", "Kruton"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Meksika Fasulyeli Salata", keywords: ["meksika fasulyeli salata", "fasulye", "salata"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Hamburger", "Taco", "Yoğurtlu Dip Sos", "Mısır Cipsi"],
-                drink: ["Kola"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Yoğurtlu Semizotu", keywords: ["yoğurtlu semizotu", "meze", "salata"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Köfte", "Hamsili Pilav", "Zeytinyağı", "Sarımsaklı Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Akdeniz Salata", keywords: ["akdeniz salata", "peynirli", "zeytinli"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Tavuk veya Balık", "Humus", "Zeytinyağı ve Kekik", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Beşamel Soslu Tavuk", keywords: ["beşamel soslu tavuk", "beşamel", "tavuk", "fırın"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Yeşil Salata (limon soslu)", "Domates Çorbası", "Pirinç Pilavı", "Patates Püresi"],
-                drink: ["Soda"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kumpir", keywords: ["kumpir", "patates", "sokak yemeği", "fırın"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Yoğurtlu Semizotu", "Çoban Salata", "Coleslaw", "Rus Salatası"],
-                drink: ["Kola"],
-                dessert: ["Waffle"]
-            }},
-            { main: "Kaşarlı Mantar", keywords: ["kaşarlı mantar", "mantar", "meze", "başlangıç"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Izgara Köfte", "Biftek", "Roka Salata", "Sarımsaklı Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Domatesli Bulgur Pilavı", keywords: ["domatesli bulgur pilavı", "bulgur", "pilav"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Izgara Tavuk", "Et Sote", "Yoğurtlu Ayran", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Salçalı Makarna", keywords: ["salçalı makarna", "makarna", "domatesli"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Izgara Köfte", "Sezar Salata", "Yoğurt", "Ezogelin Çorbası"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ratatouille", keywords: ["ratatouille", "sebze", "akdeniz"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Somon", "Humus", "Sade Pilav", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Bezeyle (Sulu/Etli)", keywords: ["bezelye", "sulu yemek", "etli bezelye"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Falafel", keywords: ["falafel", "nohut", "vejetaryen", "orta doğu"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Humus", "Akdeniz Salata", "Pita Ekmek", "Tahini Sos"],
-                drink: ["Limonata"],
-                dessert: ["Baklava"]
-            }},
-            { main: "Penne Makarna", keywords: ["penne makarna", "makarna", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Izgara Tavuk", "Sezar Salata", "Sarımsaklı Ekmek", "Domates Çorbası"],
-                drink: ["Soda"],
-                dessert: ["Tiramisu"]
-            }},
-            { main: "Spagetti (Bolonez/Napoliten)", keywords: ["spagetti", "makarna", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Yeşil Mercimekli Salata", "Domates Çorbası", "Parmesan Peyniri", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Panna Cotta"]
-            }},
-            { main: "Fettucini Alfredo", keywords: ["fettucini", "makarna", "kremalı", "italyan"], cuisine: "İtalyan Mutfağı", suggestions: {
-                yanlar: ["Izgara Tavuk", "Roka Salata", "Sarımsaklı Ekmek", "Mantar Sote"],
-                drink: ["Soda"],
-                dessert: ["Tiramisu"]
-            }},
-            { main: "Patates Salatası", keywords: ["patates salatası", "salata", "meze", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Köfte", "Hamburger", "Turşu", "Zeytinyağlı Enginar"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Humus", keywords: ["humus", "meze", "nohut", "orta doğu", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Pita Ekmek", "Falafel", "Zeytinyağı ve Pul Biber", "Kinoa Salatası"],
-                drink: ["Ayran"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "İstiridye Mantarı Sote", keywords: ["istiridye mantarı", "mantar", "sote", "sebze"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Et", "Patates Püresi", "Yeşil Salata", "Sarımsaklı Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Düğün Çorbası", keywords: ["düğün çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["İçli Köfte", "Et Haşlama", "Limon", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Revani"]
-            }},
-            { main: "Un Çorbası", keywords: ["un çorbası", "çorba", "terbiyeli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Kuru Domates Salata", "Pul Biberli Yağ", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Sebze Çorbası (Genel)", keywords: ["sebze çorbası", "çorba", "hafif"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Tavuklu Sezar Salata", "Hamur Kızartması (Pişi)", "Kruton", "Yoğurtlu Dip"],
-                drink: ["Su"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Lüfer Izgara", keywords: ["lüfer", "balık", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Roka Salatası", "Humus", "Limon Dilimleri", "Turplu Salata"],
-                drink: ["Soda"],
-                dessert: ["İrmik Helvası"]
-            }},
-            { main: "Hamsi", keywords: ["hamsi", "tava", "ızgara", "deniz ürünü"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Mısır Ekmeği", "Çoban Salata", "Tahini Sos", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Karnabahar Kızartması", keywords: ["karnabahar kızartması", "sebze", "kızartma"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Yoğurt", "Yeşil Mercimekli Salata", "Domates Sosu", "Acı Ezme"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Domates Biber Patlıcan Kızartma", keywords: ["domates biber patlıcan kızartma", "kızartma", "sebze", "meze"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Yoğurt", "Atom", "Sade Pilav", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Köz Patlıcan", keywords: ["köz patlıcan", "patlıcan", "meze", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Et", "Lüfer Izgara", "Yoğurtlu Patlıcan Ezmesi", "Pita Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Meyve Tabağı"]
-            }},
-            { main: "Köz Biber", keywords: ["köz biber", "meze", "salata", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Peynir Tabağı", "Zeytinyağlı Kereviz", "Zeytinyağı ve Sarımsak", "Taze Ekmek"],
-                drink: ["Soda"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Makarna Salatası", keywords: ["makarna salatası", "salata", "soğuk"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Tavuk", "Mercimek Çorbası", "Yoğurtlu Dip Sos", "Amerikan Salata"],
-                drink: ["Soda"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Fırında Köfte Patates", keywords: ["fırında köfte patates", "köfte", "patates", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Cacık", "Pirinç Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Patates Salçası", keywords: ["patates salatası", "salata", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Köfte", "Pide", "Zeytinyağı ve Limon", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ispanaklı Börek", keywords: ["ıspanaklı börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt", "Ayran Aşı", "Çay", "Domates Biber Söğüş"],
-                drink: ["Ayran"],
-                dessert: ["Meyveli Yoğurt"]
-            }},
-            { main: "Kıymalı Börek", keywords: ["kıymalı börek", "börek", "hamur işi"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurt Çorbası", "Çoban Salata", "Ayran (Bol Köpüklü)", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Izgara Köfte", keywords: ["ızgara köfte", "köfte", "et"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Piyaz", "Izgara Domates/Biber", "Pirinç Pilavı", "Patates Kızartması"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-            { main: "Fırında Köfte", keywords: ["fırında köfte", "köfte", "fırın"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Cacık", "Domatesli Bulgur Pilavı", "Patates Püresi"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Patates Oturtma", keywords: ["patates oturtma", "patates", "kıyma", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç Tarator", "Cacık", "Pirinç Pilavı (Sade)", "Domates Çorbası"],
-                drink: ["Ayran"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Noodle (Tavuklu/Sebzeli)", keywords: ["noodle", "makarna", "asya"], cuisine: "Asya Mutfağı", suggestions: {
-                yanlar: ["Deniz Yosunu Salatası", "Edamame", "Acı Sos (Sriracha)", "Soya Sosu"],
-                drink: ["Yeşil Çay (Sıcak/Soğuk)"],
-                dessert: ["Mochi"]
-            }},
-            { main: "Mac and Cheese", keywords: ["mac and cheese", "makarna", "peynir", "abd"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Sosis veya Bacon", "Coleslaw", "Yeşil Salata (Hafif soslu)", "Sarımsaklı Ekmek"],
-                drink: ["Kola"],
-                dessert: ["Brownie"]
-            }},
-            { main: "Yayla Çorbası", keywords: ["yayla çorbası", "yoğurt", "çorba", "pirinçli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kıymalı Börek", "Taze Pide", "Nane ve Tereyağlı Sos", "Mevsim Salata"],
-                drink: ["Su"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Beyran", keywords: ["beyran", "çorba", "etli", "acılı", "gaziantep"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["İçli Köfte", "Lavaş", "Bol Limon", "Pul Biber"],
-                drink: ["Şalgam Suyu"],
-                dessert: ["Katmer"]
-            }},
-            { main: "Et Sote", keywords: ["et sote", "kırmızı et", "sote", "dana"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Gavurdağı Salatası", "Yoğurtlu Patlıcan", "Pirinç Pilavı", "Lavaş"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Ispanak (Genel)", keywords: ["ıspanak", "sebze", "sulu"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sade Yoğurt", "Kırmızı Biberli Yağ", "Bulgur Pilavı", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Kazandibi"]
-            }},
-            { main: "Brokoli (Haşlanmış/Fırın)", keywords: ["brokoli", "sebze", "haşlanmış", "fırın"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Izgara Somon", "Izgara Tavuk", "Sarımsaklı Yoğurt Sosu", "Zeytinyağı ve Limon"],
-                drink: ["Soda"],
-                dessert: ["Meyve Tabağı"]
-            }},
-             { main: "Brokoli Çorbası", keywords: ["brokoli çorbası", "çorba", "sebze", "kremalı"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Biftek", "Keçi Peynirli Tost", "Sade Salata", "Kruton"],
-                drink: ["Su"],
-                dessert: ["Sufle"]
-            }},
-            { main: "Bamya Çorbası", keywords: ["bamya çorbası", "çorba", "ekşili"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Etli Pilav", "Lavaş", "Limon Dilimi", "Acı Biber Turşusu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Bulgur Pilavı (Sade)", keywords: ["bulgur pilavı", "pilav", "sade"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Kuru Fasulye", "Et Haşlama", "Cacık", "Turşu"],
-                drink: ["Ayran"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Lahana Yemeği", keywords: ["lahana", "sulu", "sebze"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sade Yoğurt", "Mısır Ekmeği", "Bulgur Pilavı", "Acı Biber Turşusu"],
-                drink: ["Ayran"],
-                dessert: ["Kabak Tatlısı"]
-            }},
-            { main: "Mancar Yemeği", keywords: ["mancar", "lahana", "karadeniz", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Sarımsaklı Yoğurt", "Mısır Ekmeği", "Tereyağlı Bulgur Pilavı", "Karalahana Çorbası"],
-                drink: ["Ayran"],
-                dessert: ["Laz Böreği"]
-            }},
-            { main: "Fırında Sebze (Genel)", keywords: ["fırında sebze", "sebze", "garnitür"], cuisine: "Uluslararası", suggestions: {
-                yanlar: ["Izgara Somon", "Biftek", "Zeytinyağı ve Kekikli Ekmek", "Yoğurtlu Dip Sos"],
-                drink: ["Soda"],
-                dessert: ["Panna Cotta"]
-            }},
-            { main: "Yoğurt Çorbası", keywords: ["yoğurt çorbası", "çorba", "yayla"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Pirinçli Börek", "Kıymalı Börek", "Nane ve Pul Biberli Yağ", "Taze Ekmek"],
-                drink: ["Su"],
-                dessert: ["Güllaç"]
-            }},
-            { main: "Zeytinyağlı Kereviz", keywords: ["kereviz", "zeytinyağlı kereviz", "portakallı", "portakallı kereviz", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Sade Yoğurt", "Taze Ekmek", "Arpa Şehriyeli Pilav", "Kinoalı Salata"],
-                drink: ["Soda"],
-                dessert: ["Ayva Tatlısı"]
-            }},
-            { main: "Portakallı Kereviz", keywords: ["portakallı kereviz", "kereviz", "zeytinyağlı", "soğuk"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Çoban Salata", "Taze Soğan", "Bulgur Pilavı", "Turşu"],
-                drink: ["Su"],
-                dessert: ["Sütlaç"]
-            }},
-            { main: "Kereviz (Sulu/Etli)", keywords: ["kereviz", "sulu kereviz", "etli"], cuisine: "Türk Mutfağı", suggestions: {
-                yanlar: ["Yoğurtlu Havuç", "Cacık", "Pirinç Pilavı", "Taze Ekmek"],
-                drink: ["Ayran"],
-                dessert: ["Kemalpaşa Tatlısı"]
-            }},
-        ];
-
-        // Öneri başlıkları ve ikonları
         const suggestionCategories = [
             { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
             { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
             { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
         ];
 
-        /**
-         * Metni küçük harfe çevirip, Türkçe karakterleri normalize eden yardımcı fonksiyon.
-         */
-        const normalizeText = (text) => {
-            if (!text) return '';
-            return text.toLowerCase()
-                       .replace(/ı/g, 'i')
-                       .replace(/ğ/g, 'g')
-                       .replace(/ü/g, 'u')
-                       .replace(/ş/g, 's')
-                       .replace(/ö/g, 'o')
-                       .replace(/ç/g, 'c');
-        };
-
-        /**
-         * Verilen öneri listesini HTML formatında hazırlar.
-         */
         function createListHtml(items, colorClass) {
             return items.map(item => `
                 <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border ${colorClass}/20 hover:bg-gray-50 transition duration-150">
@@ -1115,51 +404,65 @@
             `).join('');
         }
 
-        /**
-         * Kullanıcının girdiği yemeğe uygun önerileri arar ve sonuçları ekranda gösterir.
-         */
+        const dishSuggestions = [
+            { main: "Tarhana Çorbası", keywords: ["tarhana", "çorba", "yöresel"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Patatesli Börek", "Turşu", "Kıymalı Börek", "Taze Ekmek"],
+                drink: ["Ayran"],
+                dessert: ["Sütlaç"]
+            }},
+            /* Buraya tüm yemek listen gelecek */
+            { main: "Kereviz (Sulu/Etli)", keywords: ["kereviz", "sulu kereviz", "etli"], cuisine: "Türk Mutfağı", suggestions: {
+                yanlar: ["Yoğurtlu Havuç", "Cacık", "Pirinç Pilavı", "Taze Ekmek"],
+                drink: ["Ayran"],
+                dessert: ["Kemalpaşa Tatlısı"]
+            }},
+        ];
+
         async function searchDish(dishNameOverride = null) {
             const inputElement = document.getElementById('mainDishInput');
             const filterElement = document.getElementById('cuisineFilter');
             const resultsContainer = document.getElementById('resultsContainer');
+
             const rawQuery = dishNameOverride || inputElement.value.trim();
             const selectedCuisine = filterElement.value;
-            const query = normalizeText(rawQuery);
+            const query = window.normalizeText(rawQuery);
 
             resultsContainer.innerHTML = '';
 
             let foundDish = null;
 
-            // --- RASTGELE ÖNERİ MANTIĞI ---
             if (query.length < 2 && !dishNameOverride) {
-                const filteredDishes = dishSuggestions.filter(dish => 
+                const filteredDishes = dishSuggestions.filter(dish =>
                     selectedCuisine === "" || dish.cuisine === selectedCuisine
                 );
                 if (filteredDishes.length > 0) {
                     const randomIndex = Math.floor(Math.random() * filteredDishes.length);
-                    foundDish = filteredDishes[randomIndex];
-                    foundDish.main = foundDish.main.startsWith("Günün Önerisi") ? foundDish.main : `Günün Önerisi: ${foundDish.main}`;
+                    foundDish = { ...filteredDishes[randomIndex] };
+                    if (!foundDish.main.startsWith("Günün Önerisi")) {
+                        foundDish.main = `Günün Önerisi: ${foundDish.main}`;
+                    }
                 }
-            } 
-            
-            // --- Normal Arama ---
+            }
+
             if (!foundDish) {
                 foundDish = dishSuggestions.find(dish => {
                     if (selectedCuisine && dish.cuisine !== selectedCuisine) return false;
                     
                     if (query.length >= 2) {
-                        const normalizedMain = normalizeText(dish.main);
-                        if (normalizedMain.includes(query) || (dish.keywords && dish.keywords.some(keyword => normalizeText(keyword).includes(query)))) {
+                        const normalizedMain = window.normalizeText(dish.main);
+                        if (
+                            normalizedMain.includes(query) ||
+                            (dish.keywords && dish.keywords.some(keyword => window.normalizeText(keyword).includes(query)))
+                        ) {
                             return true;
                         }
-                    } 
+                    }
                     return false;
                 });
             }
 
-            // İlk boş giriş kontrolü
             if (query.length < 2 && selectedCuisine === "" && !foundDish) {
-                 resultsContainer.innerHTML = `
+                resultsContainer.innerHTML = `
                     <p class="text-gray-500 italic">
                         Aramaya başlayın. Önerileriniz burada görünecektir.
                     </p>
@@ -1169,17 +472,15 @@
 
             if (foundDish) {
                 const dishNameForState = foundDish.main.replace("Günün Önerisi: ", "");
-                
-                // Firestore verilerini bekle
+
                 const [favoriteStatus, ratingData] = await Promise.all([
-                    getFavoriteStatus(dishNameForState),
-                    getRatingData(dishNameForState)
+                    window.getFavoriteStatus ? window.getFavoriteStatus(dishNameForState) : false,
+                    window.getRatingData ? window.getRatingData(dishNameForState) : { averageRating: 0, totalVotes: 0, userRating: 0 }
                 ]);
 
                 let htmlContent = '';
                 let allSuggestions = [];
 
-                // Kategorileri dolaş ve listeyi oluştur
                 suggestionCategories.forEach(category => {
                     const items = foundDish.suggestions[category.key];
                     if (items && items.length > 0) {
@@ -1197,54 +498,53 @@
                     }
                 });
 
-                // Template'i doldur
                 const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
-                
-                // Başlık ve İkonlar
-                template.querySelector('h2').innerHTML = `<span class="text-base font-medium text-gray-600">(${foundDish.cuisine})</span> <br>"${foundDish.main}" Yanına Ne Gider?`;
-                
-                // Favori Butonu
+
+                const h2 = template.querySelector('h2');
+                h2.innerHTML = `<span class="text-base font-medium text-gray-600">(${foundDish.cuisine})</span> <br>"${foundDish.main}" Yanına Ne Gider?`;
+
                 const favBtn = template.querySelector('#favoriteBtn');
                 favBtn.setAttribute('onclick', `toggleFavorite('${dishNameForState}')`);
+                const favIcon = favBtn.querySelector('svg');
                 if (favoriteStatus) {
                     favBtn.classList.remove('bg-red-100');
                     favBtn.classList.add('bg-red-500', 'text-white');
-                    favBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+                    favIcon.setAttribute('fill', 'currentColor');
+                    favIcon.removeAttribute('stroke');
                 } else {
-                    // Yalnızca dolgu rengini kaldır, dış çizgiyi bırak
-                     favBtn.querySelector('svg').setAttribute('fill', 'none');
-                     favBtn.querySelector('svg').setAttribute('stroke', 'currentColor');
-                     favBtn.querySelector('svg').setAttribute('stroke-width', '2');
+                    favBtn.classList.remove('bg-red-500', 'text-white');
+                    favBtn.classList.add('bg-red-100', 'text-red-600');
+                    favIcon.setAttribute('fill', 'none');
+                    favIcon.setAttribute('stroke', 'currentColor');
+                    favIcon.setAttribute('stroke-width', '2');
                 }
-                
-                // Alışveriş Listesi Butonu
+
                 const shopBtn = template.querySelector('#shoppingListBtn');
                 shopBtn.setAttribute('onclick', `copyShoppingList([${allSuggestions.map(s => `'${s}'`).join(',')}])`);
-                
-                // Oylama Alanı
-                template.querySelector('#avgRatingDisplay').textContent = ratingData.averageRating.toFixed(1);
-                template.querySelector('#totalVotesDisplay').textContent = `${ratingData.totalVotes} Oy`;
-                
+
+                template.querySelector('#avgRatingDisplay').textContent = (ratingData.averageRating || 0).toFixed(1);
+                template.querySelector('#totalVotesDisplay').textContent = `${ratingData.totalVotes || 0} Oy`;
+
                 const starsContainer = template.querySelector('#ratingStars');
                 for (let i = 1; i <= 5; i++) {
-                    const isFilled = i <= ratingData.userRating;
-                    const star = document.createElement('span');
-                    star.innerHTML = `
-                        <svg onclick="rateDish('${dishNameForState}', ${i})" class="w-6 h-6 cursor-pointer transition duration-150 ${isFilled ? 'text-yellow-500' : 'text-gray-300 hover:text-yellow-400'}" viewBox="0 0 24 24" fill="currentColor">
+                    const isFilled = i <= (ratingData.userRating || 0);
+                    const span = document.createElement('span');
+                    span.innerHTML = `
+                        <svg onclick="rateDish('${dishNameForState}', ${i})"
+                             class="w-6 h-6 cursor-pointer transition duration-150 ${isFilled ? 'text-yellow-500' : 'text-gray-300 hover:text-yellow-400'}"
+                             viewBox="0 0 24 24" fill="currentColor">
                              <path d="M12 .587l3.64 7.57 8.36.97-6.02 5.88 1.42 8.36-7.42-3.9-7.42 3.9 1.42-8.36L.58 9.127l8.36-.97L12 .587z"/>
                         </svg>
                     `;
-                    starsContainer.appendChild(star);
+                    starsContainer.appendChild(span);
                 }
 
-                // Listeyi ekle
                 template.querySelector('#suggestionsListContainer').innerHTML = htmlContent;
 
                 resultsContainer.innerHTML = '';
                 resultsContainer.appendChild(template);
 
             } else {
-                // Sonuç bulunamadı
                 resultsContainer.innerHTML = `
                     <div class="w-full text-center p-4">
                         <p class="text-gray-800 font-semibold mb-2">
@@ -1257,8 +557,12 @@
                 `;
             }
 
-            inputElement.value = ''; // Arama yaptıktan sonra input'u temizle
+            if (!dishNameOverride) {
+                inputElement.value = '';
+            }
         }
+
+        window.searchDish = searchDish;
     </script>
 </body>
 </html>
