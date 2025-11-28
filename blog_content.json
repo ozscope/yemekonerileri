@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "category": "İpucu",
+    "title": <b>"Etin Yanında En İyi Ne Gider? Sofraları Tamamlayan En İyi 12 Lezzet" </b>,
+    "content": [
+      {"type": "p", "text": "Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik. İşte etin yanında en iyi giden mezeler, salatalar, soslar ve yardımcı yemekler…"},
+      {"type": "h4", "text": "<b>1. Közlenmiş Sebzeler</b>"},
+      {"type": "p", "text": "Köz patlıcan, biber, kabak ve domates; etin yoğun aromasını hafifletir, dumanlı tadıyla uyumu yakalar. Hem ızgarada hem mangalda pratikçe hazırlanabilir."},
+      {"type": "h4", "text": "<b>2. Patates Püresi</b>"},
+      {"type": "p", "text": "Yumuşak dokusu ve hafif tereyağı aromasıyla özellikle <b>bonfile, antrikot ve rosto</b> yanında harika bir tamamlayıcıdır. Sarımsaklı ya da kremalı versiyonları da çok tercih edilir."},
+      {"type": "h4", "text": "<b>3. Fırınlanmış Patates & Patates Dilimleri</b>"},
+      {"type": "p", "text": "Kıtır dışı ve yumuşak iç dokusuyla etin ağırlığını dengeler. Baharatlı, rozmarinli veya parmesanlı çeşitleri et sofralarının vazgeçilmezidir."},
+      {"type": "h4", "text": "<b>4. Pilav Çeşitleri</b>"},
+      {"type": "p", "text": "Et yemeklerinin en klasik eşlikçisi pilavdır."},
+      {"type": "ul", "items": ["Tereyağlı pirinç pilavı", "Arpa şehriyeli pilav", "Bulgur pilavı", "Baharatlı basmati pilav"]},
+      {"type": "p", "text": "Fırın ve tencere etlerinin yanında çok iyi gider."},
+      {"type": "h4", "text": "<b>5. Mevsim Salatası</b>"},
+      {"type": "p", "text": "Ferahlık katar ve denge sağlar. Zeytinyağı, limon ve nar ekşili soslarla tatlandırabilirsiniz. Etin ağırlığını hafifletmek isteyenler için birebirdir."},
+      {"type": "h4", "text": "<b>6. Roka Salatası</b>"},
+      {"type": "p", "text": "Roka'nın <i>acımsı</i> aroması özellikle <b>kırmızı etle</b> muhteşem bir uyum yakalar. Üzerine parmesan veya nar ekşisi ekleyerek lezzeti artırabilirsiniz."},
+      {"type": "h4", "text": "<b>7. Soğan Halkaları veya Karamelize Soğan</b>"},
+      {"type": "p", "text": "Etin yanında tatlı-soğansı bir lezzet oluşturur. Özellikle <b>steak, burger</b> ve ızgara yanında çok tercih edilir."},
+      {"type": "h4", "text": "<b>8. Yoğurtlu Mezeler</b>"},
+      {"type": "p", "text": "Kırmızı etin yoğunluğunu dengeleyen en hafif eşlikçiler:"},
+      {"type": "ul", "items": ["Haydari", "Cacık", "Köz patlıcan yoğurtlama", "Labneli dip soslar"]},
+      {"type": "h4", "text": "<b>9. Humus</b>"},
+      {"type": "p", "text": "Nohutun doyurucu dokusu ve tahinin aromasıyla hem et hem tavuk yemekleri için ideal bir mezedir."},
+      {"type": "h4", "text": "<b>10. Tandır Lavaşı veya Sıcacık Ekmekler</b>"},
+      {"type": "p", "text": "Izgara etlerin suyunu içine çeker, sofraya sıcak dokunuş katar. Lavaş, bazlama ve taş fırın ekmeği en çok tercih edilenlerdir."},
+      {"type": "h4", "text": "<b>11. Mantar Sote</b>"},
+      {"type": "p", "text": "Özellikle <b>mantarın etimsi dokusu</b> sayesinde hem uyum sağlar hem de tabağı daha şık hale getirir. Sarımsak, tereyağı ve kekikle lezzeti zirveye çıkar."},
+      {"type": "h4", "text": "<b>12. Soslar</b>"},
+      {"type": "p", "text": "Doğru sos, etin karakterini ortaya çıkarır:"},
+      {"type": "ul", "items": ["Biberiye sosu", "Barbekü sos", "Hardal & ballı hardal", "Şaraplı demi-glace sos", "Acı soslar"]}
+    ]
+  }
+]
