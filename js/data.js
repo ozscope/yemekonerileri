@@ -1549,6 +1549,26 @@ const blogPostsData = [
     }
 },
 {
+    main: "Zeytinyağlı Börülce",
+    keywords: ["zeytinyağlı börülce", "börülce", "taze börülce"],
+    cuisine: "Akdeniz Mutfağı",
+    suggestions: {
+        yanlar: ["Ezogelin Çorbası", "Yoğurtlu Semizotu", "Domatesli Bulgur Pilavı"],
+        drink: ["Maden Suyu"],
+        dessert: ["Fırın Sütlaç"]
+    },
+    calories: {
+        total: 895,
+        breakdown: {
+            main: 180,      // Zeytinyağlı börülce
+            yanlar: 360,    // ezogelin çorbası (≈90) + semizotu (≈100)  + pilav (≈170)
+            drink: 5,       // Maden suyu (çok düşük)
+            dessert: 350     // sütlaç
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
+},
+{
     main: "Zeytinyağlı Kereviz",
     keywords: ["zeytinyağlı kereviz", "kereviz", "portakallı"],
     cuisine: "Akdeniz Mutfağı",
@@ -1814,17 +1834,17 @@ const blogPostsData = [
     keywords: ["kabak", "kabak yemeği"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Dereotu", "Yoğurt"],
+        yanlar: ["Şehriye Çorbası", "Yoğurt", "Cevizli Erişte"],
         drink: [],
-        dessert: ["Sütlaç"]
+        dessert: ["Cennet Hurması"]
     },
     calories: {
-        total: 525,
+        total: 860,
         breakdown: {
             main: 150,   // Hafif kabak yemeği
-            yanlar: 125, // Dereotu (≈5) + yoğurt (≈120)
+            yanlar: 6100, // çorba (≈200) + yoğurt (≈120) + erişte (290)
             drink: 0,    // İçecek belirtilmemiş
-            dessert: 250 // Sütlaç
+            dessert: 100 // hurma
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
@@ -1844,7 +1864,7 @@ const blogPostsData = [
         breakdown: {
             main: 210,   // Etli türlü
             yanlar: 420, // Bulgur pilavı (≈220) + cacık (≈200) 
-            drink: 0,   // Ayran
+            drink: 0,   // 
             dessert: 520 // Aşure
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2017,15 +2037,15 @@ const blogPostsData = [
     suggestions: {
         yanlar: ["Pirinç Pilavı", "Turşu"],
         drink: ["Ayran"],
-        dessert: ["Sütlaç"]
+        dessert: ["Fırın Sütlaç"]
     },
     calories: {
-        total: 1130,
+        total: 1020,
         breakdown: {
             main: 330,   // Etli patates
             yanlar: 250, // Pilav (≈220) + turşu (≈30)
             drink: 90,   // Ayran
-            dessert: 460 // Sütlaç (şekerli, büyük porsiyon)
+            dessert: 350 // Sütlaç (şekerli, büyük porsiyon)
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
