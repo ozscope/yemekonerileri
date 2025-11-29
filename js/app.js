@@ -190,6 +190,25 @@ function searchDish() {
     }
 
 if (foundDish) {
+
+    // --- 1200 KALORİ FİLTRESİ ---
+    const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
+
+    if (lowCalorieOnly && foundDish.calories && foundDish.calories.total > 1200) {
+        container.innerHTML = `
+            <div class="w-full text-center p-4">
+                <p class="text-gray-800 font-semibold mb-2">
+                    Bu yemek 1200 kcal üzerindedir.
+                </p>
+                <p class="text-sm text-gray-500">
+                    Filtreyi kapatarak tüm yemekleri görebilirsiniz.
+                </p>
+            </div>
+        `;
+        bottomAd.classList.add('hidden');
+        return;
+    }
+
     let html = '';
 
     // 1) Yan lezzet listelerini oluştur
