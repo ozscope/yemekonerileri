@@ -176,44 +176,57 @@
 
 </section>
 
+<!-- 1200 kcal ALTINDA FİLTRE -->
+<div class="flex items-center mb-3">
+    <input 
+        type="checkbox" 
+        id="lowCalorieFilter" 
+        class="mr-2 w-5 h-5 cursor-pointer"
+        onchange="searchDish()"
+    >
+    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
+        🍏 1200 kcal altındaki menüleri göster
+    </label>
+</div>
 
-            <!-- Filtre ve Arama -->
-            <div class="space-y-3 mb-6">
-                <select id="cuisineFilter" onchange="searchDish()"
-                    class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
-                    <option value="">Tüm Mutfaklar</option>
-                    <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
-                    <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
-                    <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
-                    <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
-                    <option value="Uluslararası">🌐 Uluslararası</option>
-                    <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
-                    <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
-                    <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
-                    <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
-                    <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
-                    <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
-                </select>
-                
-                <div class="flex">
-                    <input
-                        id="mainDishInput"
-                        type="text"
-                        placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
-                        class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
-                        aria-label="Ana yemek adını girin"
-                        onkeypress="if(event.key === 'Enter') searchDish()"
-                    />
-                    <button
-                        id="searchButton"
-                        type="button"
-                        onclick="searchDish()"
-                        class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
-                    >
-                        Ara
-                    </button>
-                </div>
-            </div>
+<!-- Filtre ve Arama -->
+<div class="space-y-3 mb-6">
+    <select id="cuisineFilter" onchange="searchDish()"
+        class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
+        <option value="">Tüm Mutfaklar</option>
+        <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
+        <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
+        <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
+        <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
+        <option value="Uluslararası">🌐 Uluslararası</option>
+        <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
+        <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
+        <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
+        <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
+        <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
+        <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
+    </select>
+    
+    <div class="flex">
+        <input
+            id="mainDishInput"
+            type="text"
+            placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
+            class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
+            aria-label="Ana yemek adını girin"
+            onkeypress="if(event.key === 'Enter') searchDish()"
+        />
+        <button
+            id="searchButton"
+            type="button"
+            onclick="searchDish()"
+            class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
+        >
+            Ara
+        </button>
+    </div>
+</div>
+
 
             <!-- Sonuç Alanı -->
             <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
