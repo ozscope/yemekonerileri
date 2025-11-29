@@ -2938,45 +2938,45 @@ const blogPostsData = [
     }
 }, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
 
-{ 
-    main: "Izgara Çipura", 
-    keywords: ["çipura", "ızgara çipura"], 
-    cuisine: "Akdeniz Mutfağı", 
-    suggestions: {
-        yanlar: ["Roka Salatası", "Patates Salatası", "Kırmızı Soğan", "Pastırmalı Humus", "Deniz Börülcesi"], 
-        drink: ["Şalgam Suyu"], 
-        dessert: ["Helva"]
-    },
-    calories: {
-        total: 995,
-        breakdown: {
-            main: 340,
-            yanlar: 460,
-            drink: 15,
-            dessert: 180
-        },
-        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
-    }
-},
-{ 
-    main: "Lüfer / Çinekop Tava", 
-    // ... suggestions
-    suggestions: {
-        yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
-        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
-        dessert: ["Helva"]
-    },
-    calories: {
-        total: 980,
-        // ... breakdown
-        breakdown: {
-            main: 400,
-            yanlar: 295,
-            drink: 105,
-            dessert: 180
-        },
-        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
-    }
+{ 
+    main: "Izgara Çipura", 
+    keywords: ["çipura", "ızgara çipura"], 
+    cuisine: "Akdeniz Mutfağı", 
+    suggestions: {
+        yanlar: ["Roka Salatası", "Patates Salatası", "Kırmızı Soğan", "Pastırmalı Humus", "Deniz Börülcesi"], 
+        drink: ["Şalgam Suyu"], 
+        dessert: ["Helva"]
+    },
+    calories: {
+        total: 995,
+        breakdown: {
+            main: 340,
+            yanlar: 460,
+            drink: 15,
+            dessert: 180
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
+}, // <-- KRİTİK EKSİK VİRGÜL BURAYA EKLENDİ!
+{ 
+    main: "Lüfer / Çinekop Tava", 
+    // ... suggestions
+    suggestions: {
+        yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
+        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
+        dessert: ["Helva"]
+    },
+    calories: {
+        total: 980,
+        // ... breakdown
+        breakdown: {
+            main: 400,
+            yanlar: 295,
+            drink: 105,
+            dessert: 180
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
 }, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
 
 {
