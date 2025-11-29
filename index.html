@@ -220,34 +220,23 @@
             <header class="mb-6 text-center">
                 <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
             </header>
-        <!-- STATİK AÇIKLAMA BLOĞU (SEO + POLİTİKA İÇİN) -->
-        <section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-sm text-gray-700 leading-relaxed">
-            <h2 class="text-lg font-bold text-primary-blue mb-2">
-                Yanında Ne Gider? – Yemek Yanı Öneri Rehberi
-            </h2>
-            <p>
-                yanindanevar.com; günlük yemek menüsü hazırlarken “Bu yemeğin yanına ne yakışır?” sorusuna hızlı cevap bulmanız için
-                hazırlanmış bir öneri uygulamasıdır. Türk mutfağı başta olmak üzere dünya mutfaklarından 
-                <strong>100’den fazla ana yemek</strong> için pilav, salata, meze, çorba, içecek ve tatlı eşleştirmeleri sunar.
-            </p>
-            <p>
-                Aşağıdaki arama alanına hazırlamayı düşündüğünüz yemeğin adını yazdığınızda, o yemekle uyumlu yan lezzetleri
-                kategorilere ayrılmış şekilde görebilirsiniz. Örneğin:
-            </p>
-            <ul class="list-disc ml-5 my-2 space-y-1">
-                <li>“Kuru fasulye” için pirinç pilavı, turşu ve hoşaf önerileri,</li>
-                <li>“Izgara köfte” için piyaz, pilav ve ayran eşleşmeleri,</li>
-                <li>“Zeytinyağlı taze fasulye” için yoğurt, pilav ve hafif tatlı kombinleri</li>
-                gibi hazır kombinasyonlar listelenir.
-            </ul>
-            <p>
-                Site, yemek tarifi vermekten çok; <em>yanında ne gider?</em> sorusuna pratik fikirler sunmayı hedefler. 
-                Böylece ister aile yemeği ister misafir sofrası olsun, tek tek düşünmeden 
-                <strong>dengeli ve uyumlu menüler</strong> hazırlayabilirsiniz.
-            </p>
-        </section>
+<!-- STATİK AÇIKLAMA BLOĞU (KISA VERSİYON) -->
+<section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-sm text-gray-700 leading-relaxed">
+    <h2 class="text-lg font-bold text-primary-blue mb-2">
+        Yanında Ne Gider? – Hızlı Menü Önerileri
+    </h2>
+    <p>
+        Yanindanevar.com; hazırladığınız yemeğin yanına hangi pilav, salata, meze, içecek veya tatlının
+        yakışacağını hızlıca bulabileceğiniz pratik bir menü eşleştirme aracıdır.
+    </p>
+    <p>
+        Arama kutusuna bir yemek adı yazmanız yeterlidir; sistem o yemekle uyumlu yan lezzetleri anında listeler.
+        Örneğin kuru fasulyeye pilav–turşu, ızgara köfteye piyaz–ayran gibi
+        klasik eşleşmeler otomatik olarak sunulur.
+    </p>
+</section>
 
-            <!-- Filtre ve Arama -->
+                      <!-- Filtre ve Arama -->
             <div class="space-y-3 mb-6">
                 <select id="cuisineFilter" onchange="searchDish()"
                     class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
@@ -331,14 +320,14 @@
     </main>
 
     <!-- SAYFA ALTI REKLAM ALANI -->
-    <div class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4">
+    <div id="bottomAdContainer" class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4 hidden">
         <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
             <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI</p>
         </div>
     </div>
 
     <!-- ÇEREZ / İZİN BANNERI -->
-    <div id="cookieBanner" class="cookie-banner hidden opacity-0" role="dialog" aria-live="polite" aria-label="Çerez bilgilendirme">
+    <div id="cookieBanner" class class="cookie-banner hidden opacity-0" role="dialog" aria-live="polite" aria-label="Çerez bilgilendirme">
         <div class="max-w-4xl mx-auto">
             <p>
                 Bu site, deneyiminizi iyileştirmek ve Google AdSense üzerinden gösterilen reklamlar için 
@@ -1086,7 +1075,7 @@
             }}
         ];
 
-        const suggestionCategories = [
+              const suggestionCategories = [
             { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
             { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
             { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
@@ -1118,6 +1107,17 @@
             document.getElementById('page-privacy').classList.add('hidden');
 
             document.getElementById(`page-${pageId}`).classList.remove('hidden');
+            
+            // Reklam konteynerini sayfa bazlı gizle/göster
+            const bottomAd = document.getElementById('bottomAdContainer');
+            if (pageId === 'home') {
+                // Sadece arama sonucunda gösterilecek, burada gizli kalmalı.
+                bottomAd.classList.add('hidden'); 
+            } else {
+                 // Blog ve Gizlilik sayfalarında reklamları gösterebiliriz.
+                bottomAd.classList.remove('hidden');
+            }
+
 
             if (pageId === 'blog') loadBlogContent();
 
@@ -1188,6 +1188,12 @@
             const input = document.getElementById('mainDishInput');
             const filter = document.getElementById('cuisineFilter');
             const container = document.getElementById('resultsContainer');
+            const bottomAd = document.getElementById('bottomAdContainer');
+
+            // Arama yapılınca sayfa altı reklamını göster (eğer ana sayfadaysak)
+            if (!document.getElementById('page-home').classList.contains('hidden')) {
+                 bottomAd.classList.remove('hidden');
+            }
             
             const rawQuery = input.value.trim();
             const cuisine = filter.value;
@@ -1214,18 +1220,24 @@
             } else {
                 // Normal arama (Mutfak filtresi arama sonucunu daraltmaz)
                 
-                // Önce ana yemeğin adıyla tam eşleşme veya başlangıç eşleşmesi ara
+                // ÖNCELİK 1: Ana yemeğin adıyla tam eşleşme veya anahtar kelime tam eşleşmesi
                 foundDish = dishSuggestions.find(d => {
                     const normMain = normalizeText(d.main);
-                    // Tam eşleşme (hamsi -> Hamsi Tava)
-                    return normMain === query || normMain.startsWith(query) || (d.keywords && d.keywords.some(k => normalizeText(k) === query));
+                    // Ana yemek adının tam eşleşmesi
+                    if (normMain === query) return true; 
+
+                    // Ana yemek adının anahtar kelime olarak tam eşleşmesi (daha kesin eşleşme)
+                    return d.keywords && d.keywords.some(k => normalizeText(k) === query);
                 });
 
-                // Eğer tam eşleşme yoksa, daha geniş anahtar kelime aramasına devam et
+                // ÖNCELİK 2: Eğer tam eşleşme yoksa, kelime başlangıç veya kısmi eşleşmesine geç
                 if (!foundDish) {
                     foundDish = dishSuggestions.find(d => {
                         const normMain = normalizeText(d.main);
-                        // Kısmi kelime eşleşmesi (hamsi -> Hamsili Pilav)
+                        // Ana yemek adının başlangıç eşleşmesi (örn: "Hamsi" -> "Hamsi Tava")
+                        if (normMain.startsWith(query)) return true;
+                        
+                        // Ana yemek adının veya herhangi bir anahtar kelimenin kısmi olarak içermesi (örn: "hamsi" -> "hamsili pilav")
                         return normMain.includes(query) || (d.keywords && d.keywords.some(k => normalizeText(k).includes(query)));
                     });
                 }
@@ -1233,8 +1245,20 @@
 
             if (!foundDish && query.length < 2 && cuisine === "") {
                 container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
+                // Arama yapılmayınca reklamı gizle
+                bottomAd.classList.add('hidden');
                 return;
+            } else if (!foundDish) {
+                container.innerHTML = `
+                    <div class="w-full text-center p-4">
+                        <p class="text-gray-800 font-semibold mb-2">Üzgünüz, aradığınız "${rawQuery}" yemeği için öneri bulamadık.</p>
+                        <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
+                    </div>
+                `;
+                 // Arama sonucu yoksa reklamı gizle
+                bottomAd.classList.add('hidden'); 
             }
+
 
             if (foundDish) {
                 let html = '';
@@ -1262,14 +1286,7 @@
                 }
 
                 container.appendChild(template);
-            } else {
-                container.innerHTML = `
-                    <div class="w-full text-center p-4">
-                        <p class="text-gray-800 font-semibold mb-2">Üzgünüz, aradığınız "${rawQuery}" yemeği için öneri bulamadık.</p>
-                        <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
-                    </div>
-                `;
-            }
+            } 
 
             // Mobilde klavyeyi kapat
             if (window.innerWidth < 768) {
@@ -1277,7 +1294,7 @@
             }
 
             // İstersen inputu boş bırakmayabilirsin, ama senin önceki mantığı koruyorum:
-            input.value = '';
+            // input.value = ''; // Arama geçmişini korumak için yorum satırı yapıldı.
         }
 
         // Fonksiyonları global scope'a ata
@@ -1287,18 +1304,14 @@
         window.loadBlogContent = loadBlogContent;
         window.searchDish = searchDish;
 
-// URL'ye göre ilk sayfa + ana sayfada bir öneri göster
-window.addEventListener('load', () => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('page') === 'blog') {
-        showPage('blog');
-    } else {
-        showPage('home');
-        // Ana sayfa açıldığında, arama boşken rastgele bir "Günün Önerisi" göster
-        searchDish();
-    }
-});
-
+        // URL'ye göre ilk sayfa
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('page') === 'blog') showPage('blog');
+            else showPage('home');
+             // İlk yüklemede ana sayfada reklamı gizle
+            document.getElementById('bottomAdContainer').classList.add('hidden');
+        });
 
         // ÇEREZ / İZİN BANNERI
         const COOKIE_CONSENT_KEY = 'cookieConsent';
