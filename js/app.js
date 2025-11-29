@@ -189,84 +189,91 @@ function searchDish() {
         return;
     }
 
-if (foundDish) {
+    if (foundDish) {
+        // --- 1200 KALORİ FİLTRESİ BİLGİSİ ---
+        const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
+        const isHighCalorie = foundDish.calories && foundDish.calories.total > 1200;
 
-    // --- 1200 KALORİ FİLTRESİ ---
-    const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
+        let html = '';
 
-    if (lowCalorieOnly && foundDish.calories && foundDish.calories.total > 1200) {
-        container.innerHTML = `
-            <div class="w-full text-center p-4">
-                <p class="text-gray-800 font-semibold mb-2">
-                    Bu yemek 1200 kcal üzerindedir.
-                </p>
-                <p class="text-sm text-gray-500">
-                    Filtreyi kapatarak tüm yemekleri görebilirsiniz.
-                </p>
-            </div>
-        `;
-        bottomAd.classList.add('hidden');
-        return;
-    }
+        // 1) Yan lezzet listelerini oluştur
+        suggestionCategories.forEach(cat => {
+            const items = foundDish.suggestions[cat.key];
 
-    let html = '';
+            // Eğer kullanıcı "1200 kcal altı" filtresini açtıysa
+            // ve menü 1200 kcal üzerindeyse,
+            // tatlı kategorisini hiç göstermiyoruz.
+            if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
+                return; // bu kategoriyi atla
+            }
 
-    // 1) Yan lezzet listelerini oluştur
-    suggestionCategories.forEach(cat => {
-        const items = foundDish.suggestions[cat.key];
-        if (items && items.length) {
+            if (items && items.length) {
+                html += `
+                    <div class="mb-4">
+                        <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
+                        <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
+                    </div>
+                `;
+            }
+        });
+
+        // 2) Kalori bilgisi varsa HTML'e ekle
+        if (foundDish.calories && foundDish.calories.total) {
+            const c = foundDish.calories;
+
+            let totalCal = c.total;
+            let extraNote = '';
+
+            // Filtre açık + yemek >1200 ise, tatlıyı çıkarıp
+            // toplam kaloriyi yaklaşık düşürüyoruz
+            if (lowCalorieOnly && isHighCalorie && c.breakdown && c.breakdown.dessert) {
+                totalCal = c.total - c.breakdown.dessert;
+                extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
+            }
+
             html += `
-                <div class="mb-4">
-                    <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
-                    <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
+                <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
+                    <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
+                    <p class="mb-1">
+                        Toplam: <strong>${totalCal} kcal</strong>
+                    </p>
+                    ${
+                        c.breakdown
+                            ? `<ul class="list-disc ml-4">
+                                ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
+                                ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
+                                ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
+                                ${
+                                    (!lowCalorieOnly || !isHighCalorie)
+                                        ? (c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : '')
+                                        : '' // filtre varken tatlıyı listeleme
+                                }
+                               </ul>`
+                            : ''
+                    }
+                    <p class="mt-1 text-xs text-amber-700">
+                        ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}${extraNote}
+                    </p>
                 </div>
             `;
         }
-    });
 
-    // 2) Kalori bilgisi varsa HTML'e ekle
-    if (foundDish.calories && foundDish.calories.total) {
-        const c = foundDish.calories;
-        html += `
-            <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
-                <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
-                <p class="mb-1">
-                    Toplam: <strong>${c.total} kcal</strong>
-                </p>
-                ${
-                    c.breakdown
-                        ? `<ul class="list-disc ml-4">
-                            ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
-                            ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
-                            ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
-                            ${c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : ''} 
-                           </ul>`
-// ...
-                        : ''
-                }
-                <p class="mt-1 text-xs text-amber-700">
-                    ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}
-                </p>
-            </div>
-        `;
+        // 3) Şablona bas
+        const template = document
+            .getElementById('dishDetailTemplate')
+            .content
+            .cloneNode(true);
+
+        template.querySelector('h2').innerHTML =
+            `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
+
+        template.querySelector('#suggestionsListContainer').innerHTML = html;
+
+        const info = template.querySelector('#randomInfo');
+        info.style.display = isRandom ? 'block' : 'none';
+
+        container.appendChild(template);
     }
-
-    // 3) Şablona bas
-    const template = document
-        .getElementById('dishDetailTemplate')
-        .content
-        .cloneNode(true);
-
-    template.querySelector('h2').innerHTML =
-        `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
-
-    template.querySelector('#suggestionsListContainer').innerHTML = html;
-
-    const info = template.querySelector('#randomInfo');
-    info.style.display = isRandom ? 'block' : 'none';
-
-    container.appendChild(template);
-}
 
 
     if (window.innerWidth < 768) {
