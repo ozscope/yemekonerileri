@@ -189,18 +189,25 @@ function searchDish() {
         return;
     }
 
-   if (foundDish) {
+if (foundDish) {
     // --- 1200 KALORİ FİLTRESİ BİLGİSİ ---
     const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
     const hasCalories = foundDish.calories && foundDish.calories.total;
-    const dessertCal = foundDish.calories?.breakdown?.dessert || 0;
 
-    // Başlangıç toplam kalori
-    let effectiveTotalCal = hasCalories ? foundDish.calories.total : null;
+    const totalCalOrig = hasCalories ? foundDish.calories.total : null;
+    const isHighCalorie = hasCalories && totalCalOrig > 1200;
 
-    // Eğer filtre açıksa ve kalori bilgisi varsa, önce tatlıyı toplamdan düş
-    if (lowCalorieOnly && hasCalories) {
-        effectiveTotalCal = foundDish.calories.total - dessertCal;
+    // Başlangıçta her zaman ORİJİNAL toplam
+    let effectiveTotalCal = totalCalOrig;
+    let dessertCal = 0;
+    let extraNote = '';
+
+    // 🔴 SADECE şu durumda tatlıyı devre dışı bırakıyoruz:
+    // - Filtre açık
+    // - Orijinal toplam > 1200
+    if (lowCalorieOnly && isHighCalorie && foundDish.calories.breakdown) {
+        dessertCal = foundDish.calories.breakdown.dessert || 0;
+        effectiveTotalCal = totalCalOrig - dessertCal;
 
         // Tatlı çıkarılmış hâli bile 1200'ün üstündeyse MENÜ GÖSTERME
         if (effectiveTotalCal > 1200) {
@@ -217,6 +224,8 @@ function searchDish() {
             bottomAd.classList.add('hidden');
             return;
         }
+
+        extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
     }
 
     let html = '';
@@ -225,8 +234,8 @@ function searchDish() {
     suggestionCategories.forEach(cat => {
         const items = foundDish.suggestions[cat.key];
 
-        // Filtre açıkken tatlıyı hiç gösterme
-        if (lowCalorieOnly && cat.key === 'dessert') {
+        // ✅ Tatlıyı sadece "filtre açık + yemek aslında >1200" durumunda gizliyoruz
+        if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
             return; // tatlı kategorisini atla
         }
 
@@ -243,12 +252,6 @@ function searchDish() {
     // 2) Kalori bilgisi varsa HTML'e ekle
     if (hasCalories) {
         const c = foundDish.calories;
-        let extraNote = '';
-
-        // Eğer filtre açık ve tatlı çıkarıldıysa, not ekleyelim
-        if (lowCalorieOnly && dessertCal > 0) {
-            extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
-        }
 
         html += `
             <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
@@ -263,10 +266,11 @@ function searchDish() {
                             ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
                             ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
                             ${
-                                // Filtre kapalıysa tatlıyı göster, filtre açıksa gizle
-                                !lowCalorieOnly && c.breakdown.dessert
-                                    ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>`
-                                    : ''
+                                // Tatlıyı sadece şu durumda GİZLİYORUZ:
+                                // filtre açık + yemek aslında >1200
+                                (lowCalorieOnly && isHighCalorie)
+                                    ? ''
+                                    : (c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : '')
                             }
                            </ul>`
                         : ''
