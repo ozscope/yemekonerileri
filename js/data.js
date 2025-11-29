@@ -1390,7 +1390,7 @@ const blogPostsData = [
     cuisine: "Uluslararası",
     suggestions: {
         yanlar: ["Kremalı Sebze Çorbası","Maydonozlu Patates","Roka Salatası", "Kırmızı Lahana (Rotkohl)"],
-        drink: ["Kırmızı Şarap (Öneri)"],
+        drink: ["Kırmızı Şarap (İsteğe Bağlı)"],
         dessert: ["Limonlu Sorbe"]
     },
     calories: {
@@ -1916,7 +1916,7 @@ const blogPostsData = [
     cuisine: "Akdeniz Mutfağı",
     suggestions: {
         yanlar: ["Pilav", "Izgara Et"],
-        drink: ["Şarap (Öneri)"],
+        drink: ["Şarap (İsteğe Bağlı)"],
         dessert: ["Creme Brulee"]
     },
     calories: {
@@ -2056,7 +2056,7 @@ const blogPostsData = [
     cuisine: "Fransız Mutfağı",
     suggestions: {
         yanlar: ["Biftek", "Yeşil Salata"],
-        drink: ["Kırmızı Şarap (Öneri)"],
+        drink: ["Kırmızı Şarap (İsteğe Bağlı)"],
         dessert: ["Çikolatalı Mus"]
     },
     calories: {
@@ -2342,15 +2342,15 @@ const blogPostsData = [
     cuisine: "İtalyan Mutfağı",
     suggestions: {
         yanlar: ["Tavuk Sote", "Yoğurt"],
-        drink: ["Kola", "Kırmızı Şarap (Öneri)"],
+        drink: ["Kola/Kırmızı Şarap (İsteğe Bağlı)"],
         dessert: ["Puding"]
     },
     calories: {
-        total: 1550,
+        total: 14150,
         breakdown: {
             main: 600,   // sade/peynirli makarna (1 büyük porsiyon)
             yanlar: 400, // tavuk sote + 1 küçük kase yoğurt
-            drink: 260,  // 1 bardak kola + 1 küçük kadeh şarap (öneri)
+            drink: 125,  // 1 bardak kola + 1 küçük kadeh şarap 
             dessert: 290 // 1 porsiyon puding
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2382,7 +2382,7 @@ const blogPostsData = [
     cuisine: "İtalyan Mutfağı",
     suggestions: {
         yanlar: ["Fırında Tavuk", "Fırında Kaşarlı Mantar"],
-        drink: ["Beyaz Şarap (Öneri)"],
+        drink: ["Beyaz Şarap (İsteğe Bağlı)"],
         dessert: ["Tiramisu"]
     },
     calories: {
@@ -2483,15 +2483,15 @@ const blogPostsData = [
     cuisine: "İtalyan Mutfağı",
     suggestions: {
         yanlar: ["Mercimek Çorbası", "Sarımsaklı Ekmek", "Dereotlu Kabak Tarator"],
-        drink: ["Kayısı Hoşafı", "Kırmızı Şarap (Öneri)"],
+        drink: ["Kayısı Hoşafı/Kırmızı Şarap (İsteğe Bağlı)"],
         dessert: ["Tiramusu"]
     },
     calories: {
-        total: 1725,
+        total: 1690,
         breakdown: {
             main: 750,   // kıymalı, beşamel soslu lazanya (1 büyük dilim)
             yanlar: 430, // mercimek çorbası + sarımsaklı ekmek + kabak tarator
-            drink: 160,  // 1 bardak hoşaf + 1 küçük kadeh şarap (öneri)
+            drink: 125,  // 1 bardak hoşaf + 1 küçük kadeh şarap (öneri)
             dessert: 385 // 1 porsiyon tiramisu
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2882,14 +2882,14 @@ const blogPostsData = [
 
             // BALIKLAR
             { main: "Balık (Genel)", keywords: ["balık", "ızgara balık"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Mercimek Çorbası", "Roka Salatası", "Fava", "Çıtır Nohutlu Humus", "Közlenmiş Patlıcan Salatası"], drink: ["Şalgam Suyu", "Rakı (Öneri)"], dessert: ["İrmik Helvası"]
+                yanlar: ["Mercimek Çorbası", "Roka Salatası", "Fava", "Çıtır Nohutlu Humus", "Közlenmiş Patlıcan Salatası"], drink: ["Şalgam Suyu/Rakı (İsteğe Bağlı)"], dessert: ["İrmik Helvası"]
             },
     calories: {
-        total: 1215,
+        total: 1200,
         breakdown: {
             main: 450,
             yanlar: 475,
-            drink: 105,
+            drink: 90,
             dessert: 185
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2903,15 +2903,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Mercimek Çorbası", "Turp Mezesi", "Havuç Tarator", "Fırında Kremalı Patates"],
-        drink: ["Şalgam Suyu", "Rakı (Öneri)"],
+        drink: ["Şalgam Suyu/Rakı (İsteğe Bağlı)"],
         dessert: ["Tahin Helvası"]
     },
     calories: {
-        total: 1215,
+        total: 1200,
         breakdown: {
             main: 450,
             yanlar: 475,
-            drink: 105,
+            drink: 90,
             dessert: 185
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2924,15 +2924,15 @@ const blogPostsData = [
     cuisine: "Akdeniz Mutfağı", 
     suggestions: {
         yanlar: ["Köz Patlıcan Biber", "Roka", "Acılı Ezme", "Fava", "Deniz Börülcesi"], 
-        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
+        drink: ["Rakı (İsteğe Bağlı)/Şalgam Suyu"], 
         dessert: ["Fırın Helva"]
     },
     calories: {
-        total: 1030,
+        total: 1015,
         breakdown: {
             main: 350,
             yanlar: 345,
-            drink: 105,
+            drink: 90,
             dessert: 230
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2964,16 +2964,16 @@ const blogPostsData = [
     // ... suggestions
     suggestions: {
         yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
-        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
+        drink: ["Rakı (İsteğe Bağlı)/Şalgam Suyu"], 
         dessert: ["Helva"]
     },
     calories: {
-        total: 980,
+        total: 965,
         // ... breakdown
         breakdown: {
             main: 400,
             yanlar: 295,
-            drink: 105,
+            drink: 90,
             dessert: 180
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2987,7 +2987,7 @@ const blogPostsData = [
     cuisine: "Uluslararası",
     suggestions: {
         yanlar: ["Kuşkonmaz", "Patates Püresi", "Deniz Börülcesi", "Fava"],
-        drink: ["Beyaz Şarap (Öneri)"],
+        drink: ["Beyaz Şarap (İsteğe Bağlı)"],
         dessert: ["Sufle"]
     },
     calories: {
@@ -3496,15 +3496,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Fırında Levrek", "Közlenmiş Patlıcan Biber"],
-        drink: ["Maden Suyu", "Rakı (Öneri)"],
+        drink: ["Maden Suyu/Rakı (İsteğe Bağlı)"],
         dessert: ["Tahin Helvası"]
     },
     calories: {
-        total: 1660,
+        total: 1500,
         breakdown: {
             main: 220,  // Haydari
             yanlar: 620, // Fırında levrek (350) + köz patlıcan biber (270)
-            drink: 260,  // Maden suyu (20) + 2 duble rakı (~240)
+            drink: 100,  // Maden suyu (20) + 2 duble rakı (~240)
             dessert: 560 // Tahin helvası porsiyon
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -3556,15 +3556,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Et Yemekleri", "Meze"],
-        drink: ["Rakı (Öneri)"],
+        drink: ["Rakı (İsteğe Bağlı)"],
         dessert: []
     },
     calories: {
-        total: 1180,
+        total: 830,
         breakdown: {
             main: 280,  // Atom (yoğurt + tereyağlı biber)
             yanlar: 450, // Ortalama et yemeği + başka mezeler
-            drink: 450,  // 3 duble rakı varsayıldı
+            drink: 100,  // 1 duble rakı varsayıldı
             dessert: 0
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -3576,16 +3576,16 @@ const blogPostsData = [
     keywords: ["fava", "bakla ezmesi"],
     cuisine: "Ege Mutfağı",
     suggestions: {
-        yanlar: ["Dereotu", "Zeytinyağı"],
-        drink: ["Rakı (Öneri)"],
+        yanlar: ["Dereotu", "Zeytinyağlı Enginar","Fırında Somon"],
+        drink: ["Rakı (İsteğe Bağlı)"],
         dessert: []
     },
     calories: {
-        total: 960,
+        total: 920,
         breakdown: {
             main: 300,   // Fava (bakla + zeytinyağı)
-            yanlar: 50,  // Dereotu (10) + zeytinyağı ekleme (40)
-            drink: 610,  // 2 duble rakı
+            yanlar: 520,  // Dereotu (10) + zeytinyağlı enginar (150) + somon (360)
+            drink: 100,  // 1 duble rakı
             dessert: 0
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
