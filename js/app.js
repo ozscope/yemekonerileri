@@ -189,29 +189,64 @@ function searchDish() {
         return;
     }
 
-    if (foundDish) {
-        let html = '';
-        suggestionCategories.forEach(cat => {
-            const items = foundDish.suggestions[cat.key];
-            if (items && items.length) {
-                html += `
-                    <div class="mb-4">
-                        <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
-                        <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
-                    </div>
-                `;
-            }
-        });
+if (foundDish) {
+    let html = '';
 
-        const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
-        template.querySelector('h2').innerHTML = `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
-        template.querySelector('#suggestionsListContainer').innerHTML = html;
+    // 1) Yan lezzet listelerini oluştur
+    suggestionCategories.forEach(cat => {
+        const items = foundDish.suggestions[cat.key];
+        if (items && items.length) {
+            html += `
+                <div class="mb-4">
+                    <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
+                    <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
+                </div>
+            `;
+        }
+    });
 
-        const info = template.querySelector('#randomInfo');
-        info.style.display = isRandom ? 'block' : 'none';
-
-        container.appendChild(template);
+    // 2) Kalori bilgisi varsa HTML'e ekle
+    if (foundDish.calories && foundDish.calories.total) {
+        const c = foundDish.calories;
+        html += `
+            <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
+                <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
+                <p class="mb-1">
+                    Toplam: <strong>${c.total} kcal</strong>
+                </p>
+                ${
+                    c.breakdown
+                        ? `<ul class="list-disc ml-4">
+                            ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
+                            ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
+                            ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
+                           </ul>`
+                        : ''
+                }
+                <p class="mt-1 text-xs text-amber-700">
+                    ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}
+                </p>
+            </div>
+        `;
     }
+
+    // 3) Şablona bas
+    const template = document
+        .getElementById('dishDetailTemplate')
+        .content
+        .cloneNode(true);
+
+    template.querySelector('h2').innerHTML =
+        `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
+
+    template.querySelector('#suggestionsListContainer').innerHTML = html;
+
+    const info = template.querySelector('#randomInfo');
+    info.style.display = isRandom ? 'block' : 'none';
+
+    container.appendChild(template);
+}
+
 
     if (window.innerWidth < 768) {
         input.blur();
