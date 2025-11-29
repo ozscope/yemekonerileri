@@ -176,19 +176,6 @@
 
 </section>
 
-<!-- 1200 kcal ALTINDA FİLTRE -->
-<div class="flex items-center mb-3">
-    <input 
-        type="checkbox" 
-        id="lowCalorieFilter" 
-        class="mr-2 w-5 h-5 cursor-pointer"
-        onchange="searchDish()"
-    >
-    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
-        🍏 1200 kcal altındaki menüleri göster
-    </label>
-</div>
-
 <!-- Filtre ve Arama -->
 <div class="space-y-3 mb-6">
     <select id="cuisineFilter" onchange="searchDish()"
@@ -226,7 +213,18 @@
         </button>
     </div>
 </div>
-
+<!-- 1200 kcal ALTINDA FİLTRE -->
+<div class="flex items-center mb-3">
+    <input 
+        type="checkbox" 
+        id="lowCalorieFilter" 
+        class="mr-2 w-5 h-5 cursor-pointer"
+        onchange="searchDish()"
+    >
+    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
+        🍏 1200 kcal altındaki menüleri göster
+    </label>
+</div>
 
             <!-- Sonuç Alanı -->
             <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
