@@ -217,10 +217,12 @@ if (foundDish) {
                 ${
                     c.breakdown
                         ? `<ul class="list-disc ml-4">
-                            ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
-                            ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
-                            ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
-                           </ul>`
+                            ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
+                            ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
+                            ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
+                            ${c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : ''} 
+                           </ul>`
+// ...
                         : ''
                 }
                 <p class="mt-1 text-xs text-amber-700">
