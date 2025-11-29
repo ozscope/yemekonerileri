@@ -1127,15 +1127,15 @@ const blogPostsData = [
     keywords: ["ciğer sote", "ciğer", "sote"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Pirinç Pilavı", "Van Cacığı", "Zeytinyağlı Barbunya"],
+        yanlar: ["Pirinç Pilavı", "Zeytinyağlı Barbunya"],
         drink: ["Ayran"],
         dessert: ["Sütlaç"]
     },
     calories: {
-        total: 1710,
+        total: 1510,
         breakdown: {
             main: 450,   // Ciğer sote (az yağlı)
-            yanlar: 580, // Pilav (220) + cacık (200) + barbunya (160)
+            yanlar: 380, // Pilav (220)  + barbunya (160)
             drink: 90,   // Ayran
             dessert: 590 // Sütlaç (büyük + şekerli)
         },
@@ -1289,15 +1289,15 @@ const blogPostsData = [
     keywords: ["fırında bütün tavuk", "tavuk", "bütün"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Analı Kızlı", "Sebzeli Pilav", "Cacık"],
+        yanlar: ["Analı Kızlı", "Sebzeli Pilav"],
         drink: ["Ayran"],
         dessert: ["Kabak Tatlısı"]
     },
     calories: {
-        total: 1880,
+        total: 1760,
         breakdown: {
             main: 500,   // Fırında bütün tavuktan büyük porsiyon
-            yanlar: 730, // Analı kızlı (≈350) + sebzeli pilav (≈260) + cacık (≈120)
+            yanlar: 610, // Analı kızlı (≈350) + sebzeli pilav (≈260) 
             drink: 90,   // Ayran
             dessert: 560 // Kabak tatlısı
         },
@@ -1413,15 +1413,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Pirinç Pilavı", "Cacık", "Mevsim Salata"],
-        drink: ["Ayran"],
+        drink: [],
         dessert: ["Sütlaç"]
     },
     calories: {
-        total: 1050,
+        total: 1080,
         breakdown: {
             main: 350,      // Patlıcan musakka
-            yanlar: 360,    // Pirinç pilavı (≈220) + cacık (≈80) + mevsim salata (≈60)
-            drink: 90,      // Ayran (1 bardak)
+            yanlar: 480,    // Pirinç pilavı (≈220) + cacık (≈200) + mevsim salata (≈60)
+            drink: 0,      
             dessert: 250    // Sütlaç
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -1594,15 +1594,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Pirinç Pilavı", "Cacık"],
-        drink: ["Ayran"],
+        drink: [],
         dessert: ["Karpuz"]
     },
     calories: {
-        total: 680,
+        total: 710,
         breakdown: {
             main: 230,      // Zeytinyağlı taze fasulye
-            yanlar: 300,    // Pilav (≈220) + cacık (≈80)
-            drink: 90,      // Ayran
+            yanlar: 420,    // Pilav (≈220) + cacık (≈200)
+            drink: 0,      // 
             dessert: 60     // Karpuz porsiyonu
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -1836,15 +1836,15 @@ const blogPostsData = [
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Bulgur Pilavı", "Cacık"],
-        drink: ["Ayran"],
+        drink: [],
         dessert: ["Aşure"]
     },
     calories: {
-        total: 1260,
+        total: 1150,
         breakdown: {
             main: 210,   // Etli türlü
-            yanlar: 440, // Bulgur pilavı (≈220) + cacık (≈80) + ek yağ katkıları vb.
-            drink: 90,   // Ayran
+            yanlar: 420, // Bulgur pilavı (≈220) + cacık (≈200) 
+            drink: 0,   // Ayran
             dessert: 520 // Aşure
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -1995,15 +1995,15 @@ const blogPostsData = [
     keywords: ["patates oturtma", "patates", "kıyma"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Pirinç Pilavı", "Cacık"],
+        yanlar: ["Mercimek Çorbası","Pirinç Pilavı"],
         drink: ["Ayran"],
         dessert: ["Revani"]
     },
     calories: {
-        total: 1370,
+        total: 14500,
         breakdown: {
             main: 420,   // Patates oturtma
-            yanlar: 300, // Pilav (≈220) + cacık (≈80)
+            yanlar: 380, // Pilav (≈220) + mercimek çorbası (≈160)
             drink: 90,   // Ayran
             dessert: 560 // Revani + büyük porsiyon
         },
@@ -2160,10 +2160,10 @@ const blogPostsData = [
         dessert: ["Revani"]
     },
     calories: {
-        total: 1310,
+        total: 1390,
         breakdown: {
             main: 150,   // Zeytinyağlı bamya
-            yanlar: 520, // Yayla çorbası (≈180) + domatesli pilav (≈220) + cacık (≈120)
+            yanlar: 600, // Yayla çorbası (≈180) + domatesli pilav (≈220) + cacık (≈200)
             drink: 5,    // Maden suyu
             dessert: 635 // Revani (büyük porsiyon)
         },
@@ -2238,15 +2238,15 @@ const blogPostsData = [
     keywords: ["bulgur pilavı", "bulgur", "domatesli"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Cacık", "Turşu", "Et Sote"],
+        yanlar: ["Turşu", "Et Sote"],
         drink: ["Ayran"],
         dessert: ["İrmik Helvası"]
     },
     calories: {
-        total: 1650,
+        total: 1560,
         breakdown: {
             main: 380,   // 1 porsiyon domatesli bulgur
-            yanlar: 700, // cacık + turşu + 1 porsiyon et sote
+            yanlar: 610, //  turşu + 1 porsiyon et sote
             drink: 120,  // 1 bardak ayran
             dessert: 450 // 1 porsiyon irmik helvası
         },
@@ -2413,7 +2413,7 @@ const blogPostsData = [
             drink: 100,
             dessert: 330
         },
-        note: "Değerler yaklaşık porsiyonlar bazındadır; tarif ve porsiyon büyüklüğüne göre değişebilir."
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
 {
@@ -2891,7 +2891,7 @@ const blogPostsData = [
             drink: 105,
             dessert: 185
         },
-        note: "Kaloriler standart porsiyonlar baz alınarak hesaplanmıştır. Tarif, pişirme yöntemi ve porsiyon ölçülerine göre değişiklik gösterebilir."
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
 
@@ -2913,7 +2913,7 @@ const blogPostsData = [
             drink: 105,
             dessert: 185
         },
-        note: "Kaloriler standart porsiyonlar baz alınarak hesaplanmıştır. Tarif, pişirme yöntemi ve porsiyon ölçülerine göre değişiklik gösterebilir."
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
 
@@ -2997,7 +2997,7 @@ const blogPostsData = [
             drink: 120,
             dessert: 380
         },
-        note: "Kaloriler ortalama porsiyonlar için hesaplanmıştır; tarif ve porsiyon miktarına göre değişiklik gösterebilir."
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
 
