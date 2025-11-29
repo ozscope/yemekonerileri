@@ -1,0 +1,95 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f9fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    margin-top: 4rem; /* Üst bar için boşluk */
+    flex-grow: 1;
+}
+
+.ad-placeholder {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    border: 1px dashed #cbd5e1;
+    color: #9ca3af;
+}
+
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-open {
+    transform: translateX(0);
+}
+
+.sidebar-closed {
+    transform: translateX(-100%);
+}
+
+#overlay {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+.content-area h4 {
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    color: #1e40af;
+}
+
+.content-area ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-area p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    background: rgba(15, 23, 42, 0.97);
+    color: #f9fafb;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+    .cookie-banner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.cookie-banner p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.cookie-banner button {
+    border: none;
+    cursor: pointer;
+}
