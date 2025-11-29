@@ -2183,11 +2183,12 @@ const blogPostsData = [
         dessert: ["Sütlaç"]
     },
     calories: {
-        total: 850, // toplam yaklaşık kalori
+        total: 1120, // toplam yaklaşık kalori
         breakdown: {
             main: 400,     // kuru fasulye
             yanlar: 350,   // pilav + turşu
             drink: 100     // ayran
+            dessert: 270  // sütlaç
         },
         note: "Ortalama bir porsiyon değeri, kişiye göre değişebilir."
     }
@@ -2426,12 +2427,12 @@ const blogPostsData = [
         dessert: ["Panna Cotta"]
     },
     calories: {
-        total: 1350,
+        total: 1440,
         breakdown: {
             main: 650,    // Bolonez/napoliten spagetti (1 büyük porsiyon)
             yanlar: 350,  // parmesan + 1-2 dilim sarımsaklı ekmek
             drink: 140,   // 1 bardak kola
-            dessert: 210  // 1 porsiyon panna cotta
+            dessert: 300  // 1 porsiyon panna cotta
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
@@ -2446,12 +2447,12 @@ const blogPostsData = [
         dessert: ["Tiramisu"]
     },
     calories: {
-        total: 1190,
+        total: 1335,
         breakdown: {
             main: 600,   // Penne arabiata (1 büyük porsiyon)
             yanlar: 350, // pesto sos + 1 porsiyon fırında tavuk
             drink: 0,    // maden suyu
-            dessert: 240 // 1 porsiyon tiramisu
+            dessert: 385 // 1 porsiyon tiramisu
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
@@ -2486,12 +2487,12 @@ const blogPostsData = [
         dessert: ["Tiramusu"]
     },
     calories: {
-        total: 1600,
+        total: 1725,
         breakdown: {
             main: 750,   // kıymalı, beşamel soslu lazanya (1 büyük dilim)
             yanlar: 430, // mercimek çorbası + sarımsaklı ekmek + kabak tarator
             drink: 160,  // 1 bardak hoşaf + 1 küçük kadeh şarap (öneri)
-            dessert: 260 // 1 porsiyon tiramisu
+            dessert: 385 // 1 porsiyon tiramisu
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
@@ -2936,7 +2937,7 @@ const blogPostsData = [
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-}, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
+}, 
 
 { 
     main: "Izgara Çipura", 
@@ -2957,7 +2958,7 @@ const blogPostsData = [
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-}, // <-- KRİTİK EKSİK VİRGÜL BURAYA EKLENDİ!
+}, 
 { 
     main: "Lüfer / Çinekop Tava", 
     // ... suggestions
