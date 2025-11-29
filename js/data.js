@@ -2187,8 +2187,8 @@ const blogPostsData = [
         breakdown: {
             main: 400,     // kuru fasulye
             yanlar: 350,   // pilav + turşu
-            drink: 100     // ayran
-            dessert: 270  // sütlaç
+            drink: 100,     // ayran
+            dessert: 300 // 1 porsiyon sütlaç
         },
         note: "Ortalama bir porsiyon değeri, kişiye göre değişebilir."
     }
