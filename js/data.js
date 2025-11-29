@@ -2917,32 +2917,46 @@ const blogPostsData = [
     }
 },
 
-            { main: "Izgara Levrek", keywords: ["levrek", "ızgara levrek"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Köz Patlıcan Biber", "Roka", "Acılı Ezme", "Fava", "Deniz Börülcesi"], drink: ["Rakı (Öneri)", "Şalgam Suyu"], dessert: ["Fırın Helva"]
-            },
-             calories: {
-    total: 1030,
-    breakdown: {
-        main: 350,
-        yanlar: 345,
-        drink: 105,
-        dessert: 230
+{ 
+    main: "Izgara Levrek", 
+    keywords: ["levrek", "ızgara levrek"], 
+    cuisine: "Akdeniz Mutfağı", 
+    suggestions: {
+        yanlar: ["Köz Patlıcan Biber", "Roka", "Acılı Ezme", "Fava", "Deniz Börülcesi"], 
+        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
+        dessert: ["Fırın Helva"]
     },
-    note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
-},
+    calories: {
+        total: 1030,
+        breakdown: {
+            main: 350,
+            yanlar: 345,
+            drink: 105,
+            dessert: 230
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
+}, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
 
-            { main: "Izgara Çipura", keywords: ["çipura", "ızgara çipura"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Roka Salatası", "Patates Salatası", "Kırmızı Soğan", "Pastırmalı Humus", "Deniz Börülcesi"], drink: ["Şalgam Suyu"], dessert: ["Helva"]
-            },
-             calories: {
-    total: 995,
-    breakdown: {
-        main: 340,
-        yanlar: 460,
-        drink: 15,
-        dessert: 180
+{ 
+    main: "Izgara Çipura", 
+    keywords: ["çipura", "ızgara çipura"], 
+    cuisine: "Akdeniz Mutfağı", 
+    suggestions: {
+        yanlar: ["Roka Salatası", "Patates Salatası", "Kırmızı Soğan", "Pastırmalı Humus", "Deniz Börülcesi"], 
+        drink: ["Şalgam Suyu"], 
+        dessert: ["Helva"]
     },
-    note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    calories: {
+        total: 995,
+        breakdown: {
+            main: 340,
+            yanlar: 460,
+            drink: 15,
+            dessert: 180
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
 },
 
             { main: "Lüfer / Çinekop Tava", keywords: ["lüfer", "ızgara lüfer","çinekop"], cuisine: "Akdeniz Mutfağı", suggestions: {
