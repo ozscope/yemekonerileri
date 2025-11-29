@@ -1554,7 +1554,7 @@ const blogPostsData = [
     cuisine: "Akdeniz Mutfağı",
     suggestions: {
         yanlar: ["Mercimek Çorbası","Havuç Tarator", "Fırında Levrek"],
-        drink: ["-"],
+        drink: [],
         dessert: ["Ispanaklı Pasta"]
     },
     calories: {
