@@ -220,6 +220,32 @@
             <header class="mb-6 text-center">
                 <p class="text-gray-600 text-sm">Mutfak seçimi yapın ve ana yemeği yazın.</p>
             </header>
+        <!-- STATİK AÇIKLAMA BLOĞU (SEO + POLİTİKA İÇİN) -->
+        <section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-4 text-sm text-gray-700 leading-relaxed">
+            <h2 class="text-lg font-bold text-primary-blue mb-2">
+                Yanında Ne Gider? – Yemek Yanı Öneri Rehberi
+            </h2>
+            <p>
+                yanindanevar.com; günlük yemek menüsü hazırlarken “Bu yemeğin yanına ne yakışır?” sorusuna hızlı cevap bulmanız için
+                hazırlanmış bir öneri uygulamasıdır. Türk mutfağı başta olmak üzere dünya mutfaklarından 
+                <strong>100’den fazla ana yemek</strong> için pilav, salata, meze, çorba, içecek ve tatlı eşleştirmeleri sunar.
+            </p>
+            <p>
+                Aşağıdaki arama alanına hazırlamayı düşündüğünüz yemeğin adını yazdığınızda, o yemekle uyumlu yan lezzetleri
+                kategorilere ayrılmış şekilde görebilirsiniz. Örneğin:
+            </p>
+            <ul class="list-disc ml-5 my-2 space-y-1">
+                <li>“Kuru fasulye” için pirinç pilavı, turşu ve hoşaf önerileri,</li>
+                <li>“Izgara köfte” için piyaz, pilav ve ayran eşleşmeleri,</li>
+                <li>“Zeytinyağlı taze fasulye” için yoğurt, pilav ve hafif tatlı kombinleri</li>
+                gibi hazır kombinasyonlar listelenir.
+            </ul>
+            <p>
+                Site, yemek tarifi vermekten çok; <em>yanında ne gider?</em> sorusuna pratik fikirler sunmayı hedefler. 
+                Böylece ister aile yemeği ister misafir sofrası olsun, tek tek düşünmeden 
+                <strong>dengeli ve uyumlu menüler</strong> hazırlayabilirsiniz.
+            </p>
+        </section>
 
             <!-- Filtre ve Arama -->
             <div class="space-y-3 mb-6">
@@ -1261,12 +1287,18 @@
         window.loadBlogContent = loadBlogContent;
         window.searchDish = searchDish;
 
-        // URL'ye göre ilk sayfa
-        window.addEventListener('load', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('page') === 'blog') showPage('blog');
-            else showPage('home');
-        });
+// URL'ye göre ilk sayfa + ana sayfada bir öneri göster
+window.addEventListener('load', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('page') === 'blog') {
+        showPage('blog');
+    } else {
+        showPage('home');
+        // Ana sayfa açıldığında, arama boşken rastgele bir "Günün Önerisi" göster
+        searchDish();
+    }
+});
+
 
         // ÇEREZ / İZİN BANNERI
         const COOKIE_CONSENT_KEY = 'cookieConsent';
