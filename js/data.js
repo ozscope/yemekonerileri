@@ -2169,7 +2169,7 @@ const blogPostsData = [
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-}
+},
 
 
             // BAKLAGİL & PİLAV
@@ -2332,7 +2332,7 @@ const blogPostsData = [
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-}
+},
 
             // MAKARNA & HAMUR İŞİ
 {
@@ -2882,7 +2882,7 @@ const blogPostsData = [
             // BALIKLAR
             { main: "Balık (Genel)", keywords: ["balık", "ızgara balık"], cuisine: "Akdeniz Mutfağı", suggestions: {
                 yanlar: ["Mercimek Çorbası", "Roka Salatası", "Fava", "Çıtır Nohutlu Humus", "Közlenmiş Patlıcan Salatası"], drink: ["Şalgam Suyu", "Rakı (Öneri)"], dessert: ["İrmik Helvası"]
-            }
+            },
     calories: {
         total: 1215,
         breakdown: {
