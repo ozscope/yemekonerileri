@@ -3844,3 +3844,8 @@ const suggestionCategories = [
     { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
     { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
 ];
+
+// data.js dosyasının en sonuna eklenmesi önerilir
+window.dishSuggestions = dishSuggestions;
+window.blogPostsData = blogPostsData;
+window.suggestionCategories = suggestionCategories;
