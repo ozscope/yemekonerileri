@@ -2958,23 +2958,30 @@ const blogPostsData = [
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
-
-            { main: "Lüfer / Çinekop Tava", keywords: ["lüfer", "ızgara lüfer","çinekop"], cuisine: "Akdeniz Mutfağı", suggestions: {
-                yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], drink: ["Rakı (Öneri)", "Şalgam Suyu"], dessert: ["Helva"]
-            },
-             calories: {
-    total: 980,
-    breakdown: {
-        main: 400,
-        yanlar: 295,
-        drink: 105,
-        dessert: 180
+{ 
+    main: "Lüfer / Çinekop Tava", 
+    // ... suggestions
+    suggestions: {
+        yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
+        drink: ["Rakı (Öneri)", "Şalgam Suyu"], 
+        dessert: ["Helva"]
     },
-    note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
-},
+    calories: {
+        total: 980,
+        // ... breakdown
+        breakdown: {
+            main: 400,
+            yanlar: 295,
+            drink: 105,
+            dessert: 180
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
+}, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
 
 {
     main: "Fırında Somon",
+    // ... keywords, cuisine, suggestions, calories
     keywords: ["somon", "fırın somon"],
     cuisine: "Uluslararası",
     suggestions: {
