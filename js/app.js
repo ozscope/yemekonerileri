@@ -1,4 +1,35 @@
-// SIDEBAR
+// app.js
+
+// --- yardimci fonksiyonlar ---
+function normalizeText(text) {
+    if (!text) return '';
+    return text.toLowerCase()
+        .replace(/ı/g, 'i')
+        .replace(/ğ/g, 'g')
+        .replace(/ü/g, 'u')
+        .replace(/ş/g, 's')
+        .replace(/ö/g, 'o')
+        .replace(/ç/g, 'c');
+}
+
+function createListHtml(items, colorClass) {
+    return items.map(item => `
+        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition duration-150">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-700 font-medium">${item}</span>
+        </li>
+    `).join('');
+}
+
+// BUNU GLOBAL’E AÇ: (önceden window.createListHtml = ... idi)
+window.createListHtml = createListHtml;
+
+// suggestionCategories ZATEN data.js’teyse tekrar tanımlama.
+// Eğer app.js’teyse yine global kalabilir.
+
+// --- SIDEBAR ---
 function showSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -17,39 +48,34 @@ function hideSidebar() {
     setTimeout(() => overlay.classList.add('hidden'), 300);
 }
 
-// SAYFA GEÇİŞLERİ
+// --- SAYFA GEÇİŞLERİ ---
 function showPage(pageId, fromSidebar = false) {
     document.getElementById('page-home').classList.add('hidden');
     document.getElementById('page-blog').classList.add('hidden');
     document.getElementById('page-privacy').classList.add('hidden');
 
     document.getElementById(`page-${pageId}`).classList.remove('hidden');
-    
-    // Reklam konteynerini sayfa bazlı gizle/göster
+
     const bottomAd = document.getElementById('bottomAdContainer');
     if (pageId === 'home') {
-        // Sadece arama sonucunda gösterilecek, burada gizli kalmalı.
-        bottomAd.classList.add('hidden'); 
+        bottomAd.classList.add('hidden');
     } else {
-        // Blog ve Gizlilik sayfalarında reklamları gösterebiliriz.
         bottomAd.classList.remove('hidden');
     }
 
     if (pageId === 'blog') loadBlogContent();
 
-    // title güncelleme
     if (pageId === 'blog') {
-        document.title = "Blog - Yanında Ne Gider?";
+        document.title = "Blog - Yanında Ne Yiyelim?";
     } else if (pageId === 'privacy') {
-        document.title = "Gizlilik Politikası - Yanında Ne Gider?";
+        document.title = "Gizlilik Politikası - Yanında Ne Yiyelim?";
     } else {
-        document.title = "Yanında Ne Gider? - Menü Önerileri";
+        document.title = "Yanında Ne Yiyelim? - Menü Önerileri";
     }
 
     if (fromSidebar) hideSidebar();
     window.scrollTo(0, 0);
 
-    // URL Yönetimi
     try {
         const url = new URL(window.location);
         if (pageId === 'blog') url.searchParams.set('page', 'blog');
@@ -60,11 +86,11 @@ function showPage(pageId, fromSidebar = false) {
     }
 }
 
-// BLOG
+// --- BLOG ---
 function loadBlogContent(postId = null) {
     const container = document.getElementById('blog-posts-container');
     container.innerHTML = '';
-    
+
     if (postId) {
         const post = blogPostsData.find(p => p.id === postId);
         if (post) {
@@ -99,18 +125,17 @@ function loadBlogContent(postId = null) {
     }
 }
 
-// ARAMA
+// --- ARAMA ---
 function searchDish() {
     const input = document.getElementById('mainDishInput');
     const filter = document.getElementById('cuisineFilter');
     const container = document.getElementById('resultsContainer');
     const bottomAd = document.getElementById('bottomAdContainer');
 
-    // Arama yapılınca sayfa altı reklamını göster (eğer ana sayfadaysak)
     if (!document.getElementById('page-home').classList.contains('hidden')) {
-         bottomAd.classList.remove('hidden');
+        bottomAd.classList.remove('hidden');
     }
-    
+
     const rawQuery = input.value.trim();
     const cuisine = filter.value;
     const query = normalizeText(rawQuery);
@@ -120,9 +145,8 @@ function searchDish() {
     let foundDish = null;
     let isRandom = false;
 
-    // Rastgele öneri (YALNIZCA arama kutusu boşken mutfak filtresini kullanır)
     if (query.length < 2 && !rawQuery) {
-        const filteredDishes = dishSuggestions.filter(dish => 
+        const filteredDishes = dishSuggestions.filter(dish =>
             cuisine === "" || dish.cuisine === cuisine
         );
         if (filteredDishes.length > 0) {
@@ -134,34 +158,24 @@ function searchDish() {
             isRandom = true;
         }
     } else {
-        // Normal arama (Mutfak filtresi arama sonucunu daraltmaz)
-        
-        // ÖNCELİK 1: Ana yemeğin adıyla tam eşleşme veya anahtar kelime tam eşleşmesi
         foundDish = dishSuggestions.find(d => {
             const normMain = normalizeText(d.main);
-            // Ana yemek adının tam eşleşmesi
-            if (normMain === query) return true; 
-
-            // Ana yemek adının anahtar kelime olarak tam eşleşmesi (daha kesin eşleşme)
+            if (normMain === query) return true;
             return d.keywords && d.keywords.some(k => normalizeText(k) === query);
         });
 
-        // ÖNCELİK 2: Eğer tam eşleşme yoksa, kelime başlangıç veya kısmi eşleşmesine geç
         if (!foundDish) {
             foundDish = dishSuggestions.find(d => {
                 const normMain = normalizeText(d.main);
-                // Ana yemek adının başlangıç eşleşmesi (örn: "Hamsi" -> "Hamsi Tava")
                 if (normMain.startsWith(query)) return true;
-                
-                // Ana yemek adının veya herhangi bir anahtar kelimenin kısmi olarak içermesi (örn: "hamsi" -> "hamsili pilav")
-                return normMain.includes(query) || (d.keywords && d.keywords.some(k => normalizeText(k).includes(query)));
+                return normMain.includes(query) ||
+                    (d.keywords && d.keywords.some(k => normalizeText(k).includes(query)));
             });
         }
     }
 
     if (!foundDish && query.length < 2 && cuisine === "") {
         container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
-        // Arama yapılmayınca reklamı gizle
         bottomAd.classList.add('hidden');
         return;
     } else if (!foundDish) {
@@ -171,8 +185,8 @@ function searchDish() {
                 <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
             </div>
         `;
-         // Arama sonucu yoksa reklamı gizle
-        bottomAd.classList.add('hidden'); 
+        bottomAd.classList.add('hidden');
+        return;
     }
 
     if (foundDish) {
@@ -188,42 +202,30 @@ function searchDish() {
                 `;
             }
         });
-        
+
         const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
         template.querySelector('h2').innerHTML = `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
         template.querySelector('#suggestionsListContainer').innerHTML = html;
 
         const info = template.querySelector('#randomInfo');
-        if (isRandom) {
-            info.style.display = 'block';
-        } else {
-            info.style.display = 'none';
-        }
+        info.style.display = isRandom ? 'block' : 'none';
 
         container.appendChild(template);
-    } 
+    }
 
-    // Mobilde klavyeyi kapat
     if (window.innerWidth < 768) {
         input.blur();
     }
 }
 
-// Fonksiyonları global scope'a ata
-window.showSidebar = showSidebar;
-window.hideSidebar = hideSidebar;
-window.showPage = showPage;
-window.loadBlogContent = loadBlogContent;
-window.searchDish = searchDish;
-
-// ÇEREZ / İZİN BANNERI
+// --- ÇEREZ / İZİN ---
 const COOKIE_CONSENT_KEY = 'cookieConsent';
 const COOKIE_CONSENT_GRANTED = 'granted';
 
 function checkConsent() {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     const banner = document.getElementById('cookieBanner');
-    
+
     if (consent !== COOKIE_CONSENT_GRANTED && consent !== 'rejected') {
         banner.classList.remove('hidden');
         setTimeout(() => banner.classList.remove('opacity-0'), 10);
@@ -244,17 +246,21 @@ function rejectCookies() {
     setTimeout(() => banner.classList.add('hidden'), 300);
 }
 
+// FONKSİYONLARI GLOBAL’E AÇ
+window.hideSidebar = hideSidebar;
+window.showSidebar = showSidebar;
+window.showPage = showPage;
+window.searchDish = searchDish;
+window.loadBlogContent = loadBlogContent;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
 
-// SAYFA YÜKLENİRKEN BAŞLANGIÇ AYARLARI
+
+// İlk yükleme davranışı
 window.addEventListener('load', () => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('page') === 'blog') showPage('blog');
     else showPage('home');
-     // İlk yüklemede ana sayfada reklamı gizle
     document.getElementById('bottomAdContainer').classList.add('hidden');
-
-    // Çerez kontrolü
     checkConsent();
 });
