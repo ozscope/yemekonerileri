@@ -244,11 +244,6 @@ if (postSlug) {
             <div class="p-6 bg-white rounded-2xl shadow-xl">
                 <p class="text-gray-700 font-semibold">Yazı bulunamadı.</p>
             </div>
-        `;
-    }
-} else {
-    // ... SENDEKİ LİSTE KISMI AYNEN KALSIN ...
-}
 
             `;
         }
