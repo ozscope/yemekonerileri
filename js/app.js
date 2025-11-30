@@ -56,9 +56,14 @@ function showPage(pageId, fromSidebar = false) {
     const bottomAd = document.getElementById('bottomAdContainer');
     if (pageId === 'home') {
         bottomAd.classList.add('hidden');
+        renderHomeBlogSection(); // 🔹 her home dönüşünde güncelle
     } else {
         bottomAd.classList.remove('hidden');
     }
+
+    // ... senin diğer showPage kodların aynen devam
+}
+
 
     // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
     if (pageId === 'blog') {
@@ -92,6 +97,47 @@ function showPage(pageId, fromSidebar = false) {
     } catch (e) {
         console.log("URL güncelleme bu ortamda desteklenmiyor");
     }
+}
+
+// --- ANA SAYFA BLOG ÖNERİLERİ ---
+function renderHomeBlogSection() {
+    if (!window.blogPostsData || !Array.isArray(window.blogPostsData)) return;
+
+    const container = document.getElementById('home-blog-list');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    // En son eklenen 3 yazıyı göster (id'ye göre ters sırala)
+    const sorted = [...window.blogPostsData].sort((a, b) => b.id - a.id);
+    const latest = sorted.slice(0, 3);
+
+    latest.forEach(post => {
+        container.innerHTML += `
+            <article class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold text-secondary-green uppercase">
+                        ${post.category || 'Blog'}
+                    </span>
+                    <h3 class="text-lg font-bold mt-1 mb-2 line-clamp-2">
+                        ${post.title}
+                    </h3>
+                    ${
+                        post.description
+                            ? `<p class="text-gray-600 text-sm mb-3 line-clamp-3">${post.description}</p>`
+                            : ''
+                    }
+                </div>
+                <button
+                    type="button"
+                    onclick="showPage('blog'); viewBlogPost('${post.slug}')"
+                    class="mt-2 text-primary-blue font-semibold text-sm hover:underline text-left"
+                >
+                    Devamını Oku →
+                </button>
+            </article>
+        `;
+    });
 }
 
 // --- BLOG ---
@@ -398,8 +444,10 @@ window.searchDish = searchDish;
 window.loadBlogContent = loadBlogContent;
 window.viewBlogPost = viewBlogPost;
 window.viewBlogList = viewBlogList;
+window.renderHomeBlogSection = renderHomeBlogSection;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
+
 
 // İlk yükleme davranışı
 window.addEventListener('load', () => {
@@ -410,8 +458,10 @@ window.addEventListener('load', () => {
         showPage('blog');
     } else {
         showPage('home');
+        renderHomeBlogSection(); // 🔹 Ana sayfa açılışında blog önerilerini doldur
     }
 
     document.getElementById('bottomAdContainer').classList.add('hidden');
     checkConsent();
 });
+
