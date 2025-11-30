@@ -26,10 +26,10 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
   {  
-              id: 3,
-        category: "Özel Gün",
-        title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi)",
-        content: 
+    id: 3,
+    category: "Özel Gün",
+    title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi)",
+    content: `
 <p>
 Yılbaşı akşamı sofranın hem göze hem mideye hitap etmesini istiyorsan, planlı bir menü hazırlamak büyük fark yaratır.
 Aşağıda; <strong>klasik</strong>, <strong>deniz ürünlü</strong>, <strong>vejetaryen</strong>, <strong>vegan</strong> ve <strong>glutensiz</strong> seçeneklerin de bulunduğu 
@@ -604,11 +604,11 @@ Bu 10 yılbaşı menüsü; et severler, deniz ürünlerini sevenler,
 alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
 
     },  
-    {
-        id: 2,
-        category: "Mutfak Sırları",
-        title: "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
-        content: `
+{
+    id: 2,
+    category: "Mutfak Sırları",
+    title: "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
+    content: `
             <p>Türk mutfağının en hafif, en zarif lezzetleri arasında yer alan zeytinyağlılar; hem sıcak yaz sofralarının hem de dört mevsim kurulan geleneksel yemek masalarının vazgeçilmezidir. Dolma, enginar, barbunya, pırasa, bamya veya taze fasulye… Hepsi hafif oldukları kadar besleyicidir. Peki zeytinyağlı yemeklerin yanına en çok ne yakışır?</p>
             <p>İşte sofrayı tamamlayan en iyi eşlikçi önerileri…</p>
             
@@ -654,7 +654,7 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
             </ul>
             <p>Bu eşlikçi özellikle kalabalık yaz sofralarında güzel bir alternatif olur.</p>
 
-            <h4>7. Zeytin & Zeytinyağı Soslu Mezeler</h4>
+            <h4>7. Zeytin &amp; Zeytinyağı Soslu Mezeler</h4>
             <p>Zeytin tabakları ve hafif mezeler sofrada bütünlük sağlar:</p>
             <ul>
                 <li>Zeytinyağlı zeytin salatası</li>
@@ -680,12 +680,12 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
                 <li>Turşu çeşitleri</li>
             </ul>
         `
-    },
-    {
-        id: 1,
-        category: "Mutfak Sırları",
-        title: "Etin Yanında En İyi Ne Gider? Sofraları Tamamlayan En İyi 12 Lezzet",
-        content: `
+  },
+  {
+    id: 1,
+    category: "Mutfak Sırları",
+    title: "Etin Yanında En İyi Ne Gider? Sofraları Tamamlayan En İyi 12 Lezzet",
+    content: `
             <p>Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik.</p>
             <h4>1. Közlenmiş Sebzeler</h4>
             <p>Köz patlıcan, biber, kabak ve domates; etin yoğun aromasını hafifletir.</p>
@@ -725,7 +725,7 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
                 <li>Hardal</li>
             </ul>
         `
-    }
+  }
 ];
 
         // --- ANA VERİ SETİ ---
