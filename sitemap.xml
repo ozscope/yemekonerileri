@@ -4,7 +4,7 @@
   <!-- Ana Sayfa -->
   <url>
     <loc>https://yanindanevar.com/</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Blog Listeleme Sayfası -->
   <url>
     <loc>https://yanindanevar.com/?page=blog</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Blog Yazısı 1 – Etin Yanına Ne Gider -->
   <url>
     <loc>https://yanindanevar.com/?page=blog&amp;post=etin-yanina-ne-gider</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -28,7 +28,7 @@
   <!-- Blog Yazısı 2 – Zeytinyağlı Yemeklerin Yanına Ne Gider -->
   <url>
     <loc>https://yanindanevar.com/?page=blog&amp;post=zeytinyagli-yanina-ne-gider</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -36,15 +36,15 @@
   <!-- Blog Yazısı 3 – Yılbaşı Sofra Menü Önerileri -->
   <url>
     <loc>https://yanindanevar.com/?page=blog&amp;post=yilbasi-sofra-menu-onerileri</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Yazısı 4 – Pilav Rehberi -->
+  <!-- Blog Yazısı 4 – Pilav Uyum Rehberi -->
   <url>
     <loc>https://yanindanevar.com/?page=blog&amp;post=pilav-yanina-hangi-yemek-gider</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -52,7 +52,7 @@
   <!-- Blog Yazısı 5 – Kış Çorbaları Yanına Ne Gider -->
   <url>
     <loc>https://yanindanevar.com/?page=blog&amp;post=kis-corbasi-yanina-ne-gider</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
