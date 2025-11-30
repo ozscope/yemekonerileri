@@ -133,9 +133,17 @@ if (postSlug) {
     const post = blogPostsData.find(p => p.slug === postSlug);
     if (post) {
 
-        // ⭐⭐⭐ TEKİL BLOG SAYFASI → DİNAMİK TITLE ⭐⭐⭐
+        // ⭐ DİNAMİK TITLE
         document.title = `${post.title} - Yanında Ne Yiyelim?`;
 
+// META DESCRIPTION RESET
+const metaDesc = document.querySelector('meta[name="description"]');
+if (metaDesc) {
+    metaDesc.setAttribute("content", "Blog yazılarımızı keşfedin. Menü önerileri, özel gün sofraları ve yanına ne gider içerikleri.");
+}
+
+
+        // Sayfa HTML'sini bas
         container.innerHTML = `
             <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
             <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
