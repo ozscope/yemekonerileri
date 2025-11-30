@@ -86,19 +86,19 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
 
 <p>
 Çorbanın ardından etli bir yemek planlıyorsanız,
-<a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a>
+<strong> <a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a> </strong>
 rehberine bakabilirsiniz.
 </p>
 
 <p>
 Hafif seçenekler için
-<a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a>
+<strong> <a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a> </strong>
 yazımızı inceleyin.
 </p>
 
 <p>
 Çorba + pilav dengesi arıyorsanız,
-<a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a>
+<strong> <a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a> </strong>
 menü planlamasına yardımcı olur.
 </p>
 
