@@ -28,9 +28,9 @@ const blogPostsData = [
       {  
     id: 5,
     category: "Mutfak Sırları",
-    title: "🥣 Kış Çorbaları Yanına Ekmek Dışında Ne Gider? 5 Farklı Eşlikçi",
-    slug: "kis-corba-yanina-ne-gider",
-    description: "Kış çorbalarının yanına en çok yakışan 5 farklı eşlikçi önerisi; kıtır peynir krotonları, çıtır nohut, mısır ekmeği, yoğurt topları, lor peyniri..",
+    title: "🥣 Kış Çorbalarının Yanına Ne Gider? Ekmek Dışında 5 Pratik Eşlikçi",
+    slug: "kis-corbasi-yanina-ne-gider",
+    description: "Kış çorbalarının yanına ekmek dışında ne gider? Çorbaları daha doyurucu ve lezzetli hale getiren 5 pratik eşlikçi önerisini keşfedin.",
     content: ` 
 
 
@@ -89,8 +89,8 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
     id: 4,
     category: "Mutfak Sırları",
     title: "🍚 Ana Yemeğe Göre İdeal Pilav Seçimi: 7 Farklı Pilav Uyum Rehberi",
-    slug: "pilav-rehberi",
-    description: "Farklı pilav çeşitlerini yemeklere uygun hazırlamanız için ipuçları.",
+    slug: "pilav-yanina-hangi-yemek-gider",
+    description: "Hangi pilav hangi ana yemeğin yanına gider? Et, tavuk, balık ve geleneksel yemekler için ideal pilav eşleşmelerini içeren 7 farklı pilav uyum rehberini keşfedin.",
     content: ` 
     
 
@@ -169,9 +169,9 @@ Unutmayın: Pilav tercihi sadece lezzet değil, aynı zamanda kalori dengesi aç
     {  
     id: 3,
     category: "Özel Gün",
-    title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi)",
+    title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi) – En Şık ve Doyurucu Seçenekler",
     slug: "yilbasi-sofra-menu-onerileri",
-    description: "Yılbaşı sofrası için ana yemek, meze, salata, içecek ve tatlı önerileri. Şık ve doyurucu yılbaşı menüsü hazırlamanız için ipuçları.",
+    description: "2025 için yılbaşı sofrasına uygun 10 özel menü! Etli, deniz ürünlü, vegan, glutensiz ve klasik seçeneklerle şık ve doyurucu yılbaşı menüleri keşfedin.",
     content: `
 <p>
 Yılbaşı akşamı sofranın hem göze hem mideye hitap etmesini istiyorsan, planlı bir menü hazırlamak büyük fark yaratır.
@@ -751,8 +751,8 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
     id: 2,
     category: "Mutfak Sırları",
     title: "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
-    slug: "zeytinyagli-yemek-yanina-ne-gider",
-    description: "Zeytinyağlı yemeklere uygun menü hazırlamanız için ipuçları.",
+    slug: "zeytinyagli-yanina-ne-gider",
+    description: "Zeytinyağlı yemeklerin yanına en çok yakışan pilav, yoğurt, salata ve meze önerilerini keşfedin. Sofranıza hafif ve uyumlu lezzetler ekleyin.",
     content: `
             <p>Türk mutfağının en hafif, en zarif lezzetleri arasında yer alan zeytinyağlılar; hem sıcak yaz sofralarının hem de dört mevsim kurulan geleneksel yemek masalarının vazgeçilmezidir. Dolma, enginar, barbunya, pırasa, bamya veya taze fasulye… Hepsi hafif oldukları kadar besleyicidir. Peki zeytinyağlı yemeklerin yanına en çok ne yakışır?</p>
             <p>İşte sofrayı tamamlayan en iyi eşlikçi önerileri…</p>
@@ -829,9 +829,9 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
   {
     id: 1,
     category: "Mutfak Sırları",
-    title: "Etin Yanında En İyi Ne Gider? Sofraları Tamamlayan En İyi 12 Lezzet",
+    title: "Etin Yanına Ne Gider? Sofranızı Tamamlayan En İyi 12 Lezzet",
     slug: "etin-yanina-ne-gider",
-    description: "Et yemeklerine uygun menü hazırlamanız için ipuçları.",
+    description: "Et yemeklerinin yanına en çok yakışan 12 lezzeti keşfedin. Pilav, közlenmiş sebzeler, meze ve salata önerileriyle sofranızı mükemmel tamamlayın.",
     content: `
             <p>Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik.</p>
             <h4>1. Közlenmiş Sebzeler</h4>
