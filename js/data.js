@@ -3716,27 +3716,26 @@ if (typeof module !== "undefined") {
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 }, 
-{ 
-    main: "Lüfer / Çinekop Tava", 
-    // ... suggestions
-    suggestions: {
-        yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
-        drink: ["Rakı (İsteğe Bağlı)/Şalgam Suyu"], 
-        dessert: ["Helva"]
-    },
-    calories: {
-        total: 965,
-        // ... breakdown
-        breakdown: {
-            main: 400,
-            yanlar: 295,
-            drink: 90,
-            dessert: 180
-        },
-        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
-    }
-}, // <-- KRİTİK EKSİK VİRGÜL EKLENDİ
-
+{ 
+    main: "Lüfer / Çinekop Tava", 
+    // ... suggestions
+    suggestions: {
+        yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
+        drink: ["Rakı (İsteğe Bağlı)/Şalgam Suyu"], 
+        dessert: ["Helva"]
+    },
+    calories: {
+        total: 965,
+        // ... breakdown
+        breakdown: {
+            main: 400,
+            yanlar: 295,
+            drink: 90,
+            dessert: 180
+        },
+        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+    }
+}, // buradan sonra başka obje geliyor
 {
     main: "Fırında Somon",
     // ... keywords, cuisine, suggestions, calories
@@ -4603,7 +4602,8 @@ const suggestionCategories = [
     { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
 ];
 
-// data.js dosyasının en sonuna eklenmesi önerilir
-window.dishSuggestions = dishSuggestions;
-window.blogPostsData = blogPostsData;
-window.suggestionCategories = suggestionCategories;
+if (typeof window !== "undefined") {
+    window.dishSuggestions = dishSuggestions;
+    window.blogPostsData = blogPostsData;
+    window.suggestionCategories = suggestionCategories;
+}
