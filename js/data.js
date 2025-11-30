@@ -883,7 +883,7 @@ if (typeof window !== "undefined") {
 // Node tarafında kullanmak için (CommonJS):
 if (typeof module !== "undefined") {
     module.exports = { blogPostsData };
-
+}
 
 
         // --- ANA VERİ SETİ ---
@@ -4617,4 +4617,3 @@ if (typeof module !== "undefined") {
         suggestionCategories
     };
 }
-
