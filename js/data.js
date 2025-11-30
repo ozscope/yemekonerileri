@@ -72,8 +72,8 @@ tarifine ve porsiyon büyüklüğüne göre değişebilir.
     </tr>
     <tr>
       <td><strong>Ana Yemek</strong></td>
-      <td>Fırında Tüm Tavuk + İç Pilav</td>
-      <td>~800 kcal</td>
+      <td>Fırında Bütün Hindi + İç Pilav</td>
+      <td>~550 kcal</td>
     </tr>
     <tr>
       <td><strong>Tatlı</strong></td>
@@ -93,8 +93,8 @@ tarifine ve porsiyon büyüklüğüne göre değişebilir.
   </tbody>
 </table>
 
-<p><strong>Toplam (Alkollü içecek ile): ~2170 kcal</strong><br>
-<strong>Toplam (Alkolsüz içecek ile): ~2100 kcal</strong></p>
+<p><strong>Toplam (Alkollü içecek ile): ~1920 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1850 kcal</strong></p>
 
 <hr>
 
