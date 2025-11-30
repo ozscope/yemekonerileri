@@ -602,7 +602,7 @@ Bu 10 yılbaşı menüsü; et severler, deniz ürünlerini sevenler,
 
 <p>İstersen aynı kategorideki mezeleri değiştirerek kendi tarzını yaratabilir, tatlıyı daha hafif seçeneklerle değiştirebilir,
 alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
-
+`
     },  
 {
     id: 2,
