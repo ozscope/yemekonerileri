@@ -25,7 +25,144 @@ window.createListHtml = (items, colorClass) => {
 
 // --- BLOG VERİSİ ---
 const blogPostsData = [
-  {  
+      {  
+    id: 5,
+    category: "Mutfak Sırları",
+    title: "🥣 Kış Çorbaları Yanına Ekmek Dışında Ne Gider? 5 Farklı Eşlikçi",
+    content: ` 
+
+
+<p>
+Soğuk günlerde sıcacık bir kase çorba, tüm öğünün başlangıcı ve kurtarıcısıdır. Ancak her çorbanın yanında sürekli ekmek yemek istemeyenler için hem doyuruculuğu artıran hem de lezzet katmanları ekleyen pratik alternatifler mevcuttur.
+</p>
+
+<h4>1. Kıtır Peynir Krotonları (Alternatif: Lor)</h4>
+<p>
+Ekmek yerine, sert bir peyniri (örneğin eski kaşar veya tulum) küp küp kesip zeytinyağında kızartarak çıtır krotonlar elde edebilirsiniz. Peynirin tuzlu ve yoğun tadı, sade domates veya mercimek çorbasıyla mükemmel uyum sağlar.
+</p>
+<ul>
+<li>Uyumlu Olduğu Çorbalar: Domates Çorbası, Sebze Çorbası.</li>
+</ul>
+
+<h4>2. Baharatlı Kızarmış Nohut</h4>
+<p>
+Tok tutan ve lif oranı yüksek bir alternatiftir. Nohutları haşladıktan sonra kekik, pul biber ve zeytinyağı ile fırınlayarak ya da tavada kızartarak çorbaya ekleyin.
+</p>
+<ul>
+<li>Uyumlu Olduğu Çorbalar: Mercimek Çorbası, Ezogelin Çorbası, Yoğurt Çorbası.</li>
+</ul>
+
+<h4>3. Mısır Ekmeği (Dilimlenmiş ve Kıtır)</h4>
+<p>
+Özellikle Karadeniz ve Ege mutfağındaki sebze ve ot çorbalarıyla müthiş bir uyum yakalar. Dilimlenmiş mısır ekmeğini fırında biraz ısıtıp kıtır hale getirdikten sonra servis edebilirsiniz.
+</p>
+<ul>
+<li>Uyumlu Olduğu Çorbalar: Karalahana Çorbası, Pırasa Çorbası, Sebze Çorbası.</li>
+</ul>
+
+<h4>4. Yoğurt/Sarımsaklı Yoğurt Topları (Yoğurt Bazlı Çorbalar Hariç)</h4>
+<p>
+Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsaklı yoğurt topları, çorbanın lezzetini katlar ve kremsi bir doku ekler. Yanına ayrıca nane yağı gezdirebilirsiniz.
+</p>
+<ul>
+<li>Uyumlu Olduğu Çorbalar: Tarhana Çorbası, İşkembe Çorbası, Ezogelin Çorbası.</li>
+</ul>
+
+<h4>5. Lor Peyniri &amp; Pul Biber</h4>
+<p>
+Özellikle yoğurt bazlı çorbalarda (Ayran Aşı, Yayla Çorbası) veya sade sebze çorbalarında, lor peyniri çorbanın besin değerini artırırken taze bir lezzet katar.
+</p>
+<ul>
+<li>Uyumlu Olduğu Çorbalar: Yayla Çorbası, Ayran Aşı, Sade Kabak Çorbası.</li>
+</ul>
+<p>
+<hr>
+</p>
+<p>
+Çorbanın hemen ardından ana yemeğe geçiş yapmadan önce bu eşlikçilerle doyuruculuğu artırmak, ana yemeğin porsiyonunu dengelemenize yardımcı olur.
+</p>
+`
+        },
+      {  
+    id: 4,
+    category: "Mutfak Sırları",
+    title: "🍚 Ana Yemeğe Göre İdeal Pilav Seçimi: 7 Farklı Pilav Uyum Rehberi",
+    content: ` 
+    
+
+<p>
+Türk mutfağında pilav, ana yemeğin sadece bir yan lezzeti değil, sofra kültürünün tamamlayıcı bir parçasıdır. Ancak her pilav, her yemeğe yakışmaz. Bu rehberde, farklı pilav çeşitlerinin hangi ana yemeklerle mükemmel bir uyum yakaladığını keşfedin.
+</p>
+
+<p>
+Menünüzde doğru dengeyi yakalamak için pilavın yağ oranı, baharat yoğunluğu ve tane yapısı önemlidir.
+</p>
+
+<h4>1. Tereyağlı Sade Pirinç Pilavı</h4>
+<p>
+Klasik ve vazgeçilmezdir. Etli sulu yemeklerin, özellikle tencere yemeklerinin ve nohut/kuru fasulye gibi baklagillerin suyunu çekmesi için idealdir.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Kuru Fasulye, Tas Kebabı, İzmir Köfte, Karnıyarık.</li>
+</ul>
+
+<h4>2. Arpa Şehriyeli Pirinç Pilavı</h4>
+<p>
+Hafif kavrulmuş arpa şehriyesiyle daha dolgun bir lezzet sunar. Et ve tavuk sote türü lezzetlerin yanında, tek başına doyuruculuğu artırmak için idealdir.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Tavuk Sote, Et Sote, Döner, Salçalı Köfte.</li>
+</ul>
+
+<h4>3. İç Pilav (Kestaneli/Kuş Üzümlü)</h4>
+<p>
+Kestane, kuş üzümü, fıstık ve bol baharat içeriği nedeniyle zengin ve gösterişlidir. Genellikle özel günlerde büyük et veya tavuk dolmalarının yanında sunulur.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Fırında Bütün Hindi, Kuzu İncik, Haşlama.</li>
+</ul>
+
+<h4>4. Domatesli veya Salçalı Bulgur Pilavı</h4>
+<p>
+Domatesin ekşiliği ve bulgurun tok yapısı, ağır et yemeklerini dengeler. Kebap, köfte ve kavurma gibi mangal lezzetlerinin vazgeçilmezidir.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Adana Kebap, Sac Kavurma, Izgara Köfte, Et Yahni.</li>
+</ul>
+
+<h4>5. Sebzeli Pilav (Havuçlu/Bezelyeli)</h4>
+<p>
+Sebzelerle zenginleştirildiği için, sade ızgara balık veya sade et (bonfile) yanına renk ve lezzet katar.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Fırında Somon, Sade Biftek, Izgara Tavuk.</li>
+</ul>
+
+<h4>6. Meyhane Pilavı (Acılı Bulgur)</h4>
+<p>
+Soğan, biber ve domatesle kavrulmuş, acı biber salçası içeren bu pilav; bol baharatlı ve acılı ana yemeklerle uyum sağlar.
+</p>
+<ul>
+<li>Yakışan Ana Yemekler: Ciğer Kavurma, Acılı Güveç, Kokoreç.</li>
+</ul>
+
+<h4>7. Hamsili Pilav (Karadeniz Mutfağı)</h4>
+<p>
+Anadolu ve Karadeniz mutfağına özgü bu pilav, başlı başına bir ana yemektir. Yanına daha çok ferahlatıcı lezzetler yakışır.
+</p>
+<ul>
+<li>Yakışan Yan Lezzetler: Roka Salatası, Mısır Ekmeği, Turşu.</li>
+</ul>
+<p>
+<hr>
+</p>
+<p>
+Unutmayın: Pilav tercihi sadece lezzet değil, aynı zamanda kalori dengesi açısından da önemlidir. Tereyağlı pilavlar, zeytinyağlı yemeklerin yanında ağır kaçabilir.
+</p>
+`
+    }, 
+    
+    {  
     id: 3,
     category: "Özel Gün",
     title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi)",
