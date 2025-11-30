@@ -83,13 +83,18 @@ function showPage(pageId, fromSidebar = false) {
     // URL'de sadece page parametresini yönet, post'a dokunma
     try {
         const url = new URL(window.location);
-        if (pageId === 'blog') {
-            url.searchParams.set('page', 'blog');
-            // post parametresi varsa olduğu gibi kalsın
-        } else {
-            url.searchParams.delete('page');
-            url.searchParams.delete('post'); // diğer sayfalarda post parametresini temizle
-        }
+if (pageId === 'blog') {
+    url.searchParams.set('page', 'blog');
+}
+else if (pageId === 'privacy') {
+    url.searchParams.set('page', 'privacy');
+    url.searchParams.delete('post');
+}
+else {
+    url.searchParams.delete('page');
+    url.searchParams.delete('post');
+}
+
         window.history.pushState({}, '', url);
     } catch (e) {
         console.log("URL güncelleme bu ortamda desteklenmiyor");
