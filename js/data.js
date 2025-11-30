@@ -4606,4 +4606,4 @@ if (typeof window !== "undefined") {
     window.dishSuggestions = dishSuggestions;
     window.blogPostsData = blogPostsData;
     window.suggestionCategories = suggestionCategories;
-}
+};
