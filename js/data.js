@@ -83,6 +83,25 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
 <p>
 Çorbanın hemen ardından ana yemeğe geçiş yapmadan önce bu eşlikçilerle doyuruculuğu artırmak, ana yemeğin porsiyonunu dengelemenize yardımcı olur.
 </p>
+
+<p>
+Çorbanın ardından etli bir yemek planlıyorsanız,
+<a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a>
+rehberine bakabilirsiniz.
+</p>
+
+<p>
+Hafif seçenekler için
+<a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a>
+yazımızı inceleyin.
+</p>
+
+<p>
+Çorba + pilav dengesi arıyorsanız,
+<a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a>
+menü planlamasına yardımcı olur.
+</p>
+
 `
         },
       {  
@@ -163,6 +182,25 @@ Anadolu ve Karadeniz mutfağına özgü bu pilav, başlı başına bir ana yemek
 <p>
 Unutmayın: Pilav tercihi sadece lezzet değil, aynı zamanda kalori dengesi açısından da önemlidir. Tereyağlı pilavlar, zeytinyağlı yemeklerin yanında ağır kaçabilir.
 </p>
+
+<p>
+Pilavı tamamlayacak ana yemek arıyorsanız,
+<a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a>
+rehberimiz size yardımcı olabilir.
+</p>
+
+<p>
+Daha hafif bir sofra kurmak isterseniz
+<a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a>
+yazımıza göz atabilirsiniz.
+</p>
+
+<p>
+Özel gün sofraları için ilham arayanlar,
+<a href="https://yanindanevar.com/?page=blog&post=yilbasi-sofra-menu-onerileri">yılbaşı sofra menü önerileri</a>
+yazısından çok faydalanacaktır.
+</p>
+
 `
     }, 
     
@@ -745,6 +783,25 @@ Bu 10 yılbaşı menüsü; et severler, deniz ürünlerini sevenler,
 
 <p>İstersen aynı kategorideki mezeleri değiştirerek kendi tarzını yaratabilir, tatlıyı daha hafif seçeneklerle değiştirebilir,
 alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
+
+<p>
+Yılbaşı menünüzde kırmızı et yer alıyorsa, 
+<a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a>
+rehberine göz atabilirsiniz.
+</p>
+
+<p>
+Pilav çeşitlerini doğru ana yemekle eşleştirmek için 
+<a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a>
+yazımızı inceleyebilirsiniz.
+</p>
+
+<p>
+Menünüzü hafifletmek isterseniz,
+<a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a>
+listesi size ilham verebilir.
+</p>
+
 `
     },  
 {
@@ -824,6 +881,25 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
                 <li>Kapari</li>
                 <li>Turşu çeşitleri</li>
             </ul>
+           
+            <p>
+Et ağırlıklı bir menü hazırlıyorsanız, 
+<a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a>
+rehberimiz size yardımcı olabilir.
+</p>
+
+<p>
+Zeytinyağlıların yanında servis edilecek en doğru pilav türleri için 
+<a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberine</a>
+göz atabilirsiniz.
+</p>
+
+<p>
+Menünüze çorba eklemek isterseniz,
+<a href="https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a>
+yazımız size fikir verebilir.
+</p>
+
         `
   },
   {
@@ -871,7 +947,25 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
                 <li>Barbekü sos</li>
                 <li>Hardal</li>
             </ul>
-        `
+            <p>
+
+Daha hafif bir menü oluşturmak isterseniz 
+<a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a>
+rehberimize de göz atabilirsiniz.
+</p>
+
+<p>
+Et yemeklerinin yanında sunabileceğiniz en doğru pilav önerileri için 
+<a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a>
+yazımızı inceleyebilirsiniz.
+</p>
+
+<p>
+Menünüzde çorba varsa, 
+<a href="https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a>
+listesi size fikir verebilir.
+</p>
+     `
   }
 ];
 
