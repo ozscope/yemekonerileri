@@ -61,10 +61,6 @@ function showPage(pageId, fromSidebar = false) {
         bottomAd.classList.remove('hidden');
     }
 
-    // ... senin diğer showPage kodların aynen devam
-}
-
-
     // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
     if (pageId === 'blog') {
         const params = new URLSearchParams(window.location.search);
@@ -72,6 +68,7 @@ function showPage(pageId, fromSidebar = false) {
         loadBlogContent(slug);
     }
 
+    // Title yönetimi
     if (pageId === 'blog') {
         document.title = "Blog - Yanında Ne Yiyelim?";
     } else if (pageId === 'privacy') {
@@ -98,6 +95,7 @@ function showPage(pageId, fromSidebar = false) {
         console.log("URL güncelleme bu ortamda desteklenmiyor");
     }
 }
+
 
 // --- ANA SAYFA BLOG ÖNERİLERİ ---
 function renderHomeBlogSection() {
