@@ -875,6 +875,17 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
   }
 ];
 
+// Tarayıcıda kullanmak için:
+if (typeof window !== "undefined") {
+    window.blogPostsData = blogPostsData;
+}
+
+// Node tarafında kullanmak için (CommonJS):
+if (typeof module !== "undefined") {
+    module.exports = { blogPostsData };
+
+
+
         // --- ANA VERİ SETİ ---
         const dishSuggestions = [
             // ÇORBALAR
