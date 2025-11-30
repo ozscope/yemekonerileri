@@ -4602,8 +4602,19 @@ const suggestionCategories = [
     { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
 ];
 
+// Tarayıcı için:
 if (typeof window !== "undefined") {
     window.dishSuggestions = dishSuggestions;
     window.blogPostsData = blogPostsData;
     window.suggestionCategories = suggestionCategories;
-};
+}
+
+// Node (CommonJS) için:
+if (typeof module !== "undefined") {
+    module.exports = {
+        blogPostsData,
+        dishSuggestions,
+        suggestionCategories
+    };
+}
+
