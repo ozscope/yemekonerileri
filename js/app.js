@@ -23,11 +23,8 @@ function createListHtml(items, colorClass) {
     `).join('');
 }
 
-// BUNU GLOBAL’E AÇ: (önceden window.createListHtml = ... idi)
+// BUNU GLOBAL’E AÇ
 window.createListHtml = createListHtml;
-
-// suggestionCategories ZATEN data.js’teyse tekrar tanımlama.
-// Eğer app.js’teyse yine global kalabilir.
 
 // --- SIDEBAR ---
 function showSidebar() {
@@ -63,7 +60,12 @@ function showPage(pageId, fromSidebar = false) {
         bottomAd.classList.remove('hidden');
     }
 
-    if (pageId === 'blog') loadBlogContent();
+    // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
+    if (pageId === 'blog') {
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get('post');
+        loadBlogContent(slug);
+    }
 
     if (pageId === 'blog') {
         document.title = "Blog - Yanında Ne Yiyelim?";
@@ -76,10 +78,16 @@ function showPage(pageId, fromSidebar = false) {
     if (fromSidebar) hideSidebar();
     window.scrollTo(0, 0);
 
+    // URL'de sadece page parametresini yönet, post'a dokunma
     try {
         const url = new URL(window.location);
-        if (pageId === 'blog') url.searchParams.set('page', 'blog');
-        else url.searchParams.delete('page');
+        if (pageId === 'blog') {
+            url.searchParams.set('page', 'blog');
+            // post parametresi varsa olduğu gibi kalsın
+        } else {
+            url.searchParams.delete('page');
+            url.searchParams.delete('post'); // diğer sayfalarda post parametresini temizle
+        }
         window.history.pushState({}, '', url);
     } catch (e) {
         console.log("URL güncelleme bu ortamda desteklenmiyor");
@@ -87,15 +95,45 @@ function showPage(pageId, fromSidebar = false) {
 }
 
 // --- BLOG ---
-function loadBlogContent(postId = null) {
+
+// Tekil yazıyı slug'a göre aç ve URL'yi güncelle
+function viewBlogPost(slug) {
+    try {
+        const url = new URL(window.location);
+        url.searchParams.set('page', 'blog');
+        url.searchParams.set('post', slug);
+        window.history.pushState({}, '', url);
+    } catch (e) {
+        console.log("URL güncelleme bu ortamda desteklenmiyor");
+    }
+
+    loadBlogContent(slug);
+}
+
+// Blog listesine dön ve URL'den post parametresini sil
+function viewBlogList() {
+    try {
+        const url = new URL(window.location);
+        url.searchParams.set('page', 'blog');
+        url.searchParams.delete('post');
+        window.history.pushState({}, '', url);
+    } catch (e) {
+        console.log("URL güncelleme bu ortamda desteklenmiyor");
+    }
+
+    loadBlogContent(null);
+}
+
+// postSlug: null ise liste, dolu ise tekil yazı gösterir
+function loadBlogContent(postSlug = null) {
     const container = document.getElementById('blog-posts-container');
     container.innerHTML = '';
 
-    if (postId) {
-        const post = blogPostsData.find(p => p.id === postId);
+    if (postSlug) {
+        const post = blogPostsData.find(p => p.slug === postSlug);
         if (post) {
             container.innerHTML = `
-                <button onclick="loadBlogContent()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
+                <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
                 <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
                     <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
                     <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
@@ -103,6 +141,13 @@ function loadBlogContent(postId = null) {
                 </article>
                 <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
                     <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
+                <div class="p-6 bg-white rounded-2xl shadow-xl">
+                    <p class="text-gray-700 font-semibold">Yazı bulunamadı.</p>
                 </div>
             `;
         }
@@ -118,7 +163,7 @@ function loadBlogContent(postId = null) {
                     <span class="text-xs font-bold text-secondary-green uppercase">${post.category}</span>
                     <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
                     <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
-                    <button onclick="loadBlogContent(${post.id})" type="button" class="text-primary-blue font-semibold text-sm hover:underline">Devamını Oku →</button>
+                    <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-primary-blue font-semibold text-sm hover:underline">Devamını Oku →</button>
                 </div>
             `;
         });
@@ -189,116 +234,115 @@ function searchDish() {
         return;
     }
 
-if (foundDish) {
-    // --- 1200 KALORİ FİLTRESİ BİLGİSİ ---
-    const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
-    const hasCalories = foundDish.calories && foundDish.calories.total;
+    if (foundDish) {
+        // --- 1200 KALORİ FİLTRESİ BİLGİSİ ---
+        const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
+        const hasCalories = foundDish.calories && foundDish.calories.total;
 
-    const totalCalOrig = hasCalories ? foundDish.calories.total : null;
-    const isHighCalorie = hasCalories && totalCalOrig > 1200;
+        const totalCalOrig = hasCalories ? foundDish.calories.total : null;
+        const isHighCalorie = hasCalories && totalCalOrig > 1200;
 
-    // Başlangıçta her zaman ORİJİNAL toplam
-    let effectiveTotalCal = totalCalOrig;
-    let dessertCal = 0;
-    let extraNote = '';
+        // Başlangıçta her zaman ORİJİNAL toplam
+        let effectiveTotalCal = totalCalOrig;
+        let dessertCal = 0;
+        let extraNote = '';
 
-    // 🔴 SADECE şu durumda tatlıyı devre dışı bırakıyoruz:
-    // - Filtre açık
-    // - Orijinal toplam > 1200
-    if (lowCalorieOnly && isHighCalorie && foundDish.calories.breakdown) {
-        dessertCal = foundDish.calories.breakdown.dessert || 0;
-        effectiveTotalCal = totalCalOrig - dessertCal;
+        // 🔴 SADECE şu durumda tatlıyı devre dışı bırakıyoruz:
+        // - Filtre açık
+        // - Orijinal toplam > 1200
+        if (lowCalorieOnly && isHighCalorie && foundDish.calories.breakdown) {
+            dessertCal = foundDish.calories.breakdown.dessert || 0;
+            effectiveTotalCal = totalCalOrig - dessertCal;
 
-        // Tatlı çıkarılmış hâli bile 1200'ün üstündeyse MENÜ GÖSTERME
-        if (effectiveTotalCal > 1200) {
-            container.innerHTML = `
-                <div class="w-full text-center p-4">
-                    <p class="text-gray-800 font-semibold mb-2">
-                        Bu yemek 1200 kcal üzerindedir.
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        Filtreyi kapatarak tüm yemekleri görebilirsiniz.
-                    </p>
-                </div>
-            `;
-            bottomAd.classList.add('hidden');
-            return;
+            // Tatlı çıkarılmış hâli bile 1200'ün üstündeyse MENÜ GÖSTERME
+            if (effectiveTotalCal > 1200) {
+                container.innerHTML = `
+                    <div class="w-full text-center p-4">
+                        <p class="text-gray-800 font-semibold mb-2">
+                            Bu yemek 1200 kcal üzerindedir.
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            Filtreyi kapatarak tüm yemekleri görebilirsiniz.
+                        </p>
+                    </div>
+                `;
+                bottomAd.classList.add('hidden');
+                return;
+            }
+
+            extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
         }
 
-        extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
-    }
+        let html = '';
 
-    let html = '';
+        // 1) Yan lezzet listelerini oluştur
+        suggestionCategories.forEach(cat => {
+            const items = foundDish.suggestions[cat.key];
 
-    // 1) Yan lezzet listelerini oluştur
-    suggestionCategories.forEach(cat => {
-        const items = foundDish.suggestions[cat.key];
+            // ✅ Tatlıyı sadece "filtre açık + yemek aslında >1200" durumunda gizliyoruz
+            if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
+                return; // tatlı kategorisini atla
+            }
 
-        // ✅ Tatlıyı sadece "filtre açık + yemek aslında >1200" durumunda gizliyoruz
-        if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
-            return; // tatlı kategorisini atla
-        }
+            if (items && items.length) {
+                html += `
+                    <div class="mb-4">
+                        <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
+                        <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
+                    </div>
+                `;
+            }
+        });
 
-        if (items && items.length) {
+        // 2) Kalori bilgisi varsa HTML'e ekle
+        if (hasCalories) {
+            const c = foundDish.calories;
+
             html += `
-                <div class="mb-4">
-                    <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
-                    <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
+                <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
+                    <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
+                    <p class="mb-1">
+                        Toplam: <strong>${effectiveTotalCal} kcal</strong>
+                    </p>
+                    ${
+                        c.breakdown
+                            ? `<ul class="list-disc ml-4">
+                                ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
+                                ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
+                                ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
+                                ${
+                                    // Tatlıyı sadece şu durumda GİZLİYORUZ:
+                                    // filtre açık + yemek aslında >1200
+                                    (lowCalorieOnly && isHighCalorie)
+                                        ? ''
+                                        : (c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : '')
+                                }
+                               </ul>`
+                            : ''
+                    }
+                    <p class="mt-1 text-xs text-amber-700">
+                        ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}${extraNote}
+                    </p>
                 </div>
             `;
         }
-    });
 
-    // 2) Kalori bilgisi varsa HTML'e ekle
-    if (hasCalories) {
-        const c = foundDish.calories;
+        // 3) Şablona bas
+        const template = document
+            .getElementById('dishDetailTemplate')
+            .content
+            .cloneNode(true);
 
-        html += `
-            <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
-                <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
-                <p class="mb-1">
-                    Toplam: <strong>${effectiveTotalCal} kcal</strong>
-                </p>
-                ${
-                    c.breakdown
-                        ? `<ul class="list-disc ml-4">
-                            ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
-                            ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
-                            ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
-                            ${
-                                // Tatlıyı sadece şu durumda GİZLİYORUZ:
-                                // filtre açık + yemek aslında >1200
-                                (lowCalorieOnly && isHighCalorie)
-                                    ? ''
-                                    : (c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : '')
-                            }
-                           </ul>`
-                        : ''
-                }
-                <p class="mt-1 text-xs text-amber-700">
-                    ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}${extraNote}
-                </p>
-            </div>
-        `;
+        template.querySelector('h2').innerHTML =
+            `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
+
+        template.querySelector('#suggestionsListContainer').innerHTML = html;
+
+        const info = template.querySelector('#randomInfo');
+        info.style.display = isRandom ? 'block' : 'none';
+
+        container.appendChild(template);
     }
-
-    // 3) Şablona bas
-    const template = document
-        .getElementById('dishDetailTemplate')
-        .content
-        .cloneNode(true);
-
-    template.querySelector('h2').innerHTML =
-        `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
-
-    template.querySelector('#suggestionsListContainer').innerHTML = html;
-
-    const info = template.querySelector('#randomInfo');
-    info.style.display = isRandom ? 'block' : 'none';
-
-    container.appendChild(template);
-}
-
 
     if (window.innerWidth < 768) {
         input.blur();
@@ -339,15 +383,22 @@ window.showSidebar = showSidebar;
 window.showPage = showPage;
 window.searchDish = searchDish;
 window.loadBlogContent = loadBlogContent;
+window.viewBlogPost = viewBlogPost;
+window.viewBlogList = viewBlogList;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
-
 
 // İlk yükleme davranışı
 window.addEventListener('load', () => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('page') === 'blog') showPage('blog');
-    else showPage('home');
+    const page = params.get('page');
+
+    if (page === 'blog') {
+        showPage('blog');
+    } else {
+        showPage('home');
+    }
+
     document.getElementById('bottomAdContainer').classList.add('hidden');
     checkConsent();
 });
