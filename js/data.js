@@ -88,6 +88,7 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
     id: 4,
     category: "Mutfak Sırları",
     title: "🍚 Ana Yemeğe Göre İdeal Pilav Seçimi: 7 Farklı Pilav Uyum Rehberi",
+    slug: "pilav-rehberi",
     content: ` 
     
 
