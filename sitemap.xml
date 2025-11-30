@@ -9,38 +9,52 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Blog Ana Listeleme Sayfası -->
+  <!-- Blog Listeleme Sayfası -->
   <url>
-    <loc>https://yanindanevar.com/index.html?page=blog</loc>
+    <loc>https://yanindanevar.com/?page=blog</loc>
     <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ÖRNEK: Blog Yazısı 1 – Etin Yanına Ne Gider -->
+  <!-- Blog Yazısı 1 – Etin Yanına Ne Gider -->
   <url>
-    <loc>https://yanindanevar.com/index.html?page=blog&amp;post=1</loc>
+    <loc>https://yanindanevar.com/?page=blog&amp;post=etin-yanina-ne-gider</loc>
     <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- ÖRNEK: Blog Yazısı 2 – Zeytinyağlı Yemekler -->
+  <!-- Blog Yazısı 2 – Zeytinyağlı Yemeklerin Yanına Ne Gider -->
   <url>
-    <loc>https://yanindanevar.com/index.html?page=blog&amp;post=2</loc>
+    <loc>https://yanindanevar.com/?page=blog&amp;post=zeytinyagli-yanina-ne-gider</loc>
     <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Yeni yazılar ve sayfalar geldikçe buna benzer bloklar ekle -->
-  <!--
+  <!-- Blog Yazısı 3 – Yılbaşı Sofra Menü Önerileri -->
   <url>
-    <loc>https://yanindanevar.com/index.html?page=blog&amp;post=3</loc>
-    <lastmod>2025-12-05</lastmod>
+    <loc>https://yanindanevar.com/?page=blog&amp;post=yilbasi-sofra-menu-onerileri</loc>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  -->
+
+  <!-- Blog Yazısı 4 – Pilav Rehberi -->
+  <url>
+    <loc>https://yanindanevar.com/?page=blog&amp;post=pilav-yanina-hangi-yemek-gider</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Yazısı 5 – Kış Çorbaları Yanına Ne Gider -->
+  <url>
+    <loc>https://yanindanevar.com/?page=blog&amp;post=kis-corbasi-yanina-ne-gider</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
