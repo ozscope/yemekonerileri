@@ -220,7 +220,7 @@ container.innerHTML = `
     // X (Twitter) paylaş linkini dinamik oluştur
 const twitterBtn = document.getElementById("twitterShareBtn");
 if (twitterBtn && post) {
-    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`;
+    const shareUrl = `https://X.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`;
     twitterBtn.href = shareUrl;
 }
 
