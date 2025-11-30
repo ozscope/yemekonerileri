@@ -129,19 +129,24 @@ function loadBlogContent(postSlug = null) {
     const container = document.getElementById('blog-posts-container');
     container.innerHTML = '';
 
-    if (postSlug) {
-        const post = blogPostsData.find(p => p.slug === postSlug);
-        if (post) {
-            container.innerHTML = `
-                <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
-                <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
-                    <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
-                    <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
-                    ${post.content}
-                </article>
-                <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
-                    <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
-                </div>
+if (postSlug) {
+    const post = blogPostsData.find(p => p.slug === postSlug);
+    if (post) {
+
+        // ⭐⭐⭐ TEKİL BLOG SAYFASI → DİNAMİK TITLE ⭐⭐⭐
+        document.title = `${post.title} - Yanında Ne Yiyelim?`;
+
+        container.innerHTML = `
+            <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
+            <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
+                <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
+                <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
+                ${post.content}
+            </article>
+            <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
+                <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
+            </div>
+
             `;
         } else {
             container.innerHTML = `
