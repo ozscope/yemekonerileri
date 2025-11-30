@@ -193,13 +193,43 @@ if (metaDesc) {
 
 
         // Sayfa HTML'sini bas
-        container.innerHTML = `
-            <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
-            <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
-                <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
-                <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
-                ${post.content}
-            </article>
+container.innerHTML = `
+    <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
+    
+    <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
+        <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
+        <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category}</span>
+        ${post.content}
+    </article>
+
+    <!-- X PAYLAŞ BUTONU -->
+    <div class="mt-6">
+        <a 
+            id="twitterShareBtn"
+            href="#"
+            target="_blank"
+            class="inline-flex items-center px-4 py-2 bg-[#1DA1F2] text-white font-semibold rounded-lg shadow hover:bg-[#0d8ddb] transition"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.633 7.997c.13 5.55-3.87 11.91-11.82 11.91-2.35 0-4.53-.69-6.36-1.87.33.05.66.07 1 .07 1.94 0 3.72-.66 5.14-1.78a4.15 4.15 0 01-3.87-2.88c.26.04.51.07.78.07.37 0 .73-.05 1.08-.14a4.14 4.14 0 01-3.32-4.06v-.05c.55.31 1.2.5 1.88.52a4.13 4.13 0 01-1.84-3.45c0-.76.2-1.47.55-2.08a11.77 11.77 0 008.54 4.33 4.67 4.67 0 01-.1-.95 4.13 4.13 0 014.13-4.13c1.19 0 2.26.5 3.01 1.3a8.17 8.17 0 002.62-1 4.1 4.1 0 01-1.82 2.27 8.3 8.3 0 002.38-.64 8.93 8.93 0 01-2.06 2.13z"/>
+            </svg>
+            X'te Paylaş
+        </a>
+    </div>
+    
+    // X (Twitter) paylaş linkini dinamik oluştur
+const twitterBtn = document.getElementById("twitterShareBtn");
+if (twitterBtn && post) {
+    const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`;
+    twitterBtn.href = shareUrl;
+}
+
+
+    <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
+        <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
+    </div>
+`;
+
             <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
                 <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
             </div>
