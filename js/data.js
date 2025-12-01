@@ -2545,7 +2545,7 @@ if (typeof module !== "undefined") {
     keywords: ["pırasa", "zeytinyağlı", "pirinçli"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Ezogelin Çorbası", "Pirinç Pilavı","Yoğurt"],
+        yanlar: ["Kereviz Çorbası", "Mantarlı Fırın Makarna","Yoğurt"],
         drink: ["Su"],
         dessert: ["Revani"]
     },
