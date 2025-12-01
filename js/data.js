@@ -2545,15 +2545,15 @@ if (typeof module !== "undefined") {
     keywords: ["pırasa", "zeytinyağlı", "pirinçli"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Ezogelin Çorbası","Limon", "Pirinç Pilavı","Yoğurt"],
+        yanlar: ["Ezogelin Çorbası", "Pirinç Pilavı","Yoğurt"],
         drink: ["Su"],
         dessert: ["Revani"]
     },
     calories: {
-        total: 1015,
+        total: 1140,
         breakdown: {
             main: 200,   // Zeytinyağlı pırasa
-            yanlar: 515, // Ezogelin (≈170) + limon (≈5) + pilav (≈220) + yoğurt (≈120)
+            yanlar: 640, // Kereviz Çorbası (≈140) +  + Mantarlı Fırın Makarna (≈380) + yoğurt (≈120)
             drink: 0,    // Su
             dessert: 300 // Revani
         },
