@@ -1068,8 +1068,8 @@ if (typeof module !== "undefined") {
     keywords: ["yayla çorbası", "yoğurt", "çorba", "pirinçli"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Taze Fasulye (Zeytinyağlı)", "Taze Pide"],
-        drink: ["Su"],
+        yanlar: ["Taze Fasulye (Zeytinyağlı)", "Tam Buğday Ekmek"],
+        drink: [],
         dessert: ["Güllaç"]
     },
     calories: {
@@ -1206,19 +1206,19 @@ if (typeof module !== "undefined") {
 },
 {
     main: "Ayran Aşı (Soğuk Çorba)",
-    keywords: ["ayran aşı", "çorba", "soğuk", "yaz"],
+    keywords: ["ayran aşı", "soğuk çorba"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Mücver", "Kıymalı Börek", "Dereotu"],
-        drink: ["Su"],
+        yanlar: ["Mücver", "Kıymalı Börek", "Mevsim Salata"],
+        drink: [],
         dessert: ["Meyve Tabağı"]
     },
     calories: {
-        total: 1485,
+        total: 1215,
         breakdown: {
             main: 220,    // Ayran aşı çorbası
-            yanlar: 850,  // Mücver (≈250) + kıymalı börek (≈550) + dereotu (≈10)
-            drink: 0,     // Su
+            yanlar: 580,  // Mücver (≈250) + kıymalı börek (≈250) + mevsim salata (≈40)
+            drink: 0,     // 
             dessert: 415  // Meyve tabağı (çeşitli)
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -1311,7 +1311,7 @@ if (typeof module !== "undefined") {
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Etli Biber Dolması", "Tam Buğdaylı Ekmek"],
-        drink: ["Su"],
+        drink: [],
         dessert: ["Güllaç"]
     },
     calories: {
@@ -1717,15 +1717,15 @@ if (typeof module !== "undefined") {
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Yayla Çorbası","Mantar Sosu", "Patates Püresi", "Roka Salatası"],
-        drink: ["Ayran"],
+        drink: ["Komposto"],
         dessert: ["Sufle"]
     },
     calories: {
-        total: 2050,
+        total: 2150,
         breakdown: {
             main: 900,   // Tereyağlı/ızgara antrikot (yağlı et)
             yanlar: 600, // Yayla çorbası (200) + mantar sosu (120) + patates püresi (220) + roka salatası (60)
-            drink: 90,   // Ayran
+            drink: 190,   // komposto
             dessert: 460 // Çikolatalı sufle
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -1798,15 +1798,15 @@ if (typeof module !== "undefined") {
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Ayran Aşı Çorbası","Bulgur Pilavı", "Zeytinyağlı Kereviz", "Turşu"],
-        drink: ["Ayran"],
+        drink: ["Erik Komposto"],
         dessert: ["Un Helvası"]
     },
     calories: {
-        total: 1950,
+        total: 1970,
         breakdown: {
             main: 650,   // Et kavurma (orta yağlı)
             yanlar: 630, // Ayran aşı (200) + bulgur pilavı (230) + kereviz (150) + turşu (50)
-            drink: 90,   // Ayran
+            drink: 110,   // hoşaf
             dessert: 580 // Un helvası
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
@@ -2263,15 +2263,15 @@ if (typeof module !== "undefined") {
     keywords: ["karnıyarık", "patlıcan", "kıyma"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Ayran Aşı Çorbası", "Pirinç Pilavı"],
+        yanlar: ["Ayran Aşı Çorbası", "Pirinç Pilavı", "Barbunya Pilaki"],
         drink: ["Komposto"],
         dessert: ["Sütlaç"]
     },
     calories: {
-        total: 1190,
+        total: 1120,
         breakdown: {
             main: 420,      // Karnıyarık
-            yanlar: 400,    // Ayran aşı çorbası (≈180) + pirinç pilavı (≈220)
+            yanlar: 530,    // Ayran aşı çorbası (≈180) + pirinç pilavı (≈220) + barbunya 130
             drink: 120,     // Komposto (1 bardak)
             dessert: 250    // Sütlaç
         },
@@ -2341,7 +2341,7 @@ if (typeof module !== "undefined") {
 
             {
     main: "Lahana Dolması",
-    keywords: ["lahana dolması", "sarma", "lahana"],
+    keywords: ["lahana dolması"],
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Bal Kabağı Çorbası","Yoğurt", "Turşu"],
@@ -2642,20 +2642,21 @@ if (typeof module !== "undefined") {
 },
 {
     main: "Mücver",
-    keywords: ["mücver", "kabak"],
+    keywords: ["mücver", "kabak mücveri"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Ayran Aşı Çorbası","Sarımsaklı Yoğurt", "Beyaz Peynir"],
-        drink: ["Çay"],
-        dessert: ["Karpuz"]
+        yanlar: ["Kremalı Mantar Çorbası","Sarımsaklı Yoğurt", "Kıymalı Börek", "Mevsim Salata"],
+        drink: [],
+        dessert: ["Meyve Tabağı"]
     },
     calories: {
-        total: 715,
+        total: 870,
         breakdown: {
             main: 260,   // Mücver
-            yanlar: 390, // Ayran aşı (≈180) + sarımsaklı yoğurt (≈120) + beyaz peynir (≈90)
-            drink: 5,    // Çay
-            dessert: 60  // Karpuz
+            yanlar: 520, // Mantar çorbası (≈140) + sarımsaklı yoğurt (≈85) + kıymalı börek (≈250) + mevsim salata (≈45)
+            drink: 0,    // 
+            dessert: 90  // Karpuz
+
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
@@ -2703,7 +2704,7 @@ if (typeof module !== "undefined") {
 },
 {
     main: "Kapuska",
-    keywords: ["kapuska", "lahana"],
+    keywords: ["kapuska", "lahana",],
     cuisine: "Türk Mutfağı",
     suggestions: {
         yanlar: ["Tarhana Çorbası","Bulgur Pilavı", "Turşu"],
@@ -2722,21 +2723,21 @@ if (typeof module !== "undefined") {
     }
 },
 {
-    main: "Mancar",
-    keywords: ["mancar", "karalahana", "karadeniz"],
+    main: "Lahana Çorbası",
+    keywords: ["lahana çorbası", "karalahana çorbası"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Mısır Ekmeği", "Yoğurt"],
+        yanlar: ["Hamsi Tava", "Mısır Ekmeği", "Roka Salatası", "Haydari"],
         drink: [],
         dessert: ["Laz Böreği"]
     },
     calories: {
-        total: 1030,
+        total: 1300,
         breakdown: {
-            main: 150,   // Mancar
-            yanlar: 260, // Mısır ekmeği (≈180) + yoğurt (≈80)
+            main: 70,   // Mancar
+            yanlar: 1000, // hamsi 680 + Mısır ekmeği (≈180) + roka (≈80) + haydari 60 
             drink: 0,    // İçecek yok
-            dessert: 620 // Laz böreği
+            dessert: 230 // Laz böreği
         },
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
