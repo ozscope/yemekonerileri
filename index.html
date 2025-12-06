@@ -11,23 +11,27 @@
 
     <title>Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? - Menü Önerileri</title>
 
-    <!-- GOOGLE ADSENSE -->
+    
+    <!-- ========================================== -->
+    <!-- GOOGLE ADSENSE KODU (İSTERSEN BURAYI DEĞİŞTİRME) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4702518283120384"
         crossorigin="anonymous"></script>
-
-    <!-- GOOGLE ANALYTICS 4 (GA4) -->
+    <!-- ========================================== -->
+    <!-- GOOGLE ANALYTICS 4 (GA4) KODU BAŞLANGICI -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YJ57YD93H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-6YJ57YD93H');
     </script>
+    <!-- GOOGLE ANALYTICS 4 (GA4) KODU BİTİŞİ -->
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind config -->
+    <!-- Tailwind config, CDN SONRASI -->
     <script>
         tailwind.config = {
             theme: {
@@ -43,15 +47,15 @@
         };
     </script>
 
-    <!-- HARİCİ CSS -->
+    <!-- HARİCİ CSS DOSYAMIZ -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- SEO ETİKETLERİ -->
     <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik lezzet önerileri sunan mobil uyumlu menü planlayıcı.">
     <meta property="og:title" content="🍽️ Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? - En Kapsamlı Menü Planlayıcı">
-    <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! 'akşam ne yapsam' ve ‘yanına ne gider’ derdinden kurtulun.">
+    <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! 'akşam ne yapsam' ‘yanına ne gider’ derdinden kurtulun.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yanindanevar.com/">
+    <meta property="og:url" content="https://yanindanevar.com/index.html"> 
     <meta property="og:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-optimized.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-optimized.jpg">
@@ -62,8 +66,8 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Yanında Ne Yiyelim? - Yemek Menü Önerileri",
-      "url": "https://yanindanevar.com/",
+      "name": "Yanında Ne Var? - Yemek Menü Önerileri",
+      "url": "https://yanindanevar.com/index.html",
       "description": "100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik lezzet önerileri sunan mobil uyumlu menü planlayıcı.",
       "publisher": {
         "@type": "Organization",
@@ -75,13 +79,14 @@
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://yanindanevar.com/?q={search_term_string}",
+        "target": "https://yanindanevar.com/index.html?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
     </script>
 </head>
 
+    
 <body class="bg-gray-50">
 
     <!-- ÜST BAR -->
@@ -92,9 +97,10 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-            <div class="flex items-center cursor-pointer" onclick="showPage('home')">
-                <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-20 w-auto mr-2">
-            </div>
+        <div class="flex items-center cursor-pointer" onclick="showPage('home')">
+        <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-20 w-auto mr-2">
+        </div>
+
         </div>
     </nav>
 
@@ -139,77 +145,81 @@
         <!-- ANA SAYFA -->
         <section id="page-home" class="block">
             <header class="mb-6 text-center">
-                <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-48 mx-auto mb-3">
-                <p class="text-gray-600 text-sm">Ana Yemeği Gir, Menüyü Oluştur.</p>
+
+            <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-48 mx-auto mb-3">
+
+            <p class="text-gray-600 text-sm">Ana Yemeği Gir, Menüyü Oluştur.</p>
             </header>
 
-            <!-- STATİK AÇIKLAMA BLOĞU -->
-            <section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-5 text-gray-700 leading-relaxed">
-                <h2 class="text-xl font-extrabold text-primary-blue text-center mb-3">
-                    Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? Hızlı Menü Önerileri
-                </h2>
 
-                <p class="text-sm text-gray-700 mb-3">
-                    Yanindanevar.com ile yaptığınız yemeğin yanına hangi pilav, salata, meze veya tatlının yakışacağını saniyeler içinde bulun. 
-                    Kalorisine göre menü filtreleyin, ‘yanına ne gider’ derdinden kurtulun.
-                </p>
+            <!-- STATİK AÇIKLAMA BLOĞU (KISA VERSİYON) -->
+<section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-5 text-gray-700 leading-relaxed">
 
-                <p class="text-sm text-gray-700 mb-2">
-                    Yapmanız gereken tek şey arama kutusuna yemek adını yazmak. 
-                    Sistem otomatik olarak en uygun yan lezzetleri ve kalorilerini listeler.
-                </p>
-            </section>
+    <h2 class="text-xl font-extrabold text-primary-blue text-center mb-3">
+        Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? Hızlı Menü Önerileri
+    </h2>
 
-            <!-- Filtre ve Arama -->
-            <div class="space-y-3 mb-6">
-                <select id="cuisineFilter" onchange="searchDish()"
-                    class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
-                    <option value="">Tüm Mutfaklar</option>
-                    <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
-                    <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
-                    <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
-                    <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
-                    <option value="Uluslararası">🌐 Uluslararası</option>
-                    <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
-                    <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
-                    <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
-                    <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
-                    <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
-                    <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
-                </select>
-                
-                <div class="flex">
-                    <input
-                        id="mainDishInput"
-                        type="text"
-                        placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
-                        class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
-                        aria-label="Ana yemek adını girin"
-                        onkeypress="if(event.key === 'Enter') searchDish()"
-                    />
-                    <button
-                        id="searchButton"
-                        type="button"
-                        onclick="searchDish()"
-                        class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
-                    >
-                        Ara
-                    </button>
-                </div>
-            </div>
+    <p class="text-sm text-gray-700 mb-3">
+        Yanindanevar.com ile yaptığınız yemeğin yanına hangi pilav, salata, meze veya tatlının yakışacağını saniyeler içinde bulun. Kalorisine göre menü filtreleyin, ‘yanına ne gider’ derdinden kurtulun.
+    </p>
 
-            <!-- 1200 kcal ALTINDA FİLTRE -->
-            <div class="flex items-center mb-3">
-                <input 
-                    type="checkbox" 
-                    id="lowCalorieFilter" 
-                    class="mr-2 w-5 h-5 cursor-pointer"
-                    onchange="searchDish()"
-                >
-                <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
-                    🍏 1200 kcal altındaki menüleri göster
-                </label>
-            </div>
+    <p class="text-sm text-gray-700 mb-2">
+        Yapmanız gereken tek şey arama kutusuna yemek adını yazmak. Sistem otomatik olarak en uygun yan lezzetleri ve kalorilerini listeler.
+    </p>
+
+
+</section>
+
+<!-- Filtre ve Arama -->
+<div class="space-y-3 mb-6">
+    <select id="cuisineFilter" onchange="searchDish()"
+        class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
+        <option value="">Tüm Mutfaklar</option>
+        <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
+        <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
+        <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
+        <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
+        <option value="Uluslararası">🌐 Uluslararası</option>
+        <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
+        <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
+        <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
+        <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
+        <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
+        <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
+    </select>
+    
+    <div class="flex">
+        <input
+            id="mainDishInput"
+            type="text"
+            placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
+            class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
+            aria-label="Ana yemek adını girin"
+            onkeypress="if(event.key === 'Enter') searchDish()"
+        />
+        <button
+            id="searchButton"
+            type="button"
+            onclick="searchDish()"
+            class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
+        >
+            Ara
+        </button>
+    </div>
+</div>
+
+<!-- 1200 kcal ALTINDA FİLTRE -->
+<div class="flex items-center mb-3">
+    <input 
+        type="checkbox" 
+        id="lowCalorieFilter" 
+        class="mr-2 w-5 h-5 cursor-pointer"
+        onchange="searchDish()"
+    >
+    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
+        🍏 1200 kcal altındaki menüleri göster
+    </label>
+</div>
 
             <!-- Sonuç Alanı -->
             <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
@@ -219,38 +229,40 @@
             </div>
 
             <!-- KATEGORİ KISAYOLLARI (2'li) -->
-            <section class="mt-6">
-                <h2 class="text-lg font-bold mb-3">Keşfet</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <!-- Glutensiz Menü -->
-                    <button 
-                        type="button"
-                        class="flex items-center px-4 py-3 rounded-2xl shadow bg-green-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
-                        onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-                    >
-                        <span class="text-2xl mr-3">🌾</span>
-                        <span class="text-left">
-                            <div class="text-sm font-semibold">Glutensiz Menü Önerileri</div>
-                            <div class="text-xs opacity-80">7 farklı glutensiz tam menü.</div>
-                        </span>
-                    </button>
+<section class="mt-6">
+  <h2 class="text-lg font-bold mb-3">Keşfet</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 
-                    <!-- Pratik Menü -->
-                    <button 
-                        type="button"
-                        class="flex items-center px-4 py-3 rounded-2xl shadow bg-amber-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
-                        onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-                    >
-                        <span class="text-2xl mr-3">⚡</span>
-                        <span class="text-left">
-                            <div class="text-sm font-semibold">Pratik Menü Önerileri</div>
-                            <div class="text-xs opacity-80">Hızlı menüler (30 dakika altı)</div>
-                        </span>
-                    </button>
-                </div>
-            </section>
 
+    <!-- 1. Glutensiz Menü -->
+    <button 
+      type="button"
+      class="flex items-center px-4 py-3 rounded-2xl shadow bg-green-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
+      onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
+    >
+      <span class="text-2xl mr-3">🌾</span>
+      <span class="text-left">
+        <div class="text-sm font-semibold">Glutensiz Menü Önerileri</div>
+        <div class="text-xs opacity-80">7 farklı glutensiz tam menü.</div>
+      </span>
+    </button>
+
+    <!-- 2. Pratik Menü -->
+    <button 
+      type="button"
+      class="flex items-center px-4 py-3 rounded-2xl shadow bg-amber-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
+      onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
+    >
+      <span class="text-2xl mr-3">⚡</span>
+      <span class="text-left">
+        <div class="text-sm font-semibold">Pratik Menü Önerileri</div>
+        <div class="text-xs opacity-80">Hızlı menüler (30 dakika altı)</div>
+      </span>
+    </button>
+
+  </div>
+</section>
             <!-- BLOG'DAN ÖNERİLER -->
             <section id="home-blog-section" class="mt-10">
                 <h2 class="text-xl font-bold mb-4">Blog’dan Öneriler</h2>
@@ -259,17 +271,20 @@
                 </div>
             </section>
 
-<!-- YEMEK DETAY ŞABLONU -->
-<template id="dishDetailTemplate">
-    <div class="w-full">
-        <h2 class="text-2xl font-extrabold text-primary-blue mb-4"></h2>
-        <div class="text-xs text-gray-500 mb-2" id="randomInfo" style="display:none;">
-            Filtreye göre rastgele bir "Günün Önerisi" gösteriliyor.
-        </div>
-        <div id="suggestionsListContainer"></div>
-    </div>
-</template>
-
+            <!-- YEMEK DETAY ŞABLONU -->
+            <template id="dishDetailTemplate">
+                <div class="w-full">
+                    <h2 class="text-2xl font-extrabold text-primary-blue mb-4"></h2>
+                    <div class="text-xs text-gray-500 mb-2" id="randomInfo" style="display:none;">
+                        Filtreye göre rastgele bir "Günün Önerisi" gösteriliyor.
+                    </div>
+                    <div id="suggestionsListContainer"></div>
+                    <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
+                        <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Öneri Altı)</p>
+                    </div>
+                </div>
+            </template>
+        </section>
 
         <!-- BLOG -->
         <section id="page-blog" class="hidden">
@@ -293,32 +308,31 @@
         </section>
         
     </main>
+<!-- INSTAGRAM TAKİP -->
+<div class="w-full max-w-3xl mx-auto mt-10 mb-6 px-4">
+    <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
+        <p class="text-gray-700 text-sm mb-3 font-medium">
+            Bizi Instagram’da takip edin 🎉
+        </p>
 
-    <!-- INSTAGRAM TAKİP -->
-    <div class="w-full max-w-3xl mx-auto mt-10 mb-6 px-4">
-        <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
-            <p class="text-gray-700 text-sm mb-3 font-medium">
-                Bizi Instagram’da takip edin 🎉
-            </p>
+        <a href="https://www.instagram.com/yanindaneyiyelim" target="_blank" 
+           class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-semibold py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition">
 
-            <a href="https://www.instagram.com/yanindanevar" target="_blank" 
-               class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-semibold py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition">
+            <!-- Instagram Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M16.5 7.5h.008v.008H16.5V7.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M6.75 3h10.5A3.75 3.75 0 0121 6.75v10.5A3.75 3.75 0 0117.25 21H6.75A3.75 3.75 0 013 17.25V6.75A3.75 3.75 0 016.75 3z" />
+            </svg>
 
-                <!-- Instagram Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M16.5 7.5h.008v.008H16.5V7.5z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                    d="M6.75 3h10.5A3.75 3.75 0 0121 6.75v10.5A3.75 3.75 0 0117.25 21H6.75A3.75 3.75 0 013 17.25V6.75A3.75 3.75 0 016.75 3z" />
-                </svg>
-
-                <span>@yanindanevar</span>
-            </a>
-        </div>
+            <span>@yanindaneyiyelim</span>
+        </a>
     </div>
+</div>
 
     <!-- SAYFA ALTI REKLAM ALANI -->
     <div id="bottomAdContainer" class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4 hidden">
