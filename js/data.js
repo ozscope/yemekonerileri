@@ -25,7 +25,108 @@ window.createListHtml = (items, colorClass) => {
 
 // --- BLOG VERİSİ ---
 const blogPostsData = [
-      {  
+
+    {
+    id: 6,
+    category: "Mutfak Sırları",
+    title: "🍽️ Köftenin Yanına Ne Gider? En İyi 12 Köfte Yanı Önerisi",
+    slug: "kofte-yanina-ne-gider",
+    description: "Köftenin yanına en çok ne yakışır? Pilav, salata, meze ve geleneksel eşlikçilerle hazırlanan 12 farklı öneriyi keşfedin.",
+    content: ` 
+    <p>
+Köfte; ızgarası, fırını, sulu yemeği ve mangal versiyonlarıyla Türk mutfağının en sevilen ana yemeklerinden biridir. 
+Peki <strong>köftenin yanına ne gider?</strong> İşte sofranı tamamlayacak en iyi 12 eşlikçi önerisi!
+</p>
+
+<h2>1) Pirinç Pilavı (Klasik Uyum)</h2>
+<p>
+Tane tane tereyağlı pirinç pilavı, köfteyle en çok tercih edilen yardımcı yemektir. Hem doyurucu hem dengeli bir kombinasyon oluşturur.
+</p>
+
+<h2>2) Piyaz (Antalya Usulü)</h2>
+<p>
+Köftenin yanına en çok yakışan lezzetlerden biri de piyazdır. 
+Özellikle tahinli Antalya piyazı, ızgara köfteyle mükemmel bir uyum sağlar.
+</p>
+
+<h2>3) Domatesli Bulgur Pilavı</h2>
+<p>
+Daha hafif bir pilav alternatifi isterseniz bulgur pilavı ideal bir tercihtir. 
+Biber, soğan ve domates aroması köftenin lezzetini öne çıkarır.
+</p>
+
+<h2>4) Közlenmiş Sebzeler</h2>
+<p>
+Köz biber, köz patlıcan ve köz domates; köftenin yoğun aromasını dengeleyerek tabağa hafiflik katar.
+</p>
+
+<h2>5) Patates Kızartması</h2>
+<p>
+Özellikle ev yapımı hamburger köftesi veya ızgara köfteyle harika bir uyum yakalar.
+</p>
+
+<h2>6) Fırında Patates (Baharatlı)</h2>
+<p>
+Kızartma sevmeyenler için daha sağlıklı bir alternatiftir. Köftenin suyuyla birleştiğinde çok lezzetli olur.
+</p>
+
+<h2>7) Mevsim Salatası</h2>
+<p>
+Tazelik isteyenler için mevsim salatası hem ferahlık hem de renk dengesi sağlar. 
+Nar ekşisi, limon ve zeytinyağı sosu ile servisi önerilir.
+</p>
+
+<h2>8) Acılı Ezme</h2>
+<p>
+Baharatlı ve hafif acılı yapısıyla köftenin yanına güçlü bir aroma ekler.
+</p>
+
+<h2>9) Haydari & Yoğurtlu Mezeler</h2>
+<p>
+Köfteyle yoğurt bazlı mezelerin uyumu tartışılmaz. Haydari, cacık ve yoğurtlu patlıcan mezesi en iyi seçeneklerdir.
+</p>
+
+<h2>10) Köz Patlıcan Salatası</h2>
+<p>
+Et yemekleriyle harika eşleşen köz patlıcan salatası, köfte için de mükemmel bir tamamlayıcıdır.
+</p>
+
+<h2>11) Şakşuka</h2>
+<p>
+Kızarmış patlıcan ve domates sosunun birleşimi, köfteye yan lezzet olarak nefis bir alternatif oluşturur.
+</p>
+
+<h2>12) Ayran veya Şalgam Suyu</h2>
+<p>
+Köftenin yanına içecek olarak en çok <strong>ayran</strong> tercih edilir. 
+Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşlikçidir.
+</p>
+
+<hr>
+
+<h2>🍽️ Köfte Menü Önerisi (Pratik Tabak)</h2>
+<ul>
+    <li>Izgara Köfte</li>
+    <li>Piyaz veya Mevsim Salatası</li>
+    <li>Bulgur Pilavı</li>
+    <li>Şalgam veya Ayran</li>
+</ul>
+
+<hr>
+
+<h2>🔗 Diğer Popüler Yazılar</h2>
+<p>
+Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
+</p>
+<ul>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+</ul>
+`
+}
+
+    {  
     id: 5,
     category: "Mutfak Sırları",
     title: "🥣 Kış Çorbalarının Yanına Ne Gider? Ekmek Dışında 5 Pratik Eşlikçi",
