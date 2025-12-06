@@ -74,7 +74,7 @@ const blogPostsData = [
 
 <hr />
 
-  <h2>10 Farklı Pratik Menü Önerisi</h2>
+  <h2>8 Farklı Pratik Menü Önerisi</h2>
   <p>
     Aşağıdaki menüler, günlük hayatın temposuna uyum sağlayan, <strong>pratik akşam yemeği menüleri</strong>
     olarak düşünülebilir. Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin.
@@ -152,12 +152,12 @@ const blogPostsData = [
 
 <h2>Popüler Menü Rehberleri</h2>
 <ul>
-  <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider"> class="text-primary-blue underline"> Kış Çorbalarının Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">class="text-primary-blue underline"> Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
-  <li><a href="?page=blog&post=etin-yanina-ne-gider">class="text-primary-blue underline"> Et Yemeklerinin Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">class="text-primary-blue underline"> Zeytinyağlılar İçin Uyumlu Yan Lezzetler</a></li>
+    <li><a href="?page=blog&post=glutensiz-menu-onerileri" class="text-primary-blue underline">Glutensiz Menü Önerileri: 7 Farklı Tam Menü</a></li>
+    <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">Kış Çorbalarının Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
 </ul>
-
 `
 },
 
@@ -173,7 +173,7 @@ const blogPostsData = [
   tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
   date: "2025-12-06",
   content: `
-<p>Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Bu yazıda senin için, her biri ana yemek + yan lezzet + tatlıdan oluşan <strong>4 farklı glutensiz tam menü</strong> hazırladım.</p>
+<p>Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Bu yazıda senin için, her biri ana yemek + yan lezzet + tatlıdan oluşan <strong>7 farklı glutensiz tam menü</strong> hazırladım.</p>
 
 <p><em>Not: Buradaki kalori değerleri yaklaşık tahminlerdir ve kullanılan yağ, porsiyon miktarı, pişirme yöntemi gibi detaylara göre değişebilir.</em></p>
 
@@ -258,7 +258,7 @@ const blogPostsData = [
   <li><strong>Yanına Gider:</strong> Zeytinyağlı Enginar veya Taze Fasulye – <em>~120 kcal</em></li> + Yoğurtlu Semizotu/Ispanak – <em>~140 kcal</em></li> + Glutensiz Ekmek – <em>~70 kcal</em></li>
 </ul>
 
-<p><strong>Toplam tahmini enerji:</strong> ~5100 kcal</p>
+<p><strong>Toplam tahmini enerji:</strong> ~510 kcal</p>
 <hr />
 
 <strong><h2>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</h2></strong>
@@ -286,6 +286,15 @@ const blogPostsData = [
 
 <p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 7 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
 
+<hr />
+
+<h2>Popüler Menü Rehberleri</h2>
+<ul>
+    <li><a href="?page=blog&post=pratik-menu-onerileri" class="text-primary-blue underline">Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler</a></li>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+</ul>
 `
 },
 
