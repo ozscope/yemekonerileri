@@ -2775,7 +2775,7 @@ if (typeof module !== "undefined") {
         total: 860,
         breakdown: {
             main: 150,   // Hafif kabak yemeği
-            yanlar: 6100, // çorba (≈200) + yoğurt (≈120) + erişte (290)
+            yanlar: 610, // çorba (≈200) + yoğurt (≈120) + erişte (290)
             drink: 0,    // İçecek belirtilmemiş
             dessert: 100 // hurma
         },
@@ -2953,7 +2953,7 @@ if (typeof module !== "undefined") {
         dessert: ["Revani"]
     },
     calories: {
-        total: 14500,
+        total: 1450,
         breakdown: {
             main: 420,   // Patates oturtma
             yanlar: 380, // Pilav (≈220) + mercimek çorbası (≈160)
@@ -3299,7 +3299,7 @@ if (typeof module !== "undefined") {
         dessert: ["Puding"]
     },
     calories: {
-        total: 14150,
+        total: 1415,
         breakdown: {
             main: 600,   // sade/peynirli makarna (1 büyük porsiyon)
             yanlar: 400, // tavuk sote + 1 küçük kase yoğurt
@@ -3360,7 +3360,7 @@ if (typeof module !== "undefined") {
         dessert: ["Mozaik Pasta"]
     },
     calories: {
-        total: 550 + 290 + 100 + 330,  // ≈ 1270 kcal
+        total: 1270,  // ≈ 1270 kcal
         breakdown: {
             main: 550,
             yanlar: 290,
@@ -3914,7 +3914,8 @@ if (typeof module !== "undefined") {
 }, 
 { 
     main: "Lüfer / Çinekop Tava", 
-    // ... suggestions
+    keywords: ["lüfer", "çinekop"], 
+    cuisine: "Akdeniz Mutfağı",
     suggestions: {
         yanlar: ["Yeşil Salata", "Narlı Peynir Mezesi", "Şakşuka"], 
         drink: ["Rakı (İsteğe Bağlı)/Şalgam Suyu"], 
@@ -3934,7 +3935,6 @@ if (typeof module !== "undefined") {
 }, // buradan sonra başka obje geliyor
 {
     main: "Fırında Somon",
-    // ... keywords, cuisine, suggestions, calories
     keywords: ["somon", "fırın somon"],
     cuisine: "Uluslararası",
     suggestions: {
