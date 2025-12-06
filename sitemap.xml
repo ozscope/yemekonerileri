@@ -39,7 +39,7 @@
     <loc>https://yanindanevar.com/?page=blog&amp;post=yilbasi-sofra-menu-onerileri</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Blog Yazısı 4 – Pilav Uyum Rehberi -->
@@ -47,7 +47,7 @@
     <loc>https://yanindanevar.com/?page=blog&amp;post=pilav-yanina-hangi-yemek-gider</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Blog Yazısı 5 – Kış Çorbaları Yanına Ne Gider -->
@@ -55,28 +55,28 @@
     <loc>https://yanindanevar.com/?page=blog&amp;post=kis-corbasi-yanina-ne-gider</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   
   <!-- Blog Yazısı 6 – Köfte Yanına Ne Gider -->
   <url>
   <loc>https://yanindanevar.com/blog/kofte-yanina-ne-gider</loc>
   <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
+  <priority>0.7</priority>
 </url>
   
   <!-- Glutensiz Menü Önerileri -->
   <url>
     <loc>https://yanindanevar.com/blog/glutensiz-menu-onerileri</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Pratik Menü Önerileri -->
   <url>
     <loc>https://yanindanevar.com/blog/pratik-menu-onerileri</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
 
