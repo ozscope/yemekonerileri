@@ -37,7 +37,7 @@ const blogPostsData = [
   tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
   date: "2025-12-06",
   content: `
-  <h1>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</h1>
+  <strong><h1>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</h1></strong>
 
   <p>
     “Akşam ne pişirsem?” diye düşünürken saat ilerliyor, dolap açılıp kapanıyor ve sonunda yine
@@ -61,20 +61,26 @@ const blogPostsData = [
     <li>🍳 Tek tencerede, tek tavada pratik çözüm isteyenler</li>
   </ul>
 
+<hr />
+
   <strong><h2>Pratik Menü Hazırlamanın 5 Altın Kuralı</h2></strong>
 <ol>
-<strong><li>Dondurulmuş Sebze Kullanımı:</strong> Menü 2'de olduğu gibi, dondurulmuş sebzeler hem doğrama süresini sıfırlar hem de besin değerini korur.</li>
-<strong><li>Konserve Malzemeler:</strong> Menü 4'te konserve nohut ve domates kullanımı, yemeğin hazırlık süresini dakikalara indirir.</li>
+<strong><li>Dondurulmuş Sebze Kullanımı:</strong> Dondurulmuş sebzeler hem doğrama süresini sıfırlar hem de besin değerini korur.</li>
+<strong><li>Konserve Malzemeler:</strong> Konserve nohut ve domates kullanımı, yemeğin hazırlık süresini dakikalara indirir.</li>
 <strong><li>Tencere/Tava Odaklılık:</strong> Bulaşık derdini azaltmak için fırın yerine tava veya tencerede hızlı pişen tariflere odaklanın.</li>
-<strong><li>Porsiyonluk Köfte:</strong> Buzluğunuzda porsiyonluk çiğ köfte bulundurmak, Menü 7'deki süreyi daha da kısaltacaktır.</li>
-<strong><li>Hazır Salça Sosu:</strong> Makarna için domates salçası, zeytinyağı ve baharatları karıştırıp küçük bir kavanozda buzdolabında tutmak, Menü 5'in hazırlığını 2 dakikaya indirir.</li>
+<strong><li>Porsiyonluk Köfte:</strong> Buzluğunuzda porsiyonluk köfte bulundurmak, menü hazırlama süresini daha da kısaltacaktır.</li>
+<strong><li>Hazır Salça Sosu:</strong> Makarna için domates salçası, zeytinyağı ve baharatları karıştırıp küçük bir kavanozda buzdolabında tutmak, hazırlığını 2 dakikaya indirir.</li>
 </ol>
+
+<hr />
 
   <h2>10 Farklı Pratik Menü Önerisi</h2>
   <p>
     Aşağıdaki menüler, günlük hayatın temposuna uyum sağlayan, <strong>pratik akşam yemeği menüleri</strong>
     olarak düşünülebilir. Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin.
   </p>
+
+<hr />
 
    <section id="menu-1">
 <strong><h3>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h3></strong>
@@ -127,7 +133,7 @@ const blogPostsData = [
  </section>
  
   <section id="menu-7">
-<strong><h2>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</h2></strong>
+<strong><h3>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</h3></strong>
 <ul>
   <li><strong>Ana Yemek:</strong> Hazır Köfte ve Püre: Önceden hazırlanmış veya dondurulmuş köfteleri tavada veya fırında ısıtırken, hazır veya pratik toz patates püresi hazırlama.</li>
   <li><strong>Yanına Gider:</strong> Turşu veya Köz Biber Konservesi</li>
@@ -142,6 +148,7 @@ const blogPostsData = [
 </ul>
  </section>
 
+<hr />
 
 <h2>Popüler Menü Rehberleri</h2>
 <ul>
