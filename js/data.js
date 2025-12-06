@@ -26,12 +26,16 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
 
-    {
-  id: 7,
-  category: "Sağlıklı Beslenme",
-  title: "🌾 Glutensiz Menü Önerileri (4 Farklı Tam Menü)",
+ {
+  id: "glutensiz-menu-onerileri",
   slug: "glutensiz-menu-onerileri",
-  description: "Glutensiz beslenenler için 4 farklı tam menü: etli, tavuklu, balıklı ve hafif seçenekler.",
+  title: "Glutensiz Menü Önerileri: 4 Farklı Tam Menü (Kalori Hesaplı)",
+  metaTitle: "Glutensiz Menü Önerileri | 4 Farklı Tam Menü (Kalori Hesaplı)",
+  metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 4 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
+  excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 4 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
+  category: "Beslenme",
+  tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
+  date: "2025-12-06",
   content: ` <p>
 Glutensiz besleniyorsanız veya daha hafif menüler tercih ediyorsanız, sizin için 4 farklı glutensiz tam menü hazırladık.  
 Her menüde ana yemek + yan lezzet + içecek + tatlı olmak üzere dengeli bir toplam kalori sunulur.
