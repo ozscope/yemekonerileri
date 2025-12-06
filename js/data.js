@@ -26,193 +26,153 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
 
- {
-  id: "pratik-menu-onerileri",
-  slug: "pratik-menu-onerileri",
-  title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
-  metaTitle: "Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri (2025)",
-  metaDescription: "Kolay hazırlanabilen, ekonomik ve hızlı pratik menü önerileri mi arıyorsun? 8 farklı günlük menü fikriyle sofranı dakikalar içinde planla! Tarif uyumu, yan lezzet önerileri ve düşük kalorili seçenekler.",
-  excerpt: "Yoğun günler için 30 dakikada hazırlanabilen 8 farklı pratik menü.",
-  category: "Pratik",
-  tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
-  date: "2025-12-06",
-  content: `
+{
+  id: "pratik-menu-onerileri",
+  slug: "pratik-menu-onerileri",
+  title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
+  metaTitle: "Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri (2025)",
+  metaDescription: "Kolay hazırlanabilen, ekonomik ve hızlı pratik menü önerileri mi arıyorsun? 8 farklı günlük menü fikriyle sofranı dakikalar içinde planla! Tarif uyumu, yan lezzet önerileri ve düşük kalorili seçenekler.",
+  excerpt: "Yoğun günler için 30 dakikada hazırlanabilen 8 farklı pratik menü.",
+  category: "Pratik",
+  tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
+  date: "2025-12-06",
+  content: `
+<article class="space-y-8">
 
-<article class="space-y-6">
+  <!-- HERO / BAŞLIK -->
+  <header class="text-center max-w-3xl mx-auto space-y-4">
+    <h1 class="text-2xl md:text-3xl font-extrabold text-orange-600">
+      🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri
+    </h1>
+    <p class="text-base md:text-lg text-stone-600 leading-relaxed">
+      "<strong>Akşam ne pişirsem?</strong>" derdine son. Zamanı kısıtlı olanlar, öğrenciler ve çalışanlar için 
+      özel olarak hazırlanmış, maksimum 25 dakikada hazırlanan 
+      <strong>8 hayat kurtarıcı pratik menü</strong>.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3 mt-2">
+      <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs md:text-sm font-semibold">⏱ Hızlı</span>
+      <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs md:text-sm font-semibold">💸 Ekonomik</span>
+      <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs md:text-sm font-semibold">😋 Lezzetli</span>
+    </div>
+  </header>
 
-  <header class="space-y-3">
-    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900">
-      🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri
-    </h1>
-    <p class="text-sm text-gray-700">
-      “<strong>Akşam ne pişirsem?</strong>” diye düşünürken saat ilerliyor, dolap açılıp kapanıyor ve 
-      sonunda yine aynı menülere dönüyor musun? Bu yazıda özellikle 
-      <strong>zamanı kısıtlı</strong> olanlar için, <strong>hızlı, ekonomik ve lezzetli pratik menü önerileri</strong> derledik.
-    </p>
-    <p class="text-sm text-gray-700">
-      Menüler; <strong>ana yemek + yan lezzet + salata veya içecek</strong> dengesini koruyacak şekilde 
-      planlandı. Çoğu <strong>20–30 dakika</strong> içinde hazırlanabilecek pratiklikte.
-    </p>
-  </header>
+  <!-- KİMLER İÇİN / ALTIN KURAL BLOĞU -->
+  <section class="space-y-4">
+    <div class="bg-primary-light/40 border border-primary-blue/10 rounded-2xl p-4 md:p-5 space-y-2">
+      <h2 class="text-base md:text-lg font-semibold text-stone-900">
+        Bu Pratik Menü Önerileri Kimler İçin İdeal?
+      </h2>
+      <ul class="list-disc list-inside text-sm text-stone-700 space-y-1">
+        <li>⏱ İşten geç çıkıp kısa sürede sofrayı kurmak isteyen çalışanlar</li>
+        <li>🎓 Kısıtlı bütçe ve malzemeyle lezzetli menü yapmak isteyen öğrenciler</li>
+        <li>👨‍👩‍👧 Hızlıca akşam yemeği hazırlamak isteyen aileler</li>
+        <li>💸 <strong>Ekonomik menü önerileri</strong> arayanlar</li>
+        <li>🍳 Tek tencerede, tek tavada pratik çözüm isteyenler</li>
+      </ul>
+    </div>
 
-  <section class="bg-primary-light/40 border border-primary-blue/10 rounded-2xl p-4 space-y-2">
-    <h2 class="text-base font-semibold text-gray-900">Bu Pratik Menü Önerileri Kimler İçin İdeal?</h2>
-    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
-      <li>⏱ İşten geç çıkıp kısa sürede sofrayı kurmak isteyen çalışanlar</li>
-      <li>🎓 Kısıtlı bütçe ve malzemeyle lezzetli menü yapmak isteyen öğrenciler</li>
-      <li>👨‍👩‍👧 Hızlıca akşam yemeği hazırlamak isteyen aileler</li>
-      <li>💸 <strong>Ekonomik menü önerileri</strong> arayanlar</li>
-      <li>🍳 Tek tencerede, tek tavada pratik çözüm isteyenler</li>
-    </ul>
-  </section>
+    <div>
+      <h2 class="text-xl font-bold mb-2">Pratik Menü Hazırlamanın 5 Altın Kuralı</h2>
+      <p class="text-xs text-stone-500 mb-2">
+        Aşağıdaki kartlar, mutfakta hız kazanmak için temel prensipleri özetler.
+      </p>
+      <!-- Buraya JS ile kartlar gelecek -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="rulesContainer-pratik"></div>
+    </div>
+  </section>
 
-  <section>
-    <h2 class="text-xl font-bold mb-2">Pratik Menü Hazırlamanın 5 Altın Kuralı</h2>
-    <ol class="list-decimal list-inside text-sm text-gray-700 space-y-1">
-      <li><strong>Dondurulmuş sebze kullanımı:</strong> Doğrama süresini sıfırlar, besin değerini büyük ölçüde korur.</li>
-      <li><strong>Konserve malzemeler:</strong> Nohut, domates, mısır gibi konserverler hazırlık süresini dakikalara indirir.</li>
-      <li><strong>Tencere / tava odaklılık:</strong> Fırın yerine tek kapta pişen yemekler bulaşık yükünü azaltır.</li>
-      <li><strong>Porsiyonluk köfte / et:</strong> Buzlukta hazır porsiyonlar tutmak pişirme süreni ciddi şekilde kısaltır.</li>
-      <li><strong>Hazır soslar:</strong> Küçük kavanozda sakladığın salça-baharat-zeytinyağı karışımı makarna ve tavalar için hayat kurtarır.</li>
-    </ol>
-  </section>
+  <!-- MENÜ KARTLARI BÖLÜMÜ -->
+  <section class="space-y-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <h2 class="text-xl md:text-2xl font-bold text-stone-900">8 Farklı Pratik Menü Önerisi</h2>
+        <p class="text-sm text-stone-600">
+          Aşağıdaki menüler <strong>pratik akşam yemeği menüleri</strong> olarak düşünülebilir. 
+          Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin.
+        </p>
+      </div>
 
-  <hr class="my-4">
+      <!-- Filtre Butonları -->
+      <div class="flex bg-white p-1 rounded-lg border border-stone-200 shadow-sm">
+        <button 
+          type="button"
+          onclick="filterPratikMenus('all')" 
+          id="btn-pratik-all"
+          class="px-4 py-2 text-xs md:text-sm font-medium rounded-md bg-orange-500 text-white transition-colors">
+          Tümü
+        </button>
+        <button 
+          type="button"
+          onclick="filterPratikMenus('fast')" 
+          id="btn-pratik-fast"
+          class="px-4 py-2 text-xs md:text-sm font-medium rounded-md text-stone-600 hover:bg-stone-100 transition-colors">
+          20 dk Altı
+        </button>
+      </div>
+    </div>
 
-  <section>
-    <h2 class="text-xl font-bold mb-3">8 Farklı Pratik Menü Önerisi (Kart Kart)</h2>
-    <p class="text-sm text-gray-700 mb-4">
-      Aşağıdaki menüler, <strong>pratik akşam yemeği menüleri</strong> olarak düşünülebilir. 
-      Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin. Her biri için tahmini hazırlama süresi de yer alıyor.
-    </p>
+    <!-- KART GRID: 2 SÜTUNLU -->
+    <div id="menusGrid-pratik" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- JS ile kartlar yüklenecek -->
+    </div>
+  </section>
 
-    <!-- 8 Kartlık Grid (md:grid-cols-2 olarak güncellendi) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+  <!-- EK İPUÇLARI -->
+  <section class="bg-stone-800 text-stone-300 rounded-2xl p-6 md:p-8 text-center space-y-4">
+    <h3 class="text-lg md:text-xl font-semibold text-white">Ekstra Hız İpuçları</h3>
+    <ul class="flex flex-wrap justify-center gap-4 md:gap-6 text-xs md:text-sm">
+      <li class="flex items-center gap-2">
+        <span class="text-orange-400">●</span> Hafta başında 1–2 tencere temel yemek (mercimek, nohut, tavuk haşlama) hazırlayın.
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-orange-400">●</span> Dolapta her zaman yıkanmış yeşillik ve 1–2 çeşit peynir bulundurun.
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="text-orange-400">●</span> Tek tavada / tek tencerede pişen tariflere ağırlık verin.
+      </li>
+    </ul>
+    <hr class="border-stone-700 max-w-xs mx-auto my-4">
+    <p class="text-[11px] text-stone-500">
+      Bu içerik, yanindanevar.com “Pratik Menü Önerileri” rehberi baz alınarak hazırlanmıştır.
+    </p>
+  </section>
 
-      <!-- Menü 1 -->
-      <div id="menu-1" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">1. Somon Tava & Yeşillik</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~20 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Hafif, omega-3 zengini, tek tava menü.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Tavada somon fileto – Tuz, karabiber ve limon suyu ile her iki yüzü de birkaç dakika pişirilir.</li>
-          <li><strong>Yanına Gider:</strong> Hazır salata karışımı – Yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
-        </ul>
-      </div>
+  <!-- İLGİLİ YAZILAR -->
+  <section class="mt-6">
+    <h2 class="text-lg font-semibold mb-2">İlgini Çekebilecek Diğer Menü Rehberleri</h2>
+    <ul class="list-disc list-inside text-sm text-primary-blue space-y-1">
+      <li>
+        <a href="?page=blog&post=glutensiz-menu-onerileri" class="underline">
+          Glutensiz Menü Önerileri: 7 Farklı Tam Menü
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="underline">
+          Kış Çorbalarının Yanına Ne Gider?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="underline">
+          Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=etin-yanina-ne-gider" class="underline">
+          Etin Yanına Ne Gider?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="underline">
+          Zeytinyağlı Yemeklerin Yanına Ne Gider?
+        </a>
+      </li>
+    </ul>
+  </section>
 
-      <!-- Menü 2 -->
-      <div id="menu-2" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">2. Tek Kapta Tavuk</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~25 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Tek tavada hem protein hem sebze.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Sebzeli tavuk sote – Doğranmış tavuk, dondurulmuş karışık sebze ve soya sosu ile yüksek ateşte pişirilir.</li>
-          <li><strong>Yanına Gider:</strong> Hızlı makarna / erişte – 5 dakikalık makarna, ekstra yağ eklemeden.</li>
-        </ul>
-        </div>
+</article>
+  `
+},
 
-      <!-- Menü 3 -->
-      <div id="menu-3" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">3. Pratik Yumurta Ziyafeti</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~15 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Dolapta ne varsa yumurtayla taçlanır.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Menemen veya hızlı omlet – Yumurta, biber ve domates (veya kapya biber konservesi) ile.</li>
-          <li><strong>Yanına Gider:</strong> Peynir tabağı – Az tuzlu peynir, zeytin ve taze nane / maydanoz.</li>
-          <li><strong>İçecek:</strong> Çay</li>
-        </ul>
-      </div>
-
-      <!-- Menü 4 -->
-      <div id="menu-4" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">4. Konserve Kolaylığı</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~15 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Dolapta konserve varsa, aç-kapa menü.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Nohut güveç – Konserve nohut, domates konservesi ve baharatlarla (kimyon, pul biber) ısıtılır.</li>
-          <li><strong>Yanına Gider:</strong> Yoğurtlu sos – Sarımsaklı yoğurt veya ev yapımı cacık.</li>
-          <li><strong>İçecek:</strong> Maden suyu</li>
-        </ul>
-      </div>
-      
-      <!-- Menü 5 -->
-      <div id="menu-5" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">5. Tek Tencerede Makarna</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~25 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Karbonhidrat + protein dengeli, tek kap çözüm.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Domatesli ton balıklı makarna – Haşlanan makarnanın üzerine konserve domates, ton balığı, sarımsak ve zeytinyağı eklenir.</li>
-          <li><strong>Yanına Gider:</strong> Roka salatası – Limon ve zeytinyağı ile tatlandırılmış roka.</li>
-        </ul>
-      </div>
-
-      <!-- Menü 6 -->
-      <div id="menu-6" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">6. Hızlı Pizza Alternatifi</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~10 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Lavaşla mini pizza / tost hissi.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Lavaş üstü tost / pizza – Lavaş üzerine salça veya ketçap, az peynir ve ince dilimli salamura sebzeler (biber, zeytin) eklenip tavada veya tost makinesinde ısıtılır.</li>
-          <li><strong>İçecek:</strong> Ayran</li>
-        </ul>
-      </div>
-      
-      <!-- Menü 7 -->
-      <div id="menu-7" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">7. Hazır Köfte Hızlandırıcısı</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~20 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Buzluktaki köfteyle 20 dakikada sofra.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Hazır köfte ve püre – Dondurulmuş veya önceden hazırlanmış köfte, tavada veya fırında ısıtılır; yanında hazır veya pratik toz patates püresi.</li>
-          <li><strong>Yanına Gider:</strong> Turşu veya köz biber konservesi</li>
-        </ul>
-      </div>
-      
-      <!-- Menü 8 -->
-      <div id="menu-8" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold">8. Bakliyat Gücü</h3>
-          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
-            ~20 dk
-          </span>
-        </div>
-        <p class="text-xs text-gray-500 mb-3">Dolapta haşlanmış mercimek varsa, menü hazır.</p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Hızlı mercimek yemeği – Önceden haşlanmış (veya konserve) yeşil mercimek, az soğan ve salça ile 10 dakika kadar pişirilir.</li>
-          <li><strong>Yanına Gider:</strong> Kuru soğan / pirinç sirkeli salata – İnce halka soğan, maydanoz ve pirinç sirkesi ile karıştırılır.</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
 
   <hr class="my-6">
 
