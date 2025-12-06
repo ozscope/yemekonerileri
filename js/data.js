@@ -29,10 +29,10 @@ const blogPostsData = [
 {
   id: "glutensiz-menu-onerileri",
   slug: "glutensiz-menu-onerileri",
-  title: "Glutensiz Menü Önerileri: 4 Farklı Tam Menü (Kalori Hesaplı)",
-  metaTitle: "Glutensiz Menü Önerileri | 4 Farklı Tam Menü (Kalori Hesaplı)",
-  metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 4 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
-  excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 4 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
+  title: "Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)",
+  metaTitle: "Glutensiz Menü Önerileri | 7 Farklı Tam Menü (Kalori Hesaplı)",
+  metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
+  excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
   category: "Beslenme",
   tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
   date: "2025-12-06",
@@ -55,8 +55,6 @@ const blogPostsData = [
 
 <p><strong>Toplam tahmini enerji:</strong> ~980 kcal</p>
 
-<p><strong>Neden iyi bir seçenek?</strong> Karabuğday (greçka) doğal olarak glutensiz bir tahıl alternatifi. Hem lif hem de tok tutma açısından güçlü. Fırında tavukla birlikte dengeli bir protein + kompleks karbonhidrat + sağlıklı yağ kombinasyonu oluşturuyor.</p>
-
 <hr />
 
 <strong><h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2></strong>
@@ -70,8 +68,6 @@ const blogPostsData = [
 </ul>
 
 <p><strong>Toplam tahmini enerji:</strong> ~695 kcal</p>
-
-<p><strong>Neden iyi bir seçenek?</strong> Somonun yüksek omega-3 içeriği ve kinoa gibi glutensiz bir tahıl alternatifi ile hem kalp dostu hem de hafif bir menü oluşuyor. Glutensiz beslenirken karbonhidrat tarafını sağlıklı tahıllarla desteklemiş oluyorsun.</p>
 
 <hr />
 
@@ -87,13 +83,6 @@ const blogPostsData = [
 
 <p><strong>Toplam tahmini enerji:</strong> ~610 kcal</p>
 
-<p><strong>Dikkat edilmesi gerekenler:</strong> Mercimek köftesinde kullanılan bulgur, glutensiz beslenmede sorun olabilir. Glutensiz besleniyorsan:</p>
-
-<ul>
-  <li>Glutensiz bulgur alternatifi kullan</li>
-  <li>Veya bulguru azaltıp yerine ince çekilmiş karabuğday / kinoa gibi bir alternatif koy</li>
-  <li>Hazır mercimek köftesi alıyorsan mutlaka etiketini kontrol et</li>
-</ul>
 
 <hr />
 
@@ -109,15 +98,45 @@ const blogPostsData = [
 
 <p><strong>Toplam tahmini enerji:</strong> ~870 kcal</p>
 
-<p><strong>Dikkat edilmesi gerekenler:</strong></p>
-
-<ul>
-  <li>Güveçte kullanılan sosun içinde un, hazır sos karışımı veya kıvam arttırıcı var mı mutlaka kontrol et.</li>
-  <li>Sütlaçta buğday unu kullanılmadığından genellikle glutensizdir; ancak dışarıda yiyorsan “glutensiz” olarak hazırlanıp hazırlanmadığını sor.</li>
-</ul>
 
 <hr />
 
+<strong><h2>5. Menü: Akdeniz Esintili Menü (Hafif ve Doyurucu) (~480 kcal)</h2></strong>
+
+<p>Glutensiz, sağlıklı, hafif ve doyurucu akdeniz mutfağı menüsü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Izgara Tavuk Göğsü veya Ton Balığı – <em>~250 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Bol Yeşillikli Salata (Domates, Salatalık, Roka, Maydanoz ile az yağlı balzamik sos ve limon) – <em>~80 kcal</em></li> + Fırınlanmış Tatlı Patates Dilimleri (Orta boy) – <em>~150 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~480 kcal</p>
+<hr />
+
+<strong><h2>6. Menü: Bitkisel Protein Odaklı Menü (Düşük Yağlı) (~510 kcal)</h2></strong>
+
+<p>Düşük yağlı, protein içeriği yüksek bitkisel menü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Kırmızı Mercimek Çorbası (Kıymetli, krema ve unsuz) – <em>~180 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Zeytinyağlı Enginar veya Taze Fasulye – <em>~120 kcal</em></li> + Yoğurtlu Semizotu/Ispanak – <em>~140 kcal</em></li> + Glutensiz Ekmek – <em>~70 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~5100 kcal</p>
+<hr />
+
+<strong><h2>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</h2></strong>
+
+<p>Düşük kalorili, karbonhidrat dengeli geleneksel menü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Yağsız Dana Etli Sebze Yemeği (Biber, mantar, domates) – <em>~300 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Kinoa Pilavı – <em>~200 kcal</em></li> + Ev Yapımı Cacık (Yarı Yağlı Yoğurt ile) – <em>~90 kcal</em></li>
+  <li><strong>Tatlı:</strong> 1 Porsiyon Kivi veya Ananas – <em>~70 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~660 kcal</p>
+<hr />
 <strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
 
 <ul>
@@ -127,7 +146,7 @@ const blogPostsData = [
   <li><strong>Ev yapımı tarifler</strong> her zaman daha güvenli: İçeriğini bildiğin yemeklerde gluten kontrolü elindedir.</li>
 </ul>
 
-<p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 4 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
+<p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 7 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
 
 `
 },
