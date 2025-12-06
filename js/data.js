@@ -23,14 +23,16 @@ function createListHtml(items, colorClass) {
             <span class="text-gray-700 font-medium">${item}</span>
         </li>
     `).join('');
-
 }
 
+// Global olarak erişilebilir kılınan fonksiyon
 if (typeof window !== "undefined") {
+    window.normalizeText = normalizeText;
     window.createListHtml = createListHtml;
 }
 
 // --- BLOG YAZILARI VERİSİ ---
+// Değişkenler hala const ile tanımlanıyor, ancak global atama için kullanılacak.
 const blogPostsData = [
     {
         id: 1,
@@ -187,7 +189,7 @@ const blogPostsData = [
             </p>
 
             <p>
-            Menünüze çorba eklemek isterseniz,
+            Menünüzde çorba eklemek isterseniz,
             <strong><a href="https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
             yazımız size fikir verebilir.
             </p>
@@ -896,7 +898,7 @@ const blogPostsData = [
         description: "Kış çorbalarının yanına ekmek dışında ne gider? Çorbaları daha doyurucu ve lezzetli hale getiren 5 pratik eşlikçi önerisini keşfedin.",
         content: ` 
             <p>
-            Soğuk günlerde sıcacık bir kase çorba, tüm öğünün başlangıcı ve kurtarıcısıdır. Ancak her çorbanın yanında sürekli ekmek yemek istemeyenler için hem doyuruculuğu artıran hem de lezzet katmanları ekleyen pratik alternatifler mevcuttur.
+            Soğuk günlerde sıcacık bir kase çorba, tüm öğünün başlangıcı ve kurtarıcısıdır. Ancak her çorbanın yanında sürekli ekmek yemek isteyenler için hem doyuruculuğu artıran hem de lezzet katmanları ekleyen pratik alternatifler mevcuttur.
             </p>
 
             <h4>1. Kıtır Peynir Krotonları (Alternatif: Lor)</h4>
@@ -4944,15 +4946,19 @@ const glutenRulesData = [
     { title: "Ev Yapımı", icon: "🏡", desc: "İçeriğini bildiğiniz ev yapımı tarifleri tercih edin. Kontrol sizde olsun." }
 ];
 
+// --- GLOBAL ATAMA BLOĞU ---
+
 // Tarayıcı için global değişkenlere atama:
+// Bu atama bloğu KRİTİKTİR ve verinin app.js'e ulaşmasını sağlar.
 if (typeof window !== "undefined") {
+    // Tüm verileri window nesnesine atayarak global erişimi garanti ediyoruz
     window.dishSuggestions = dishSuggestions;
-    window.blogPostsData = blogPostsData;
+    window.blogPostsData = blogPostsData; // <-- app.js'in aradığı değişken
     window.suggestionCategories = suggestionCategories;
     window.glutenRulesData = glutenRulesData;
 }
 
-// Node (CommonJS) için dışa aktarma:
+// Node (CommonJS) için dışa aktarma (isteğe bağlı, ama tutarlılık için korundu):
 if (typeof module !== "undefined") {
     module.exports = {
         blogPostsData,
