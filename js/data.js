@@ -165,8 +165,8 @@ const blogPostsData = [
 {
   id: "glutensiz-menu-onerileri",
   slug: "glutensiz-menu-onerileri",
-  title: "Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)",
-  metaTitle: "Glutensiz Menü Önerileri | 7 Farklı Tam Menü (Kalori Hesaplı)",
+  title: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
+  metaTitle: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
   metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
   excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
   category: "Beslenme",
