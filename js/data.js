@@ -124,7 +124,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
     <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
 </ul>
 `
-}
+},
 
     {  
     id: 5,
