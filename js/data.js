@@ -42,7 +42,7 @@ Senin için <strong>30 dakikada hazır 8 farklı pratik menü</strong> hazırlad
 
 <hr />
 
-<strong><h2>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h2><strong>
+<strong><h2>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h2></strong>
 <ul>
   <li><strong>Ana Yemek:</strong> Tavada Somon Fileto: Somonu sadece tuz, karabiber ve limon suyu ile tavada 4'er dakika pişirme.</li>
   <li><strong>Yanına Gider:</strong> Hazır Salata Karışımı: Hazır yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
