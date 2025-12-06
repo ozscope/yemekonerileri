@@ -193,145 +193,189 @@ const blogPostsData = [
 
   <hr class="my-4">
 
-  <section>
-    <h2 class="text-xl font-bold mb-3">Glutensiz Menüleri Kart Kart Keşfet</h2>
-    <p class="text-sm text-gray-700 mb-4">
-      Aşağıdaki kartlardan her biri, baştan sona düşünülmüş birer 
-      <strong>glutensiz akşam yemeği menüsü</strong>. Aralarından damak tadına, 
-      günlük kalori hedeflerine veya o günkü enerjine göre seçim yapabilirsin.
-    </p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glutensiz Menüler</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Inter font-family kullanımı */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
+    <div class="max-w-7xl mx-auto">
 
-    <!-- 7 Kartlık Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <header class="mb-8">
+            <p class="text-gray-600 mt-1">Glutensiz ve dengeli menü seçenekleri.</p>
+        </header>
 
-      <!-- Menü 1 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          1. Fırında Tavuk ile Doyurucu Glutensiz Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 980 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Fırında tavuk, tahıllı salata ve hafif bir tatlı ile klasik ama güvenli bir kombinasyon.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon)</li>
-          <li><strong>Yan:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon)</li>
-          <li><strong>Yan:</strong> Közlenmiş sebzeler (biber, kabak, havuç – az yağlı)</li>
-          <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile, orta porsiyon)</li>
-        </ul>
-      </div>
+        <section>
+            <h2 class="text-2xl font-bold mb-5 text-gray-800">Glutensiz Menüleri Keşfet</h2>
 
-      <!-- Menü 2 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          2. Izgara Somon ile Hafif ve Omega-3 Deposu Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 695 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Balık günleri için glutensiz, ferah ve besleyici bir sofra alternatifi.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g)</li>
-          <li><strong>Yan:</strong> Kinoa (kinoa) salatası (limonlu / zeytinyağlı)</li>
-          <li><strong>Yan:</strong> Buharda yeşil kuşkonmaz (yağsız)</li>
-          <li><strong>Tatlı / Meyve:</strong> Taze meyve tabağı (karışık meyve, orta boy)</li>
-        </ul>
-      </div>
+            <!-- Grid Container: Küçük ekranlarda 1, orta ve büyük ekranlarda 2 sütun -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
-      <!-- Menü 3 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          3. Mercimek Köftesi ile Bitkisel Protein Ağırlıklı Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 610 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Hem glutensiz hem de davet sofralarına yakışan, pratik bir tabak.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı)</li>
-          <li><strong>Yan:</strong> Yoğurtlu semizotu salatası (orta porsiyon)</li>
-          <li><strong>Yan:</strong> Turşu (birkaç dilim)</li>
-          <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz)</li>
-        </ul>
-      </div>
+                <!-- Menü 1: Fırında Tavuk -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-yellow-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-red-600">
+                            1. Fırında Tavuk ile Doyurucu Glutensiz Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 980 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Fırında tavuk, tahıllı salata ve hafif bir tatlı ile klasik ama güvenli bir kombinasyon.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon)</li>
+                            <li><strong>Yan:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon)</li>
+                            <li><strong>Yan:</strong> Közlenmiş sebzeler (biber, kabak, havuç – az yağlı)</li>
+                            <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile, orta porsiyon)</li>
+                        </ul>
+                    </div>
+            
+                </div>
 
-      <!-- Menü 4 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          4. Kuzu Güveç ile Geleneksel ve Doyurucu Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 870 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon)</li>
-          <li><strong>Yan:</strong> Pirinç pilavı (orta porsiyon, az yağlı)</li>
-          <li><strong>Yan:</strong> Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile)</li>
-          <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu, orta porsiyon)</li>
-        </ul>
-      </div>
+                <!-- Menü 2: Izgara Somon -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-blue-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-blue-600">
+                            2. Izgara Somon ile Hafif ve Omega-3 Deposu Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 695 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Balık günleri için glutensiz, ferah ve besleyici bir sofra alternatifi.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g)</li>
+                            <li><strong>Yan:</strong> Kinoa (kinoa) salatası (limonlu / zeytinyağlı)</li>
+                            <li><strong>Yan:</strong> Buharda yeşil kuşkonmaz (yağsız)</li>
+                            <li><strong>Tatlı / Meyve:</strong> Taze meyve tabağı (karışık meyve, orta boy)</li>
+                        </ul>
+                    </div>
 
-      <!-- Menü 5 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          5. Akdeniz Esintili Hafif Glutensiz Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 480 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Sağlıklı yağlar ve bol yeşillik içeren, hafif ama doyurucu bir kombinasyon.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Izgara tavuk göğsü veya ton balığı</li>
-          <li><strong>Yan:</strong> Bol yeşillikli salata 
-            (domates, salatalık, roka, maydanoz – az yağlı sos)
-          </li>
-          <li><strong>Yan:</strong> Fırınlanmış tatlı patates dilimleri (orta boy)</li>
-        </ul>
-      </div>
+                </div>
 
-      <!-- Menü 6 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          6. Bitkisel Protein Odaklı, Düşük Yağlı Menü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 510 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Özellikle hafif ve düşük yağlı beslenmek istediğin günler için.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Kırmızı mercimek çorbası (krema ve unsuz)</li>
-          <li><strong>Yan:</strong> Zeytinyağlı enginar veya taze fasulye</li>
-          <li><strong>Yan:</strong> Yoğurtlu semizotu / ıspanak</li>
-          <li><strong>Ekmek / Tahıl:</strong> Glutensiz ekmek (porsiyon kontrollü)</li>
-        </ul>
-      </div>
+                <!-- Menü 3: Mercimek Köftesi -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-green-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-green-600">
+                            3. Mercimek Köftesi ile Bitkisel Protein Ağırlıklı Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 610 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Hem glutensiz hem de davet sofralarına yakışan, pratik bir tabak.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı)</li>
+                            <li><strong>Yan:</strong> Yoğurtlu semizotu salatası (orta porsiyon)</li>
+                            <li><strong>Yan:</strong> Turşu (birkaç dilim)</li>
+                            <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz)</li>
+                        </ul>
+                    </div>
+            
+                </div>
 
-      <!-- Menü 7 -->
-      <div class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
-        <h3 class="text-lg font-semibold mb-2">
-          7. Geleneksel ve Dengeli Kompleks Karbonhidrat Menüsü
-        </h3>
-        <p class="text-xs text-gray-500 mb-2">~ 660 kcal</p>
-        <p class="text-sm text-gray-700 mb-3">
-          Kompleks karbonhidrat ve protein dengesini koruyan, geleneksel esintili bir sofra.
-        </p>
-        <ul class="text-sm text-gray-800 space-y-1 flex-1">
-          <li><strong>Ana Yemek:</strong> Yağsız dana etli sebze yemeği 
-            (biber, mantar, domates ile)
-          </li>
-          <li><strong>Yan:</strong> Kinoa pilavı</li>
-          <li><strong>Yan:</strong> Ev yapımı cacık (yarı yağlı yoğurt ile)</li>
-          <li><strong>Tatlı / Meyve:</strong> 1 porsiyon meyve 
-            (örneğin kivi veya ananas)
-          </li>
-        </ul>
-      </div>
+                <!-- Menü 4: Kuzu Güveç -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-purple-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-purple-600">
+                            4. Kuzu Güveç ile Geleneksel ve Doyurucu Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 870 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon)</li>
+                            <li><strong>Yan:</strong> Pirinç pilavı (orta porsiyon, az yağlı)</li>
+                            <li><strong>Yan:</strong> Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile)</li>
+                            <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu, orta porsiyon)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Menü 5: Akdeniz Esintili -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-teal-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-teal-600">
+                            5. Akdeniz Esintili Hafif Glutensiz Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 480 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Sağlıklı yağlar ve bol yeşillik içeren, hafif ama doyurucu bir kombinasyon.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Izgara tavuk göğsü veya ton balığı</li>
+                            <li><strong>Yan:</strong> Bol yeşillikli salata
+                                (domates, salatalık, roka, maydanoz – az yağlı sos)
+                            </li>
+                            <li><strong>Yan:</strong> Fırınlanmış tatlı patates dilimleri (orta boy)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Menü 6: Düşük Yağlı -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-pink-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-pink-600">
+                            6. Bitkisel Protein Odaklı, Düşük Yağlı Menü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 510 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Özellikle hafif ve düşük yağlı beslenmek istediğin günler için.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Kırmızı mercimek çorbası (krema ve unsuz)</li>
+                            <li><strong>Yan:</strong> Zeytinyağlı enginar veya taze fasulye</li>
+                            <li><strong>Yan:</strong> Yoğurtlu semizotu / ıspanak</li>
+                            <li><strong>Ekmek / Tahıl:</strong> Glutensiz ekmek (porsiyon kontrollü)</li>
+                        </ul>
+                    </div>
+                  
+                </div>
+
+                <!-- Menü 7: Geleneksel ve Dengeli -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-6 flex flex-col h-full border border-indigo-100">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2 text-indigo-600">
+                            7. Geleneksel ve Dengeli Kompleks Karbonhidrat Menüsü
+                        </h3>
+                        <p class="text-sm text-gray-500 mb-3">~ 660 kcal</p>
+                        <p class="text-base text-gray-700 mb-4">
+                            Kompleks karbonhidrat ve protein dengesini koruyan, geleneksel esintili bir sofra.
+                        </p>
+                        <ul class="text-sm text-gray-800 space-y-2 list-disc list-inside">
+                            <li><strong>Ana Yemek:</strong> Yağsız dana etli sebze yemeği
+                                (biber, mantar, domates ile)
+                            </li>
+                            <li><strong>Yan:</strong> Kinoa pilavı</li>
+                            <li><strong>Yan:</strong> Ev yapımı cacık (yarı yağlı yoğurt ile)</li>
+                            <li><strong>Tatlı / Meyve:</strong> 1 porsiyon meyve
+                                (örneğin kivi veya ananas)
+                            </li>
+                        </ul>
+                    </div>
+            
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-10 border-t border-gray-300">
+
+        <footer class="text-center text-gray-500 text-sm">
+            Tüm hakları saklıdır. Sağlıklı beslenme bilgileri bilgilendirme amaçlıdır.
+        </footer>
 
     </div>
-  </section>
-
-  <hr class="my-6">
+</body>
+</html>
 
   <section>
     <h2 class="text-xl font-bold mb-3">Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2>
