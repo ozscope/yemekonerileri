@@ -890,24 +890,24 @@ function searchDish() {
         container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
         bottomAd.classList.add('hidden');
         return;
-else if (!foundDish) {
-    container.innerHTML = `
-<div class="w-full text-center p-4">
-    <p class="text-gray-800 font-semibold mb-2">
-        "${rawQuery}" için henüz bir menü önerimiz yok 😊
-    </p>
-    <p class="text-sm text-gray-500 mb-2">
-        Bu yemeği yakında veri tabanımıza ekleyeceğiz!
-    </p>
-    <p class="text-xs text-gray-400">
-        Bu arada başka bir yemek yazıp deneyebilirsiniz.
-    </p>
-</div>
+    } else if (!foundDish) {
+        container.innerHTML = `
+            <div class="w-full text-center p-4">
+                <p class="text-gray-800 font-semibold mb-2">
+                    "${rawQuery}" için henüz bir menü önerimiz yok 😊
+                </p>
+                <p class="text-sm text-gray-500 mb-2">
+                    Bu yemeği yakında veri tabanımıza ekleyeceğiz!
+                </p>
+                <p class="text-xs text-gray-400">
+                    Bu arada başka bir yemek yazıp deneyebilirsiniz.
+                </p>
+            </div>
+        `;
+        bottomAd.classList.add('hidden');
+        return;
+    }
 
-    `;
-    bottomAd.classList.add('hidden');
-    return;
-}
 
 
     if (foundDish) {
