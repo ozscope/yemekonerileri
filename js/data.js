@@ -26,7 +26,7 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
 
-    {
+   {
   id: "pratik-menu-onerileri",
   slug: "pratik-menu-onerileri",
   title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
@@ -37,129 +37,228 @@ const blogPostsData = [
   tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
   date: "2025-12-06",
   content: `
-  <strong><h1>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</h1></strong>
+<article class="space-y-6">
 
-  <p>
-    “Akşam ne pişirsem?” diye düşünürken saat ilerliyor, dolap açılıp kapanıyor ve sonunda yine
-    aynı menülere mi dönüyorsun? Bu yazıda, özellikle <strong>zamanı kısıtlı</strong> olanlar için
-    <strong>hızlı, ekonomik ve lezzetli pratik menü önerileri</strong> derledik.
-  </p>
+  <header class="space-y-3">
+    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900">
+      🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri
+    </h1>
+    <p class="text-sm text-gray-700">
+      “<strong>Akşam ne pişirsem?</strong>” diye düşünürken saat ilerliyor, dolap açılıp kapanıyor ve 
+      sonunda yine aynı menülere dönüyor musun? Bu yazıda özellikle 
+      <strong>zamanı kısıtlı</strong> olanlar için, <strong>hızlı, ekonomik ve lezzetli pratik menü önerileri</strong> derledik.
+    </p>
+    <p class="text-sm text-gray-700">
+      Menüler; <strong>ana yemek + yan lezzet + salata veya içecek</strong> dengesini koruyacak şekilde 
+      planlandı. Çoğu <strong>20–30 dakika</strong> içinde hazırlanabilecek pratiklikte.
+    </p>
+  </header>
 
-  <p>
-    Menüler; <strong>ana yemek + yan lezzet + salata veya çorba</strong> dengesini koruyacak şekilde
-    planlandı. Bazıları tek tencerede, bazıları 20–25 dakikada hazırlanabilecek pratiklikte.
-  </p>
-
-  <hr>
-
-  <h2>Bu Pratik Menü Önerileri Kimler İçin İdeal?</h2>
-  <ul>
-    <li>⏱ İşten geç çıkıp kısa sürede sofrayı kurmak isteyen çalışanlar</li>
-    <li>🎓 Kısıtlı bütçe ve malzemeyle lezzetli menü yapmak isteyen öğrenciler</li>
-    <li>👨‍👩‍👧 Hızlıca akşam yemeği hazırlamak isteyen aileler</li>
-    <li>💸 <strong>Ekonomik menü önerileri</strong> arayanlar</li>
-    <li>🍳 Tek tencerede, tek tavada pratik çözüm isteyenler</li>
-  </ul>
-
-<hr />
-
-  <strong><h2>Pratik Menü Hazırlamanın 5 Altın Kuralı</h2></strong>
-<ol>
-<strong><li>Dondurulmuş Sebze Kullanımı:</strong> Dondurulmuş sebzeler hem doğrama süresini sıfırlar hem de besin değerini korur.</li>
-<strong><li>Konserve Malzemeler:</strong> Konserve nohut ve domates kullanımı, yemeğin hazırlık süresini dakikalara indirir.</li>
-<strong><li>Tencere/Tava Odaklılık:</strong> Bulaşık derdini azaltmak için fırın yerine tava veya tencerede hızlı pişen tariflere odaklanın.</li>
-<strong><li>Porsiyonluk Köfte:</strong> Buzluğunuzda porsiyonluk köfte bulundurmak, menü hazırlama süresini daha da kısaltacaktır.</li>
-<strong><li>Hazır Salça Sosu:</strong> Makarna için domates salçası, zeytinyağı ve baharatları karıştırıp küçük bir kavanozda buzdolabında tutmak, hazırlığını 2 dakikaya indirir.</li>
-</ol>
-
-<hr />
-
-  <h2>8 Farklı Pratik Menü Önerisi</h2>
-  <p>
-    Aşağıdaki menüler, günlük hayatın temposuna uyum sağlayan, <strong>pratik akşam yemeği menüleri</strong>
-    olarak düşünülebilir. Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin.
-  </p>
-
-<hr />
-
-   <section id="menu-1">
-<strong><h3>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Tavada Somon Fileto: Somonu sadece tuz, karabiber ve limon suyu ile tavada 4'er dakika pişirme.</li>
-  <li><strong>Yanına Gider:</strong> Hazır Salata Karışımı: Hazır yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
-</ul>
+  <section class="bg-primary-light/40 border border-primary-blue/10 rounded-2xl p-4 space-y-2">
+    <h2 class="text-base font-semibold text-gray-900">Bu Pratik Menü Önerileri Kimler İçin İdeal?</h2>
+    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+      <li>⏱ İşten geç çıkıp kısa sürede sofrayı kurmak isteyen çalışanlar</li>
+      <li>🎓 Kısıtlı bütçe ve malzemeyle lezzetli menü yapmak isteyen öğrenciler</li>
+      <li>👨‍👩‍👧 Hızlıca akşam yemeği hazırlamak isteyen aileler</li>
+      <li>💸 <strong>Ekonomik menü önerileri</strong> arayanlar</li>
+      <li>🍳 Tek tencerede, tek tavada pratik çözüm isteyenler</li>
+    </ul>
   </section>
 
-  <section id="menu-2">
-<strong><h3>2. Menü: Tek Kapta Tavuk (~25 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Sebzeli Tavuk Sote: Doğranmış tavuk parçaları, dondurulmuş karışık sebze ve soya sosu ile tek tavada yüksek ateşte pişirme.</li>
-  <li><strong>Yanına Gider:</strong> Hızlı Makarna/Erişte: Önceden haşlanmış veya 5 dakikalık hızlı makarna (yağ eklenmeden).</li>
-</ul>
+  <section>
+    <h2 class="text-xl font-bold mb-2">Pratik Menü Hazırlamanın 5 Altın Kuralı</h2>
+    <ol class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+      <li><strong>Dondurulmuş sebze kullanımı:</strong> Doğrama süresini sıfırlar, besin değerini büyük ölçüde korur.</li>
+      <li><strong>Konserve malzemeler:</strong> Nohut, domates, mısır gibi konserverler hazırlık süresini dakikalara indirir.</li>
+      <li><strong>Tencere / tava odaklılık:</strong> Fırın yerine tek kapta pişen yemekler bulaşık yükünü azaltır.</li>
+      <li><strong>Porsiyonluk köfte / et:</strong> Buzlukta hazır porsiyonlar tutmak pişirme süreni ciddi şekilde kısaltır.</li>
+      <li><strong>Hazır soslar:</strong> Küçük kavanozda sakladığın salça-baharat-zeytinyağı karışımı makarna ve tavalar için hayat kurtarır.</li>
+    </ol>
   </section>
 
-  <section id="menu-3">
-<strong><h3>3. Menü: Pratik Yumurta Ziyafeti (~15 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Menemen veya Hızlı Omlet: Yumurta, biber ve domates (veya kapya biber konservesi) ile Menemen hazırlama.</li>
-  <li><strong>Yanına Gider:</strong> Peynir Tabağı: Az tuzlu peynir, zeytin ve taze nane/maydanoz.</li>
-  <li><strong>İçecek:</strong> Çay</li>
-</ul>
+  <hr class="my-4">
+
+  <section>
+    <h2 class="text-xl font-bold mb-3">8 Farklı Pratik Menü Önerisi (Kart Kart)</h2>
+    <p class="text-sm text-gray-700 mb-4">
+      Aşağıdaki menüler, <strong>pratik akşam yemeği menüleri</strong> olarak düşünülebilir. 
+      Elindeki malzemeye göre ufak değişikliklerle uyarlayabilirsin. Her biri için tahmini hazırlama süresi de yer alıyor.
+    </p>
+
+    <!-- 8 Kartlık Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Menü 1 -->
+      <div id="menu-1" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">1. Somon Tava & Yeşillik</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~20 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Hafif, omega-3 zengini, tek tava menü.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Tavada somon fileto – Tuz, karabiber ve limon suyu ile her iki yüzü de birkaç dakika pişirilir.</li>
+          <li><strong>Yanına Gider:</strong> Hazır salata karışımı – Yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
+        </ul>
+      </div>
+
+      <!-- Menü 2 -->
+      <div id="menu-2" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">2. Tek Kapta Tavuk</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~25 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Tek tavada hem protein hem sebze.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Sebzeli tavuk sote – Doğranmış tavuk, dondurulmuş karışık sebze ve soya sosu ile yüksek ateşte pişirilir.</li>
+          <li><strong>Yanına Gider:</strong> Hızlı makarna / erişte – 5 dakikalık makarna, ekstra yağ eklemeden.</li>
+        </ul>
+      </div>
+
+      <!-- Menü 3 -->
+      <div id="menu-3" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">3. Pratik Yumurta Ziyafeti</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~15 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Dolapta ne varsa yumurtayla taçlanır.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Menemen veya hızlı omlet – Yumurta, biber ve domates (veya kapya biber konservesi) ile.</li>
+          <li><strong>Yanına Gider:</strong> Peynir tabağı – Az tuzlu peynir, zeytin ve taze nane / maydanoz.</li>
+          <li><strong>İçecek:</strong> Çay</li>
+        </ul>
+      </div>
+
+      <!-- Menü 4 -->
+      <div id="menu-4" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">4. Konserve Kolaylığı</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~15 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Dolapta konserve varsa, aç-kapa menü.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Nohut güveç – Konserve nohut, domates konservesi ve baharatlarla (kimyon, pul biber) ısıtılır.</li>
+          <li><strong>Yanına Gider:</strong> Yoğurtlu sos – Sarımsaklı yoğurt veya ev yapımı cacık.</li>
+          <li><strong>İçecek:</strong> Maden suyu</li>
+        </ul>
+      </div>
+      
+      <!-- Menü 5 -->
+      <div id="menu-5" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">5. Tek Tencerede Makarna</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~25 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Karbonhidrat + protein dengeli, tek kap çözüm.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Domatesli ton balıklı makarna – Haşlanan makarnanın üzerine konserve domates, ton balığı, sarımsak ve zeytinyağı eklenir.</li>
+          <li><strong>Yanına Gider:</strong> Roka salatası – Limon ve zeytinyağı ile tatlandırılmış roka.</li>
+        </ul>
+      </div>
+
+      <!-- Menü 6 -->
+      <div id="menu-6" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">6. Hızlı Pizza Alternatifi</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~10 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Lavaşla mini pizza / tost hissi.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Lavaş üstü tost / pizza – Lavaş üzerine salça veya ketçap, az peynir ve ince dilimli salamura sebzeler (biber, zeytin) eklenip tavada veya tost makinesinde ısıtılır.</li>
+          <li><strong>İçecek:</strong> Ayran</li>
+        </ul>
+      </div>
+      
+      <!-- Menü 7 -->
+      <div id="menu-7" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">7. Hazır Köfte Hızlandırıcısı</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~20 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Buzluktaki köfteyle 20 dakikada sofra.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Hazır köfte ve püre – Dondurulmuş veya önceden hazırlanmış köfte, tavada veya fırında ısıtılır; yanında hazır veya pratik toz patates püresi.</li>
+          <li><strong>Yanına Gider:</strong> Turşu veya köz biber konservesi</li>
+        </ul>
+      </div>
+      
+      <!-- Menü 8 -->
+      <div id="menu-8" class="bg-white rounded-2xl shadow-md p-5 flex flex-col h-full">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-lg font-semibold">8. Bakliyat Gücü</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700">
+            ~20 dk
+          </span>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Dolapta haşlanmış mercimek varsa, menü hazır.</p>
+        <ul class="text-sm text-gray-800 space-y-1 flex-1">
+          <li><strong>Ana Yemek:</strong> Hızlı mercimek yemeği – Önceden haşlanmış (veya konserve) yeşil mercimek, az soğan ve salça ile 10 dakika kadar pişirilir.</li>
+          <li><strong>Yanına Gider:</strong> Kuru soğan / pirinç sirkeli salata – İnce halka soğan, maydanoz ve pirinç sirkesi ile karıştırılır.</li>
+        </ul>
+      </div>
+
+    </div>
   </section>
 
-  <section id="menu-4">
-<strong><h3>4. Menü: Konserve Kolaylığı (~15 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Nohut Güveç: Hazır konserve nohut, küp doğranmış domates konservesi ve baharatlarla (kimyon, pul biber) ısıtma.</li>
-  <li><strong>Yanına Gider:</strong> Yoğurtlu Sos: Sarımsaklı yoğurt veya Ev Yapımı Cacık.</li>
-  <li><strong>İçecek:</strong> Maden suyu</li>
-</ul>
-  </section>
-  
-  <section id="menu-5">
-<strong><h3>5. Menü: Tek Tencere Makarna (~25 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Domatesli Ton Balıklı Makarna: Haşlanan makarnanın suyunu süzmeden hemen ardından konserve domates, ton balığı, sarımsak ve zeytinyağı ekleyip karıştırma.</li>
-  <li><strong>Yanına Gider:</strong> Roka Salatası: Sadece limon ve zeytinyağı ile tatlandırılmış roka.</li>
-</ul>
+  <hr class="my-6">
+
+  <section>
+    <h2 class="text-lg font-semibold mb-2">Pratik Menüleri Daha da Hızlandırmak İçin Küçük İpuçları</h2>
+    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+      <li>Hafta başında 1–2 tencere temel yemek (mercimek, nohut, tavuk haşlama) hazırlayıp porsiyonlayabilirsin.</li>
+      <li>Her zaman dolapta hazır yeşillik ve 1–2 çeşit peynir bulundurmak, “yanına ne koysam” sorununu çözer.</li>
+      <li>Tek tavada pişen yemekleri tercih ederek hem zaman hem bulaşık açısından avantaj sağlayabilirsin.</li>
+    </ul>
   </section>
 
-<section id="menu-6">
-<strong><h3>6. Menü: Hızlı Pizza Alternatifi (~10 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Lavaş Üstü Tost/Pizza: Lavaş ekmeği üzerine salça/ketçap, az peynir ve dilediğiniz ince dilimli salamura sebzeleri (biber, zeytin) koyup tavada veya tost makinesinde ısıtma.</li>
-  <li><strong>İçecek:</strong> Ayran</li>
-</ul>
- </section>
- 
-  <section id="menu-7">
-<strong><h3>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Hazır Köfte ve Püre: Önceden hazırlanmış veya dondurulmuş köfteleri tavada veya fırında ısıtırken, hazır veya pratik toz patates püresi hazırlama.</li>
-  <li><strong>Yanına Gider:</strong> Turşu veya Köz Biber Konservesi</li>
-</ul>
- </section>
- 
-<section id="menu-8">
-<strong><h3>8. Menü: Bakliyat Gücü (~20 dakika)</h3></strong>
-<ul>
-  <li><strong>Ana Yemek:</strong> Hızlı Mercimek Yemeği: Önceden haşlanmış (veya konserve) yeşil mercimek, az soğan ve salça ile 10 dakika kadar pişirme.</li>
-  <li><strong>Yanına Gider:</strong> Kuru Soğan/Pirinç Sirkeli Salata: Halka soğanları ince kesip, maydanoz ve pirinç sirkesi ile karıştırma.</li>
-</ul>
- </section>
+  <section class="mt-6">
+    <h2 class="text-lg font-semibold mb-2">İlgini Çekebilecek Diğer Menü Rehberleri</h2>
+    <ul class="list-disc list-inside text-sm text-primary-blue space-y-1">
+      <li>
+        <a href="?page=blog&post=glutensiz-menu-onerileri" class="underline">
+          Glutensiz Menü Önerileri: 7 Farklı Tam Menü
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="underline">
+          Kış Çorbalarının Yanına Ne Gider?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="underline">
+          Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=etin-yanina-ne-gider" class="underline">
+          Etin Yanına Ne Gider?
+        </a>
+      </li>
+      <li>
+        <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="underline">
+          Zeytinyağlı Yemeklerin Yanına Ne Gider?
+        </a>
+      </li>
+    </ul>
+  </section>
 
-<hr />
-
-<h2>Popüler Menü Rehberleri</h2>
-<ul>
-    <li><a href="?page=blog&post=glutensiz-menu-onerileri" class="text-primary-blue underline">Glutensiz Menü Önerileri: 7 Farklı Tam Menü</a></li>
-    <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">Kış Çorbalarının Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
-    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
-</ul>
-`
+</article>
+  `
 },
+
 
     
 {
