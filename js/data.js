@@ -31,7 +31,7 @@ if (typeof window !== "undefined") {
 }
 
 // --- BLOG YAZILARI VERİSİ ---
-const blogPostsData = [
+const window.blogPostsData = [
     {
         id: 1,
         category: "Mutfak Sırları",
