@@ -11,8 +11,7 @@ function normalizeText(text) {
                .replace(/ç/g, 'c');
 }
 
-// Liste HTML
-window.createListHtml = (items, colorClass) => {
+function createListHtml(items, colorClass) {
     return items.map(item => `
         <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition duration-150">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
@@ -21,6 +20,11 @@ window.createListHtml = (items, colorClass) => {
             <span class="text-gray-700 font-medium">${item}</span>
         </li>
     `).join('');
+
+};
+
+if (typeof window !== "undefined") {
+    window.createListHtml = createListHtml;
 };
 
 // --- BLOG VERİSİ ---
@@ -1240,15 +1244,17 @@ listesi size fikir verebilir.
   }
 ];
 
-// Tarayıcıda kullanmak için:
-if (typeof window !== "undefined") {
-    window.blogPostsData = blogPostsData;
-}
 
 // Node tarafında kullanmak için (CommonJS):
 if (typeof module !== "undefined") {
-    module.exports = { blogPostsData };
+    module.exports = {
+        blogPostsData,
+        dishSuggestions,
+        suggestionCategories,
+        // glutenRulesData (istersen ekle)
+    };
 }
+
 
 
         // --- ANA VERİ SETİ ---
