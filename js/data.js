@@ -43,14 +43,13 @@ const blogPostsData = [
 
 <hr />
 
-<h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2>
+<strong><h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2></strong>
 
 <p>İç ısıtan, klasik ama güvenli bir kombinasyon: fırında tavuk, tahıllı bir salata ve hafif bir tatlı.</p>
 
 <ul>
   <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon) – <em>~465 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon) – <em>~225 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Közlenmiş sebzeler (biber, kabak, havuç – az yağlı) – <em>~120 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon) – <em>~225 kcal</em></li> + Közlenmiş sebzeler (biber, kabak, havuç – az yağlı) – <em>~120 kcal</em></li>
   <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile – orta porsiyon) – <em>~170 kcal</em></li>
 </ul>
 
@@ -60,14 +59,13 @@ const blogPostsData = [
 
 <hr />
 
-<h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2>
+<strong><h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2></strong>
 
 <p>Balık günlerinde, gluten içeren garnitürlere (örneğin klasik makarna veya ekmek) mecbur değilsin. Somonun yanına taze ve ferah eşlikçiler geliyor.</p>
 
 <ul>
   <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g) – <em>~290 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Kinoa (kuinoa) salatası (limonlu / zeytinyağlı, orta porsiyon) – <em>~255 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Buharda yeşil kuşkonmaz (yağsız) – <em>~30 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Kinoa (kuinoa) salatası (limonlu / zeytinyağlı, orta porsiyon) – <em>~255 kcal</em></li> + Buharda yeşil kuşkonmaz (yağsız) – <em>~30 kcal</em></li>
   <li><strong>Tatlı:</strong> Taze meyve tabağı (karışık meyve, orta boy) – <em>~120 kcal</em></li>
 </ul>
 
@@ -77,14 +75,13 @@ const blogPostsData = [
 
 <hr />
 
-<h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2>
+<strong><h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2></strong>
 
-<p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: mercimek köftesi menüsü.</p>
+<p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: Mercimek köftesi menüsü.</p>
 
 <ul>
   <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı) – <em>~280 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Yoğurtlu semizotu salatası (orta porsiyon, tam yağlı yoğurt ile) – <em>~160 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Turşu (birkaç dilim) – <em>~10 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Yoğurtlu semizotu salatası (orta porsiyon, tam yağlı yoğurt ile) – <em>~160 kcal</em></li> + Turşu (birkaç dilim) – <em>~10 kcal</em></li>
   <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz) – <em>~160 kcal</em></li>
 </ul>
 
@@ -100,14 +97,13 @@ const blogPostsData = [
 
 <hr />
 
-<h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2>
+<strong><h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2></strong>
 
 <p>Daha klasik, restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü istersen bu kombinasyon oldukça ideal.</p>
 
 <ul>
   <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon) – <em>~280 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Pirinç pilavı (orta porsiyon, az yağlı) – <em>~230 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile) – <em>~90 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Pirinç pilavı (orta porsiyon, az yağlı) – <em>~230 kcal</em></li> + Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile) – <em>~90 kcal</em></li>
   <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu – orta porsiyon) – <em>~270 kcal</em></li>
 </ul>
 
@@ -122,7 +118,7 @@ const blogPostsData = [
 
 <hr />
 
-<h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2>
+<strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
 
 <ul>
   <li><strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş ürünler gizli gluten içerebilir.</li>
