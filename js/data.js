@@ -26,6 +26,97 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
 
+    {
+  id: "pratik-menu-onerileri",
+  slug: "pratik-menu-onerileri",
+  title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
+  metaTitle: "Pratik Menü Önerileri | 30 Dakikada Hazır",
+  metaDescription: "Vaktiniz azsa ama düzgün bir sofra kurmak istiyorsanız 30 dakika altında hazırlanabilen 8 farklı pratik menüyü keşfedin.",
+  excerpt: "Yoğun günler için 30 dakikada hazırlanabilen 8 farklı pratik menü.",
+  category: "Pratik",
+  tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
+  date: "2025-12-06",
+  content: `
+<p>Vaktin mi yok? İş çıkışı hemen bir şey hazırlamak mı istiyorsun?  
+Senin için <strong>30 dakikada hazır 8 farklı pratik menü</strong> hazırladık.</p>
+
+<hr />
+
+<strong><h2>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h2><strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Tavada Somon Fileto: Somonu sadece tuz, karabiber ve limon suyu ile tavada 4'er dakika pişirme.</li>
+  <li><strong>Yanına Gider:</strong> Hazır Salata Karışımı: Hazır yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
+</ul>
+
+<hr />
+
+<strong><h2>2. Menü: Tek Kapta Tavuk (~25 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Sebzeli Tavuk Sote: Doğranmış tavuk parçaları, dondurulmuş karışık sebze ve soya sosu ile tek tavada yüksek ateşte pişirme.</li>
+  <li><strong>Yanına Gider:</strong> Hızlı Makarna/Erişte: Önceden haşlanmış veya 5 dakikalık hızlı makarna (yağ eklenmeden).</li>
+</ul>
+
+<hr />
+
+<strong><h2>3. Menü: Pratik Yumurta Ziyafeti (~15 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Menemen veya Hızlı Omlet: Yumurta, biber ve domates (veya kapya biber konservesi) ile Menemen hazırlama.</li>
+  <li><strong>Yanına Gider:</strong> Peynir Tabağı: Az tuzlu peynir, zeytin ve taze nane/maydanoz.</li>
+  <li><strong>İçecek:</strong> Çay</li>
+</ul>
+
+<hr />
+
+<strong><h2>4. Menü: Konserve Kolaylığı (~15 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Nohut Güveç: Hazır konserve nohut, küp doğranmış domates konservesi ve baharatlarla (kimyon, pul biber) ısıtma.</li>
+  <li><strong>Yanına Gider:</strong> Yoğurtlu Sos: Sarımsaklı yoğurt veya Ev Yapımı Cacık.</li>
+  <li><strong>İçecek:</strong> Maden suyu</li>
+</ul>
+
+<hr />
+
+<strong><h2>5. Menü: Tek Tencere Makarna (~25 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Domatesli Ton Balıklı Makarna: Haşlanan makarnanın suyunu süzmeden hemen ardından konserve domates, ton balığı, sarımsak ve zeytinyağı ekleyip karıştırma.</li>
+  <li><strong>Yanına Gider:</strong> Roka Salatası: Sadece limon ve zeytinyağı ile tatlandırılmış roka.</li>
+</ul>
+
+<hr />
+
+<strong><h2>6. Menü: Hızlı Pizza Alternatifi (~10 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Lavaş Üstü Tost/Pizza: Lavaş ekmeği üzerine salça/ketçap, az peynir ve dilediğiniz ince dilimli salamura sebzeleri (biber, zeytin) koyup tavada veya tost makinesinde ısıtma.</li>
+  <li><strong>İçecek:</strong> Ayran</li>
+</ul>
+
+<hr />
+
+<strong><h2>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Hazır Köfte ve Püre: Önceden hazırlanmış veya dondurulmuş köfteleri tavada veya fırında ısıtırken, hazır veya pratik toz patates püresi hazırlama.</li>
+  <li><strong>Yanına Gider:</strong> Turşu veya Köz Biber Konservesi</li>
+</ul>
+
+<hr />
+
+<strong><h2>8. Menü: Bakliyat Gücü (~20 dakika)</h2></strong>
+<ul>
+  <li><strong>Ana Yemek:</strong> Hızlı Mercimek Yemeği: Önceden haşlanmış (veya konserve) yeşil mercimek, az soğan ve salça ile 10 dakika kadar pişirme.</li>
+  <li><strong>Yanına Gider:</strong> Kuru Soğan/Pirinç Sirkeli Salata: Halka soğanları ince kesip, maydanoz ve pirinç sirkesi ile karıştırma.</li>
+</ul>
+
+<strong><p>Pratiklik İpuçları:</strong>
+<strong><li>Dondurulmuş Sebze Kullanımı:</strong> Menü 2'de olduğu gibi, dondurulmuş sebzeler hem doğrama süresini sıfırlar hem de besin değerini korur.</li>
+<strong><li>Konserve Malzemeler:</strong> Menü 4'te konserve nohut ve domates kullanımı, yemeğin hazırlık süresini dakikalara indirir.</li>
+<strong><li>Tencere/Tava Odaklılık:</strong> Bulaşık derdini azaltmak için fırın yerine tava veya tencerede hızlı pişen tariflere odaklanın.</li>
+<strong><li>Porsiyonluk Köfte:</strong> Buzluğunuzda porsiyonluk çiğ köfte bulundurmak, Menü 7'deki süreyi daha da kısaltacaktır.</li>
+<strong><li>Hazır Salça Sosu:</strong> Makarna için domates salçası, zeytinyağı ve baharatları karıştırıp küçük bir kavanozda buzdolabında tutmak, Menü 5'in hazırlığını 2 dakikaya indirir.</li>
+</p>
+`
+},
+
+    
 {
   id: "glutensiz-menu-onerileri",
   slug: "glutensiz-menu-onerileri",
