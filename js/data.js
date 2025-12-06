@@ -27,6 +27,68 @@ window.createListHtml = (items, colorClass) => {
 const blogPostsData = [
 
     {
+  id: 7,
+  category: "Sağlıklı Beslenme",
+  title: "🌾 Glutensiz Menü Önerileri (4 Farklı Tam Menü)",
+  slug: "glutensiz-menu-onerileri",
+  description: "Glutensiz beslenenler için 4 farklı tam menü: etli, tavuklu, balıklı ve hafif seçenekler.",
+  content: ` <p>
+Glutensiz besleniyorsanız veya daha hafif menüler tercih ediyorsanız, sizin için 4 farklı glutensiz tam menü hazırladık.  
+Her menüde ana yemek + yan lezzet + içecek + tatlı olmak üzere dengeli bir toplam kalori sunulur.
+</p>
+
+<hr>
+
+<h2>🥗 Menü 1: Fırında Tavuk (Glutensiz Klasik Menü) – ~980 kcal</h2>
+<table>
+<tr><td><strong>Ana Yemek</strong></td><td>Fırında Bütün Tavuk (Orta Porsiyon, Derili)</td><td>~465 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Karabuğday (Greçka) Salatası – Zeytinyağlı</td><td>~225 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Közlenmiş Sebzeler (Biber, Kabak, Havuç)</td><td>~120 kcal</td></tr>
+<tr><td><strong>Tatlı</strong></td><td>Kabak Tatlısı (Cevizli – Az Şekerli)</td><td>~170 kcal</td></tr>
+</table>
+
+<hr>
+
+<h2>🐟 Menü 2: Izgara Somon – ~695 kcal</h2>
+<table>
+<tr><td><strong>Ana Yemek</strong></td><td>Izgara Somon (~175g)</td><td>~290 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Kinoa Salatası (Zeytinyağlı)</td><td>~255 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Buharda Kuşkonmaz</td><td>~30 kcal</td></tr>
+<tr><td><strong>Tatlı</strong></td><td>Taze Meyve Tabağı</td><td>~120 kcal</td></tr>
+</table>
+
+<hr>
+
+<h2>🍽️ Menü 3: Mercimek Köftesi (Glutensiz & Hafif) – ~610 kcal</h2>
+<table>
+<tr><td><strong>Ana Yemek</strong></td><td>Mercimek Köftesi (5–6 adet)</td><td>~280 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Yoğurtlu Semizotu Salatası</td><td>~160 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Turşu</td><td>~10 kcal</td></tr>
+<tr><td><strong>Tatlı</strong></td><td>Kuru Meyveli Elma Dilimleri</td><td>~160 kcal</td></tr>
+</table>
+
+<hr>
+
+<h2>🍲 Menü 4: Kuzu Güveç – ~870 kcal</h2>
+<table>
+<tr><td><strong>Ana Yemek</strong></td><td>Kuzu Güveç (Unsuz Terbiyeli)</td><td>~280 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Pirinç Pilavı (Az yağlı)</td><td>~230 kcal</td></tr>
+<tr><td><strong>Yanına Gider</strong></td><td>Cacık (Mısır nişastalı değil – Yoğurt + Su)</td><td>~90 kcal</td></tr>
+<tr><td><strong>Tatlı</strong></td><td>Sütlaç (Pirinç Unlu / Glutensiz)</td><td>~270 kcal</td></tr>
+</table>
+
+<hr>
+
+<h3>🔗 Diğer sağlıklı menüler</h3>
+<ul>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+</ul>
+`
+},
+
+    {
     id: 6,
     category: "Mutfak Sırları",
     title: "🍽️ Köftenin Yanına Ne Gider? En İyi 12 Köfte Yanı Önerisi",
