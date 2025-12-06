@@ -208,14 +208,53 @@
     </div>
 </div>
 
-            <div class="mt-6 text-center">
+<!-- KATEGORİ KISAYOLLARI -->
+<section class="mt-6">
+  <h2 class="text-lg font-bold mb-3">Keşfet</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    
+    <!-- Kategori 1: Ne Pişirsem? -->
     <button 
-        class="px-5 py-3 bg-secondary-green text-white font-semibold rounded-xl shadow hover:bg-green-600 transition"
-        onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
+      type="button"
+      class="flex items-center px-4 py-3 rounded-2xl shadow bg-amber-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
+      onclick="showPage('home')"
     >
-        🌾 Glutensiz Menü Önerileri
+      <span class="text-2xl mr-3">🍽️</span>
+      <span class="text-left">
+        <div class="text-sm font-semibold">Ne Pişirsem?</div>
+        <div class="text-xs opacity-80">Evdeki yemeğe göre fikir al.</div>
+      </span>
     </button>
-</div>
+
+    <!-- Kategori 2: Glutensiz Menü Önerileri -->
+    <button 
+      type="button"
+      class="flex items-center px-4 py-3 rounded-2xl shadow bg-green-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
+      onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
+    >
+      <span class="text-2xl mr-3">🌾</span>
+      <span class="text-left">
+        <div class="text-sm font-semibold">Glutensiz Menü Önerileri</div>
+        <div class="text-xs opacity-80">4 farklı glutensiz tam menü.</div>
+      </span>
+    </button>
+
+    <!-- Kategori 3: Sağlıklı Menü Önerileri -->
+    <button 
+      type="button"
+      class="flex items-center px-4 py-3 rounded-2xl shadow bg-sky-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
+      onclick="showPage('blog')"
+    >
+      <span class="text-2xl mr-3">❤️</span>
+      <span class="text-left">
+        <div class="text-sm font-semibold">Sağlıklı Menü Önerileri</div>
+        <div class="text-xs opacity-80">Dengeli & pratik kombinler.</div>
+      </span>
+    </button>
+
+  </div>
+</section>
+
 
 <!-- 1200 kcal ALTINDA FİLTRE -->
 <div class="flex items-center mb-3">
