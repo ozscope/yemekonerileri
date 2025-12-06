@@ -152,10 +152,10 @@ const blogPostsData = [
 
 <h2>Popüler Menü Rehberleri</h2>
 <ul>
-  <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider">Kış Çorbalarının Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
-  <li><a href="?page=blog&post=etin-yanina-ne-gider">Et Yemeklerinin Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">Zeytinyağlılar İçin Uyumlu Yan Lezzetler</a></li>
+  <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider"> class="text-primary-blue underline"> Kış Çorbalarının Yanına Ne Gider?</a></li>
+  <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">class="text-primary-blue underline"> Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
+  <li><a href="?page=blog&post=etin-yanina-ne-gider">class="text-primary-blue underline"> Et Yemeklerinin Yanına Ne Gider?</a></li>
+  <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">class="text-primary-blue underline"> Zeytinyağlılar İçin Uyumlu Yan Lezzetler</a></li>
 </ul>
 
 `
@@ -272,7 +272,9 @@ const blogPostsData = [
 </ul>
 
 <p><strong>Toplam tahmini enerji:</strong> ~660 kcal</p>
+
 <hr />
+
 <strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
 
 <ul>
