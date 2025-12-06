@@ -65,13 +65,19 @@
   <priority>0.8</priority>
 </url>
   
-  <!-- Blog Yazısı 7 – Glutensiz Menü Önerileri -->
-    <url>
-    <loc>https://yanindanevar.com/?page=blog&post=glutensiz-menu-onerileri</loc>
-    <lastmod>2025-12-06</lastmod>
+  <!-- Glutensiz Menü Önerileri -->
+  <url>
+    <loc>https://yanindanevar.com/blog/glutensiz-menu-onerileri</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-</url>
+  </url>
+
+  <!-- Pratik Menü Önerileri -->
+  <url>
+    <loc>https://yanindanevar.com/blog/pratik-menu-onerileri</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 
 </urlset>
