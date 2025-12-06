@@ -208,7 +208,27 @@
     </div>
 </div>
 
-<!-- KATEGORİ KISAYOLLARI (2'li) -->
+<!-- 1200 kcal ALTINDA FİLTRE -->
+<div class="flex items-center mb-3">
+    <input 
+        type="checkbox" 
+        id="lowCalorieFilter" 
+        class="mr-2 w-5 h-5 cursor-pointer"
+        onchange="searchDish()"
+    >
+    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
+        🍏 1200 kcal altındaki menüleri göster
+    </label>
+</div>
+
+            <!-- Sonuç Alanı -->
+            <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
+                <p id="initialMessage" class="text-gray-500 italic">
+                    Aramaya başlayın. Önerileriniz burada görünecektir.
+                </p>
+            </div>
+
+            <!-- KATEGORİ KISAYOLLARI (2'li) -->
 <section class="mt-6">
   <h2 class="text-lg font-bold mb-3">Keşfet</h2>
   
@@ -243,27 +263,6 @@
 
   </div>
 </section>
-
-
-<!-- 1200 kcal ALTINDA FİLTRE -->
-<div class="flex items-center mb-3">
-    <input 
-        type="checkbox" 
-        id="lowCalorieFilter" 
-        class="mr-2 w-5 h-5 cursor-pointer"
-        onchange="searchDish()"
-    >
-    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
-        🍏 1200 kcal altındaki menüleri göster
-    </label>
-</div>
-
-            <!-- Sonuç Alanı -->
-            <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
-                <p id="initialMessage" class="text-gray-500 italic">
-                    Aramaya başlayın. Önerileriniz burada görünecektir.
-                </p>
-            </div>
             <!-- BLOG'DAN ÖNERİLER -->
             <section id="home-blog-section" class="mt-10">
                 <h2 class="text-xl font-bold mb-4">Blog’dan Öneriler</h2>
