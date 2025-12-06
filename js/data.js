@@ -38,65 +38,65 @@ Köfte; ızgarası, fırını, sulu yemeği ve mangal versiyonlarıyla Türk mut
 Peki <strong>köftenin yanına ne gider?</strong> İşte sofranı tamamlayacak en iyi 12 eşlikçi önerisi!
 </p>
 
-<h2>1) Pirinç Pilavı (Klasik Uyum)</h2>
+<strong><h2>1) Pirinç Pilavı (Klasik Uyum)</h2></strong>
 <p>
 Tane tane tereyağlı pirinç pilavı, köfteyle en çok tercih edilen yardımcı yemektir. Hem doyurucu hem dengeli bir kombinasyon oluşturur.
 </p>
 
-<h2>2) Piyaz (Antalya Usulü)</h2>
+<strong><h2>2) Piyaz (Antalya Usulü)</h2></strong>
 <p>
 Köftenin yanına en çok yakışan lezzetlerden biri de piyazdır. 
 Özellikle tahinli Antalya piyazı, ızgara köfteyle mükemmel bir uyum sağlar.
 </p>
 
-<h2>3) Domatesli Bulgur Pilavı</h2>
+<strong><h2>3) Domatesli Bulgur Pilavı</h2></strong>
 <p>
 Daha hafif bir pilav alternatifi isterseniz bulgur pilavı ideal bir tercihtir. 
 Biber, soğan ve domates aroması köftenin lezzetini öne çıkarır.
 </p>
 
-<h2>4) Közlenmiş Sebzeler</h2>
+<strong><h2>4) Közlenmiş Sebzeler</h2></strong>
 <p>
 Köz biber, köz patlıcan ve köz domates; köftenin yoğun aromasını dengeleyerek tabağa hafiflik katar.
 </p>
 
-<h2>5) Patates Kızartması</h2>
+<strong><h2>5) Patates Kızartması</h2></strong>
 <p>
 Özellikle ev yapımı hamburger köftesi veya ızgara köfteyle harika bir uyum yakalar.
 </p>
 
-<h2>6) Fırında Patates (Baharatlı)</h2>
+<strong><h2>6) Fırında Patates (Baharatlı)</h2></strong>
 <p>
 Kızartma sevmeyenler için daha sağlıklı bir alternatiftir. Köftenin suyuyla birleştiğinde çok lezzetli olur.
 </p>
 
-<h2>7) Mevsim Salatası</h2>
+<strong><h2>7) Mevsim Salatası</h2></strong>
 <p>
 Tazelik isteyenler için mevsim salatası hem ferahlık hem de renk dengesi sağlar. 
 Nar ekşisi, limon ve zeytinyağı sosu ile servisi önerilir.
 </p>
 
-<h2>8) Acılı Ezme</h2>
+<strong><h2>8) Acılı Ezme</h2></strong>
 <p>
 Baharatlı ve hafif acılı yapısıyla köftenin yanına güçlü bir aroma ekler.
 </p>
 
-<h2>9) Haydari & Yoğurtlu Mezeler</h2>
+<strong><h2>9) Haydari & Yoğurtlu Mezeler</h2></strong>
 <p>
 Köfteyle yoğurt bazlı mezelerin uyumu tartışılmaz. Haydari, cacık ve yoğurtlu patlıcan mezesi en iyi seçeneklerdir.
 </p>
 
-<h2>10) Köz Patlıcan Salatası</h2>
+<strong><h2>10) Köz Patlıcan Salatası</h2></strong>
 <p>
 Et yemekleriyle harika eşleşen köz patlıcan salatası, köfte için de mükemmel bir tamamlayıcıdır.
 </p>
 
-<h2>11) Şakşuka</h2>
+<strong><h2>11) Şakşuka</h2></strong>
 <p>
 Kızarmış patlıcan ve domates sosunun birleşimi, köfteye yan lezzet olarak nefis bir alternatif oluşturur.
 </p>
 
-<h2>12) Ayran veya Şalgam Suyu</h2>
+<strong><h2>12) Ayran veya Şalgam Suyu</h2></strong>
 <p>
 Köftenin yanına içecek olarak en çok <strong>ayran</strong> tercih edilir. 
 Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşlikçidir.
@@ -104,7 +104,7 @@ Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşli
 
 <hr>
 
-<h2>🍽️ Köfte Menü Önerisi (Pratik Tabak)</h2>
+<strong><h2>🍽️ Köfte Menü Önerisi (Pratik Tabak)</h2></strong>
 <ul>
     <li>Izgara Köfte</li>
     <li>Piyaz veya Mevsim Salatası</li>
