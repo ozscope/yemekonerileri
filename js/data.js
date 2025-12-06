@@ -133,7 +133,6 @@ const blogPostsData = [
 
 <p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 4 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
 
-<p>Eğer istersen ileride “glutensiz kahvaltı menüleri” veya “dışarıda yerken güvenli seçimler” için de ayrı içerikler hazırlayabiliriz 🌾</p>
 `
 },
 
