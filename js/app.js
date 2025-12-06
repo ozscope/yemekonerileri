@@ -230,12 +230,19 @@ window.filterPratikMenus = filterPratikMenus;
 window.addEventListener('load', () => {
     const params = new URLSearchParams(window.location.search);
     const page = params.get('page');
+    const postSlug = params.get('post'); // URL'de post parametresi var mı kontrol et
 
     if (page === 'blog') {
+        // Blog sayfasını göster
         showPage('blog');
+        
+        // Post parametresi varsa tekil yazıyı yükle
+        // (loadBlogContent zaten showPage içinde çağrılıyor, bu yüzden tekrar çağırmaya gerek yok.
+        // Ancak emin olmak için URL'deki slug'ı direkt verebiliriz)
+        loadBlogContent(postSlug); 
     } else {
         showPage('home');
-        renderHomeBlogSection(); // Ana sayfa açılışında blog önerilerini doldur
+        renderHomeBlogSection(); 
     }
 
     document.getElementById('bottomAdContainer').classList.add('hidden');
