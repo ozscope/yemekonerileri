@@ -173,135 +173,28 @@ const blogPostsData = [
   },
 
   {
-    id: "glutensiz-menu-onerileri",
-    slug: "glutensiz-menu-onerileri",
-    title: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
-    metaTitle: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
-    metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
-    excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
-    category: "Beslenme",
-    tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
-    date: "2025-12-06",
-    content: `
-<article class="space-y-6">
-
-  <header class="space-y-3">
-    <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900">
-      Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)
-    </h1>
-    <p class="text-sm text-gray-600">
+  id: "glutensiz-menu-onerileri",
+  slug: "glutensiz-menu-onerileri",
+  title: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
+  metaTitle: "7 Günlük Glutensiz Menü Önerileri | Yanında Ne Yiyelim?",
+  metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
+  excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
+  category: "Beslenme",
+  tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
+  date: "2025-12-06",
+  content: `
+    <p>
       Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve 
-      “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Aşağıda 
-      her biri <strong>ana yemek + yan lezzet + tatlı</strong> dengesine göre hazırlanmış 
-      <strong>7 farklı glutensiz tam menü</strong> bulacaksın.
+      “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? 
+      Bu yazıda senin için hazırlanmış 7 farklı glutensiz tam menünün detaylarını bulacaksın.
     </p>
-    <p class="text-xs text-gray-500">
-      Not: Kalori değerleri yaklaşık tahminlerdir; kullanılan yağ, porsiyon miktarı ve 
-      pişirme yöntemine göre değişebilir.
+    <p>
+      Her menüde ana yemek, yan lezzet ve tatlı/meyve dengesi gözetildi. 
+      Ayrıca kalori tahminleriyle, günlük toplamını kabaca planlaman da kolaylaşacak.
     </p>
-  </header>
+  `
+},
 
-  <hr class="my-4">
-
-  <!DOCTYPE html>
-  <html lang="tr">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Glutensiz Menüler</title>
-      <!-- Tailwind CSS CDN -->
-      <script src="https://cdn.tailwindcss.com"></script>
-      <style>
-          body {
-              font-family: 'Inter', sans-serif;
-              background-color: #f7f7f7;
-          }
-      </style>
-  </head>
-  <body class="p-4 md:p-8 lg:p-12">
-      <div class="max-w-7xl mx-auto">
-
-          <header class="mb-8">
-              <p class="text-gray-600 mt-1">Glutensiz ve dengeli menü seçenekleri.</p>
-          </header>
-
-          <section>
-              <h2 class="text-2xl font-bold mb-5 text-gray-800">Glutensiz Menüleri Keşfet</h2>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-
-                  <!-- Menü kartları burada, senin eklediğin gibi... -->
-                  <!-- (Kodun bu kısmı olduğu gibi bırakıldı) -->
-
-              </div>
-          </section>
-
-          <hr class="my-10 border-t border-gray-300">
-
-          <footer class="text-center text-gray-500 text-sm">
-              Tüm hakları saklıdır. Sağlıklı beslenme bilgileri bilgilendirme amaçlıdır.
-          </footer>
-
-      </div>
-  </body>
-  </html>
-
-  <section>
-    <h2 class="text-xl font-bold mb-3">Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2>
-    <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
-      <li>
-        <strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş 
-        ürünler gizli gluten içerebilir.
-      </li>
-      <li>
-        <strong>Çapraz bulaş</strong> riskine dikkat et: Aynı yağda kızartılan ürünler veya 
-        aynı tencerede pişirilen yemekler gluten bulaştırabilir.
-      </li>
-      <li>
-        <strong>Glutensiz tahılları</strong> menüne yay: Karabuğday, kinoa, mısır, pirinç, amarant, 
-        darı gibi seçeneklere daha sık yer ver.
-      </li>
-      <li>
-        <strong>Ev yapımı tarifleri</strong> tercih et: İçeriğini bildiğin yemeklerde gluten 
-        kontrolü tamamen senin elinde olur.
-      </li>
-    </ul>
-    <p class="text-sm text-gray-700 mt-3">
-      Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki menüleri; 
-      porsiyon, pişirme yöntemi ve eşlikçi garnitürleri değiştirerek haftalık menü planına 
-      kolayca adapte edebilirsin.
-    </p>
-  </section>
-
-  <section class="mt-6">
-    <h2 class="text-lg font-semibold mb-2">İlgini Çekebilecek Diğer Menü Rehberleri</h2>
-    <ul class="list-disc list-inside text-sm text-primary-blue space-y-1">
-      <li>
-        <a href="?page=blog&post=pratik-menu-onerileri" class="underline">
-          Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler
-        </a>
-      </li>
-      <li>
-        <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="underline">
-          Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
-        </a>
-      </li>
-      <li>
-        <a href="?page=blog&post=etin-yanina-ne-gider" class="underline">
-          Et Yemeklerinin Yanına Ne Gider?
-        </a>
-      </li>
-      <li>
-        <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="underline">
-          Zeytinyağlılar İçin Uyumlu Yan Lezzetler
-        </a>
-      </li>
-    </ul>
-  </section>
-
-</article>
-    `
-  },
 
     {
     id: 6,
@@ -5090,3 +4983,11 @@ if (typeof module !== "undefined") {
         suggestionCategories
     };
 }
+
+window.glutenRulesData = [
+  { title: "Etiket Okuma", icon: "🏷️", desc: "Soslar, hazır karışımlar ve işlenmiş ürünler gizli gluten içerebilir. Daima etiketi kontrol edin." },
+  { title: "Çapraz Bulaş", icon: "❌", desc: "Aynı yağda kızartma, aynı tencerede pişirme veya aynı kesme tahtasını kullanma riskine dikkat edin." },
+  { title: "Çeşitlilik", icon: "🌾", desc: "Karabuğday, kinoa, mısır, pirinç, amarant gibi glutensiz tahılları menünüze yayın." },
+  { title: "Ev Yapımı", icon: "🏡", desc: "İçeriğini bildiğiniz ev yapımı tarifleri tercih edin. Kontrol sizde olsun." }
+];
+
