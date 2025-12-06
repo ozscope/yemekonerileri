@@ -26,7 +26,7 @@ window.createListHtml = (items, colorClass) => {
 // --- BLOG VERİSİ ---
 const blogPostsData = [
 
- {
+{
   id: "glutensiz-menu-onerileri",
   slug: "glutensiz-menu-onerileri",
   title: "Glutensiz Menü Önerileri: 4 Farklı Tam Menü (Kalori Hesaplı)",
@@ -36,61 +36,107 @@ const blogPostsData = [
   category: "Beslenme",
   tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
   date: "2025-12-06",
-  content: ` <p>
-Glutensiz besleniyorsanız veya daha hafif menüler tercih ediyorsanız, sizin için 4 farklı glutensiz tam menü hazırladık.  
-Her menüde ana yemek + yan lezzet + içecek + tatlı olmak üzere dengeli bir toplam kalori sunulur.
-</p>
+  content: `
+<p>Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Bu yazıda senin için, her biri ana yemek + yan lezzet + tatlıdan oluşan <strong>4 farklı glutensiz tam menü</strong> hazırladım.</p>
 
-<hr>
+<p><em>Not: Buradaki kalori değerleri yaklaşık tahminlerdir ve kullanılan yağ, porsiyon miktarı, pişirme yöntemi gibi detaylara göre değişebilir.</em></p>
 
-<h2>🥗 Menü 1: Fırında Tavuk (Glutensiz Klasik Menü) – ~980 kcal</h2>
-<table>
-<tr><td><strong>Ana Yemek</strong></td><td>Fırında Bütün Tavuk (Orta Porsiyon, Derili)</td><td>~465 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Karabuğday (Greçka) Salatası – Zeytinyağlı</td><td>~225 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Közlenmiş Sebzeler (Biber, Kabak, Havuç)</td><td>~120 kcal</td></tr>
-<tr><td><strong>Tatlı</strong></td><td>Kabak Tatlısı (Cevizli – Az Şekerli)</td><td>~170 kcal</td></tr>
-</table>
+<hr />
 
-<hr>
+<h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2>
 
-<h2>🐟 Menü 2: Izgara Somon – ~695 kcal</h2>
-<table>
-<tr><td><strong>Ana Yemek</strong></td><td>Izgara Somon (~175g)</td><td>~290 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Kinoa Salatası (Zeytinyağlı)</td><td>~255 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Buharda Kuşkonmaz</td><td>~30 kcal</td></tr>
-<tr><td><strong>Tatlı</strong></td><td>Taze Meyve Tabağı</td><td>~120 kcal</td></tr>
-</table>
+<p>İç ısıtan, klasik ama güvenli bir kombinasyon: fırında tavuk, tahıllı bir salata ve hafif bir tatlı.</p>
 
-<hr>
-
-<h2>🍽️ Menü 3: Mercimek Köftesi (Glutensiz & Hafif) – ~610 kcal</h2>
-<table>
-<tr><td><strong>Ana Yemek</strong></td><td>Mercimek Köftesi (5–6 adet)</td><td>~280 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Yoğurtlu Semizotu Salatası</td><td>~160 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Turşu</td><td>~10 kcal</td></tr>
-<tr><td><strong>Tatlı</strong></td><td>Kuru Meyveli Elma Dilimleri</td><td>~160 kcal</td></tr>
-</table>
-
-<hr>
-
-<h2>🍲 Menü 4: Kuzu Güveç – ~870 kcal</h2>
-<table>
-<tr><td><strong>Ana Yemek</strong></td><td>Kuzu Güveç (Unsuz Terbiyeli)</td><td>~280 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Pirinç Pilavı (Az yağlı)</td><td>~230 kcal</td></tr>
-<tr><td><strong>Yanına Gider</strong></td><td>Cacık (Mısır nişastalı değil – Yoğurt + Su)</td><td>~90 kcal</td></tr>
-<tr><td><strong>Tatlı</strong></td><td>Sütlaç (Pirinç Unlu / Glutensiz)</td><td>~270 kcal</td></tr>
-</table>
-
-<hr>
-
-<h3>🔗 Diğer sağlıklı menüler</h3>
 <ul>
-    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+  <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon) – <em>~465 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon) – <em>~225 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Közlenmiş sebzeler (biber, kabak, havuç – az yağlı) – <em>~120 kcal</em></li>
+  <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile – orta porsiyon) – <em>~170 kcal</em></li>
 </ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~980 kcal</p>
+
+<p><strong>Neden iyi bir seçenek?</strong> Karabuğday (greçka) doğal olarak glutensiz bir tahıl alternatifi. Hem lif hem de tok tutma açısından güçlü. Fırında tavukla birlikte dengeli bir protein + kompleks karbonhidrat + sağlıklı yağ kombinasyonu oluşturuyor.</p>
+
+<hr />
+
+<h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2>
+
+<p>Balık günlerinde, gluten içeren garnitürlere (örneğin klasik makarna veya ekmek) mecbur değilsin. Somonun yanına taze ve ferah eşlikçiler geliyor.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g) – <em>~290 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Kinoa (kuinoa) salatası (limonlu / zeytinyağlı, orta porsiyon) – <em>~255 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Buharda yeşil kuşkonmaz (yağsız) – <em>~30 kcal</em></li>
+  <li><strong>Tatlı:</strong> Taze meyve tabağı (karışık meyve, orta boy) – <em>~120 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~695 kcal</p>
+
+<p><strong>Neden iyi bir seçenek?</strong> Somonun yüksek omega-3 içeriği ve kinoa gibi glutensiz bir tahıl alternatifi ile hem kalp dostu hem de hafif bir menü oluşuyor. Glutensiz beslenirken karbonhidrat tarafını sağlıklı tahıllarla desteklemiş oluyorsun.</p>
+
+<hr />
+
+<h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2>
+
+<p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: mercimek köftesi menüsü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı) – <em>~280 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Yoğurtlu semizotu salatası (orta porsiyon, tam yağlı yoğurt ile) – <em>~160 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Turşu (birkaç dilim) – <em>~10 kcal</em></li>
+  <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz) – <em>~160 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~610 kcal</p>
+
+<p><strong>Dikkat edilmesi gerekenler:</strong> Mercimek köftesinde kullanılan bulgur, glutensiz beslenmede sorun olabilir. Glutensiz besleniyorsan:</p>
+
+<ul>
+  <li>Glutensiz bulgur alternatifi kullan</li>
+  <li>Veya bulguru azaltıp yerine ince çekilmiş karabuğday / kinoa gibi bir alternatif koy</li>
+  <li>Hazır mercimek köftesi alıyorsan mutlaka etiketini kontrol et</li>
+</ul>
+
+<hr />
+
+<h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2>
+
+<p>Daha klasik, restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü istersen bu kombinasyon oldukça ideal.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon) – <em>~280 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Pirinç pilavı (orta porsiyon, az yağlı) – <em>~230 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile) – <em>~90 kcal</em></li>
+  <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu – orta porsiyon) – <em>~270 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~870 kcal</p>
+
+<p><strong>Dikkat edilmesi gerekenler:</strong></p>
+
+<ul>
+  <li>Güveçte kullanılan sosun içinde un, hazır sos karışımı veya kıvam arttırıcı var mı mutlaka kontrol et.</li>
+  <li>Sütlaçta buğday unu kullanılmadığından genellikle glutensizdir; ancak dışarıda yiyorsan “glutensiz” olarak hazırlanıp hazırlanmadığını sor.</li>
+</ul>
+
+<hr />
+
+<h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2>
+
+<ul>
+  <li><strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş ürünler gizli gluten içerebilir.</li>
+  <li><strong>Çapraz bulaş</strong> riskine dikkat et: Aynı yağda kızartılan ürünler veya aynı tencerede pişen yemekler gluten bulaştırabilir.</li>
+  <li><strong>Glutensiz tahılları</strong> daha çok kullan: Karabuğday, kinoa, mısır, pirinç, amarant, darı gibi seçenekleri menüne yay.</li>
+  <li><strong>Ev yapımı tarifler</strong> her zaman daha güvenli: İçeriğini bildiğin yemeklerde gluten kontrolü elindedir.</li>
+</ul>
+
+<p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 4 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
+
+<p>Eğer istersen ileride “glutensiz kahvaltı menüleri” veya “dışarıda yerken güvenli seçimler” için de ayrı içerikler hazırlayabiliriz 🌾</p>
 `
 },
+
 
     {
     id: 6,
