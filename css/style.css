@@ -78,7 +78,7 @@ body {
    PREMIUM YUMUŞAK BUTON & KART
    =========================== */
 
-/* Genel krem buton – arama CTA, blog butonları vb. için */
+/* Genel krem buton – blog içi, sekmeler vb. için; istersen kullanırsın */
 .btn-soft {
     display: inline-flex;
     align-items: center;
@@ -130,129 +130,89 @@ body {
     box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
 }
 
-/* ==========================================
-   HERO ÜSTÜ YARI ŞEFFAF KREM BUTONLAR
-   (Glutensiz / Pratik / Yılbaşı menü butonları)
-   ========================================== */
-/* === HERO ÜÇLÜ BUTON - Premium Soft Cream === */
+/* ===========================
+   HERO & ARAMA BUTONLARI
+   =========================== */
 
-.btn-hero {
+/* Hero’daki 3 buton + görünürlüğü belirgin olan koyu, şeffaf buton stili */
+.hero-cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.35rem;
 
-    width: 100%;            /* mobil */
-    max-width: 200px;       /* desktop'ta eşit genişlik */
-    height: 42px;           /* sabit yükseklik → eşit görünüm */
-
-    padding: 0 1rem;
-
-    background: rgba(255, 250, 240, 0.72); /* soft cream + transparent */
-    backdrop-filter: blur(6px);
-
+    padding: 0.55rem 1.2rem;
     border-radius: 9999px;
+    border: 1px solid rgba(148, 163, 184, 0.7); /* hafif çizgi */
 
-    border: 1px solid rgba(255, 230, 190, 0.85); /* soft gold/bej kontur */
-
+    background: rgba(15, 23, 42, 0.78);        /* koyu gri, yarı şeffaf */
+    color: #f9fafb;                             /* açık text */
     font-size: 0.8rem;
     font-weight: 600;
-    color: #1f2937;
 
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45); /* yumuşak gölge */
+    backdrop-filter: blur(4px);
 
-    transition: all 0.2s ease;
-}
-
-.btn-hero:hover {
-    background: rgba(255, 245, 225, 0.88);
-    border-color: rgba(255, 220, 180, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
-}
-
-.btn-hero:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
-}
-/* === HERO CTA ve ARA butonları için koyu, şeffaf butonlar === */
-
-/* Hero’daki 3 buton */
-.hero-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-
-  padding: 0.55rem 1.2rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(148, 163, 184, 0.7); /* hafif çizgi */
-
-  background: rgba(15, 23, 42, 0.78);        /* koyu gri, yarı şeffaf */
-  color: #f9fafb;                             /* açık text */
-  font-size: 0.8rem;
-  font-weight: 600;
-
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45); /* yumuşak gölge */
-  backdrop-filter: blur(4px);
-
-  transition:
-    background-color 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease,
-    border-color 0.18s ease;
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .hero-cta-btn:hover {
-  background: rgba(15, 23, 42, 0.92);
-  border-color: rgba(248, 250, 252, 0.85);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.55);
-  transform: translateY(-1px);
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(248, 250, 252, 0.85);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
 }
 
 .hero-cta-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.55);
+    transform: translateY(0);
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.55);
 }
 
-/* Arama bölümündeki ARA butonu */
+/* Hero’daki üç butonun aynı genişlikte görünmesi için */
+.hero-cta-row > button {
+    min-width: 9.5rem;
+    justify-content: center;
+}
+
+/* Arama bölümündeki ARA / “Yanına Ne Yiyelim?” butonu */
 .search-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
 
-  padding: 0.6rem 1.5rem;
-  border-radius: 9999px;
-  border: 1px solid rgba(15, 23, 42, 0.55);
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(15, 23, 42, 0.55);
 
-  background: rgba(15, 23, 42, 0.9);
-  color: #f9fafb;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+    background: rgba(15, 23, 42, 0.9);
+    color: #f9fafb;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
 
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(3px);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
 
-  transition:
-    background-color 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease,
-    border-color 0.18s ease;
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .search-btn:hover {
-  background: #020617; /* çok koyu slate-950 */
-  border-color: #e5e7eb;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.6);
-  transform: translateY(-1px);
+    background: #020617; /* çok koyu slate-950 */
+    border-color: #e5e7eb;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.6);
+    transform: translateY(-1px);
 }
 
 .search-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.6);
+    transform: translateY(0);
+    box-shadow: 0 7px 18px rgba(15, 23, 42, 0.6);
 }
-
-
-/* Mobilde tam genişlik kullanmak için (Tailwind ile birlikte) yardımcı sınıf olarak:
-   class="btn-soft-hero w-full sm:w-auto" şeklinde kullanıyorsun. */
