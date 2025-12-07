@@ -134,8 +134,9 @@ body {
    HERO & ARAMA BUTONLARI
    =========================== */
 
-/* Hero’daki 3 buton + görünürlüğü belirgin olan koyu, şeffaf buton stili */
-.hero-cta-btn {
+/* Hero’daki koyu CTA buton stili */
+.hero-cta-btn,
+.btn-soft-dark {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -160,14 +161,16 @@ body {
         border-color 0.18s ease;
 }
 
-.hero-cta-btn:hover {
+.hero-cta-btn:hover,
+.btn-soft-dark:hover {
     background: rgba(15, 23, 42, 0.92);
     border-color: rgba(248, 250, 252, 0.85);
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.55);
     transform: translateY(-1px);
 }
 
-.hero-cta-btn:active {
+.hero-cta-btn:active,
+.btn-soft-dark:active {
     transform: translateY(0);
     box-shadow: 0 5px 14px rgba(15, 23, 42, 0.55);
 }
@@ -191,11 +194,11 @@ body {
   cursor: pointer;
 }
 
+/* Kontrastı yüksek, ana CTA rengi */
 .search-btn.primary {
-  background-color: #F1F2F4;
-  color: #111827; /* koyu gri */
+  background-color: #0f172a;  /* koyu lacivert / marka rengi ile değiştirebilirsin */
+  color: #ffffff;
 }
-
 
 .form-field {
   margin-bottom: 16px;
@@ -231,10 +234,10 @@ body {
   height: 18px;
 }
 
+/* ARA butonunu alt tarafta sticky kullanmak istersen */
 .search-bar-wrapper {
   position: sticky;
   bottom: 0;
   padding: 12px 16px 20px;
   background: linear-gradient(to top, #ffffff 70%, transparent);
 }
-
