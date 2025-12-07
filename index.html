@@ -223,74 +223,84 @@
 </section>
 
 
-<!-- ARAMA KARTI (FORM) -->
-<section class="mt-8">
-  <div class="bg-white rounded-3xl shadow-sm border border-slate-100 px-5 py-4 md:px-8 md:py-6">
-    <div class="flex flex-col md:flex-row md:items-center md:gap-4">
-      <!-- Ana Yemek -->
-      <div class="flex-1 mb-4 md:mb-0">
-        <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1">
-          Ana Yemeğin Ne?
-        </label>
-        <input
-          id="mainDishInput"
-          type="text"
-          placeholder="Örn: Köfte, fırında tavuk, mercimek çorbası..."
-          class="w-full rounded-2xl border border-slate-200 px-3 py-2.5 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-[#007bff]"
-        />
-        <p class="mt-1 text-xs text-slate-400">
-          Boş bırakırsan, seçtiğin mutfak türüne göre “Günün Önerisi” gelir.
-        </p>
-      </div>
+<!-- Arama Alanı – Daha Belirgin ve Modern -->
+<section class="bg-white rounded-3xl shadow-md border border-slate-200 p-6 md:p-8">
+    
+    <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-4">
+        Ne Pişiriyorsun? Hadi Menünü Tamamlayalım 🍽️
+    </h2>
 
-      <!-- Mutfak Türü -->
-      <div class="w-full md:w-56 mb-4 md:mb-0">
-        <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1">
-          Mutfak Türü
-        </label>
-        <select
-          id="cuisineFilter"
-          class="w-full rounded-2xl border border-slate-200 px-3 py-2.5 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-[#007bff]"
-        >
-<option value="">Tüm Mutfaklar</option> <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option> 
-            <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option> 
-            <option value="Asya Mutfağı">🍣 Asya Mutfağı</option> 
-            <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option> 
-            <option value="Uluslararası">🌐 Uluslararası</option> 
-            <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option> 
-            <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option> 
-            <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option> 
-            <option value="Ege Mutfağı">🌿 Ege Mutfağı</option> 
-            <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option> 
-            <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
-        </select>
-      </div>
+    <div class="flex flex-col md:flex-row md:items-end gap-6">
 
-      <!-- 1200 kcal filtresi + buton -->
-      <div class="flex items-end justify-between md:justify-end gap-4 w-full md:w-auto">
-        <label class="flex items-center gap-2 text-xs md:text-sm text-slate-600">
-          <input
-            id="lowCalorieFilter"
-            type="checkbox"
-            class="rounded border-slate-300 text-[#007bff] focus:ring-[#007bff]"
-          />
-          <span>Toplam menü <strong>1200 kcal</strong> altı olsun</span>
-        </label>
+        <!-- Ana Yemek Input -->
+        <div class="flex-1">
+            <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-2">
+                Ana Yemeğin Ne?
+            </label>
+            <input
+                id="mainDishInput"
+                type="text"
+                placeholder="Örn: Köfte, Fırında Tavuk, Mercimek Çorbası..."
+                class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm md:text-base
+                       focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
+                       transition shadow-sm"
+            />
+            <p class="mt-2 text-xs text-slate-500">
+                Boş bırakırsan, seçtiğin mutfak türüne göre <strong>Günün Önerisi</strong> gelir.
+            </p>
+        </div>
 
-        <button
-          type="button"
-          onclick="searchDish()"
-          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold
-                 bg-[#005c9f] text-white shadow hover:bg-[#004b84] transition whitespace-nowrap"
-        >
-          🔍 Yanına Ne Yiyelim?
-        </button>
-      </div>
+        <!-- Mutfak Türü -->
+        <div class="w-full md:w-52">
+            <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-2">
+                Mutfak Türü
+            </label>
+            <select
+                id="cuisineFilter"
+                class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm md:text-base
+                       bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
+                       transition shadow-sm"
+            >
+                <option value="">Tüm Mutfaklar</option>
+                <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
+                <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
+                <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
+                <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
+                <option value="Uluslararası">🌐 Uluslararası</option>
+                <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
+                <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
+                <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
+                <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
+                <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
+                <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
+            </select>
+        </div>
+
+        <!-- Kalori Filtresi + Buton -->
+        <div class="flex flex-col md:flex-row items-start md:items-end gap-4 md:gap-6">
+
+            <label class="flex items-center gap-2 text-xs md:text-sm text-slate-700">
+                <input
+                    id="lowCalorieFilter"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                />
+                <span>Toplam menü <strong>1200 kcal</strong> altı olsun</span>
+            </label>
+
+            <button
+                type="button"
+                onclick="searchDish()"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+                       bg-sky-600 hover:bg-sky-700 text-white text-sm md:text-base
+                       font-semibold shadow-md transition"
+            >
+                🔍 Yanına Ne Yiyelim?
+            </button>
+        </div>
     </div>
-  </div>
 </section>
+
 
 
             <!-- Sonuçlar -->
