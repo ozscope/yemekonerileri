@@ -806,6 +806,7 @@ function renderPratikBlogPost(container, post) {
         `).join('');
     }
 
+
     // global filtre fonksiyonu
     window.filterPratikMenus = function(type) {
         const btnAll = document.getElementById('btn-all-pratik');
@@ -824,10 +825,201 @@ function renderPratikBlogPost(container, post) {
         renderPratikMenus(type);
     };
 
-    // ilk yüklemede tüm menüler
+    renderPratikRules();
     renderPratikMenus('all');
+
+    return;
 }
 
+// ÖZEL LAYOUT 3: YILBAŞI SOFRASI
+if (postSlug === 'yilbasi-sofra-menu-onerileri') {
+    document.title = "Yılbaşı Sofrası Rehberi: 4 Tam Menü Önerisi - Yanında Ne Yiyelim?";
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute(
+            "content",
+            "Yılbaşı akşamı için başlangıçtan tatlıya kadar düşünülmüş 4 farklı tematik yılbaşı menüsü. Klasik, Akdeniz, gurme et ziyafeti ve vejetaryen seçenekler."
+        );
+    }
+
+    container.innerHTML = `
+        <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">
+            ← Geri Dön
+        </button>
+
+        <article class="space-y-10">
+            <header class="text-center max-w-3xl mx-auto space-y-4">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-red-600">
+                    🎄 Unutulmaz Yılbaşı Menüleri
+                </h1>
+                <p class="text-lg text-stone-600 leading-relaxed">
+                    Bu özel akşam için, başlangıçtan tatlıya kadar her detayı düşünülmüş
+                    <strong>4 farklı tematik menü</strong> hazırladık. İster klasik ister hafif olsun, misafirlerinizi etkileyecek sofrayı kurun.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 mt-4">
+                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">✨ Şölen hissi</span>
+                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">🍖 Çoklu kurs</span>
+                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">🥂 Kutlama zamanı</span>
+                </div>
+            </header>
+
+            <section id="menu-explorer-yilbasi" class="scroll-mt-20">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-stone-900">Tematik menü setleri</h2>
+                    <p class="text-stone-600 text-sm">Temanıza uygun menüyü seçin ve hazırlıklara başlayın.</p>
+                </div>
+
+                <div id="menusGridYilbasi" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </section>
+
+            <section>
+                <div class="flex flex-col md:flex-row justify-between items-end mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2">
+                            <span>⏱</span> Yılbaşı sofrası 4 planlama aşaması
+                        </h3>
+                        <p class="text-stone-600 text-sm mt-1">
+                            Stresi azaltmak ve gecenin tadını çıkarmak için ipuçları.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="rulesContainerYilbasi"></div>
+            </section>
+
+            <section class="bg-stone-800 text-stone-300 rounded-2xl p-8 text-center space-y-4">
+                <h4 class="text-xl font-semibold text-white">Ekstra sofrayı zenginleştirme ipuçları</h4>
+                <ul class="flex flex-wrap justify-center gap-6 text-sm">
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-400">★</span> Kokteyl öncesi hafif atıştırmalıklar hazırlayın.
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-400">★</span> Masada mutlaka bir yılbaşı çiçeği bulundurun.
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-red-400">★</span> Yemek sonrası kahve yanına likör ikram edin.
+                    </li>
+                </ul>
+                <hr class="border-stone-700 max-w-xs mx-auto my-4">
+                <p class="text-xs text-stone-500">
+                    2025 © Yılbaşı Sofrası Rehberi. Kaynak: Yılbaşı Sofrası Menü Önerileri Raporu.
+                </p>
+            </section>
+        </article>
+    `;
+
+    const menuDataYilbasi = [
+        {
+            id: 1,
+            title: "Klasik Türk sofrası",
+            kcal: 1500,
+            desc: "Geleneksel lezzetlerin başrolde olduğu, doyurucu ve büyük bir kutlama menüsü.",
+            main: "Kestaneli iç pilavlı bütün hindi",
+            side: "Zeytinyağlı enginar, Rus salatası ve haydari",
+            dessert: "Cevizli kabak tatlısı",
+            themeColor: "text-red-600",
+            bgColor: "border-red-100",
+            icon: "🦃"
+        },
+        {
+            id: 2,
+            title: "Akdeniz esintisi",
+            kcal: 1100,
+            desc: "Daha hafif, ferahlatıcı ve modern bir lezzet arayanlar için zarif bir seçenek.",
+            main: "Mantar soslu ızgara somon fileto",
+            side: "Roka ve nar ekşili yeşil salata, fırınlanmış biberli patates",
+            dessert: "Hafif sütlaç veya taze meyve tabağı",
+            themeColor: "text-blue-600",
+            bgColor: "border-blue-100",
+            icon: "🐟"
+        },
+        {
+            id: 3,
+            title: "Gurme et ziyafeti",
+            kcal: 1800,
+            desc: "Yoğun lezzetleri, kremalı eşlikçileri ve sofistike sosları sevenler için.",
+            main: "Dana rosto (kırmızı şarap soslu)",
+            side: "Kremalı patates püresi, buharda kuşkonmaz",
+            dessert: "Sıcak çikolatalı sufle",
+            themeColor: "text-purple-600",
+            bgColor: "border-purple-100",
+            icon: "🥩"
+        },
+        {
+            id: 4,
+            title: "Vejetaryen şölen",
+            kcal: 1000,
+            desc: "Etsiz, ancak zengin ve çok katmanlı lezzetlere sahip unutulmaz bir menü.",
+            main: "Fırında peynirli ıspanak lazanya",
+            side: "Yeşil mercimek salatası, közlenmiş kök sebzeler",
+            dessert: "Kaymaklı ayva tatlısı",
+            themeColor: "text-green-600",
+            bgColor: "border-green-100",
+            icon: "🥬"
+        }
+    ];
+
+    const rulesDataYilbasi = [
+        { title: "Zamanlama", icon: "⏱️", desc: "Tüm yemeklerin pişirme ve servis saatlerini misafirlerin gelişine göre planlayın." },
+        { title: "Denge", icon: "⚖️", desc: "Ana yemek ne kadar ağırsa, başlangıç ve yan lezzetleri o kadar hafif tutarak dengeleyin." },
+        { title: "İçecek uyumu", icon: "🍷", desc: "Menüdeki ana protein türü (kırmızı et, balık vb.) ile uyumlu içecekleri belirleyin." },
+        { title: "Ambians", icon: "🕯️", desc: "Sofra düzeni, mumlar ve özel müzik listesi ile gecenin atmosferini tamamlayın." }
+    ];
+
+    const gridY = document.getElementById('menusGridYilbasi');
+    if (gridY) {
+        gridY.innerHTML = menuDataYilbasi.map(menu => `
+            <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border ${menu.bgColor}">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl font-bold ${menu.themeColor}">${menu.id}. ${menu.title}</h3>
+                    <span class="bg-yellow-50 text-yellow-700 text-sm font-bold px-3 py-1 rounded-full">~ ${menu.kcal} kcal</span>
+                </div>
+
+                <p class="text-sm text-stone-500 mb-4 italic">
+                    "${menu.desc}"
+                </p>
+
+                <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                    <div class="flex items-start gap-2">
+                        <span class="text-lg mt-0.5">${menu.icon}</span>
+                        <div>
+                            <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                            <span class="text-sm text-stone-800 font-medium">${menu.main}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="text-lg mt-0.5">🍚</span>
+                        <div>
+                            <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan / başlangıç</strong>
+                            <span class="text-sm text-stone-800 font-medium">${menu.side}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="text-lg mt-0.5">🍰</span>
+                        <div>
+                            <strong class="text-xs text-stone-400 uppercase tracking-wide block">Tatlı</strong>
+                            <span class="text-sm text-stone-800 font-medium">${menu.dessert}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    const rulesY = document.getElementById('rulesContainerYilbasi');
+    if (rulesY) {
+        rulesY.innerHTML = rulesDataYilbasi.map(rule => `
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 hover:border-red-200 transition cursor-default group">
+                <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">${rule.icon}</div>
+                <h4 class="font-bold text-stone-800 mb-1 text-sm">${rule.title}</h4>
+                <p class="text-xs text-stone-500 leading-snug">${rule.desc}</p>
+            </div>
+        `).join('');
+    }
+
+    return;
+}
 /* ============ BLOG İÇERİK YÜKLEYİCİ ============ */
 
 // postSlug: null ise liste, dolu ise tekil yazı gösterir
