@@ -1,31 +1,23 @@
+/* Genel gövde ayarları:
+   - Layout'u Tailwind yönetiyor, o yüzden sadece font ve arka plan rengi bırakıyoruz. */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f7f9fb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #f8fafc; /* Tailwind bg-slate-50 ile uyumlu */
     margin: 0;
 }
 
-.app-container {
-    width: 100%;
-    max-width: 600px;
-    padding: 1rem;
-    margin-top: 4rem; /* Üst bar için boşluk */
-    flex-grow: 1;
-}
-
+/* Reklam placeholder alanı (blog altı, sayfa altı reklam blokları için) */
 .ad-placeholder {
     min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f3f4f6;
-    border: 1px dashed #cbd5e1;
-    color: #9ca3af;
+    background-color: #f3f4f6;  /* slate-100 */
+    border: 1px dashed #cbd5e1; /* slate-300 */
+    color: #9ca3af;             /* slate-400 */
 }
 
+/* Mobil sidebar animasyonu */
 #sidebar {
     transition: transform 0.3s ease-in-out;
 }
@@ -38,58 +30,37 @@ body {
     transform: translateX(-100%);
 }
 
+/* Sidebar overlay geçişi */
 #overlay {
     transition: opacity 0.3s ease-in-out, visibility 0.3s;
 }
 
+/* Blog içerik alanı tipografi ayarları */
+.content-area h1,
+.content-area h2,
+.content-area h3,
 .content-area h4 {
-    font-weight: bold;
+    font-weight: 700;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    color: #1e40af;
 }
 
-.content-area ul {
-    list-style: disc;
+.content-area h4 {
+    font-size: 1.1rem;
+    color: #1e40af; /* indigo-800 tonu */
+}
+
+.content-area ul,
+.content-area ol {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
 }
 
+.content-area li {
+    margin-bottom: 0.25rem;
+}
+
 .content-area p {
     margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-.cookie-banner {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 60;
-    background: rgba(15, 23, 42, 0.97);
-    color: #f9fafb;
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-@media (min-width: 640px) {
-    .cookie-banner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-.cookie-banner p {
-    margin: 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
-.cookie-banner button {
-    border: none;
-    cursor: pointer;
+    line-height: 1.7;
 }
