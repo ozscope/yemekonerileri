@@ -10,7 +10,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Premium font: DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         rel="preconnect"
@@ -22,7 +21,6 @@
         rel="stylesheet"
     />
 
-    <!-- Harici stil dosyan -->
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -73,13 +71,11 @@
     onclick="hideSidebar()"
 ></div>
 
-<!-- SADECE MOBİLDE GÖRÜNEN SIDEBAR -->
 <aside
     id="sidebar"
     class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 p-4
            sidebar-closed transition-transform duration-300 md:hidden">
 
-    <!-- ÜST LOGO + KAPAT BUTONU -->
     <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
             <img
@@ -100,7 +96,6 @@
         </button>
     </div>
 
-    <!-- MENÜ LİNKLERİ -->
     <nav class="space-y-2 mt-4">
         <button
             type="button"
@@ -131,7 +126,6 @@
 
 <div class="min-h-screen flex flex-col">
 
-    <!-- NAVBAR -->
     <header class="bg-white/80 backdrop-blur border-b border-slate-200">
         <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <button
@@ -184,20 +178,16 @@
         
         <section id="page-home" class="space-y-6"> 
             
-            <!-- HERO -->
             <section
                 class="relative overflow-hidden rounded-none md:rounded-3xl border border-slate-200/60 shadow-sm mb-4 md:mb-6 bg-slate-900"
             >
-                <!-- Arka plan görsel -->
                 <div
                     class="w-full h-[320px] md:h-[360px] bg-cover bg-center"
                     style="background-image: url('./images/hero-pasta.jpg');"
                 >
-                    <!-- Sağ tarafa doğru koyulaşan overlay -->
                     <div class="w-full h-full bg-gradient-to-l from-black/70 via-black/40 to-black/0">
                         <div class="max-w-6xl mx-auto h-full flex items-center px-4 md:px-8">
                             
-                            <!-- Sağ tarafa hizalı blok -->
                             <div class="ml-auto max-w-md md:max-w-lg space-y-3 text-white">
                                 <h1 class="text-2xl md:text-4xl font-semibold leading-snug">
                                     Ana yemekten emin misin,
@@ -210,10 +200,7 @@
                                     <span class="font-medium">yan lezzet, içecek ve tatlı</span> önerileri sunuyoruz.
                                 </p>
 
-                                <!-- CTA butonlar -->
-                                <!-- ÖZEL MENÜ BUTONLARI -->
-<div class="flex flex-wrap justify-center gap-3 pt-3">
-    <!-- Glutensiz Menüler Butonu -->
+                                <div class="flex flex-wrap justify-center gap-3 pt-3">
     <button
         type="button"
         onclick="handleMenuClick('glutensiz')"
@@ -227,7 +214,6 @@
         GLUTENSİZ MENÜLER
     </button>
 
-    <!-- Pratik Menüler Butonu -->
     <button
         type="button"
         onclick="handleMenuClick('pratik')"
@@ -241,7 +227,6 @@
         PRATİK MENÜLER
     </button>
 
-    <!-- Yılbaşı Menüleri Butonu -->
     <button
         type="button"
         onclick="handleMenuClick('yilbasi')"
@@ -258,14 +243,11 @@
 
 
                             </div>
-                            <!-- /sağa yaslanan blok -->
-
-                        </div>
+                            </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ANA ARAMA – sayfanın merkezi CTA’sı -->
             <section class="mt-4 mb-6">
                 <div class="max-w-xl mx-auto card-soft p-5 md:p-6 space-y-4">
                     <h2 class="text-lg md:text-xl font-semibold text-slate-900 text-center">
@@ -273,7 +255,6 @@
                     </h2>
 
                     <div class="flex flex-col gap-4">
-                        <!-- Ana yemek inputu -->
                         <div class="flex-1 min-w-[220px]">
                             <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1.5">
                                 Ana Yemeğin Ne?
@@ -282,7 +263,7 @@
                                 id="mainDishInput"
                                 type="text"
                                 class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm
-                                       focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                        focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
                                 placeholder="Örn: Köfte, Fırında Tavuk,..."
                             />
                             <p class="mt-1 text-[11px] text-slate-400">
@@ -290,9 +271,7 @@
                             </p>
                         </div>
 
-                        <!-- Mutfak + Kalori + Buton – mobil önce dikey, geniş ekranda yan yana -->
                         <div class="flex flex-col sm:flex-row sm:items-end gap-3">
-                            <!-- Mutfak Türü -->
                             <div class="sm:flex-1">
                                 <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1.5">
                                     Mutfak Türü
@@ -317,7 +296,6 @@
                                 </select>
                             </div>
 
-                            <!-- 1200 kcal checkbox – TEK checkbox -->
                             <label for="lowCalorieFilter" class="checkbox-row sm:w-40">
                                 <input
                                     id="lowCalorieFilter"
@@ -327,7 +305,6 @@
                                 <span>Toplam menü <strong>1200 kcal altı</strong> olsun</span>
                             </label>
 
-                            <!-- Buton -->
                             <button class="search-btn primary" onclick="performSearch()">
                                 ARA 🔍
                             </button>
@@ -474,7 +451,6 @@
         </section>
     </main>
 
-    <!-- ÇEREZ BİLDİRİMİ -->
     <div
         id="cookieBanner"
         class="fixed bottom-3 inset-x-0 mx-auto max-w-xl bg-slate-900 text-slate-50 rounded-2xl shadow-2xl px-4 py-4 text-xs flex flex-col sm:flex-row items-start sm:items-center gap-3 border border-slate-700 hidden opacity-0 transition-opacity duration-300 z-50"
@@ -505,7 +481,6 @@
     </div>
 </div>
 
-<!-- Detay template'i -->
 <template id="dishDetailTemplate">
     <article class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6">
         <header class="mb-4">
