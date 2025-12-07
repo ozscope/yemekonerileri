@@ -134,41 +134,47 @@ body {
    HERO ÜSTÜ YARI ŞEFFAF KREM BUTONLAR
    (Glutensiz / Pratik / Yılbaşı menü butonları)
    ========================================== */
+/* === HERO ÜÇLÜ BUTON - Premium Soft Cream === */
 
-.btn-soft-hero {
+.btn-hero {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
 
-    background: rgba(255, 252, 245, 0.8); /* yumuşak krem + yarı şeffaf */
-    backdrop-filter: blur(4px);
+    width: 100%;            /* mobil */
+    max-width: 200px;       /* desktop'ta eşit genişlik */
+    height: 42px;           /* sabit yükseklik → eşit görünüm */
 
-    padding: 0.6rem 1.2rem;
+    padding: 0 1rem;
+
+    background: rgba(255, 250, 240, 0.72); /* soft cream + transparent */
+    backdrop-filter: blur(6px);
+
     border-radius: 9999px;
-    border: none;
+
+    border: 1px solid rgba(255, 230, 190, 0.85); /* soft gold/bej kontur */
 
     font-size: 0.8rem;
     font-weight: 600;
-    color: #111827; /* slate-900 */
+    color: #1f2937;
 
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
-    transition:
-        background-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+    transition: all 0.2s ease;
 }
 
-.btn-soft-hero:hover {
-    background: rgba(255, 248, 230, 0.9); /* hover’da biraz daha sıcak */
-    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.22);
-    transform: translateY(-1px);
+.btn-hero:hover {
+    background: rgba(255, 245, 225, 0.88);
+    border-color: rgba(255, 220, 180, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
 }
 
-.btn-soft-hero:active {
+.btn-hero:active {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
 }
+
 
 /* Mobilde tam genişlik kullanmak için (Tailwind ile birlikte) yardımcı sınıf olarak:
    class="btn-soft-hero w-full sm:w-auto" şeklinde kullanıyorsun. */
