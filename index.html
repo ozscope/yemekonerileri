@@ -211,31 +211,51 @@
                                 </p>
 
                                 <!-- CTA butonlar -->
-                                <div class="mt-4 flex flex-col sm:flex-row gap-2 hero-cta-row">
-                                    <button
-                                        type="button"
-                                        onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-                                        class="btn-soft-dark"
-                                    >
-                                        <span>GLUTENSİZ MENÜLER</span>
-                                    </button>
+                                <!-- ÖZEL MENÜ BUTONLARI -->
+<div class="flex flex-wrap justify-center gap-3 pt-3">
+    <!-- Glutensiz Menüler Butonu -->
+    <button
+        type="button"
+        onclick="handleMenuClick('glutensiz')"
+        class="flex items-center justify-center px-5 py-2
+               bg-white/90 text-slate-900 text-sm font-semibold
+               rounded-full border border-slate-300
+               shadow-md hover:bg-slate-900 hover:text-white hover:border-slate-900
+               transition duration-300 min-w-[180px]"
+    >
+        <span class="text-xl mr-2"></span>
+        GLUTENSİZ MENÜLER
+    </button>
 
-                                    <button
-                                        type="button"
-                                        onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-                                        class="btn-soft-dark"
-                                    >
-                                        <span>PRATİK MENÜLER</span>
-                                    </button>
+    <!-- Pratik Menüler Butonu -->
+    <button
+        type="button"
+        onclick="handleMenuClick('pratik')"
+        class="flex items-center justify-center px-5 py-2
+               bg-white/90 text-slate-900 text-sm font-semibold
+               rounded-full border border-slate-300
+               shadow-md hover:bg-slate-900 hover:text-white hover:border-slate-900
+               transition duration-300 min-w-[180px]"
+    >
+        <span class="text-xl mr-2"></span>
+        PRATİK MENÜLER
+    </button>
 
-                                    <button
-                                        type="button"
-                                        onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri')"
-                                        class="btn-soft-dark"
-                                    >
-                                        <span>YILBAŞI MENÜLERİ</span>
-                                    </button>
-                                </div>
+    <!-- Yılbaşı Menüleri Butonu -->
+    <button
+        type="button"
+        onclick="handleMenuClick('yilbasi')"
+        class="flex items-center justify-center px-5 py-2
+               bg-white/90 text-slate-900 text-sm font-semibold
+               rounded-full border border-slate-300
+               shadow-md hover:bg-slate-900 hover:text-white hover:border-slate-900
+               transition duration-300 min-w-[180px]"
+    >
+        <span class="text-xl mr-2"></span>
+        YILBAŞI MENÜLERİ
+    </button>
+</div>
+
 
                             </div>
                             <!-- /sağa yaslanan blok -->
