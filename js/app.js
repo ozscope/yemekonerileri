@@ -44,6 +44,27 @@ function hideSidebar() {
     overlay.classList.add('opacity-0');
     setTimeout(() => overlay.classList.add('hidden'), 300);
 }
+function handleMenuClick(type) {
+    // Türden slug’a map’liyoruz
+    let slug = null;
+
+    if (type === 'glutensiz') {
+        slug = 'glutensiz-menu-onerileri';
+    } else if (type === 'pratik') {
+        slug = 'pratik-menu-onerileri';
+    } else if (type === 'yilbasi') {
+        slug = 'yilbasi-sofra-menu-onerileri';
+    }
+
+    if (!slug) return;
+
+    // Blog sayfasına geç ve ilgili yazıyı aç
+    showPage('blog');
+    viewBlogPost(slug);
+}
+
+// Global kullanmak için:
+window.handleMenuClick = handleMenuClick;
 
 // --- SAYFA GEÇİŞLERİ ---
 // --- SAYFA GEÇİŞLERİ ---
