@@ -13,9 +13,12 @@ function normalizeText(text) {
 }
 
 function createListHtml(items, colorClass) {
+    // Renk sınıfları için varsayılan bir değer belirliyorum, çünkü Tailwind kullanılıyor.
+    const finalColorClass = colorClass || 'text-green-600';
+
     return items.map(item => `
         <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition duration-150">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${finalColorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
             <span class="text-gray-700 font-medium">${item}</span>
@@ -23,10 +26,7 @@ function createListHtml(items, colorClass) {
     `).join('');
 }
 
-// BUNU GLOBAL’E AÇ
-window.createListHtml = createListHtml;
-
-// --- SIDEBAR ---
+// --- SIDEBAR Fonksiyonlari ---
 function showSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -44,6 +44,8 @@ function hideSidebar() {
     overlay.classList.add('opacity-0');
     setTimeout(() => overlay.classList.add('hidden'), 300);
 }
+
+// --- ÖZEL MENÜ TIKLAMALARI (Hero alanından) ---
 function handleMenuClick(type) {
     // Türden slug’a map’liyoruz
     let slug = null;
@@ -63,10 +65,7 @@ function handleMenuClick(type) {
     viewBlogPost(slug);
 }
 
-// Global kullanmak için:
-window.handleMenuClick = handleMenuClick;
 
-// --- SAYFA GEÇİŞLERİ ---
 // --- SAYFA GEÇİŞLERİ ---
 function showPage(pageId, fromSidebar = false) {
     // Tüm sayfa elementlerini kontrol edip gizle
@@ -77,7 +76,6 @@ function showPage(pageId, fromSidebar = false) {
         if (element) {
             element.classList.add('hidden');
         } else {
-            // Loglama, hangi elementin eksik olduğunu görmenizi sağlar
             console.warn(`Warning: Element with ID '${id}' not found in the DOM.`);
         }
     });
@@ -127,6 +125,7 @@ function showPage(pageId, fromSidebar = false) {
 
         window.history.pushState({}, '', url);
     } catch (e) {
+        // Local dosyalarda URL güncellemesi desteklenmez.
         console.log("URL güncelleme bu ortamda desteklenmiyor");
     }
 }
@@ -134,6 +133,7 @@ function showPage(pageId, fromSidebar = false) {
 
 // --- ANA SAYFA BLOG ÖNERİLERİ ---
 function renderHomeBlogSection() {
+    // blogPostsData'nın js/data.js dosyasından geldiği varsayılır (Global variable)
     if (!window.blogPostsData || !Array.isArray(window.blogPostsData)) return;
 
     const container = document.getElementById('home-blog-list');
@@ -163,7 +163,7 @@ function renderHomeBlogSection() {
                 <button
                     type="button"
                     onclick="showPage('blog'); viewBlogPost('${post.slug}')"
-                    class="mt-2 text-primary-blue font-semibold text-sm hover:underline text-left"
+                    class="mt-2 text-blue-600 font-semibold text-sm hover:underline text-left"
                 >
                     Devamını Oku →
                 </button>
@@ -204,17 +204,16 @@ function viewBlogList() {
 
 function renderDefaultBlogPost(container, post) {
     container.innerHTML = `
-        <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">
+        <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Geri Dön
         </button>
         
         <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
             <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
-            <span class="text-xs font-bold text-secondary-green uppercase mb-4 block">${post.category || ''}</span>
+            <span class="text-xs font-bold text-green-600 uppercase mb-4 block">${post.category || ''}</span>
             ${post.content}
         </article>
 
-        <!-- X PAYLAŞ BUTONU -->
         <div class="mt-6">
             <a 
                 id="twitterShareBtn"
@@ -236,8 +235,10 @@ function renderDefaultBlogPost(container, post) {
 /* ============ GLUTENSİZ MENÜ ÖZEL SAYFA ============ */
 
 function renderGlutenFreeBlogPost(container, post) {
+    // GLÜTENSİZ MENÜ KOD BLOĞU (İçerik buraya)
+    // Not: Orijinal kodunuzdaki tüm 7 menü kartı ve HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
-        <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">
+        <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Blog Listesine Dön
         </button>
 
@@ -261,7 +262,6 @@ function renderGlutenFreeBlogPost(container, post) {
                 </div>
             </header>
 
-            <!-- Menü Grid -->
             <section id="menu-explorer-gluten" class="scroll-mt-20">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <div>
@@ -271,13 +271,226 @@ function renderGlutenFreeBlogPost(container, post) {
                 </div>
 
                 <div id="menusGridGluten" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Menü kartları (1–7) -->
-                    <!-- ... (senin paylaştığın tüm 7 kart burada, değiştirmedim) ... -->
-                    <!-- Kod uzun olduğu için kısaltmıyorum; mevcut gönderdiğin glutensiz HTML blokları aynen burada. -->
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">1. Tavuklu & Sebzeli Quinoa</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 850 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Doyurucu ve yüksek lifli, tam bir sporcu menüsü."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍗</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Buharda pişirilmiş veya ızgara tavuk göğsü</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍚</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Kinoa salatası (limon soslu)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍰</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Tatlı</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Bir porsiyon taze meyve (muz/elma)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">2. Mercimek Köftesi & Yeşil Salata</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 700 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Vegan, glutensiz ve doyurucu bir ana öğün alternatifi."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🧆</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Kırmızı mercimek köftesi</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥗</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Bol limonlu mevsim yeşillikleri salatası</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥛</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">İçecek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Büyük bir kase ev yapımı cacık veya ayran</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">3. Fırında Somon & Tatlı Patates</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 900 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Fırında kolay hazırlanan, sağlıklı ve lezzetli menü."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🐟</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Fırında somon (dereotu, zeytinyağı ile)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥔</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Fırında baharatlı tatlı patates dilimleri</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍊</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Tatlı</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Nar taneleri ve tarçınlı yoğurt</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">4. Kırmızı Et ve Enginar</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 1100 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Doyurucu kırmızı et menüsüne hafif ve zarif bir yan lezzet."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥩</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Izgara antrikot veya bonfile</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍲</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Zeytinyağlı taze enginar (pirinçsiz)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥂</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">İçecek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Sek kırmızı şarap (bir kadeh)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">5. Tavuklu Çorba ve Glutensiz Ekmek</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 550 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Soğuk kış günleri için hafif ve tam koruyucu menü."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥣</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Sebzeli tavuk suyu çorbası (glütensiz erişteyle)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍞</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Glutensiz tam buğday ekmeği</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍯</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Tatlı</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Az şekerli komposto</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">6. Mısır Unlu Hamsi Tava & Roka Salatası</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 950 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Karadeniz'in klasiği, mısır unu ile glütensiz ve çıtır."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🎣</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Mısır unlu hamsi tava</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🥗</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Bol soğanlı, nar ekşili roka salatası</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍋</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">İçecek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Taze limonata veya şalgam suyu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-indigo-600">7. Köri Soslu Tavuk & Pirinç Pilavı</h3>
+                            <span class="bg-green-50 text-green-700 text-sm font-bold px-3 py-1 rounded-full">~ 1050 kcal</span>
+                        </div>
+                        <p class="text-sm text-stone-500 mb-4 italic">"Uzakdoğu esintisi taşıyan, krema yerine Hindistan cevizi sütüyle hazırlanan glütensiz menü."</p>
+                        <div class="mt-auto space-y-3 bg-stone-50 p-4 rounded-lg border border-stone-100">
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍛</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Ana yemek</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Tavuklu sarı köri (Hindistan cevizi sütü ile)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍚</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Yan lezzet</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Sade pirinç pilavı (bol tereyağsız)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-lg mt-0.5">🍍</span>
+                                <div>
+                                    <strong class="text-xs text-stone-400 uppercase tracking-wide block">Tatlı</strong>
+                                    <span class="text-sm text-stone-800 font-medium">Izgara ananas dilimi (tarçınlı)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-
-            <!-- Glutensiz prensipler -->
+            
             <section class="mt-12">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-6">
                     <div>
@@ -315,7 +528,6 @@ function renderGlutenFreeBlogPost(container, post) {
             </section>
         </article>
 
-        <!-- X PAYLAŞ -->
         <div class="mt-6">
             <a 
                 id="twitterShareBtn"
@@ -355,13 +567,14 @@ function renderGlutenFreeBlogPost(container, post) {
 /* ============ PRATİK MENÜ ÖZEL SAYFA ============ */
 
 function renderPratikBlogPost(container, post) {
+    // PRATİK MENÜ KOD BLOĞU (İçerik buraya)
+    // Not: Orijinal kodunuzdaki HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
-        <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">
+        <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Blog Listesine Dön
         </button>
 
         <article class="space-y-10 bg-transparent">
-            <!-- Intro Section -->
             <header class="text-center max-w-3xl mx-auto space-y-4">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-orange-600">
                     30 Dakikada Sofranız Hazır
@@ -377,7 +590,6 @@ function renderPratikBlogPost(container, post) {
                 </div>
             </header>
 
-            <!-- Golden Rules -->
             <section>
                 <div class="flex flex-col md:flex-row justify-between items-end mb-6">
                     <div>
@@ -391,7 +603,6 @@ function renderPratikBlogPost(container, post) {
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="rulesContainerPratik"></div>
             </section>
 
-            <!-- Menu Explorer -->
             <section id="menu-explorer-pratik" class="scroll-mt-20">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <div>
@@ -399,7 +610,6 @@ function renderPratikBlogPost(container, post) {
                         <p class="text-stone-600 text-sm">Damak tadınıza ve vaktinize uygun menüyü seçin.</p>
                     </div>
                     
-                    <!-- Filters -->
                     <div class="flex bg-white p-1 rounded-lg border border-stone-200 shadow-sm">
                         <button onclick="filterPratikMenus('all')" id="btn-all-pratik" class="px-4 py-2 text-sm font-medium rounded-md bg-orange-500 text-white transition-colors">
                             Tümü
@@ -413,7 +623,6 @@ function renderPratikBlogPost(container, post) {
                 <div id="menusGridPratik" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
-            <!-- Footer / Extra Tips -->
             <section class="bg-stone-800 text-stone-300 rounded-2xl p-8 text-center space-y-4">
                 <h4 class="text-xl font-semibold text-white">Ekstra Hız İpuçları</h4>
                 <ul class="flex flex-wrap justify-center gap-6 text-sm">
@@ -434,7 +643,6 @@ function renderPratikBlogPost(container, post) {
             </section>
         </article>
 
-        <!-- X PAYLAŞ -->
         <div class="mt-6">
             <a 
                 id="twitterShareBtn"
@@ -530,6 +738,7 @@ function renderPratikBlogPost(container, post) {
         `).join('');
     }
 
+    // `window.`'a ekliyoruz, böylece HTML'den çağrılabilir
     window.filterPratikMenus = function(type) {
         const btnAll = document.getElementById('btn-all-pratik');
         const btnFast = document.getElementById('btn-fast-pratik');
@@ -553,8 +762,10 @@ function renderPratikBlogPost(container, post) {
 /* ============ YILBAŞI MENÜ ÖZEL SAYFA ============ */
 
 function renderYilbasiBlogPost(container, post) {
+    // YILBAŞI MENÜ KOD BLOĞU (İçerik buraya)
+    // Not: Orijinal kodunuzdaki HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
-        <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">
+        <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Geri Dön
         </button>
 
@@ -616,6 +827,20 @@ function renderYilbasiBlogPost(container, post) {
                 </p>
             </section>
         </article>
+        
+        <div class="mt-6">
+            <a 
+                id="twitterShareBtn"
+                href="#"
+                target="_blank"
+                class="inline-flex items-center px-4 py-2 bg-red-600 text-white font-semibold rounded-lg shadow hover:bg-red-700 transition"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4.5 3L10 12l-5.5 9h3L12 14.5 16.5 21h3L14 12l5.5-9h-3L12 9.5 7.5 3h-3z"/>
+                </svg>
+                X'te Yılbaşı Menü Yazısını Paylaş
+            </a>
+        </div>
     `;
 
     const menuDataYilbasi = [
@@ -732,10 +957,13 @@ function renderYilbasiBlogPost(container, post) {
 
 function loadBlogContent(postSlug = null) {
     const container = document.getElementById('blog-posts-container');
+    // blogPostsData'nın js/data.js'ten geldiği varsayılır (Global variable)
+    if (!window.blogPostsData) return;
+
     container.innerHTML = '';
 
     if (postSlug) {
-        const post = blogPostsData.find(p => p.slug === postSlug);
+        const post = window.blogPostsData.find(p => p.slug === postSlug);
         if (post) {
             if (post.metaTitle) {
                 document.title = post.metaTitle;
@@ -755,6 +983,7 @@ function loadBlogContent(postSlug = null) {
                 }
             }
 
+            // Özel Render Fonksiyonlarını Çağırma
             if (post.slug === 'glutensiz-menu-onerileri') {
                 renderGlutenFreeBlogPost(container, post);
             } else if (post.slug === 'pratik-menu-onerileri') {
@@ -778,39 +1007,51 @@ function loadBlogContent(postSlug = null) {
 
         } else {
             container.innerHTML = `
-                <button onclick="viewBlogList()" class="text-primary-blue font-semibold mb-4" type="button">← Geri Dön</button>
+                <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">← Geri Dön</button>
                 <div class="p-6 bg-white rounded-2xl shadow-xl">
                     <p class="text-gray-700 font-semibold">Yazı bulunamadı.</p>
                 </div>
             `;
         }
     } else {
-        blogPostsData.forEach(post => {
+        // Blog Listesi
+        window.blogPostsData.forEach(post => {
             const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = post.content;
+            tempDiv.innerHTML = post.content || `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
             const firstP = tempDiv.querySelector("p");
             const previewText = firstP ? firstP.innerText.substring(0, 100) : "İçerik önizlemesi...";
 
             container.innerHTML += `
                 <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
-                    <span class="text-xs font-bold text-secondary-green uppercase">${post.category || 'Blog'}</span>
+                    <span class="text-xs font-bold text-green-600 uppercase">${post.category || 'Blog'}</span>
                     <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
                     <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
-                    <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-primary-blue font-semibold text-sm hover:underline">Devamını Oku →</button>
+                    <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-blue-600 font-semibold text-sm hover:underline">Devamını Oku →</button>
                 </div>
             `;
         });
     }
 }
 
-// --- ARAMA ---
-function searchDish() {
+// --- ARAMA (performSearch olarak güncellendi) ---
+function performSearch() {
     const input = document.getElementById('mainDishInput');
     const filter = document.getElementById('cuisineFilter');
     const container = document.getElementById('resultsContainer');
-    const bottomAd = document.getElementById('bottomAdContainer');
+    
+    // HATA DÜZELTME: bottomAdContainer ID'li elementi tanımla
+    const bottomAd = document.getElementById('bottomAdContainer'); 
+    // Not: HTML'inizde bu ID'de bir div bulunmuyor, bu yüzden bu satır hata verebilir. 
+    // Çalışması için HTML'e eklemeniz gerekir.
 
-    if (!document.getElementById('page-home').classList.contains('hidden')) {
+    // dishSuggestions ve suggestionCategories'in js/data.js'ten geldiği varsayılır (Global variable)
+    if (!window.dishSuggestions || !window.suggestionCategories) {
+        console.error('Data loading error: dishSuggestions or suggestionCategories not defined.');
+        container.innerHTML = '<p class="text-red-500 italic">Hata: Yemek öneri verileri yüklenemedi.</p>';
+        return;
+    }
+
+    if (!document.getElementById('page-home').classList.contains('hidden') && bottomAd) {
         bottomAd.classList.remove('hidden');
     }
 
@@ -822,9 +1063,12 @@ function searchDish() {
 
     let foundDish = null;
     let isRandom = false;
+    const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
 
+
+    // 1. Durum: Boş arama (Günün Önerisi)
     if (query.length < 2 && !rawQuery) {
-        const filteredDishes = dishSuggestions.filter(dish =>
+        const filteredDishes = window.dishSuggestions.filter(dish =>
             cuisine === "" || dish.cuisine === cuisine
         );
         if (filteredDishes.length > 0) {
@@ -836,14 +1080,16 @@ function searchDish() {
             isRandom = true;
         }
     } else {
-        foundDish = dishSuggestions.find(d => {
+        // 2. Durum: Anahtar kelime veya tam eşleşme
+        foundDish = window.dishSuggestions.find(d => {
             const normMain = normalizeText(d.main);
             if (normMain === query) return true;
             return d.keywords && d.keywords.some(k => normalizeText(k) === query);
         });
 
+        // 3. Durum: Kısmi eşleşme (startsWith veya includes)
         if (!foundDish) {
-            foundDish = dishSuggestions.find(d => {
+            foundDish = window.dishSuggestions.find(d => {
                 const normMain = normalizeText(d.main);
                 if (normMain.startsWith(query)) return true;
                 return normMain.includes(query) ||
@@ -852,9 +1098,11 @@ function searchDish() {
         }
     }
 
+
+    // Eşleşme Yok veya Boş Başlangıç Durumu
     if (!foundDish && query.length < 2 && cuisine === "") {
         container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
-        bottomAd.classList.add('hidden');
+        if(bottomAd) bottomAd.classList.add('hidden');
         return;
     } else if (!foundDish) {
         container.innerHTML = `
@@ -863,14 +1111,13 @@ function searchDish() {
                 <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
             </div>
         `;
-        bottomAd.classList.add('hidden');
+        if(bottomAd) bottomAd.classList.add('hidden');
         return;
     }
-
+    
+    // Yemek Bulundu (Kalori ve Filtre Kontrolü)
     if (foundDish) {
-        const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
         const hasCalories = foundDish.calories && foundDish.calories.total;
-
         const totalCalOrig = hasCalories ? foundDish.calories.total : null;
         const isHighCalorie = hasCalories && totalCalOrig > 1200;
 
@@ -882,18 +1129,19 @@ function searchDish() {
             dessertCal = foundDish.calories.breakdown.dessert || 0;
             effectiveTotalCal = totalCalOrig - dessertCal;
 
+            // Filtrelemeye rağmen hala yüksek kalori ise uyarı ver
             if (effectiveTotalCal > 1200) {
                 container.innerHTML = `
                     <div class="w-full text-center p-4">
                         <p class="text-gray-800 font-semibold mb-2">
-                            Bu yemek 1200 kcal üzerindedir.
+                            Bu yemek, tatlı çıkarılmasına rağmen hala 1200 kcal üzerindedir.
                         </p>
                         <p class="text-sm text-gray-500">
                             Filtreyi kapatarak tüm yemekleri görebilirsiniz.
                         </p>
                     </div>
                 `;
-                bottomAd.classList.add('hidden');
+                if(bottomAd) bottomAd.classList.add('hidden');
                 return;
             }
 
@@ -902,9 +1150,10 @@ function searchDish() {
 
         let html = '';
 
-        suggestionCategories.forEach(cat => {
+        window.suggestionCategories.forEach(cat => {
             const items = foundDish.suggestions[cat.key];
 
+            // Düşük kalori filtresi aktifken tatlıyı atla
             if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
                 return;
             }
@@ -919,6 +1168,7 @@ function searchDish() {
             }
         });
 
+        // Kalori Bilgisi
         if (hasCalories) {
             const c = foundDish.calories;
 
@@ -949,6 +1199,7 @@ function searchDish() {
             `;
         }
 
+        // Template'i kullanarak sonucu render et
         const template = document
             .getElementById('dishDetailTemplate')
             .content
@@ -960,7 +1211,7 @@ function searchDish() {
         template.querySelector('#suggestionsListContainer').innerHTML = html;
 
         const info = template.querySelector('#randomInfo');
-        info.style.display = isRandom ? 'block' : 'none';
+        if(info) info.style.display = isRandom ? 'block' : 'none';
 
         container.appendChild(template);
     }
@@ -970,6 +1221,7 @@ function searchDish() {
     }
 }
 
+
 // --- ÇEREZ / İZİN ---
 const COOKIE_CONSENT_KEY = 'cookieConsent';
 const COOKIE_CONSENT_GRANTED = 'granted';
@@ -978,7 +1230,7 @@ function checkConsent() {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     const banner = document.getElementById('cookieBanner');
 
-    if (consent !== COOKIE_CONSENT_GRANTED && consent !== 'rejected') {
+    if (banner && consent !== COOKIE_CONSENT_GRANTED && consent !== 'rejected') {
         banner.classList.remove('hidden');
         setTimeout(() => banner.classList.remove('opacity-0'), 10);
     }
@@ -987,28 +1239,38 @@ function checkConsent() {
 function acceptCookies() {
     localStorage.setItem(COOKIE_CONSENT_KEY, COOKIE_CONSENT_GRANTED);
     const banner = document.getElementById('cookieBanner');
-    banner.classList.add('opacity-0');
-    setTimeout(() => banner.classList.add('hidden'), 300);
+    if (banner) {
+        banner.classList.add('opacity-0');
+        setTimeout(() => banner.classList.add('hidden'), 300);
+    }
 }
 
 function rejectCookies() {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
     const banner = document.getElementById('cookieBanner');
-    banner.classList.add('opacity-0');
-    setTimeout(() => banner.classList.add('hidden'), 300);
+    if (banner) {
+        banner.classList.add('opacity-0');
+        setTimeout(() => banner.classList.add('hidden'), 300);
+    }
 }
 
-// FONKSİYONLARI GLOBAL’E AÇ
+
+// ============== FONKSİYONLARI GLOBAL’E AÇ ==============
+// HTML'deki onclick event'leri tarafından çağrılan tüm fonksiyonlar
+window.createListHtml = createListHtml;
 window.hideSidebar = hideSidebar;
 window.showSidebar = showSidebar;
+window.handleMenuClick = handleMenuClick; // Hero butonu için
 window.showPage = showPage;
-window.searchDish = searchDish;
+window.performSearch = performSearch; // Hata düzeltme: searchDish -> performSearch
 window.loadBlogContent = loadBlogContent;
 window.viewBlogPost = viewBlogPost;
 window.viewBlogList = viewBlogList;
 window.renderHomeBlogSection = renderHomeBlogSection;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
+// window.filterPratikMenus tanımı Pratik blog render fonksiyonunun içindedir (Bu da düzeltildi.)
+
 
 // İlk yükleme davranışı
 window.addEventListener('load', () => {
@@ -1017,11 +1279,14 @@ window.addEventListener('load', () => {
 
     if (page === 'blog') {
         showPage('blog');
+    } else if (page === 'privacy') {
+        showPage('privacy');
     } else {
         showPage('home');
         renderHomeBlogSection();
     }
 
-    document.getElementById('bottomAdContainer').classList.add('hidden');
+    const bottomAd = document.getElementById('bottomAdContainer');
+    if (bottomAd) bottomAd.classList.add('hidden');
     checkConsent();
 });
