@@ -1,42 +1,149 @@
-// --- YARDIMCI FONKSİYONLAR ---
-
-function normalizeText(text) {
-    if (!text) return '';
-    return text.toLowerCase()
-               .replace(/ı/g, 'i')
-               .replace(/ğ/g, 'g')
-               .replace(/ü/g, 'u')
-               .replace(/ş/g, 's')
-               .replace(/ö/g, 'o')
-               .replace(/ç/g, 'c');
-}
-
-// Liste HTML
-window.createListHtml = (items, colorClass) => {
-    return items.map(item => `
-        <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition duration-150">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${colorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-gray-700 font-medium">${item}</span>
-        </li>
-    `).join('');
-};
+// data.js
 
 // --- BLOG VERİSİ ---
 const blogPostsData = [
+  {
+    id: 8,
+    slug: "glutensiz-menu-onerileri",
+    title: "Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)",
+    metaTitle: "Glutensiz Menü Önerileri | 7 Farklı Tam Menü (Kalori Hesaplı)",
+    metaDescription:
+      "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
+    excerpt:
+      "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
+    category: "Beslenme",
+    tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
+    date: "2025-12-06",
+    content: `
+<p>Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Bu yazıda senin için, her biri ana yemek + yan lezzet + tatlıdan oluşan <strong>7 farklı glutensiz tam menü</strong> hazırladım.</p>
 
-    {
-  id: "pratik-menu-onerileri",
-  slug: "pratik-menu-onerileri",
-  title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
-  metaTitle: "Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri (2025)",
-  metaDescription: "Kolay hazırlanabilen, ekonomik ve hızlı pratik menü önerileri mi arıyorsun? 8 farklı günlük menü fikriyle sofranı dakikalar içinde planla! Tarif uyumu, yan lezzet önerileri ve düşük kalorili seçenekler.",
-  excerpt: "Yoğun günler için 30 dakikada hazırlanabilen 8 farklı pratik menü.",
-  category: "Pratik",
-  tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
-  date: "2025-12-06",
-  content: `
+<p><em>Not: Buradaki kalori değerleri yaklaşık tahminlerdir ve kullanılan yağ, porsiyon miktarı, pişirme yöntemi gibi detaylara göre değişebilir.</em></p>
+
+<hr />
+
+<strong><h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2></strong>
+
+<p>İç ısıtan, klasik ama güvenli bir kombinasyon: fırında tavuk, tahıllı bir salata ve hafif bir tatlı.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon) – <em>~465 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon) – <em>~225 kcal</em> + Közlenmiş sebzeler (biber, kabak, havuç – az yağlı) – <em>~120 kcal</em></li>
+  <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile – orta porsiyon) – <em>~170 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~980 kcal</p>
+
+<hr />
+
+<strong><h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2></strong>
+
+<p>Balık günlerinde, gluten içeren garnitürlere (örneğin klasik makarna veya ekmek) mecbur değilsin. Somonun yanına taze ve ferah eşlikçiler geliyor.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g) – <em>~290 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Kinoa (kuinoa) salatası (limonlu / zeytinyağlı, orta porsiyon) – <em>~255 kcal</em> + Buharda yeşil kuşkonmaz (yağsız) – <em>~30 kcal</em></li>
+  <li><strong>Tatlı:</strong> Taze meyve tabağı (karışık meyve, orta boy) – <em>~120 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~695 kcal</p>
+
+<hr />
+
+<strong><h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2></strong>
+
+<p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: Mercimek köftesi menüsü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı) – <em>~280 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Yoğurtlu semizotu salatası (orta porsiyon, tam yağlı yoğurt ile) – <em>~160 kcal</em> + Turşu (birkaç dilim) – <em>~10 kcal</em></li>
+  <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz) – <em>~160 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~610 kcal</p>
+
+<hr />
+
+<strong><h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2></strong>
+
+<p>Daha klasik, restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü istersen bu kombinasyon oldukça ideal.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon) – <em>~280 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Pirinç pilavı (orta porsiyon, az yağlı) – <em>~230 kcal</em> + Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile) – <em>~90 kcal</em></li>
+  <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu – orta porsiyon) – <em>~270 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~870 kcal</p>
+
+<hr />
+
+<strong><h2>5. Menü: Akdeniz Esintili Menü (Hafif ve Doyurucu) (~480 kcal)</h2></strong>
+
+<p>Glutensiz, sağlıklı, hafif ve doyurucu Akdeniz mutfağı menüsü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Izgara Tavuk Göğsü veya Ton Balığı – <em>~250 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Bol Yeşillikli Salata (Domates, Salatalık, Roka, Maydanoz ile az yağlı balzamik sos ve limon) – <em>~80 kcal</em> + Fırınlanmış Tatlı Patates Dilimleri (Orta boy) – <em>~150 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~480 kcal</p>
+
+<hr />
+
+<strong><h2>6. Menü: Bitkisel Protein Odaklı Menü (Düşük Yağlı) (~510 kcal)</h2></strong>
+
+<p>Düşük yağlı, protein içeriği yüksek bitkisel menü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Kırmızı Mercimek Çorbası (Kıymetli, krema ve unsuz) – <em>~180 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Zeytinyağlı Enginar veya Taze Fasulye – <em>~120 kcal</em> + Yoğurtlu Semizotu/Ispanak – <em>~140 kcal</em></li>
+  <li><strong>Ek:</strong> Glutensiz Ekmek – <em>~70 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~510 kcal</p>
+
+<hr />
+
+<strong><h2>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</h2></strong>
+
+<p>Düşük kalorili, karbonhidrat dengeli geleneksel menü.</p>
+
+<ul>
+  <li><strong>Ana Yemek:</strong> Yağsız Dana Etli Sebze Yemeği (Biber, mantar, domates) – <em>~300 kcal</em></li>
+  <li><strong>Yanına Gider:</strong> Kinoa Pilavı – <em>~200 kcal</em> + Ev Yapımı Cacık (Yarı Yağlı Yoğurt ile) – <em>~90 kcal</em></li>
+  <li><strong>Tatlı:</strong> 1 Porsiyon Kivi veya Ananas – <em>~70 kcal</em></li>
+</ul>
+
+<p><strong>Toplam tahmini enerji:</strong> ~660 kcal</p>
+
+<hr />
+
+<strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
+
+<ul>
+  <li><strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş ürünler gizli gluten içerebilir.</li>
+  <li><strong>Çapraz bulaş</strong> riskine dikkat et: Aynı yağda kızartılan ürünler veya aynı tencerede pişen yemekler gluten bulaştırabilir.</li>
+  <li><strong>Glutensiz tahılları</strong> daha çok kullan: Karabuğday, kinoa, mısır, pirinç, amarant, darı gibi seçenekleri menüne yay.</li>
+  <li><strong>Ev yapımı tarifler</strong> her zaman daha güvenli: İçeriğini bildiğin yemeklerde gluten kontrolü elindedir.</li>
+</ul>
+
+<p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 7 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
+    `
+  },
+
+  {
+    id: 7,
+    slug: "pratik-menu-onerileri",
+    title: "Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler",
+    metaTitle:
+      "Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri (2025)",
+    metaDescription:
+      "Kolay hazırlanabilen, ekonomik ve hızlı pratik menü önerileri mi arıyorsun? 8 farklı günlük menü fikriyle sofranı dakikalar içinde planla! Tarif uyumu, yan lezzet önerileri ve düşük kalorili seçenekler.",
+    excerpt: "Yoğun günler için 30 dakikada hazırlanabilen 8 farklı pratik menü.",
+    category: "Pratik",
+    tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
+    date: "2025-12-06",
+    content: `
   <strong><h1>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</h1></strong>
 
   <p>
@@ -152,150 +259,37 @@ const blogPostsData = [
 
 <h2>Popüler Menü Rehberleri</h2>
 <ul>
-  <li><a href="?page=blog&post=kis-corbasi-yanina-ne-gider"> class="text-primary-blue underline"> Kış Çorbalarının Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">class="text-primary-blue underline"> Pilav Rehberi: Hangi Pilav Hangi Yemeğe?</a></li>
-  <li><a href="?page=blog&post=etin-yanina-ne-gider">class="text-primary-blue underline"> Et Yemeklerinin Yanına Ne Gider?</a></li>
-  <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">class="text-primary-blue underline"> Zeytinyağlılar İçin Uyumlu Yan Lezzetler</a></li>
+  <li>
+    <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">
+      Kış Çorbalarının Yanına Ne Gider?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">
+      Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">
+      Et Yemeklerinin Yanına Ne Gider?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">
+      Zeytinyağlılar İçin Uyumlu Yan Lezzetler
+    </a>
+  </li>
 </ul>
+    `
+  },
 
-`
-},
-
-    
-{
-  id: "glutensiz-menu-onerileri",
-  slug: "glutensiz-menu-onerileri",
-  title: "Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)",
-  metaTitle: "Glutensiz Menü Önerileri | 7 Farklı Tam Menü (Kalori Hesaplı)",
-  metaDescription: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveçten oluşan 7 farklı tam menü. Yanında ne yesem diyenlere kalori hesaplı öneriler.",
-  excerpt: "Glutensiz beslenenler için fırında tavuk, somon, mercimek köftesi ve kuzu güveç ile 7 pratik tam menü. Yanına ne gider sorusuna kalori hesaplı cevaplar.",
-  category: "Beslenme",
-  tags: ["glutensiz", "menü önerisi", "sağlıklı beslenme"],
-  date: "2025-12-06",
-  content: `
-<p>Glutensiz besleniyorsun ama “<strong>Bugün ne pişirsem?</strong>” ve “<strong>Yanına ne gider?</strong>” soruları peşini bırakmıyor mu? Bu yazıda senin için, her biri ana yemek + yan lezzet + tatlıdan oluşan <strong>4 farklı glutensiz tam menü</strong> hazırladım.</p>
-
-<p><em>Not: Buradaki kalori değerleri yaklaşık tahminlerdir ve kullanılan yağ, porsiyon miktarı, pişirme yöntemi gibi detaylara göre değişebilir.</em></p>
-
-<hr />
-
-<strong><h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2></strong>
-
-<p>İç ısıtan, klasik ama güvenli bir kombinasyon: fırında tavuk, tahıllı bir salata ve hafif bir tatlı.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Fırında bütün tavuk (derili, orta porsiyon) – <em>~465 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Karabuğdaylı (greçkalı) salata (zeytinyağlı, orta porsiyon) – <em>~225 kcal</em></li> + Közlenmiş sebzeler (biber, kabak, havuç – az yağlı) – <em>~120 kcal</em></li>
-  <li><strong>Tatlı:</strong> Kabak tatlısı (cevizli, pekmez / bal ile – orta porsiyon) – <em>~170 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~980 kcal</p>
-
-<hr />
-
-<strong><h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2></strong>
-
-<p>Balık günlerinde, gluten içeren garnitürlere (örneğin klasik makarna veya ekmek) mecbur değilsin. Somonun yanına taze ve ferah eşlikçiler geliyor.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Izgara somon balığı (orta porsiyon, ~175 g) – <em>~290 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Kinoa (kuinoa) salatası (limonlu / zeytinyağlı, orta porsiyon) – <em>~255 kcal</em></li> + Buharda yeşil kuşkonmaz (yağsız) – <em>~30 kcal</em></li>
-  <li><strong>Tatlı:</strong> Taze meyve tabağı (karışık meyve, orta boy) – <em>~120 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~695 kcal</p>
-
-<hr />
-
-<strong><h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2></strong>
-
-<p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: Mercimek köftesi menüsü.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Mercimek köftesi (5–6 adet, az yağlı) – <em>~280 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Yoğurtlu semizotu salatası (orta porsiyon, tam yağlı yoğurt ile) – <em>~160 kcal</em></li> + Turşu (birkaç dilim) – <em>~10 kcal</em></li>
-  <li><strong>Tatlı:</strong> Kuru yemişli elma dilimleri (1 elma + 10 g ceviz) – <em>~160 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~610 kcal</p>
-
-
-<hr />
-
-<strong><h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2></strong>
-
-<p>Daha klasik, restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü istersen bu kombinasyon oldukça ideal.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Kuzu güveç (unsuz terbiye edilmiş, orta porsiyon) – <em>~280 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Pirinç pilavı (orta porsiyon, az yağlı) – <em>~230 kcal</em></li> + Ev yapımı cacık (orta porsiyon, tam yağlı yoğurt ile) – <em>~90 kcal</em></li>
-  <li><strong>Tatlı:</strong> Sütlaç (mısır nişastalı / pirinç unlu – orta porsiyon) – <em>~270 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~870 kcal</p>
-
-
-<hr />
-
-<strong><h2>5. Menü: Akdeniz Esintili Menü (Hafif ve Doyurucu) (~480 kcal)</h2></strong>
-
-<p>Glutensiz, sağlıklı, hafif ve doyurucu akdeniz mutfağı menüsü.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Izgara Tavuk Göğsü veya Ton Balığı – <em>~250 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Bol Yeşillikli Salata (Domates, Salatalık, Roka, Maydanoz ile az yağlı balzamik sos ve limon) – <em>~80 kcal</em></li> + Fırınlanmış Tatlı Patates Dilimleri (Orta boy) – <em>~150 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~480 kcal</p>
-<hr />
-
-<strong><h2>6. Menü: Bitkisel Protein Odaklı Menü (Düşük Yağlı) (~510 kcal)</h2></strong>
-
-<p>Düşük yağlı, protein içeriği yüksek bitkisel menü.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Kırmızı Mercimek Çorbası (Kıymetli, krema ve unsuz) – <em>~180 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Zeytinyağlı Enginar veya Taze Fasulye – <em>~120 kcal</em></li> + Yoğurtlu Semizotu/Ispanak – <em>~140 kcal</em></li> + Glutensiz Ekmek – <em>~70 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~5100 kcal</p>
-<hr />
-
-<strong><h2>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</h2></strong>
-
-<p>Düşük kalorili, karbonhidrat dengeli geleneksel menü.</p>
-
-<ul>
-  <li><strong>Ana Yemek:</strong> Yağsız Dana Etli Sebze Yemeği (Biber, mantar, domates) – <em>~300 kcal</em></li>
-  <li><strong>Yanına Gider:</strong> Kinoa Pilavı – <em>~200 kcal</em></li> + Ev Yapımı Cacık (Yarı Yağlı Yoğurt ile) – <em>~90 kcal</em></li>
-  <li><strong>Tatlı:</strong> 1 Porsiyon Kivi veya Ananas – <em>~70 kcal</em></li>
-</ul>
-
-<p><strong>Toplam tahmini enerji:</strong> ~660 kcal</p>
-
-<hr />
-
-<strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
-
-<ul>
-  <li><strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş ürünler gizli gluten içerebilir.</li>
-  <li><strong>Çapraz bulaş</strong> riskine dikkat et: Aynı yağda kızartılan ürünler veya aynı tencerede pişen yemekler gluten bulaştırabilir.</li>
-  <li><strong>Glutensiz tahılları</strong> daha çok kullan: Karabuğday, kinoa, mısır, pirinç, amarant, darı gibi seçenekleri menüne yay.</li>
-  <li><strong>Ev yapımı tarifler</strong> her zaman daha güvenli: İçeriğini bildiğin yemeklerde gluten kontrolü elindedir.</li>
-</ul>
-
-<p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 7 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
-
-`
-},
-
-
-    {
+  {
     id: 6,
     category: "Mutfak Sırları",
     title: "🍽️ Köftenin Yanına Ne Gider? En İyi 12 Köfte Yanı Önerisi",
     slug: "kofte-yanina-ne-gider",
-    description: "Köftenin yanına en çok ne yakışır? Pilav, salata, meze ve geleneksel eşlikçilerle hazırlanan 12 farklı öneriyi keşfedin.",
+    description:
+      "Köftenin yanına en çok ne yakışır? Pilav, salata, meze ve geleneksel eşlikçilerle hazırlanan 12 farklı öneriyi keşfedin.",
     content: ` 
     <p>
 Köfte; ızgarası, fırını, sulu yemeği ve mangal versiyonlarıyla Türk mutfağının en sevilen ana yemeklerinden biridir. 
@@ -388,17 +382,17 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
     <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
 </ul>
 `
-},
+  },
 
-    {  
+  {
     id: 5,
     category: "Mutfak Sırları",
-    title: "🥣 Kış Çorbalarının Yanına Ne Gider? Ekmek Dışında 5 Pratik Eşlikçi",
+    title:
+      "🥣 Kış Çorbalarının Yanına Ne Gider? Ekmek Dışında 5 Pratik Eşlikçi",
     slug: "kis-corbasi-yanina-ne-gider",
-    description: "Kış çorbalarının yanına ekmek dışında ne gider? Çorbaları daha doyurucu ve lezzetli hale getiren 5 pratik eşlikçi önerisini keşfedin.",
+    description:
+      "Kış çorbalarının yanına ekmek dışında ne gider? Çorbaları daha doyurucu ve lezzetli hale getiren 5 pratik eşlikçi önerisini keşfedin.",
     content: ` 
-
-
 <p>
 Soğuk günlerde sıcacık bir kase çorba, tüm öğünün başlangıcı ve kurtarıcısıdır. Ancak her çorbanın yanında sürekli ekmek yemek istemeyenler için hem doyuruculuğu artıran hem de lezzet katmanları ekleyen pratik alternatifler mevcuttur.
 </p>
@@ -451,33 +445,33 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
 
 <p>
 Çorbanın ardından etli bir yemek planlıyorsanız,
-<strong> <a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a> </strong>
+<strong> <a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a> </strong>
 rehberine bakabilirsiniz.
 </p>
 
 <p>
 Hafif seçenekler için
-<strong> <a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a> </strong>
+<strong> <a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a> </strong>
 yazımızı inceleyin.
 </p>
 
 <p>
 Çorba + pilav dengesi arıyorsanız,
-<strong> <a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a> </strong>
+<strong> <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a> </strong>
 menü planlamasına yardımcı olur.
 </p>
-
 `
-        },
-      {  
+  },
+
+  {
     id: 4,
     category: "Mutfak Sırları",
-    title: "🍚 Ana Yemeğe Göre İdeal Pilav Seçimi: 7 Farklı Pilav Uyum Rehberi",
+    title:
+      "🍚 Ana Yemeğe Göre İdeal Pilav Seçimi: 7 Farklı Pilav Uyum Rehberi",
     slug: "pilav-yanina-hangi-yemek-gider",
-    description: "Hangi pilav hangi ana yemeğin yanına gider? Et, tavuk, balık ve geleneksel yemekler için ideal pilav eşleşmelerini içeren 7 farklı pilav uyum rehberini keşfedin.",
+    description:
+      "Hangi pilav hangi ana yemeğin yanına gider? Et, tavuk, balık ve geleneksel yemekler için ideal pilav eşleşmelerini içeren 7 farklı pilav uyum rehberini keşfedin.",
     content: ` 
-    
-
 <p>
 Türk mutfağında pilav, ana yemeğin sadece bir yan lezzeti değil, sofra kültürünün tamamlayıcı bir parçasıdır. Ancak her pilav, her yemeğe yakışmaz. Bu rehberde, farklı pilav çeşitlerinin hangi ana yemeklerle mükemmel bir uyum yakaladığını keşfedin.
 </p>
@@ -550,31 +544,32 @@ Unutmayın: Pilav tercihi sadece lezzet değil, aynı zamanda kalori dengesi aç
 
 <p>
 Pilavı tamamlayacak ana yemek arıyorsanız,
-<strong><a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
 rehberimiz size yardımcı olabilir.
 </p>
 
 <p>
 Daha hafif bir sofra kurmak isterseniz
-<strong><a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
 yazımıza göz atabilirsiniz.
 </p>
 
 <p>
 Özel gün sofraları için ilham arayanlar,
-<strong><a href="https://yanindanevar.com/?page=blog&post=yilbasi-sofra-menu-onerileri">yılbaşı sofra menü önerileri</a></strong>
+<strong><a href="?page=blog&post=yilbasi-sofra-menu-onerileri">yılbaşı sofra menü önerileri</a></strong>
 yazısından çok faydalanacaktır.
 </p>
-
 `
-    }, 
-    
-    {  
+  },
+
+  {
     id: 3,
     category: "Özel Gün",
-    title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi) – En Şık ve Doyurucu Seçenekler",
+    title:
+      "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi) – En Şık ve Doyurucu Seçenekler",
     slug: "yilbasi-sofra-menu-onerileri",
-    description: "2025 için yılbaşı sofrasına uygun 10 özel menü! Etli, deniz ürünlü, vegan, glutensiz ve klasik seçeneklerle şık ve doyurucu yılbaşı menüleri keşfedin.",
+    description:
+      "2025 için yılbaşı sofrasına uygun 10 özel menü! Etli, deniz ürünlü, vegan, glutensiz ve klasik seçeneklerle şık ve doyurucu yılbaşı menüleri keşfedin.",
     content: `
 <p>
 Yılbaşı akşamı sofranın hem göze hem mideye hitap etmesini istiyorsan, planlı bir menü hazırlamak büyük fark yaratır.
@@ -1151,203 +1146,207 @@ alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
 
 <p>
 Yılbaşı menünüzde kırmızı et yer alıyorsa, 
-<strong><a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
 rehberine göz atabilirsiniz.
 </p>
 
 <p>
 Pilav çeşitlerini doğru ana yemekle eşleştirmek için 
-<strong><a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
+<strong><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
 yazımızı inceleyebilirsiniz.
 </p>
 
 <p>
 Menünüzü hafifletmek isterseniz,
-<strong><a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
 listesi size ilham verebilir.
 </p>
-
 `
-    },  
-{
+  },
+
+  {
     id: 2,
     category: "Mutfak Sırları",
-    title: "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
+    title:
+      "Zeytinyağlı Yemeklerin Yanına Ne Gider? Sofraya Uyum Katan En İyi Eşlikçiler",
     slug: "zeytinyagli-yanina-ne-gider",
-    description: "Zeytinyağlı yemeklerin yanına en çok yakışan pilav, yoğurt, salata ve meze önerilerini keşfedin. Sofranıza hafif ve uyumlu lezzetler ekleyin.",
+    description:
+      "Zeytinyağlı yemeklerin yanına en çok yakışan pilav, yoğurt, salata ve meze önerilerini keşfedin. Sofranıza hafif ve uyumlu lezzetler ekleyin.",
     content: `
-            <p>Türk mutfağının en hafif, en zarif lezzetleri arasında yer alan zeytinyağlılar; hem sıcak yaz sofralarının hem de dört mevsim kurulan geleneksel yemek masalarının vazgeçilmezidir. Dolma, enginar, barbunya, pırasa, bamya veya taze fasulye… Hepsi hafif oldukları kadar besleyicidir. Peki zeytinyağlı yemeklerin yanına en çok ne yakışır?</p>
-            <p>İşte sofrayı tamamlayan en iyi eşlikçi önerileri…</p>
-            
-            <h4>1. Pirinç veya Bulgur Pilavı</h4>
-            <p>Zeytinyağlıların hafif dokusunu dengeleyerek öğünü daha doyurucu hale getirir.</p>
-            <ul>
-                <li>Tane tane pirinç pilavı</li>
-                <li>Nohutlu bulgur pilavı</li>
-                <li>Sebzeli pilav</li>
-            </ul>
-            <p>Özellikle dolma, taze fasulye ve barbunya ile mükemmel bir uyum yakalar.</p>
+<p>Türk mutfağının en hafif, en zarif lezzetleri arasında yer alan zeytinyağlılar; hem sıcak yaz sofralarının hem de dört mevsim kurulan geleneksel yemek masalarının vazgeçilmezidir. Dolma, enginar, barbunya, pırasa, bamya veya taze fasulye… Hepsi hafif oldukları kadar besleyicidir. Peki zeytinyağlı yemeklerin yanına en çok ne yakışır?</p>
+<p>İşte sofrayı tamamlayan en iyi eşlikçi önerileri…</p>
 
-            <h4>2. Cacık</h4>
-            <p>Yoğurt ve salatalığın ferahlığı, zeytinyağlıların aromasıyla birleştiğinde sofrada harika bir denge oluşturur. Nane, dereotu veya sarımsakla tatlandırılabilir.</p>
+<h4>1. Pirinç veya Bulgur Pilavı</h4>
+<p>Zeytinyağlıların hafif dokusunu dengeleyerek öğünü daha doyurucu hale getirir.</p>
+<ul>
+    <li>Tane tane pirinç pilavı</li>
+    <li>Nohutlu bulgur pilavı</li>
+    <li>Sebzeli pilav</li>
+</ul>
+<p>Özellikle dolma, taze fasulye ve barbunya ile mükemmel bir uyum yakalar.</p>
 
-            <h4>3. Yoğurt Çeşitleri</h4>
-            <p>Yoğurt, neredeyse tüm zeytinyağlı yemeklerle uyumludur:</p>
-            <ul>
-                <li>Süzme yoğurt</li>
-                <li>Sarımsaklı yoğurt</li>
-                <li>Otlu yoğurt</li>
-            </ul>
-            <p>Özellikle pırasa, kabak ve enginar yanında tercih edilir.</p>
+<h4>2. Cacık</h4>
+<p>Yoğurt ve salatalığın ferahlığı, zeytinyağlıların aromasıyla birleştiğinde sofrada harika bir denge oluşturur. Nane, dereotu veya sarımsakla tatlandırılabilir.</p>
 
-            <h4>4. Mevsim Salatası</h4>
-            <p>Taze ve çıtır bir salata, zeytinyağlı yemeklerle birlikte hem renk hem de lezzet dengesi sağlar. Nar ekşisi veya limon sosuyla tatlandırabilirsiniz.</p>
+<h4>3. Yoğurt Çeşitleri</h4>
+<p>Yoğurt, neredeyse tüm zeytinyağlı yemeklerle uyumludur:</p>
+<ul>
+    <li>Süzme yoğurt</li>
+    <li>Sarımsaklı yoğurt</li>
+    <li>Otlu yoğurt</li>
+</ul>
+<p>Özellikle pırasa, kabak ve enginar yanında tercih edilir.</p>
 
-            <h4>5. Kızarmış Ekmek veya Lavaş</h4>
-            <p>Zeytinyağlıların suyuna batırmak için idealdir.</p>
-            <ul>
-                <li>Kıtır baget dilimleri</li>
-                <li>Fırınlanmış lavaş</li>
-                <li>Tahıllı ekmekler</li>
-            </ul>
-            <p>Özellikle zeytinyağlı patlıcan, fasulye ve kereviz yemekleriyle çok yakışır.</p>
+<h4>4. Mevsim Salatası</h4>
+<p>Taze ve çıtır bir salata, zeytinyağlı yemeklerle birlikte hem renk hem de lezzet dengesi sağlar. Nar ekşisi veya limon sosuyla tatlandırabilirsiniz.</p>
 
-            <h4>6. Peynir Tabağı</h4>
-            <p>Hafif tuzlu peynirler zeytinyağlıların aromasını destekler.</p>
-            <ul>
-                <li>Ezine peynir</li>
-                <li>İzmir tulumu</li>
-                <li>Beyaz peynir</li>
-            </ul>
-            <p>Bu eşlikçi özellikle kalabalık yaz sofralarında güzel bir alternatif olur.</p>
+<h4>5. Kızarmış Ekmek veya Lavaş</h4>
+<p>Zeytinyağlıların suyuna batırmak için idealdir.</p>
+<ul>
+    <li>Kıtır baget dilimleri</li>
+    <li>Fırınlanmış lavaş</li>
+    <li>Tahıllı ekmekler</li>
+</ul>
+<p>Özellikle zeytinyağlı patlıcan, fasulye ve kereviz yemekleriyle çok yakışır.</p>
 
-            <h4>7. Zeytin &amp; Zeytinyağı Soslu Mezeler</h4>
-            <p>Zeytin tabakları ve hafif mezeler sofrada bütünlük sağlar:</p>
-            <ul>
-                <li>Zeytinyağlı zeytin salatası</li>
-                <li>Zahter</li>
-                <li>Nar ekşili zeytin</li>
-            </ul>
-            <p>Bu seçenekler zeytinyağlı ana yemeğin yanına hoş bir ara tat ekler.</p>
+<h4>6. Peynir Tabağı</h4>
+<p>Hafif tuzlu peynirler zeytinyağlıların aromasını destekler.</p>
+<ul>
+    <li>Ezine peynir</li>
+    <li>İzmir tulumu</li>
+    <li>Beyaz peynir</li>
+</ul>
+<p>Bu eşlikçi özellikle kalabalık yaz sofralarında güzel bir alternatif olur.</p>
 
-            <h4>8. Çorba (Başlangıç Olarak)</h4>
-            <p>Özellikle yaz aylarında soğuk çorbalar, kışın ise hafif sebze çorbaları sofrayı tamamlar:</p>
-            <ul>
-                <li>Ayran aşı (soğuk)</li>
-                <li>Mercimek çorbası</li>
-                <li>Sebze çorbası</li>
-            </ul>
+<h4>7. Zeytin &amp; Zeytinyağı Soslu Mezeler</h4>
+<p>Zeytin tabakları ve hafif mezeler sofrada bütünlük sağlar:</p>
+<ul>
+    <li>Zeytinyağlı zeytin salatası</li>
+    <li>Zahter</li>
+    <li>Nar ekşili zeytin</li>
+</ul>
+<p>Bu seçenekler zeytinyağlı ana yemeğin yanına hoş bir ara tat ekler.</p>
 
-            <h4>9. Limonlu veya Dereotlu Garnitürler</h4>
-            <p>Zeytinyağlılara ferahlık katan bu küçük dokunuşlar sofrayı zenginleştirir:</p>
-            <ul>
-                <li>Limon dilimleri</li>
-                <li>Taze dereotu</li>
-                <li>Kapari</li>
-                <li>Turşu çeşitleri</li>
-            </ul>
+<h4>8. Çorba (Başlangıç Olarak)</h4>
+<p>Özellikle yaz aylarında soğuk çorbalar, kışın ise hafif sebze çorbaları sofrayı tamamlar:</p>
+<ul>
+    <li>Ayran aşı (soğuk)</li>
+    <li>Mercimek çorbası</li>
+    <li>Sebze çorbası</li>
+</ul>
+
+<h4>9. Limonlu veya Dereotlu Garnitürler</h4>
+<p>Zeytinyağlılara ferahlık katan bu küçük dokunuşlar sofrayı zenginleştirir:</p>
+<ul>
+    <li>Limon dilimleri</li>
+    <li>Taze dereotu</li>
+    <li>Kapari</li>
+    <li>Turşu çeşitleri</li>
+</ul>
            
-            <p>
+<p>
 Et ağırlıklı bir menü hazırlıyorsanız, 
-<strong><a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
 rehberimiz size yardımcı olabilir.
 </p>
 
 <p>
 Zeytinyağlıların yanında servis edilecek en doğru pilav türleri için 
-<strong><a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberine</a></strong>
+<strong><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberine</a></strong>
 göz atabilirsiniz.
 </p>
 
 <p>
 Menünüze çorba eklemek isterseniz,
-<strong><a href="https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
 yazımız size fikir verebilir.
 </p>
-
-        `
+`
   },
+
   {
     id: 1,
     category: "Mutfak Sırları",
     title: "Etin Yanına Ne Gider? Sofranızı Tamamlayan En İyi 12 Lezzet",
     slug: "etin-yanina-ne-gider",
-    description: "Et yemeklerinin yanına en çok yakışan 12 lezzeti keşfedin. Pilav, közlenmiş sebzeler, meze ve salata önerileriyle sofranızı mükemmel tamamlayın.",
+    description:
+      "Et yemeklerinin yanına en çok yakışan 12 lezzeti keşfedin. Pilav, közlenmiş sebzeler, meze ve salata önerileriyle sofranızı mükemmel tamamlayın.",
     content: `
-            <p>Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik.</p>
-            <h4>1. Közlenmiş Sebzeler</h4>
-            <p>Köz patlıcan, biber, kabak ve domates; etin yoğun aromasını hafifletir.</p>
-            <h4>2. Patates Püresi</h4>
-            <p>Yumuşak dokusu ve hafif tereyağı aromasıyla özellikle <b>bonfile ve rosto</b> yanında harika bir tamamlayıcıdır.</p>
-            <h4>3. Fırınlanmış Patates</h4>
-            <p>Kıtır dışı ve yumuşak iç dokusuyla etin ağırlığını dengeler.</p>
-            <h4>4. Pilav Çeşitleri</h4>
-            <p>Et yemeklerinin en klasik eşlikçisi pilavdır.</p>
-            <ul>
-                <li>Tereyağlı pirinç pilavı</li>
-                <li>Arpa şehriyeli pilav</li>
-                <li>Bulgur pilavı</li>
-            </ul>
-            <h4>5. Mevsim Salatası</h4>
-            <p>Zeytinyağı, limon ve nar ekşili soslarla ferahlık katar.</p>
-            <h4>6. Roka Salatası</h4>
-            <p>Roka'nın <i>acımsı</i> aroması kırmızı etle muhteşem uyum sağlar.</p>
-            <h4>7. Soğan Halkaları</h4>
-            <p>Özellikle <b>steak ve burger</b> yanında tercih edilir.</p>
-            <h4>8. Yoğurtlu Mezeler</h4>
-            <ul>
-                <li>Haydari</li>
-                <li>Cacık</li>
-                <li>Köz patlıcan yoğurtlama</li>
-            </ul>
-            <h4>9. Humus</h4>
-            <p>Nohut ve tahinin aromasıyla et yemekleri için ideal bir mezedir.</p>
-            <h4>10. Tandır Lavaşı</h4>
-            <p>Izgara etlerin suyunu içine çeker.</p>
-            <h4>11. Mantar Sote</h4>
-            <p>Sarımsak ve tereyağı ile etin yanına çok yakışır.</p>
-            <h4>12. Soslar</h4>
-            <ul>
-                <li>Biberiye sosu</li>
-                <li>Barbekü sos</li>
-                <li>Hardal</li>
-            </ul>
-            <p>
+<p>Damak tadımızda özel bir yer tutan et yemekleri, doğru eşlikçilerle birleştiğinde hem daha dengeli hem de daha doyurucu hale gelir. Izgaradan fırına, kavurmadan güvece kadar tüm et çeşitlerinin yanında sunabileceğiniz garnitürleri bu yazıda derledik.</p>
 
+<h4>1. Közlenmiş Sebzeler</h4>
+<p>Köz patlıcan, biber, kabak ve domates; etin yoğun aromasını hafifletir.</p>
+
+<h4>2. Patates Püresi</h4>
+<p>Yumuşak dokusu ve hafif tereyağı aromasıyla özellikle <b>bonfile ve rosto</b> yanında harika bir tamamlayıcıdır.</p>
+
+<h4>3. Fırınlanmış Patates</h4>
+<p>Kıtır dışı ve yumuşak iç dokusuyla etin ağırlığını dengeler.</p>
+
+<h4>4. Pilav Çeşitleri</h4>
+<p>Et yemeklerinin en klasik eşlikçisi pilavdır.</p>
+<ul>
+    <li>Tereyağlı pirinç pilavı</li>
+    <li>Arpa şehriyeli pilav</li>
+    <li>Bulgur pilavı</li>
+</ul>
+
+<h4>5. Mevsim Salatası</h4>
+<p>Zeytinyağı, limon ve nar ekşili soslarla ferahlık katar.</p>
+
+<h4>6. Roka Salatası</h4>
+<p>Roka'nın <i>acımsı</i> aroması kırmızı etle muhteşem uyum sağlar.</p>
+
+<h4>7. Soğan Halkaları</h4>
+<p>Özellikle <b>steak ve burger</b> yanında tercih edilir.</p>
+
+<h4>8. Yoğurtlu Mezeler</h4>
+<ul>
+    <li>Haydari</li>
+    <li>Cacık</li>
+    <li>Köz patlıcan yoğurtlama</li>
+</ul>
+
+<h4>9. Humus</h4>
+<p>Nohut ve tahinin aromasıyla et yemekleri için ideal bir mezedir.</p>
+
+<h4>10. Tandır Lavaşı</h4>
+<p>Izgara etlerin suyunu içine çeker.</p>
+
+<h4>11. Mantar Sote</h4>
+<p>Sarımsak ve tereyağı ile etin yanına çok yakışır.</p>
+
+<h4>12. Soslar</h4>
+<ul>
+    <li>Biberiye sosu</li>
+    <li>Barbekü sos</li>
+    <li>Hardal</li>
+</ul>
+
+<p>
 Daha hafif bir menü oluşturmak isterseniz 
-<strong><a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
 rehberimize de göz atabilirsiniz.
 </p>
 
 <p>
 Et yemeklerinin yanında sunabileceğiniz en doğru pilav önerileri için 
-<strong><a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
+<strong><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
 yazımızı inceleyebilirsiniz.
 </p>
 
 <p>
 Menünüzde çorba varsa, 
-<strong><a href="https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
+<strong><a href="?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
 listesi size fikir verebilir.
 </p>
-     `
+`
   }
 ];
 
-// Tarayıcıda kullanmak için:
-if (typeof window !== "undefined") {
-    window.blogPostsData = blogPostsData;
-}
-
-// Node tarafında kullanmak için (CommonJS):
-if (typeof module !== "undefined") {
-    module.exports = { blogPostsData };
-}
-
-
-        // --- ANA VERİ SETİ ---
-        const dishSuggestions = [
-            // ÇORBALAR
+// --- ANA VERİ SETİ (ARAYÜZ ÖNERİLERİ) ---
+const dishSuggestions = [
+  // ÇORBALAR
            {
     main: "Tarhana Çorbası",
     keywords: ["tarhana", "çorba", "yöresel"],
@@ -5052,28 +5051,43 @@ if (typeof module !== "undefined") {
         ];
 
 /*
-  Not: Buraya kadar olan bölümde sadece veriler ve küçük yardımcı fonksiyonlar var.
+  Not: Buraya kadar olan bölümde sadece veriler var.
   Aşağıdaki kategoriler app.js tarafından kullanılıyor.
 */
 
 const suggestionCategories = [
-    { key: 'yanlar', title: 'Yan Lezzetler (Pilav, Salata, Meze, Çorba)', icon: '🍽️', color: 'text-secondary-green' },
-    { key: 'drink', title: 'İçecek Önerisi', icon: '🥤', color: 'text-primary-blue' },
-    { key: 'dessert', title: 'Tatlı Önerisi', icon: '🍰', color: 'text-pink-500' }
+  {
+    key: "yanlar",
+    title: "Yan Lezzetler (Pilav, Salata, Meze, Çorba)",
+    icon: "🍽️",
+    color: "text-secondary-green"
+  },
+  {
+    key: "drink",
+    title: "İçecek Önerisi",
+    icon: "🥤",
+    color: "text-primary-blue"
+  },
+  {
+    key: "dessert",
+    title: "Tatlı Önerisi",
+    icon: "🍰",
+    color: "text-pink-500"
+  }
 ];
 
 // Tarayıcı için:
 if (typeof window !== "undefined") {
-    window.dishSuggestions = dishSuggestions;
-    window.blogPostsData = blogPostsData;
-    window.suggestionCategories = suggestionCategories;
+  window.dishSuggestions = dishSuggestions;
+  window.blogPostsData = blogPostsData;
+  window.suggestionCategories = suggestionCategories;
 }
 
 // Node (CommonJS) için:
 if (typeof module !== "undefined") {
-    module.exports = {
-        blogPostsData,
-        dishSuggestions,
-        suggestionCategories
-    };
+  module.exports = {
+    blogPostsData,
+    dishSuggestions,
+    suggestionCategories
+  };
 }
