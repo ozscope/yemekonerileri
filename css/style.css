@@ -1,243 +1,243 @@
 /* ===========================
-   TEMEL GÖVDE / GENEL AYARLAR
-   =========================== */
+   TEMEL GÖVDE / GENEL AYARLAR
+   =========================== */
 
 /* Layout'u Tailwind yönetiyor; burada sadece font & zemin rengi var. */
 body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: #f8fafc; /* Tailwind bg-slate-50 ile uyumlu */
-    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #f8fafc; /* Tailwind bg-slate-50 ile uyumlu */
+    margin: 0;
 }
 
 /* Reklam placeholder alanı (blog altı, sayfa altı reklam blokları için) */
 .ad-placeholder {
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f3f4f6;  /* slate-100 */
-    border: 1px dashed #cbd5e1; /* slate-300 */
-    color: #9ca3af;             /* slate-400 */
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;  /* slate-100 */
+    border: 1px dashed #cbd5e1; /* slate-300 */
+    color: #9ca3af;             /* slate-400 */
 }
 
 /* ================
-   MOBİL SIDEBAR
-   ================ */
+   MOBİL SIDEBAR
+   ================ */
 
 #sidebar {
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .sidebar-open {
-    transform: translateX(0);
+    transform: translateX(0);
 }
 
 .sidebar-closed {
-    transform: translateX(-100%);
+    transform: translateX(-100%);
 }
 
 /* Sidebar overlay geçişi */
 #overlay {
-    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
 }
 
 /* ===========================
-   BLOG İÇERİK TİPOGRAFİSİ
-   =========================== */
+   BLOG İÇERİK TİPOGRAFİSİ
+   =========================== */
 
 .content-area h1,
 .content-area h2,
 .content-area h3,
 .content-area h4 {
-    font-weight: 700;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .content-area h4 {
-    font-size: 1.1rem;
-    color: #1e40af; /* indigo-800 tonu */
+    font-size: 1.1rem;
+    color: #1e40af; /* indigo-800 tonu */
 }
 
 .content-area ul,
 .content-area ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .content-area li {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .content-area p {
-    margin-bottom: 1rem;
-    line-height: 1.7;
+    margin-bottom: 1rem;
+    line-height: 1.7;
 }
 
 /* ===========================
-   PREMIUM YUMUŞAK BUTON & KART
-   =========================== */
+   PREMIUM YUMUŞAK BUTON & KART
+   =========================== */
 
 /* Genel krem buton – blog içi, sekmeler vb. için; istersen kullanırsın */
 .btn-soft {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
 
-    padding: 0.7rem 1.3rem;
-    border-radius: 9999px;
-    border: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 9999px;
+    border: none;
 
-    background-color: #fdf2e9; /* yumuşak krem */
-    color: #1f2933;           /* koyu gri */
-    font-size: 0.9rem;
-    font-weight: 600;
+    background-color: #fdf2e9; /* yumuşak krem */
+    color: #1f2933;           /* koyu gri */
+    font-size: 0.9rem;
+    font-weight: 600;
 
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-    transition:
-        background-color 0.18s ease,
-        box-shadow 0.18s ease,
-        transform 0.18s ease,
-        color 0.18s ease;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        color 0.18s ease;
 }
 
 .btn-soft:hover {
-    background-color: #fbe3c1;
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-    transform: translateY(-1px);
+    background-color: #fbe3c1;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+    transform: translateY(-1px);
 }
 
 .btn-soft:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
 }
 
 /* Krem butonda “bir tık daha önemli” CTA – sadece ton farkı */
 .btn-soft-primary {
-    background-color: #fce8d5;
+    background-color: #fce8d5;
 }
 
 .btn-soft-primary:hover {
-    background-color: #f9d7b3;
+    background-color: #f9d7b3;
 }
 
 /* Kartlar: arama kutusu, menü kartları vb. */
 .card-soft {
-    background-color: #ffffff;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+    background-color: #ffffff;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
 }
 
 /* ===========================
-   HERO & ARAMA BUTONLARI
-   =========================== */
+   HERO & ARAMA BUTONLARI
+   =========================== */
 
 /* Hero’daki koyu CTA buton stili */
 .hero-cta-btn,
 .btn-soft-dark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
 
-    padding: 0.55rem 1.2rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(148, 163, 184, 0.7); /* hafif çizgi */
+    padding: 0.55rem 1.2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(148, 163, 184, 0.7); /* hafif çizgi */
 
-    background: rgba(15, 23, 42, 0.78);        /* koyu gri, yarı şeffaf */
-    color: #F1F2F4;                             /* açık text */
-    font-size: 0.8rem;
-    font-weight: 600;
+    background: rgba(15, 23, 42, 0.78);        /* koyu gri, yarı şeffaf */
+    color: #F1F2F4;                             /* açık text */
+    font-size: 0.8rem;
+    font-weight: 600;
 
-    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45); /* yumuşak gölge */
-    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.45); /* yumuşak gölge */
+    backdrop-filter: blur(4px);
 
-    transition:
-        background-color 0.18s ease,
-        box-shadow 0.18s ease,
-        transform 0.18s ease,
-        border-color 0.18s ease;
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .hero-cta-btn:hover,
 .btn-soft-dark:hover {
-    background: rgba(15, 23, 42, 0.92);
-    border-color: rgba(248, 250, 252, 0.85);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.55);
-    transform: translateY(-1px);
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(248, 250, 252, 0.85);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.55);
+    transform: translateY(-1px);
 }
 
 .hero-cta-btn:active,
 .btn-soft-dark:active {
-    transform: translateY(0);
-    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.55);
+    transform: translateY(0);
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.55);
 }
 
 /* Hero’daki üç butonun aynı genişlikte görünmesi için */
 .hero-cta-row > button {
-    min-width: 9.5rem;
-    justify-content: center;
+    min-width: 9.5rem;
+    justify-content: center;
 }
 
 /* Arama bölümündeki ARA / “Yanına Ne Yiyelim?” butonu */
 .search-btn {
-  display: block;
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 999px;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
 }
 
 /* Kontrastı yüksek, ana CTA rengi */
 .search-btn.primary {
-  background-color: #0f172a;  /* koyu lacivert / marka rengi ile değiştirebilirsin */
-  color: #ffffff;
+  background-color: #0f172a;  /* koyu lacivert / marka rengi ile değiştirebilirsin */
+  color: #ffffff;
 }
 
 .form-field {
-  margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .form-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 6px;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
 }
 
 .form-input,
 .form-select {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #F1F2F4;
-  font-size: 15px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #F1F2F4;
+  font-size: 15px;
 }
 
 .checkbox-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 14px;
-  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .checkbox-row input {
-  margin-top: 3px;
-  width: 18px;
-  height: 18px;
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
 }
 
 /* ARA butonunu alt tarafta sticky kullanmak istersen */
 .search-bar-wrapper {
-  position: sticky;
-  bottom: 0;
-  padding: 12px 16px 20px;
-  background: linear-gradient(to top, #ffffff 70%, transparent);
+  position: sticky;
+  bottom: 0;
+  padding: 12px 16px 20px;
+  background: linear-gradient(to top, #ffffff 70%, transparent);
 }
