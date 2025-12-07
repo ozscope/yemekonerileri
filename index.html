@@ -210,31 +210,32 @@
 
                             
 <!-- CTA butonlar -->
-<div class="mt-3 flex flex-col sm:flex-row gap-2 w-full max-w-md ml-auto">
+<div class="mt-4 flex flex-col sm:flex-row gap-2 hero-cta-row">
   <button
     type="button"
     onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-    class="hero-cta-btn flex-1"
+    class="btn-soft-dark"
   >
-    GLUTENSİZ MENÜLER
+     <span>GLUTENSİZ MENÜLER</span>
   </button>
 
   <button
     type="button"
     onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-    class="hero-cta-btn flex-1"
+    class="btn-soft-dark"
   >
-    PRATİK MENÜLER
+     <span>PRATİK MENÜLER</span>
   </button>
 
   <button
     type="button"
     onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri')"
-    class="hero-cta-btn flex-1"
+    class="btn-soft-dark"
   >
-    YILBAŞI MENÜLERİ
+     <span>YILBAŞI MENÜLERİ</span>
   </button>
 </div>
+
 
 
 
@@ -312,16 +313,15 @@
         </div>
 
         <!-- Buton -->
-<div class="w-full sm:w-auto lg:ml-auto">
-  <button
-    type="button"
-    onclick="searchDish()"
-    class="search-btn w-full sm:w-auto"
-  >
-    ARA
-    <span class="text-xs">🔎</span>
-  </button>
-</div>
+<button
+  type="button"
+  onclick="searchDish()"
+  class="w-full sm:w-auto btn-soft-dark"
+>
+   <span>ARA</span> 🔍
+</button>
+
+
 
       </div>
     </div>
@@ -466,28 +466,7 @@
         </section>
     </main>
 
-    <div
-        id="bottomAdContainer"
-        class="hidden sticky bottom-0 inset-x-0 z-20"
-    >
-        <div class="max-w-5xl mx-auto px-4 pb-4">
-            <div class="bg-white border border-slate-200 rounded-2xl shadow-lg p-3 flex items-center justify-between gap-3 text-xs">
-                <div class="flex items-center gap-2">
-                    <span class="text-amber-500 text-lg">💡</span>
-                    <p class="text-slate-700">
-                        Menü planında kararsızsan, blogdaki <strong>pratik ve glutensiz rehberlere</strong> de göz atabilirsin.
-                    </p>
-                </div>
-                <button
-                    type="button"
-                    class="hidden sm:inline-flex items-center text-[11px] font-semibold text-blue-600 hover:text-blue-700"
-                    onclick="showPage('blog')"
-                >
-                    Bloga Git →
-                </button>
-            </div>
-        </div>
-    </div>
+
 
     <div
         id="cookieBanner"
