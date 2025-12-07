@@ -69,16 +69,6 @@ function showPage(pageId, fromSidebar = false) {
         console.error(`Error: Target page element with ID 'page-${pageId}' not found!`);
     }
     
-    // Alt reklam konteyneri kontrolü
-    const bottomAd = document.getElementById('bottomAdContainer'); 
-    if (bottomAd) {
-        if (pageId === 'home') {
-            bottomAd.classList.add('hidden');
-            renderHomeBlogSection();
-        } else {
-            bottomAd.classList.remove('hidden');
-        }
-    }
 
     // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
     if (pageId === 'blog') {
@@ -218,9 +208,7 @@ function renderDefaultBlogPost(container, post) {
             </a>
         </div>
 
-        <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Blog Altı)</p>
-        </div>
+
     `;
 }
 
@@ -321,9 +309,7 @@ function renderGlutenFreeBlogPost(container, post) {
             </a>
         </div>
 
-        <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Glutensiz Menü Altı)</p>
-        </div>
+
     `;
 
     const glutenRulesData = [
@@ -442,9 +428,7 @@ function renderPratikBlogPost(container, post) {
             </a>
         </div>
 
-        <div class="w-full text-center my-6 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Pratik Menü Altı)</p>
-        </div>
+
     `;
 
     const rulesData = [
