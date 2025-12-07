@@ -46,19 +46,38 @@ function hideSidebar() {
 }
 
 // --- SAYFA GEÇİŞLERİ ---
+// --- SAYFA GEÇİŞLERİ ---
 function showPage(pageId, fromSidebar = false) {
-    document.getElementById('page-home').classList.add('hidden');
-    document.getElementById('page-blog').classList.add('hidden');
-    document.getElementById('page-privacy').classList.add('hidden');
+    // Tüm sayfa elementlerini kontrol edip gizle
+    const pagesToHide = ['page-home', 'page-blog', 'page-privacy'];
 
-    document.getElementById(`page-${pageId}`).classList.remove('hidden');
+    pagesToHide.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.classList.add('hidden');
+        } else {
+            // Loglama, hangi elementin eksik olduğunu görmenizi sağlar
+            console.warn(`Warning: Element with ID '${id}' not found in the DOM.`);
+        }
+    });
 
-    const bottomAd = document.getElementById('bottomAdContainer');
-    if (pageId === 'home') {
-        bottomAd.classList.add('hidden');
-        renderHomeBlogSection();
+    // İstenen sayfayı göster
+    const targetPage = document.getElementById(`page-${pageId}`);
+    if (targetPage) {
+        targetPage.classList.remove('hidden');
     } else {
-        bottomAd.classList.remove('hidden');
+        console.error(`Error: Target page element with ID 'page-${pageId}' not found!`);
+    }
+    
+    // Alt reklam konteyneri kontrolü
+    const bottomAd = document.getElementById('bottomAdContainer'); 
+    if (bottomAd) {
+        if (pageId === 'home') {
+            bottomAd.classList.add('hidden');
+            renderHomeBlogSection();
+        } else {
+            bottomAd.classList.remove('hidden');
+        }
     }
 
     // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
