@@ -117,21 +117,17 @@
                 >
                     ☰
                 </button>
-                <div class="flex items-center gap-2">
-                    <span class="hidden md:inline text-2xl">🍽️</span>
-                    <div>
-                        <button
-                            type="button"
-                            onclick="showPage('home')"
-                            class="text-base md:text-lg font-bold text-slate-900 hover:text-sky-600"
-                        >
-                            Yanında Ne Yiyelim?
-                        </button>
-                        <p class="hidden sm:block text-xs text-slate-500">
-                            Ana yemeğin yanına ne gider? Hızlı menü fikirleri
-                        </p>
-                    </div>
-                </div>
+<div class="flex items-center gap-2">
+    <img src="images/logo.png"
+         alt="Yanında Ne Yiyelim Logo"
+         class="h-10 w-auto" />
+    
+    <div>
+        <h1 class="text-xl font-bold text-slate-900 tracking-tight">Yanında Ne Yiyelim?</h1>
+        <p class="text-sm text-slate-500">Ana yemeğin yanına ne gider? Hızlı menü fikirleri</p>
+    </div>
+</div>
+
             </div>
 
             <nav class="hidden md:flex items-center gap-2 text-sm">
@@ -160,142 +156,146 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-6 space-y-8">
+  <!-- HERO + CTA BÖLÜMÜ -->
+<section class="w-full">
+  <div class="relative rounded-3xl overflow-hidden shadow-sm bg-[#f4f4f4]">
+    <!-- Sol tarafta fotoğraf -->
+    <div class="absolute inset-y-0 left-0 w-[45%] hidden md:block">
+      <img
+        src="images/hero-pasta.jpg" alt="Yemek fotoğrafı" />
+        alt="Makarnalı sofra"
+        class="w-full h-full object-cover"
+      />
+    </div>
 
-        <!-- ANA SAYFA -->
-        <section id="page-home" class="space-y-8">
-            <!-- Hero -->
-            <section class="bg-gradient-to-r from-sky-50 to-emerald-50 border border-sky-100 rounded-2xl p-5 md:p-7 flex flex-col md:flex-row gap-5 items-center">
-                <div class="flex-1 space-y-3">
-                    <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">
-                        Ana yemekten emin misin, <span class="text-sky-600">yanına ne yersin?</span>
-                    </h1>
-                    <p class="text-sm md:text-base text-slate-600">
-                        “Pilavın yanına ne gider?”, “Etin yanına ne yapsam?” diye düşünüyorsan,
-                        malzemene ve canının çektiğine göre <strong>yan lezzet, içecek ve tatlı</strong> önerileri sunuyoruz.
-                    </p>
-<ul class="flex flex-wrap gap-2 text-xs">
+    <!-- Sağ taraftaki degrade arka plan ve metin -->
+    <div class="md:ml-[45%] p-6 md:p-10 bg-gradient-to-r from-[#e9f4ff] via-[#eef7ff] to-[#f6fafc]">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#25314A] leading-snug mb-3">
+        Ana yemekten emin misin,<br>
+        <span class="text-[#0082C9]">yanına ne yersin?</span>
+      </h2>
 
-    <!-- 1: Glutensiz butonu -->
-    <li>
+      <p class="text-sm md:text-base text-[#4b5563] max-w-xl mb-4">
+        “Pilavın yanına ne gider?”, “Etin yanına ne yapsam?” diye düşünüyorsan,
+        malzemene ve canının çektiğine göre <strong>yan lezzet, içecek ve tatlı</strong>
+        önerileri sunuyoruz.
+      </p>
+
+      <!-- Küçük rozetler (isteğe bağlı) -->
+      <div class="flex flex-wrap gap-2 mb-6 text-xs">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-slate-200">
+          <span class="w-2 h-2 rounded-full bg-[#0099ff]"></span> Kalori tahmini
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-slate-200">
+          <span class="w-2 h-2 rounded-full bg-[#00b894]"></span> Pilav &amp; garnitür uyumu
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-slate-200">
+          <span class="w-2 h-2 rounded-full bg-[#ff8a00]"></span> Hızlı menü fikirleri
+        </span>
+      </div>
+
+      <!-- 3 BUTON: GLUTENSİZ / PRATİK / YILBAŞI -->
+      <div class="flex flex-wrap gap-3">
         <button
-            onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-emerald-600 text-white font-semibold hover:bg-emerald-700 shadow-sm hover:shadow transition-all text-xs"
+          type="button"
+          onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri');"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold
+                 bg-[#4CAF50] text-white shadow hover:bg-[#409345] transition"
         >
-            🌾 Glutensiz Menü Önerileri
-            <span class="text-[10px] opacity-90">→</span>
+          Glutensiz Menü Önerileri
         </button>
-    </li>
 
-    <!-- 2: Pratik Menü butonu -->
-    <li>
         <button
-            onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 shadow-sm hover:shadow transition-all text-xs"
+          type="button"
+          onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri');"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold
+                 bg-[#FF7A1A] text-white shadow hover:bg-[#e86c10] transition"
         >
-            ⚡ Pratik Menü Fikirleri
-            <span class="text-[10px] opacity-90">→</span>
+          Pratik Menü Fikirleri
         </button>
-    </li>
 
-        <!-- 3: Yılbaşı menü butonu -->
-    <li>
         <button
-            type="button"
-            onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri')"
-            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700 shadow-sm hover:shadow transition-all text-xs"
+          type="button"
+          onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri');"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold
+                 bg-[#D8241C] text-white shadow hover:bg-[#bf1f18] transition"
         >
-            🎄 Yılbaşı Menü Önerileri
-            <span class="text-[10px] opacity-90">→</span>
+          Yılbaşı Menü Önerileri
         </button>
-    </li>
+      </div>
+    </div>
+  </div>
+</section>
 
-</ul>
+<!-- ARAMA KARTI (FORM) -->
+<section class="mt-8">
+  <div class="bg-white rounded-3xl shadow-sm border border-slate-100 px-5 py-4 md:px-8 md:py-6">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-4">
+      <!-- Ana Yemek -->
+      <div class="flex-1 mb-4 md:mb-0">
+        <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1">
+          Ana Yemeğin Ne?
+        </label>
+        <input
+          id="mainDishInput"
+          type="text"
+          placeholder="Örn: Köfte, fırında tavuk, mercimek çorbası..."
+          class="w-full rounded-2xl border border-slate-200 px-3 py-2.5 text-sm
+                 focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-[#007bff]"
+        />
+        <p class="mt-1 text-xs text-slate-400">
+          Boş bırakırsan, seçtiğin mutfak türüne göre “Günün Önerisi” gelir.
+        </p>
+      </div>
 
+      <!-- Mutfak Türü -->
+      <div class="w-full md:w-56 mb-4 md:mb-0">
+        <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1">
+          Mutfak Türü
+        </label>
+        <select
+          id="cuisineFilter"
+          class="w-full rounded-2xl border border-slate-200 px-3 py-2.5 text-sm
+                 focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-[#007bff]"
+        >
+<option value="">Tüm Mutfaklar</option> <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option> 
+            <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option> 
+            <option value="Asya Mutfağı">🍣 Asya Mutfağı</option> 
+            <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option> 
+            <option value="Uluslararası">🌐 Uluslararası</option> 
+            <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option> 
+            <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option> 
+            <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option> 
+            <option value="Ege Mutfağı">🌿 Ege Mutfağı</option> 
+            <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option> 
+            <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
+        </select>
+      </div>
 
-                </div>
-                <div class="w-full md:w-60">
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 text-sm space-y-2">
-                        <p class="font-semibold text-slate-800 mb-1">
-                            Nasıl çalışıyor?
-                        </p>
-                        <ol class="list-decimal ml-4 space-y-1 text-slate-600">
-                            <li>Ana yemeğini yaz.</li>
-                            <li>İsteğe göre mutfak türü ve kalori filtresi seç.</li>
-                            <li>Uyumlu yan lezzetleri ve tatlıyı keşfet.</li>
-                        </ol>
-                        <p class="text-[11px] text-slate-400">
-                            Kalori değerleri yaklaşık olup porsiyon, pişirme yöntemi ve kullanılan yağ miktarına göre değişebilir.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      <!-- 1200 kcal filtresi + buton -->
+      <div class="flex items-end justify-between md:justify-end gap-4 w-full md:w-auto">
+        <label class="flex items-center gap-2 text-xs md:text-sm text-slate-600">
+          <input
+            id="lowCalorieFilter"
+            type="checkbox"
+            class="rounded border-slate-300 text-[#007bff] focus:ring-[#007bff]"
+          />
+          <span>Toplam menü <strong>1200 kcal</strong> altı olsun</span>
+        </label>
 
-            <!-- Arama Alanı -->
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 space-y-4">
-                <div class="flex flex-col md:flex-row md:items-center gap-4">
-                    <div class="flex-1">
-                        <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1.5">
-                            Ana Yemeğin Ne?
-                        </label>
-                        <input
-                            id="mainDishInput"
-                            type="text"
-                            class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                            placeholder="Örn: Köfte, fırında tavuk, mercimek çorbası..."
-                        />
-                        <p class="mt-1 text-[11px] text-slate-400">
-                            Boş bırakırsan, seçtiğin mutfak türüne göre “Günün Önerisi” gelir.
-                        </p>
-                    </div>
+        <button
+          type="button"
+          onclick="searchDish()"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold
+                 bg-[#005c9f] text-white shadow hover:bg-[#004b84] transition whitespace-nowrap"
+        >
+          🔍 Yanına Ne Yiyelim?
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    <div class="w-full md:w-40">
-                        <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1.5">
-                            Mutfak Türü
-                        </label>
-                        <select
-                            id="cuisineFilter"
-                            class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                        >
-                        
-                        <option value="">Tüm Mutfaklar</option>
-                        <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
-                        <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
-                        <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
-                        <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
-                        <option value="Uluslararası">🌐 Uluslararası</option>
-                        <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
-                        <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
-                        <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
-                        <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
-                        <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
-                        <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
-                        </select>
-                    </div>
-
-                    <div class="w-full md:w-44 flex items-center gap-2">
-                        <input
-                            id="lowCalorieFilter"
-                            type="checkbox"
-                            class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
-                        />
-                        <label for="lowCalorieFilter" class="text-xs text-slate-700">
-                            Toplam menü <strong>1200 kcal altı</strong> olsun
-                        </label>
-                    </div>
-
-                    <div class="w-full md:w-auto">
-                        <button
-                            type="button"
-                            onclick="searchDish()"
-                            class="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-semibold px-4 py-2.5 hover:bg-sky-700 transition-colors"
-                        >
-                            🔍 Yanına Ne Yiyelim?
-                        </button>
-                    </div>
-                </div>
-            </section>
 
             <!-- Sonuçlar -->
             <section class="space-y-4">
