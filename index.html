@@ -106,108 +106,116 @@
 <div class="min-h-screen flex flex-col">
 
     <!-- TOP NAVBAR -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-                <button
-                    type="button"
-                    class="md:hidden p-2 rounded-lg hover:bg-slate-100"
-                    onclick="showSidebar()"
-                    aria-label="Menüyü aç"
-                >
-                    ☰
-                </button>
-<div class="flex items-center gap-2">
-<img src="images/logo.png"
-     alt="Yanında Ne Yiyelim Logo"
-     class="h-12 md:h-16 w-auto" />
+    <header class="bg-white shadow-sm">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <!-- Sol: Logo + metin -->
+    <button
+      type="button"
+      class="md:hidden mr-1"
+      onclick="showSidebar()"
+      aria-label="Menüyü aç"
+    >
+      <span class="inline-block w-6 h-6 text-slate-700">
+        &#9776;
+      </span>
+    </button>
 
-    
-    <div>
-        <h1 class="text-xl font-bold text-slate-900 tracking-tight">Yanında Ne Yiyelim?</h1>
-        <p class="text-sm text-slate-500">Ana yemeğin yanına ne gider? Hızlı menü fikirleri</p>
-    </div>
-</div>
-
-            </div>
-
-            <nav class="hidden md:flex items-center gap-2 text-sm">
-                <button
-                    type="button"
-                    onclick="showPage('home')"
-                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
-                >
-                    Ana Sayfa
-                </button>
-                <button
-                    type="button"
-                    onclick="showPage('blog')"
-                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
-                >
-                    Blog
-                </button>
-                <button
-                    type="button"
-                    onclick="showPage('privacy')"
-                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
-                >
-                    Gizlilik
-                </button>
-            </nav>
+    <div class="flex items-center gap-3 flex-1">
+      <img
+        src="./images/yaninda-ne-yiyelim-logo.png"
+        alt="Yanında Ne Yiyelim?"
+        class="w-10 h-10 md:w-12 md:h-12 rounded-full object-contain flex-shrink-0"
+      />
+      <div class="leading-snug">
+        <div class="text-base md:text-lg font-extrabold text-slate-900">
+          Yanında Ne Yiyelim?
         </div>
-    </header>
-
-<!-- Hero -->
-<section class="rounded-2xl overflow-hidden border border-slate-200">
-    <div class="relative w-full h-[260px] md:h-[360px]">
-        <!-- Arka plan: pasta görseli -->
-        <div class="absolute inset-0 bg-[url('./images/hero-pasta.jpg')] bg-cover bg-left"></div>
-
-        <!-- Sağ tarafa doğru hafif mavi / beyaz degrade, yazıyı öne çıkarır -->
-        <div class="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-sky-100/90"></div>
-
-        <!-- İçerik: sağ tarafta metin -->
-        <div class="relative h-full flex items-center">
-            <div class="ml-auto max-w-xl pr-6 md:pr-10 pl-6 py-6 text-left">
-                <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug">
-                    Ana yemekten emin misin,
-                    <span class="text-sky-600">yanında ne yersin?</span>
-                </h1>
-                <p class="mt-3 text-sm md:text-base text-slate-700 max-w-lg">
-                    “Pilavın yanına ne gider?”, “Etin yanına ne yapsam?” diye düşünüyorsan,
-                    malzemene ve canının çektiğine göre <strong>yan lezzet, içecek ve tatlı</strong> önerileri sunuyoruz.
-                </p>
-
-
-                <!-- alt üç büyük buton -->
-                <div class="mt-5 flex flex-wrap gap-3">
-                    <button
-                        type="button"
-                        onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold shadow hover:bg-emerald-700 transition"
-                    >
-                        🌾 Glutensiz Menü Önerileri
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500 text-white text-sm font-semibold shadow hover:bg-orange-600 transition"
-                    >
-                        ⚡ Pratik Menü Fikirleri
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri')"
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600 text-white text-sm font-semibold shadow hover:bg-red-700 transition"
-                    >
-                        🎄 Yılbaşı Menü Önerileri
-                    </button>
-                </div>
-            </div>
+        <div class="text-[11px] md:text-xs text-slate-500">
+          Ana yemeğin yanına ne gider? Hızlı menü fikirleri
         </div>
+      </div>
     </div>
+
+    <!-- Sağ: Masaüstü menü -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+      <button type="button" onclick="showPage('home')" class="hover:text-sky-600">
+        Ana Sayfa
+      </button>
+      <button type="button" onclick="showPage('blog')" class="hover:text-sky-600">
+        Blog
+      </button>
+      <button type="button" onclick="showPage('privacy')" class="hover:text-sky-600">
+        Gizlilik
+      </button>
+    </nav>
+  </div>
+</header>
+
+          
+<!-- HERO -->
+<section
+  class="relative overflow-hidden rounded-none md:rounded-2xl mb-4 md:mb-6"
+>
+  <!-- Arka plan görsel -->
+  <div
+    class="w-full h-[320px] md:h-[360px] bg-cover bg-center"
+    style="background-image: url('./images/hero-pasta.jpg');"
+  >
+    <!-- Gradient overlay -->
+    <div class="w-full h-full bg-gradient-to-r from-black/65 via-black/45 to-black/10">
+      <div class="max-w-5xl mx-auto h-full flex flex-col justify-center px-4 py-6 md:py-0">
+        <div class="max-w-xl space-y-3 text-white">
+          <h1 class="text-2xl md:text-4xl font-extrabold leading-snug">
+            Ana yemekten emin misin,
+            <span class="text-sky-300">yanında ne yersin?</span>
+          </h1>
+          <p class="text-sm md:text-base text-sky-50/90">
+            “Pilavın yanına ne gider?”, “Etin yanına ne yapsam?” diye
+            düşünüyorsan, malzemene ve canının çektiğine göre
+            <span class="font-semibold">yan lezzet, içecek ve tatlı</span>
+            önerileri sunuyoruz.
+          </p>
+
+
+          <!-- CTA butonlar -->
+          <div class="mt-3 flex flex-col sm:flex-row gap-3">
+            <button
+              type="button"
+              onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
+              class="inline-flex items-center justify-center gap-1 px-5 py-2.5 rounded-full
+                     bg-emerald-600 text-white text-sm font-semibold
+                     hover:bg-emerald-700 shadow-md hover:shadow-lg transition-all
+                     w-full sm:w-auto"
+            >
+              🌾 Glutensiz Menü Önerileri
+            </button>
+
+            <button
+              type="button"
+              onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
+              class="inline-flex items-center justify-center gap-1 px-5 py-2.5 rounded-full
+                     bg-orange-500 text-white text-sm font-semibold
+                     hover:bg-orange-600 shadow-md hover:shadow-lg transition-all
+                     w-full sm:w-auto"
+            >
+              ⚡ Pratik Menü Fikirleri
+            </button>
+
+            <button
+              type="button"
+              onclick="showPage('blog'); viewBlogPost('yilbasi-sofra-menu-onerileri')"
+              class="inline-flex items-center justify-center gap-1 px-5 py-2.5 rounded-full
+                     bg-red-600 text-white text-sm font-semibold
+                     hover:bg-red-700 shadow-md hover:shadow-lg transition-all
+                     w-full sm:w-auto"
+            >
+              🎄 Yılbaşı Menü Önerileri
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
