@@ -240,35 +240,41 @@
                 Ne Pişiriyorsun? Hadi Menünü Tamamlayalım. 
               </h2>
 
-              <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
+<section class="bg-white rounded-3xl shadow-md border border-slate-200 px-4 py-5 md:px-6 md:py-7 mt-2 md:mt-4">
+
+  <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-4">
+    Ne Pişiriyorsun? Hadi Menünü Tamamlayalım. 
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
+
+    <div>
+      <label class="block text-sm font-semibold text-slate-800 mb-2">
+        Ana Yemeğin Ne?
+      </label>
+      <input
+        id="mainDishInput"
+        type="text"
+        placeholder="Örn: Köfte, Fırında Tavuk, Mercimek Çorbası..."
+        class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm md:text-base
+               focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
+               transition shadow-sm"
+      />
+      <p class="mt-2 text-xs text-slate-500 leading-tight">
+        Boş bırakırsan <strong>“Günün Önerisi”</strong> gelir.
+      </p>
+    </div>
 
                 <div>
-                  <label class="block text-sm font-semibold text-slate-800 mb-2">
-                    Ana Yemeğin Ne?
-                  </label>
-                  <input
-                    id="mainDishInput"
-                    type="text"
-                    placeholder="Örn: Köfte, Fırında Tavuk, Mercimek Çorbası..."
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm md:text-base
-                                focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
-                                transition shadow-sm"
-                  />
-                  <p class="mt-2 text-xs text-slate-500 leading-tight">
-                    Boş bırakırsan <strong>“Günün Önerisi”</strong> gelir.
-                  </p>
-                </div>
-
-                <div>
-                  <label class="block text-sm font-semibold text-slate-800 mb-2">
-                    Mutfak Türü
-                  </label>
-                  <select
-                    id="cuisineFilter"
-                    class="w-full rounded-xl border border-slate-300 px-4 py-3
-                                text-sm md:text-base bg-white focus:outline-none
-                                focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm"
-                  >
+                 <label class="block text-sm font-semibold text-slate-800 mb-2">
+        Mutfak Türü
+      </label>
+      <select
+        id="cuisineFilter"
+        class="w-full rounded-xl border border-slate-300 px-4 py-3
+               text-sm md:text-base bg-white focus:outline-none
+               focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm"
+      >
                         <option value="">Tüm Mutfaklar</option>
                         <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
                         <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
@@ -284,31 +290,30 @@
                   </select>
                 </div>
 
-                <div class="flex items-center gap-2">
-                  <input
-                    id="lowCalorieFilter"
-                    type="checkbox"
-                    class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
-                  />
-                  <label for="lowCalorieFilter" class="text-xs md:text-sm text-slate-700">
-                    Toplam menü <strong>1200 kcal</strong> altı olsun
-                  </label>
-                </div>
+                <div class="flex items-center gap-2 md:self-end"> 
+      <input
+        id="lowCalorieFilter"
+        type="checkbox"
+        class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+      />
+      <label for="lowCalorieFilter" class="text-xs md:text-sm text-slate-700">
+        Toplam menü <strong>1200 kcal</strong> altı olsun
+      </label>
+    </div>
+               <div class="flex md:justify-end md:self-end"> 
+      <button
+        type="button"
+        onclick="searchDish()"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
+               bg-sky-600 hover:bg-sky-700 text-white text-sm md:text-base
+               font-semibold shadow-md transition w-full md:w-auto"
+      >
+        🔍 Yanında Ne Yiyelim?
+      </button>
+    </div>
 
-                <div class="flex md:justify-end">
-                  <button
-                    type="button"
-                    onclick="searchDish()"
-                    class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl
-                                bg-sky-600 hover:bg-sky-700 text-white text-sm md:text-base
-                                font-semibold shadow-md transition w-full md:w-auto"
-                  >
-                    🔍 Yanında Ne Yiyelim?
-                  </button>
-                </div>
-
-              </div>
-            </section>
+  </div>
+</section>
 
 
             <section class="space-y-4">
