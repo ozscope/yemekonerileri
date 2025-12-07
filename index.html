@@ -64,18 +64,20 @@
 <aside
     id="sidebar"
     class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 p-4
-           sidebar-closed transition-transform duration-300
-           md:hidden">  <!-- 🔹 md ve üstünde tamamen gizle -->
-    
-<div class="flex items-center justify-between mb-4">
-    <div class="flex items-center gap-2">
-        <img
-            src="images/logo.png"  alt="Yanında Ne Yiyelim?" class="h-10 w-auto object-contain"
-        />
-        <span class="font-bold text-lg text-slate-800 whitespace-nowrap"> Yanında Ne Yiyelim?
-        </span>
-    </div>
-</div>
+           sidebar-closed transition-transform duration-300 md:hidden">
+
+    <!-- ÜST LOGO + KAPAT BUTONU -->
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+            <img
+                src="images/logo.png"
+                alt="Yanında Ne Yiyelim?"
+                class="h-10 w-auto object-contain"
+            />
+            <span class="font-bold text-lg text-slate-800 whitespace-nowrap">
+                Yanında Ne Yiyelim?
+            </span>
+        </div>
 
         <button
             type="button"
@@ -85,11 +87,8 @@
         </button>
     </div>
 
-    <!-- buraya menü linklerin geliyorsa devamı kalabilir -->
-</aside>
-
-
-    <nav class="space-y-2">
+    <!-- MENÜ LİNKLERİ -->
+    <nav class="space-y-2 mt-4">
         <button
             type="button"
             onclick="showPage('home', true)"
@@ -97,6 +96,7 @@
         >
             Ana Sayfa
         </button>
+
         <button
             type="button"
             onclick="showPage('blog', true)"
@@ -104,6 +104,7 @@
         >
             Blog
         </button>
+
         <button
             type="button"
             onclick="showPage('privacy', true)"
@@ -112,7 +113,12 @@
             Gizlilik Politikası
         </button>
     </nav>
+
 </aside>
+
+
+
+
 
 <div class="min-h-screen flex flex-col">
 
@@ -234,42 +240,39 @@
 </section>
 
 
-<section class="bg-white rounded-3xl shadow-md border border-slate-200 px-4 py-5 md:px-6 md:py-7 mt-2 md:mt-4">
-
-  <h2 class="text-lg md:text-xl font-bold text-slate-900 mb-4">
-    Ne Pişiriyorsun? Hadi Menünü Tamamlayalım. 
+<!-- Arama Alanı -->
+<section class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 space-y-4 mt-4">
+  <h2 class="text-lg md:text-xl font-semibold text-slate-900 mb-1">
+    Ne Pişiriyorsun? Hadi Menünü Tamamlayalım.
   </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
-
-    <div>
-      <section class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 space-y-4">
-  <div class="flex flex-col md:flex-row md:items-end md:gap-6 gap-4">
-
-    <!-- Ana yemek input -->
-    <div class="flex-1">
+  <div class="flex flex-col lg:flex-row lg:items-end gap-4">
+    <!-- Ana yemek inputu -->
+    <div class="flex-1 min-w-[220px]">
       <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1.5">
         Ana Yemeğin Ne?
       </label>
       <input
         id="mainDishInput"
         type="text"
-        class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+        class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm
+               focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
         placeholder="Örn: Köfte, fırında tavuk, mercimek çorbası..."
       />
       <p class="mt-1 text-[11px] text-slate-400">
-        Boş bırakırsan, seçtiğin mutfak türüne göre “Günün Önerisi” gelir.
+        Boş bırakırsan, seçtiğin mutfak türüne göre <strong>“Günün Önerisi”</strong> gelir.
       </p>
     </div>
 
-    <!-- Mutfak türü -->
-    <div class="w-full md:w-52">
+    <!-- Mutfak Türü -->
+    <div class="w-full sm:w-52">
       <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1.5">
         Mutfak Türü
       </label>
       <select
         id="cuisineFilter"
-        class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+        class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white
+               focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
       >
         <option value="">Tüm Mutfaklar</option>
         <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
@@ -286,29 +289,30 @@
       </select>
     </div>
 
-    <!-- Kalori filtresi -->
-    <div class="w-full md:w-52 flex items-center md:mb-1">
+    <!-- 1200 kcal checkbox -->
+    <div class="flex items-center gap-2 w-full sm:w-auto">
       <input
         id="lowCalorieFilter"
         type="checkbox"
-        class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 mr-2 flex-shrink-0"
+        class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
       />
-      <label for="lowCalorieFilter" class="text-xs md:text-sm text-slate-700 leading-snug">
-        Toplam menü <strong>1200 kcal</strong> altı olsun
+      <label for="lowCalorieFilter" class="text-xs sm:text-[13px] text-slate-700 leading-snug">
+        Toplam menü <strong>1200 kcal altı</strong> olsun
       </label>
     </div>
 
     <!-- Buton -->
-    <div class="w-full md:w-auto flex md:items-end">
+    <div class="w-full sm:w-auto lg:ml-auto">
       <button
         type="button"
         onclick="searchDish()"
-        class="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-semibold px-5 py-2.5 hover:bg-sky-700 transition-colors"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2
+               rounded-xl bg-sky-600 text-white text-sm font-semibold
+               px-5 py-2.5 hover:bg-sky-700 transition-colors"
       >
         🔍 Yanına Ne Yiyelim?
       </button>
     </div>
-
   </div>
 </section>
 
