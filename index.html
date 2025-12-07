@@ -1,376 +1,430 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- FAVICON -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Yanında Ne Yiyelim? - Menü Önerileri</title>
 
-    <title>Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? - Menü Önerileri</title>
+    <meta name="description" content="Ana yemeğin yanına ne gider? Çorba, et, pilav, zeytinyağlı ve özel gün sofraları için menü ve yan lezzet önerileri." />
 
-    
-    <!-- ========================================== -->
-    <!-- GOOGLE ADSENSE KODU (İSTERSEN BURAYI DEĞİŞTİRME) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4702518283120384"
-        crossorigin="anonymous"></script>
-    <!-- ========================================== -->
-    <!-- GOOGLE ANALYTICS 4 (GA4) KODU BAŞLANGICI -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YJ57YD93H"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-6YJ57YD93H');
-    </script>
-    <!-- GOOGLE ANALYTICS 4 (GA4) KODU BİTİŞİ -->
-
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind config, CDN SONRASI -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-blue': '#1e40af',
-                        'primary-light': '#eff6ff',
-                        'secondary-green': '#059669',
-                        'accent-orange': '#f97316'
-                    },
-                }
-            }
-        };
-    </script>
 
-    <!-- HARİCİ CSS DOSYAMIZ -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- SEO ETİKETLERİ -->
-    <meta name="description" content="100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik lezzet önerileri sunan mobil uyumlu menü planlayıcı.">
-    <meta property="og:title" content="🍽️ Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? - En Kapsamlı Menü Planlayıcı">
-    <meta property="og:description" content="Hangi yemeğin yanına neyin yakışacağını anında bulun! 'akşam ne yapsam' ‘yanına ne gider’ derdinden kurtulun.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yanindanevar.com/index.html"> 
-    <meta property="og:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-optimized.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://yanindanevar.com/yemek-yaninda-ne-gider-optimized.jpg">
-    <meta name="copyright" content="© 2025 yanindanevar.com | ozscope">
-
-    <!-- SCHEMA MARKUP -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Yanında Ne Var? - Yemek Menü Önerileri",
-      "url": "https://yanindanevar.com/index.html",
-      "description": "100'den fazla Türk ve Dünya mutfağı yemeğine özel, kategorik lezzet önerileri sunan mobil uyumlu menü planlayıcı.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "ozscope",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://yanindanevar.com/yemek-yaninda-ne-gider-social.jpg"
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f9fafb;
         }
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://yanindanevar.com/index.html?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+
+        .sidebar-open {
+            transform: translateX(0);
+        }
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+
+        /* blog içerik alanı */
+        .content-area p {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        .content-area h1,
+        .content-area h2,
+        .content-area h3,
+        .content-area h4 {
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .content-area ul,
+        .content-area ol {
+            margin-left: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .content-area li {
+            margin-bottom: 0.25rem;
+        }
+
+        .ad-placeholder {
+            border-style: dashed;
+        }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-900">
 
-    
-<body class="bg-gray-50">
+<!-- OVERLAY -->
+<div
+    id="overlay"
+    class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300"
+    onclick="hideSidebar()"
+></div>
 
-    <!-- ÜST BAR -->
-    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 h-16 flex items-center px-4 justify-between">
-        <div class="flex items-center">
-            <button id="menuBtn" type="button" onclick="showSidebar()" class="p-2 rounded-md hover:bg-gray-100 focus:outline-none mr-3" aria-label="Menüyü aç">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        <div class="flex items-center cursor-pointer" onclick="showPage('home')">
-        <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-20 w-auto mr-2">
+<!-- MOBILE SIDEBAR -->
+<aside
+    id="sidebar"
+    class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 p-4 sidebar-closed transition-transform duration-300">
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">🍽️</span>
+            <span class="font-bold text-lg">Yanında Ne Yiyelim?</span>
         </div>
-
-        </div>
-    </nav>
-
-    <!-- YAN MENÜ -->
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 sidebar-closed pt-20 px-4 flex flex-col" aria-label="Yan menü">
-        <button onclick="hideSidebar()" type="button" class="absolute top-4 right-4 p-2 rounded-md hover:bg-gray-100" aria-label="Menüyü kapat">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <button type="button" class="text-slate-500 hover:text-slate-800" onclick="hideSidebar()">
+            ✕
         </button>
-        
-        <ul class="space-y-2 mt-4">
-            <li>
-                <button onclick="showPage('home', true)" type="button" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
-                    <span class="mr-3">🏠</span> Menü Önerileri
-                </button>
-            </li>
-            <li>
-                <button onclick="showPage('blog', true)" type="button" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-700 font-medium flex items-center">
-                    <span class="mr-3">📝</span> Blog & Yazılar
-                </button>
-            </li>
-            <hr class="my-2">
-            <li>
-                <button onclick="showPage('privacy', true)" type="button" class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-light text-gray-600 font-medium flex items-center text-sm">
-                    <span class="mr-3">🔒</span> Gizlilik Politikası
-                </button>
-            </li>
-        </ul>
-        
-        <div class="mt-auto mb-6 text-xs text-gray-400 text-center">
-            &copy; 2025 yanindanevar.com
-        </div>
     </div>
 
-    <!-- KARARTMA KATMANI -->
-    <div id="overlay" onclick="hideSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0"></div>
-
-    <!-- ANA İÇERİK -->
-    <main id="main-content" class="app-container" aria-live="polite">
-        
-        <!-- ANA SAYFA -->
-        <section id="page-home" class="block">
-            <header class="mb-6 text-center">
-
-            <img src="images/logo.png" alt="Yanında Ne Yiyelim Logo" class="h-48 mx-auto mb-3">
-
-            <p class="text-gray-600 text-sm">Ana Yemeği Gir, Menüyü Oluştur.</p>
-            </header>
-
-
-            <!-- STATİK AÇIKLAMA BLOĞU (KISA VERSİYON) -->
-<section class="mb-6 bg-white rounded-xl shadow-sm border border-gray-100 p-5 text-gray-700 leading-relaxed">
-
-    <h2 class="text-xl font-extrabold text-primary-blue text-center mb-3">
-        Yanında Ne Yiyelim? | Yemeğin Yanına Ne Gider? Hızlı Menü Önerileri
-    </h2>
-
-    <p class="text-sm text-gray-700 mb-3">
-        Yanindanevar.com ile yaptığınız yemeğin yanına hangi pilav, salata, meze veya tatlının yakışacağını saniyeler içinde bulun. Kalorisine göre menü filtreleyin, ‘yanına ne gider’ derdinden kurtulun.
-    </p>
-
-    <p class="text-sm text-gray-700 mb-2">
-        Yapmanız gereken tek şey arama kutusuna yemek adını yazmak. Sistem otomatik olarak en uygun yan lezzetleri ve kalorilerini listeler.
-    </p>
-
-
-</section>
-
-<!-- Filtre ve Arama -->
-<div class="space-y-3 mb-6">
-    <select id="cuisineFilter" onchange="searchDish()"
-        class="w-full p-3 border-2 border-primary-blue/30 rounded-xl bg-white focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150">
-        <option value="">Tüm Mutfaklar</option>
-        <option value="Türk Mutfağı">🇹🇷 Türk Mutfağı</option>
-        <option value="İtalyan Mutfağı">🇮🇹 İtalyan Mutfağı</option>
-        <option value="Asya Mutfağı">🍣 Asya Mutfağı</option>
-        <option value="Akdeniz Mutfağı">🌍 Akdeniz Mutfağı</option>
-        <option value="Uluslararası">🌐 Uluslararası</option>
-        <option value="Orta Doğu Mutfağı">🌙 Orta Doğu Mutfağı</option>
-        <option value="Amerikan Mutfağı">🍔 Amerikan Mutfağı</option>
-        <option value="Fransız Mutfağı">🇫🇷 Fransız Mutfağı</option>
-        <option value="Ege Mutfağı">🌿 Ege Mutfağı</option>
-        <option value="Sokak Lezzetleri">🚚 Sokak Lezzetleri</option>
-        <option value="Orta Asya Mutfağı">🏔 Orta Asya Mutfağı</option>
-    </select>
-    
-    <div class="flex">
-        <input
-            id="mainDishInput"
-            type="text"
-            placeholder="Yemek adını girin (Örn: Köfte, Levrek, Zeytinyağlı Fasulye...)"
-            class="flex-grow p-3 border-2 border-primary-blue/30 rounded-l-xl focus:border-primary-blue focus:ring focus:ring-primary-blue/20 transition duration-150"
-            aria-label="Ana yemek adını girin"
-            onkeypress="if(event.key === 'Enter') searchDish()"
-        />
+    <nav class="space-y-2">
         <button
-            id="searchButton"
             type="button"
-            onclick="searchDish()"
-            class="flex-shrink-0 bg-primary-blue text-white font-semibold py-3 px-6 rounded-r-xl hover:bg-primary-blue/90 transition duration-150 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
+            onclick="showPage('home', true)"
+            class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 text-sm font-medium"
         >
-            Ara
+            Ana Sayfa
         </button>
-    </div>
-</div>
+        <button
+            type="button"
+            onclick="showPage('blog', true)"
+            class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 text-sm font-medium"
+        >
+            Blog
+        </button>
+        <button
+            type="button"
+            onclick="showPage('privacy', true)"
+            class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 text-sm font-medium"
+        >
+            Gizlilik Politikası
+        </button>
+    </nav>
+</aside>
 
-<!-- 1200 kcal ALTINDA FİLTRE -->
-<div class="flex items-center mb-3">
-    <input 
-        type="checkbox" 
-        id="lowCalorieFilter" 
-        class="mr-2 w-5 h-5 cursor-pointer"
-        onchange="searchDish()"
-    >
-    <label for="lowCalorieFilter" class="text-sm text-gray-700 cursor-pointer">
-        🍏 1200 kcal altındaki menüleri göster
-    </label>
-</div>
+<!-- PAGE WRAPPER -->
+<div class="min-h-screen flex flex-col">
 
-            <!-- Sonuç Alanı -->
-            <div id="resultsContainer" class="min-h-[150px] flex items-center justify-center p-4 bg-primary-light border border-primary-blue/20 rounded-xl">
-                <p id="initialMessage" class="text-gray-500 italic">
-                    Aramaya başlayın. Önerileriniz burada görünecektir.
-                </p>
+    <!-- TOP NAVBAR -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <button
+                    type="button"
+                    class="md:hidden p-2 rounded-lg hover:bg-slate-100"
+                    onclick="showSidebar()"
+                    aria-label="Menüyü aç"
+                >
+                    ☰
+                </button>
+                <div class="flex items-center gap-2">
+                    <span class="hidden md:inline text-2xl">🍽️</span>
+                    <div>
+                        <button
+                            type="button"
+                            onclick="showPage('home')"
+                            class="text-base md:text-lg font-bold text-slate-900 hover:text-sky-600"
+                        >
+                            Yanında Ne Yiyelim?
+                        </button>
+                        <p class="hidden sm:block text-xs text-slate-500">
+                            Ana yemeğin yanına ne gider? Hızlı menü fikirleri
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <!-- KATEGORİ KISAYOLLARI (2'li) -->
-<section class="mt-6">
-  <h2 class="text-lg font-bold mb-3">Keşfet</h2>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <nav class="hidden md:flex items-center gap-2 text-sm">
+                <button
+                    type="button"
+                    onclick="showPage('home')"
+                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
+                >
+                    Ana Sayfa
+                </button>
+                <button
+                    type="button"
+                    onclick="showPage('blog')"
+                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
+                >
+                    Blog
+                </button>
+                <button
+                    type="button"
+                    onclick="showPage('privacy')"
+                    class="px-3 py-1.5 rounded-full hover:bg-slate-100"
+                >
+                    Gizlilik
+                </button>
+            </nav>
+        </div>
+    </header>
 
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 py-6 space-y-8">
 
-    <!-- 1. Glutensiz Menü -->
-    <button 
-      type="button"
-      class="flex items-center px-4 py-3 rounded-2xl shadow bg-green-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
-      onclick="showPage('blog'); viewBlogPost('glutensiz-menu-onerileri')"
-    >
-      <span class="text-2xl mr-3">🌾</span>
-      <span class="text-left">
-        <div class="text-sm font-semibold">Glutensiz Menü Önerileri</div>
-        <div class="text-xs opacity-80">7 farklı glutensiz tam menü.</div>
-      </span>
-    </button>
-
-    <!-- 2. Pratik Menü -->
-    <button 
-      type="button"
-      class="flex items-center px-4 py-3 rounded-2xl shadow bg-amber-100 hover:shadow-md hover:-translate-y-0.5 transition transform"
-      onclick="showPage('blog'); viewBlogPost('pratik-menu-onerileri')"
-    >
-      <span class="text-2xl mr-3">⚡</span>
-      <span class="text-left">
-        <div class="text-sm font-semibold">Pratik Menü Önerileri</div>
-        <div class="text-xs opacity-80">Hızlı menüler (30 dakika altı)</div>
-      </span>
-    </button>
-
-  </div>
-</section>
-            <!-- BLOG'DAN ÖNERİLER -->
-            <section id="home-blog-section" class="mt-10">
-                <h2 class="text-xl font-bold mb-4">Blog’dan Öneriler</h2>
-                <div id="home-blog-list" class="grid gap-4 md:grid-cols-3">
-                    <!-- JS ile doldurulacak -->
+        <!-- ANA SAYFA -->
+        <section id="page-home" class="space-y-8">
+            <!-- Hero -->
+            <section class="bg-gradient-to-r from-sky-50 to-emerald-50 border border-sky-100 rounded-2xl p-5 md:p-7 flex flex-col md:flex-row gap-5 items-center">
+                <div class="flex-1 space-y-3">
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">
+                        Ana yemekten emin misin, <span class="text-sky-600">yanına ne yersin?</span>
+                    </h1>
+                    <p class="text-sm md:text-base text-slate-600">
+                        “Pilavın yanına ne gider?”, “Etin yanına ne yapsam?” diye düşünüyorsan,
+                        malzemene ve canının çektiğine göre <strong>yan lezzet, içecek ve tatlı</strong> önerileri sunuyoruz.
+                    </p>
+                    <ul class="flex flex-wrap gap-2 text-xs">
+                        <li class="px-2.5 py-1 rounded-full bg-white/80 border border-sky-100 text-sky-700 font-medium">
+                            ⚖️ Kalori tahmini
+                        </li>
+                        <li class="px-2.5 py-1 rounded-full bg-white/80 border border-emerald-100 text-emerald-700 font-medium">
+                            🍚 Pilav &amp; Garnitür uyumu
+                        </li>
+                        <li class="px-2.5 py-1 rounded-full bg-white/80 border border-amber-100 text-amber-700 font-medium">
+                            ⏱️ Hızlı menü fikirleri
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-60">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 text-sm space-y-2">
+                        <p class="font-semibold text-slate-800 mb-1">
+                            Nasıl çalışıyor?
+                        </p>
+                        <ol class="list-decimal ml-4 space-y-1 text-slate-600">
+                            <li>Ana yemeğini yaz.</li>
+                            <li>İsteğe göre mutfak türü ve kalori filtresi seç.</li>
+                            <li>Uyumlu yan lezzetleri ve tatlıyı keşfet.</li>
+                        </ol>
+                        <p class="text-[11px] text-slate-400">
+                            Kalori değerleri yaklaşık olup porsiyon, pişirme yöntemi ve kullanılan yağ miktarına göre değişebilir.
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            <!-- YEMEK DETAY ŞABLONU -->
-            <template id="dishDetailTemplate">
-                <div class="w-full">
-                    <h2 class="text-2xl font-extrabold text-primary-blue mb-4"></h2>
-                    <div class="text-xs text-gray-500 mb-2" id="randomInfo" style="display:none;">
-                        Filtreye göre rastgele bir "Günün Önerisi" gösteriliyor.
+            <!-- Arama Alanı -->
+            <section class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-end gap-4">
+                    <div class="flex-1">
+                        <label for="mainDishInput" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                            Ana Yemeğin Ne?
+                        </label>
+                        <input
+                            id="mainDishInput"
+                            type="text"
+                            class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                            placeholder="Örn: Köfte, fırında tavuk, mercimek çorbası..."
+                        />
+                        <p class="mt-1 text-[11px] text-slate-400">
+                            Boş bırakırsan, seçtiğin mutfak türüne göre “Günün Önerisi” gelir.
+                        </p>
                     </div>
-                    <div id="suggestionsListContainer"></div>
-                    <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-                        <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI (Öneri Altı)</p>
+
+                    <div class="w-full md:w-40">
+                        <label for="cuisineFilter" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                            Mutfak Türü
+                        </label>
+                        <select
+                            id="cuisineFilter"
+                            class="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                        >
+                            <option value="">Farketmez</option>
+                            <option value="Türk Mutfağı">Türk Mutfağı</option>
+                            <option value="Ege Mutfağı">Ege Mutfağı</option>
+                        </select>
+                    </div>
+
+                    <div class="w-full md:w-44 flex items-center gap-2">
+                        <input
+                            id="lowCalorieFilter"
+                            type="checkbox"
+                            class="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                        />
+                        <label for="lowCalorieFilter" class="text-xs text-slate-700">
+                            Toplam menü <strong>1200 kcal altı</strong> olsun
+                        </label>
+                    </div>
+
+                    <div class="w-full md:w-auto">
+                        <button
+                            type="button"
+                            onclick="searchDish()"
+                            class="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white text-sm font-semibold px-4 py-2.5 hover:bg-sky-700 transition-colors"
+                        >
+                            🔍 Yanına Ne Yiyelim?
+                        </button>
                     </div>
                 </div>
-            </template>
+            </section>
+
+            <!-- Sonuçlar -->
+            <section class="space-y-4">
+                <h2 class="text-base font-semibold text-slate-800">
+                    Sonuçlar
+                </h2>
+                <div id="resultsContainer" class="space-y-4">
+                    <p class="text-slate-500 text-sm italic">
+                        Aramaya başlayın veya boş bırakıp “Günün Önerisi”ni keşfedin.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Ana sayfa blog teaser -->
+            <section class="space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                    <h2 class="text-base font-semibold text-slate-800">
+                        Blogdan Seçtiklerimiz
+                    </h2>
+                    <button
+                        type="button"
+                        onclick="showPage('blog')"
+                        class="text-xs font-medium text-sky-600 hover:text-sky-800"
+                    >
+                        Tüm yazıları gör →
+                    </button>
+                </div>
+                <div
+                    id="home-blog-list"
+                    class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm"
+                >
+                    <!-- app.js -> renderHomeBlogSection dolduracak -->
+                </div>
+            </section>
         </section>
 
-        <!-- BLOG -->
-        <section id="page-blog" class="hidden">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Yemek Blogu</h2>
-            <div id="blog-posts-container" class="space-y-6"></div>
-        </section>
-       
-        <!-- GİZLİLİK POLİTİKASI -->
-        <section id="page-privacy" class="hidden content-area bg-white p-6 rounded-xl shadow-sm">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Gizlilik Politikası</h2>
-            <p class="text-sm text-gray-600 mb-4">Son Güncelleme: 28 Kasım 2025</p>
-            <div class="text-gray-700 text-sm space-y-4">
-                <p>yanindanevar.com ("biz", "sitemiz") olarak kişisel verilerinizin güvenliğine önem veriyoruz. Bu Gizlilik Politikası, sitemizi kullandığınızda hangi verilerin toplandığını açıklar.</p>
-                <h4>1. Toplanan Veriler</h4>
-                <p>Sitemiz, kullanıcı deneyimini iyileştirmek ve trafik analizi yapmak amacıyla çerezler (cookies) ve benzeri teknolojiler kullanabilir. Toplanan veriler anonimdir ve kişisel kimliğinizi doğrudan belirlemez.</p>
-                <h4>2. Reklamlar (Google AdSense)</h4>
-                <p>Sitemizde reklam hizmeti vermek için Google AdSense gibi üçüncü taraf tedarikçiler kullanılmaktadır. Google, sitemizi ve internetteki diğer siteleri ziyaretlerinize dayalı olarak reklam sunmak için çerezleri kullanır.</p>
-                <h4>3. İletişim</h4>
-                <p>Gizlilik politikamızla ilgili sorularınız için bize GitHub profilimiz üzerinden ulaşabilirsiniz.</p>
+        <!-- BLOG SAYFASI -->
+        <section id="page-blog" class="hidden space-y-6">
+            <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900">
+                        Blog
+                    </h1>
+                    <p class="text-sm text-slate-600">
+                        Menü planlama, özel gün sofraları ve “yanında ne gider” rehberleri.
+                    </p>
+                </div>
+            </header>
+
+            <div id="blog-posts-container" class="space-y-4">
+                <!-- app.js -> loadBlogContent ile dolduruluyor -->
             </div>
         </section>
-        
+
+        <!-- GİZLİLİK POLİTİKASI SAYFASI -->
+        <section id="page-privacy" class="hidden space-y-4">
+            <h1 class="text-2xl font-extrabold text-slate-900">
+                Gizlilik Politikası
+            </h1>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 content-area text-sm text-slate-700">
+                <p>
+                    “Yanında Ne Yiyelim?” olarak kişisel verilerinizi korumaya önem veriyoruz.
+                    Uygulama, yalnızca kullanıcı deneyimini geliştirmek amacıyla sınırlı ölçüde veri toplar.
+                </p>
+                <h2>Çerez Kullanımı</h2>
+                <p>
+                    Sadece zorunlu ve anonim analitik amaçlı çerezler kullanıyoruz. Reklam veya üçüncü taraf takip çerezleri
+                    kullanmıyoruz. Çerez tercihlerinizi sayfanın altında yer alan çerez bildirimi üzerinden yönetebilirsiniz.
+                </p>
+                <h2>Toplanan Veriler</h2>
+                <ul>
+                    <li>İçerik arama terimleriniz anonim şekilde istatistiksel amaçlarla analiz edilebilir.</li>
+                    <li>Hiçbir kişisel yemek tercihiniz kalıcı profil oluşturmak üzere saklanmaz.</li>
+                </ul>
+                <h2>İletişim</h2>
+                <p>
+                    Herhangi bir soru veya talebiniz için bizimle iletişime geçebilirsiniz:
+                    <span class="font-medium">destek@yanindaneyiyelim.com</span> (örnek)
+                </p>
+            </div>
+        </section>
     </main>
-<!-- INSTAGRAM TAKİP -->
-<div class="w-full max-w-3xl mx-auto mt-10 mb-6 px-4">
-    <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-4 text-center">
-        <p class="text-gray-700 text-sm mb-3 font-medium">
-            Bizi Instagram’da takip edin 🎉
-        </p>
 
-        <a href="https://www.instagram.com/yanindaneyiyelim" target="_blank" 
-           class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-semibold py-2 px-5 rounded-full shadow-lg hover:opacity-90 transition">
+    <!-- ALT SABİT REKLAM / BİLGİ ALANI -->
+    <div
+        id="bottomAdContainer"
+        class="hidden sticky bottom-0 inset-x-0 z-20"
+    >
+        <div class="max-w-5xl mx-auto px-4 pb-4">
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-lg p-3 flex items-center justify-between gap-3 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="text-amber-500 text-lg">💡</span>
+                    <p class="text-slate-700">
+                        Menü planında kararsızsan, blogdaki <strong>pratik ve glutensiz rehberlere</strong> de göz atabilirsin.
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    class="hidden sm:inline-flex items-center text-[11px] font-semibold text-sky-600 hover:text-sky-800"
+                    onclick="showPage('blog')"
+                >
+                    Bloga Git →
+                </button>
+            </div>
+        </div>
+    </div>
 
-            <!-- Instagram Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
-                <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M16.5 7.5h.008v.008H16.5V7.5z" />
-                <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M6.75 3h10.5A3.75 3.75 0 0121 6.75v10.5A3.75 3.75 0 0117.25 21H6.75A3.75 3.75 0 013 17.25V6.75A3.75 3.75 0 016.75 3z" />
-            </svg>
-
-            <span>@yanindaneyiyelim</span>
-        </a>
+    <!-- ÇEREZ BİLDİRİMİ -->
+    <div
+        id="cookieBanner"
+        class="fixed bottom-3 inset-x-0 mx-auto max-w-xl bg-slate-900 text-slate-50 rounded-2xl shadow-2xl px-4 py-4 text-xs flex flex-col sm:flex-row items-start sm:items-center gap-3 border border-slate-700 hidden opacity-0 transition-opacity duration-300 z-50"
+    >
+        <div class="flex-1">
+            <p class="font-semibold mb-1">Çerez Kullanımı</p>
+            <p class="text-[11px] text-slate-300">
+                Deneyiminizi iyileştirmek için yalnızca zorunlu ve anonim çerezler kullanıyoruz.
+                Tercihinizi kaydedebilir ve dilediğiniz zaman tarayıcınızdan değiştirebilirsiniz.
+            </p>
+        </div>
+        <div class="flex items-center gap-2">
+            <button
+                type="button"
+                class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-[11px] font-semibold hover:bg-slate-200"
+                onclick="rejectCookies()"
+            >
+                Reddet
+            </button>
+            <button
+                type="button"
+                class="px-3 py-1.5 rounded-lg bg-emerald-500 text-white text-[11px] font-semibold hover:bg-emerald-600"
+                onclick="acceptCookies()"
+            >
+                Kabul Et
+            </button>
+        </div>
     </div>
 </div>
 
-    <!-- SAYFA ALTI REKLAM ALANI -->
-    <div id="bottomAdContainer" class="w-full max-w-3xl mx-auto mt-auto mb-4 px-4 hidden">
-        <div class="w-full text-center my-4 p-2 bg-gray-100 rounded-lg ad-placeholder">
-            <p class="text-xs text-gray-500 font-semibold">REKLAM ALANI</p>
-        </div>
-    </div>
-
-    <!-- ÇEREZ / İZİN BANNERI -->
-    <div id="cookieBanner" class="cookie-banner hidden opacity-0" role="dialog" aria-live="polite" aria-label="Çerez bilgilendirme">
-        <div class="max-w-4xl mx-auto">
-            <p>
-                Bu site, deneyiminizi iyileştirmek ve Google AdSense üzerinden gösterilen reklamlar için 
-                çerezler kullanır. Devam etmeden önce çerez kullanımını onaylamanızı rica ederiz.
-                Ayrıntılar için 
-                <a href="#page-privacy" onclick="showPage('privacy')" class="underline text-blue-300">Gizlilik Politikası</a>'nı inceleyebilirsiniz.
+<!-- TEMPLATE: Detay Kartı -->
+<template id="dishDetailTemplate">
+    <article class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6">
+        <header class="mb-4">
+            <h2 class="text-xl font-extrabold text-slate-900 mb-1"></h2>
+            <p class="text-xs text-slate-500">
+                Aşağıdaki öneriler, tipik porsiyonlara ve geleneksel eşleşmelere göre oluşturulmuştur.
             </p>
-            <div class="flex gap-2 justify-end mt-2 sm:mt-3">
-                <button
-                    type="button"
-                    onclick="rejectCookies()"
-                    class="px-3 py-2 text-xs sm:text-sm rounded-md bg-gray-600 hover:bg-gray-500"
-                >
-                    Sadece Zorunlu Çerezler
-                </button>
-                <button
-                    type="button"
-                    onclick="acceptCookies()"
-                    class="px-3 py-2 text-xs sm:text-sm rounded-md bg-emerald-500 hover:bg-emerald-400 font-semibold"
-                >
-                    Tümünü Kabul Et
-                </button>
-            </div>
-        </div>
-    </div>
+        </header>
 
-    <!-- HARİCİ JS DOSYALARI -->
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script>
+        <div id="suggestionsListContainer" class="space-y-3 text-sm">
+            <!-- app.js -> dinamik içerik -->
+        </div>
+
+        <p
+            id="randomInfo"
+            class="mt-4 text-[11px] text-slate-500 border-t border-dashed border-slate-200 pt-2"
+            style="display:none;"
+        >
+            🎲 Hiç yemek yazmadığın için bu sonuç, seçtiğin mutfak türüne göre
+            rastgele üretilmiş bir “Günün Önerisi” menüsüdür.
+        </p>
+    </article>
+</template>
+
+<!-- VERİLER -->
+<script src="./data.js"></script>
+<!-- UYGULAMA -->
+<script src="./app.js"></script>
+
 </body>
 </html>
