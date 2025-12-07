@@ -64,3 +64,56 @@ body {
     margin-bottom: 1rem;
     line-height: 1.7;
 }
+
+
+/* === Premium buton & kart stili === */
+
+/* Krem buton – tüm ana butonlar için */
+.btn-soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  padding: 0.7rem 1.3rem;
+  border-radius: 9999px;
+  border: none;
+
+  background-color: #fdf2e9; /* yumuşak krem */
+  color: #1f2933;           /* koyu gri */
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  transition: background-color 0.18s ease, box-shadow 0.18s ease,
+              transform 0.18s ease, color 0.18s ease;
+}
+
+.btn-soft:hover {
+  background-color: #fbe3c1;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn-soft:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+/* Krem butonda “bir tık daha önemli” CTA – sadece renk farkı */
+.btn-soft-primary {
+  background-color: #fce8d5;
+}
+
+.btn-soft-primary:hover {
+  background-color: #f9d7b3;
+}
+
+/* Kartlar: arama kutusu, menü kartları vb. */
+.card-soft {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+}
+
