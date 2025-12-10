@@ -239,6 +239,50 @@ body {
     height: 18px;
 }
 
+.hero-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 22px;
+    min-width: 180px;
+    height: 44px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #f8fafc;  /* açık beyazımsı mavi */
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);       /* çok hafif beyaz şeffaf */
+    border: 1px solid rgba(255, 255, 255, 0.22); /* hafif parlak çizgi */
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+
+    transition: all 0.25s ease;
+}
+
+.hero-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+.hero-menu-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.hero-menu-wrapper {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 /* ARA butonunu alt tarafta sticky kullanmak istersen */
 .search-bar-wrapper {
     position: sticky;
