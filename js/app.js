@@ -134,6 +134,12 @@ function navigateTo(path) {
 }
 
 window.navigateTo = navigateTo;
+function goHome() {
+    navigateTo('/');
+}
+
+// global'e aç
+window.goHome = goHome;
 
 // --- ANA SAYFA BLOG ÖNERİLERİ ---
 function renderHomeBlogSection() {
