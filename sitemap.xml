@@ -1,84 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Ana Sayfa -->
-  <url>
-    <loc>https://yanindanevar.com/</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-  <!-- Blog Listeleme Sayfası -->
-  <url>
-    <loc>https://yanindanevar.com/blog</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Blog Yazısı 1 – Etin Yanına Ne Gider -->
-  <url>
-    <loc>https://yanindanevar.com/blog/etin-yanina-ne-gider</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Blog Yazısı 2 – Zeytinyağlı Yemeklerin Yanına Ne Gider -->
-  <url>
-    <loc>https://yanindanevar.com/blog/zeytinyagli-yanina-ne-gider</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Blog Yazısı 3 – Yılbaşı Sofra Menü Önerileri -->
-  <url>
-    <loc>https://yanindanevar.com/blog/yilbasi-sofra-menu-onerileri</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=yilbasi-sofra-menu-onerileri</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Blog Yazısı 4 – Pilav Uyum Rehberi -->
-  <url>
-    <loc>https://yanindanevar.com/blog/pilav-yanina-hangi-yemek-gider</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Blog Yazısı 5 – Kış Çorbaları Yanına Ne Gider -->
-  <url>
-    <loc>https://yanindanevar.com/blog/kis-corbasi-yanina-ne-gider</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=kis-corbasi-yanina-ne-gider</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Blog Yazısı 6 – Köfte Yanına Ne Gider -->
-  <url>
-    <loc>https://yanindanevar.com/blog/kofte-yanina-ne-gider</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=kofte-yanina-ne-gider</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Glutensiz Menü Önerileri -->
-  <url>
-    <loc>https://yanindanevar.com/blog/glutensiz-menu-onerileri</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=glutensiz-menu-onerileri</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Pratik Menü Önerileri -->
-  <url>
-    <loc>https://yanindanevar.com/blog/pratik-menu-onerileri</loc>
-    <lastmod>2025-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+    <loc>https://yanindanevar.com/?page=blog&post=pratik-menu-onerileri</loc>
+    <lastmod>2025-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
