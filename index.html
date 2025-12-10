@@ -193,34 +193,22 @@
                                 </p>
 
                                 <!-- ÖZEL MENÜ BUTONLARI -->
-                                <div class="flex flex-wrap justify-center gap-3 pt-3 hero-cta-row">
-                                    <button
-                                        type="button"
-                                        onclick="handleMenuClick('glutensiz')"
-                                        class="hero-cta-btn w-full sm:w-auto text-xs sm:text-sm"
-                                    >
-                                        <span class="text-lg"></span>
-                                        <span class="uppercase tracking-wide">Glutensiz Menüler</span>
-                                    </button>
+<div class="hero-menu-wrapper">
 
-                                    <button
-                                        type="button"
-                                        onclick="handleMenuClick('pratik')"
-                                        class="hero-cta-btn w-full sm:w-auto text-xs sm:text-sm"
-                                    >
-                                        <span class="text-lg"></span>
-                                        <span class="uppercase tracking-wide">Pratik Menüler</span>
-                                    </button>
+    <button onclick="handleMenuClick('glutensiz')" class="hero-menu-btn">
+        Glutensiz Menüler
+    </button>
 
-                                    <button
-                                        type="button"
-                                        onclick="handleMenuClick('yilbasi')"
-                                        class="hero-cta-btn w-full sm:w-auto text-xs sm:text-sm"
-                                    >
-                                        <span class="text-lg"></span>
-                                        <span class="uppercase tracking-wide">Yılbaşı Menüleri</span>
-                                    </button>
-                                </div>
+    <button onclick="handleMenuClick('pratik')" class="hero-menu-btn">
+        Pratik Menüler
+    </button>
+
+    <button onclick="handleMenuClick('yilbasi')" class="hero-menu-btn">
+        Yılbaşı Menülerİ
+    </button>
+
+</div>
+
                             </div>
                         </div>
                     </div>
@@ -295,13 +283,10 @@
                             </label>
 
                             <!-- ARA butonu -->
-                            <button
-                                type="button"
-                                class="search-btn primary"
-                                onclick="performSearch()"
-                            >
-                                ARA 🔍
-                            </button>
+<button onclick="performSearch()" class="search-btn-modern">
+    <span>ARA</span> 🔍
+</button>
+
                         </div>
                     </div>
                 </div>
