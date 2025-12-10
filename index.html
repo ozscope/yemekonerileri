@@ -278,22 +278,21 @@
                             </div>
 
                             <!-- 1200 kcal checkbox -->
-                            <label for="lowCalorieFilter" class="checkbox-row sm:w-40">
-                                <input
-                                    id="lowCalorieFilter"
-                                    type="checkbox"
-                                    class="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
-                                />
-                                <span>Toplam menü <strong>1200 kcal altı</strong> olsun</span>
-                            </label>
+                            <div class="inline-filter-box">
+        <label for="lowCalorieFilter" class="checkbox-row">
+            <input
+                id="lowCalorieFilter"
+                type="checkbox"
+                class="h-5 w-5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+            />
+            <span>Toplam menü <strong>1200 kcal altı</strong> olsun</span>
+        </label>
 
-                            <!-- ARA butonu -->
-<button onclick="performSearch()" class="search-btn-modern">
-    <span>ARA</span> 🔍
-</button>
-
-                        </div>
-                    </div>
+        <button class="search-btn primary search-btn-inline" onclick="performSearch()">
+            ARA 🔍
+        </button>
+    </div>
+</div>
                 </div>
             </section>
 
