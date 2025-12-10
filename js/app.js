@@ -1275,37 +1275,51 @@ window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
 
 // --- TARAYICI İLK YÜKLEME DAVRANIŞI ---
-// /, /blog, /blog/slug ve eski ?page=... query yapısını birlikte destekler.
 window.addEventListener('load', () => {
+    // 1) HER ZAMAN sidebar'ı kapalı duruma zorla (iOS bf-cache fix)
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    if (sidebar) {
+        sidebar.classList.remove('sidebar-open');
+        sidebar.classList.add('sidebar-closed');
+    }
+    if (overlay) {
+        overlay.classList.add('hidden');
+        overlay.classList.add('opacity-0');
+    }
+
+    // 2) Sayfa seçimi (SPA router davranışı)
+    const path = window.location.pathname || '/';
     const params = new URLSearchParams(window.location.search);
-    const page = params.get('page');
+    const pageParam = params.get('page');
+    const slugFromPath = path.startsWith('/blog/')
+        ? path.replace('/blog/', '').replace(/\/+$/, '')
+        : null;
 
-    const path = window.location.pathname || "/";
-    // /blog/slug
-    const blogMatch = path.match(/^\/blog\/([^\/]+)\/?$/);
-
-    if (blogMatch) {
-        const slug = blogMatch[1];
+    if (slugFromPath) {
+        // /blog/slug
         showPage('blog');
-        loadBlogContent(slug);
-    } else if (path === '/blog' || path === '/blog/') {
+        loadBlogContent(slugFromPath);
+    } else if (pageParam === 'blog') {
         showPage('blog');
-        loadBlogContent(null);
-    } else if (page === 'blog') {
-        showPage('blog');
-        const slug = params.get('post');
-        loadBlogContent(slug);
-    } else if (page === 'privacy') {
+        const postParam = params.get('post');
+        loadBlogContent(postParam);
+    } else if (pageParam === 'privacy') {
         showPage('privacy');
     } else {
         showPage('home');
         renderHomeBlogSection();
     }
 
+    // 3) Reklam alanı başlangıçta gizli
     const bottomAd = document.getElementById('bottomAdContainer');
     if (bottomAd) bottomAd.classList.add('hidden');
+
+    // 4) Çerez banner'ı
     checkConsent();
 });
+
 
 // BACK / FORWARD tuşları için basic popstate desteği (opsiyonel ama faydalı)
 window.addEventListener('popstate', (event) => {
