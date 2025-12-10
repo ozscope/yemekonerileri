@@ -770,26 +770,27 @@ listesi size fikir verebilir.
 // --- ANA VERİ SETİ (ARAYÜZ ÖNERİLERİ) ---
 const dishSuggestions = [
   // ÇORBALAR
-           {
+  {
     main: "Tarhana Çorbası",
     keywords: ["tarhana", "çorba", "yöresel"],
     cuisine: "Türk Mutfağı",
     suggestions: {
-        yanlar: ["Etli Kuru Fasulye", "Turşu", "Tam Buğdaylı Ekmek"],
-        drink: ["Su"],
-        dessert: ["Sütlaç"]
+      yanlar: ["Etli Kuru Fasulye", "Turşu", "Tam Buğdaylı Ekmek"],
+      drink: ["Su"],
+      dessert: ["Sütlaç"]
     },
     calories: {
-        total: 1040,
-        breakdown: {
-            main: 180,    // Tarhana çorbası
-            yanlar: 530,  // Etli kuru fasulye (≈350) + turşu (≈20) + tam buğday ekmek (≈160)
-            drink: 0,     // Su
-            dessert: 330  // Sütlaç
-        },
-        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+      total: 1040,
+      breakdown: {
+        main: 180, // Tarhana çorbası
+        yanlar: 530, // Etli kuru fasulye (≈350) + turşu (≈20) + tam buğday ekmek (≈160)
+        drink: 0, // Su
+        dessert: 330 // Sütlaç
+      },
+      note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-},
+  },
+
 {
     main: "Mercimek Çorbası",
     keywords: ["mercimek çorbası", "çorba", "kırmızı"],
@@ -4450,28 +4451,27 @@ const dishSuggestions = [
         note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
 },
-{
+  {
     main: "Lor Peyniri Salatası",
     keywords: ["lor peyniri salatası", "lor ezmesi"],
     cuisine: "Ege Mutfağı",
     suggestions: {
-        yanlar: ["Makarna/Izgara Balık"],
-        drink: [],
-        dessert: []
+      yanlar: ["Haşlanmış Makarna", "Izgara Balık"],
+      drink: [],
+      dessert: []
     },
     calories: {
-        total: 310,
-        breakdown: {
-            main: 260,   // Lor peyniri + domates + zeytinyağı + otlar
-            yanlar: 50,  // Makarna veya balığa eşlik eden küçük porsiyon yağ farkı
-            drink: 0,
-            dessert: 0
-        },
-        note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
+      total: 310,
+      breakdown: {
+        main: 260, // Lor peyniri + domates + zeytinyağı + otlar
+        yanlar: 50, // Yan garnitür farkı
+        drink: 0,
+        dessert: 0
+      },
+      note: "Kaloriler yaklaşık porsiyonlar baz alınarak hesaplanmıştır."
     }
-}
-
-        ];
+  }
+];
 
 /*
   Not: Buraya kadar olan bölümde sadece veriler var.
@@ -4483,13 +4483,13 @@ const suggestionCategories = [
     key: "yanlar",
     title: "Yan Lezzetler (Pilav, Salata, Meze, Çorba)",
     icon: "🍽️",
-    color: "text-secondary-green"
+    color: "text-emerald-600" // Tailwind uyumlu renk
   },
   {
     key: "drink",
     title: "İçecek Önerisi",
     icon: "🥤",
-    color: "text-primary-blue"
+    color: "text-sky-600" // text-primary-blue yerine Tailwind sınıfı
   },
   {
     key: "dessert",
