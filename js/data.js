@@ -260,24 +260,28 @@ const blogPostsData = [
 <h2>Popüler Menü Rehberleri</h2>
 <ul>
   <li>
-    <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">
-      Kış Çorbalarının Yanına Ne Gider?
-    </a>
+<a href="/blog/kis-corbasi-yanina-ne-gider"
+   onclick="viewBlogPost('kis-corbasi-yanina-ne-gider'); return false;">
+  Kış Çorbalarının Yanına Ne Gider?
+</a>
   </li>
   <li>
-    <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">
-      Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
-    </a>
+<a href="/blog/pilav-yanina-hangi-yemek-gider"
+   onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+  Pilav Yanına Hangi Yemek Gider?
+</a>
   </li>
   <li>
-    <a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">
-      Et Yemeklerinin Yanına Ne Gider?
-    </a>
+  <a href="/blog/etin-yanina-ne-gider"
+   onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+  Etin Yanına Ne Gider?
+</a>
   </li>
   <li>
-    <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">
-      Zeytinyağlılar İçin Uyumlu Yan Lezzetler
-    </a>
+<a href="/blog/zeytinyagli-yanina-ne-gider"
+   onclick="viewBlogPost('zeytinyagli-yanina-ne-gider'); return false;">
+  Zeytinyağlı Yemeklerin Yanına Ne Gider?
+</a>
   </li>
 </ul>
     `
@@ -377,9 +381,18 @@ Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşli
 Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 </p>
 <ul>
-    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
-    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+    <li><a href="/blog/pilav-yanina-hangi-yemek-gider"
+   onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+  Pilav Yanına Hangi Yemek Gider?
+</a></li>
+    <li><a href="/blog/etin-yanina-ne-gider"
+   onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+  Etin Yanına Ne Gider?
+</a></li>
+    <li><a href="/blog/zeytinyagli-yanina-ne-gider"
+   onclick="viewBlogPost('zeytinyagli-yanina-ne-gider'); return false;">
+  Zeytinyağlı Yemeklerin Yanına Ne Gider?
+</a></li>
 </ul>
 `
   },
@@ -445,19 +458,27 @@ Etli veya domates bazlı çorbalara (Tarhana, İşkembe) eklenen minik sarımsak
 
 <p>
 Çorbanın ardından etli bir yemek planlıyorsanız,
-<strong> <a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a> </strong>
+<strong> <a href="/blog/etin-yanina-ne-gider"
+   onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+  Etin Yanına Ne Gider?
+</a> </strong>
 rehberine bakabilirsiniz.
 </p>
 
 <p>
 Hafif seçenekler için
-<strong> <a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a> </strong>
+<strong> <a href="/blog/zeytinyagli-yanina-ne-gider"
+   onclick="viewBlogPost('zeytinyagli-yanina-ne-gider'); return false;">
+  Zeytinyağlı Yemeklerin Yanına Ne Gider?
+</a> </strong>
 yazımızı inceleyin.
 </p>
 
 <p>
 Çorba + pilav dengesi arıyorsanız,
-<strong> <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberi</a> </strong>
+<strong> <a href="/blog/pilav-yanina-hangi-yemek-gider"
+   onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+  pilav uyum rehberi</a> </strong>
 menü planlamasına yardımcı olur.
 </p>
 `
@@ -544,19 +565,28 @@ Unutmayın: Pilav tercihi sadece lezzet değil, aynı zamanda kalori dengesi aç
 
 <p>
 Pilavı tamamlayacak ana yemek arıyorsanız,
-<strong><a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+<strong><a href="/blog/etin-yanina-ne-gider"
+   onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+  Etin Yanına Ne Gider?
+</a></strong>
 rehberimiz size yardımcı olabilir.
 </p>
 
 <p>
 Daha hafif bir sofra kurmak isterseniz
-<strong><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+<strong><a href="/blog/zeytinyagli-yanina-ne-gider"
+   onclick="viewBlogPost('zeytinyagli-yanina-ne-gider'); return false;">
+  Zeytinyağlı Yemeklerin Yanına Ne Gider?
+</a></strong>
 yazımıza göz atabilirsiniz.
 </p>
 
 <p>
 Özel gün sofraları için ilham arayanlar,
-<strong><a href="?page=blog&post=yilbasi-sofra-menu-onerileri">yılbaşı sofra menü önerileri</a></strong>
+<strong><a href="/blog/yilbasi-sofra-menu-onerileri"
+   onclick="viewBlogPost('yilbasi-sofra-menu-onerileri'); return false;">
+  Yılbaşı Sofra Menü Önerileri
+</a></strong>
 yazısından çok faydalanacaktır.
 </p>
 `
@@ -669,19 +699,27 @@ tarifine ve porsiyon büyüklüğüne göre değişebilir.
            
 <p>
 Et ağırlıklı bir menü hazırlıyorsanız, 
-<strong><a href="?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+<strong><a href="/blog/etin-yanina-ne-gider"
+   onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+  Etin Yanına Ne Gider?
+</a></strong>
 rehberimiz size yardımcı olabilir.
 </p>
 
 <p>
 Zeytinyağlıların yanında servis edilecek en doğru pilav türleri için 
-<strong><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav uyum rehberine</a></strong>
+<strong><a href="/blog/pilav-yanina-hangi-yemek-gider"
+   onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+  pilav uyum rehberine</a></strong>
 göz atabilirsiniz.
 </p>
 
 <p>
 Menünüze çorba eklemek isterseniz,
-<strong><a href="?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
+<strong><a href="/blog/kis-corbasi-yanina-ne-gider"
+   onclick="viewBlogPost('kis-corbasi-yanina-ne-gider'); return false;">
+  Kış Çorbalarının Yanına Ne Gider?
+</a></strong>
 yazımız size fikir verebilir.
 </p>
 `
@@ -748,19 +786,27 @@ yazımız size fikir verebilir.
 
 <p>
 Daha hafif bir menü oluşturmak isterseniz 
-<strong><a href="?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+<strong><a href="/blog/zeytinyagli-yanina-ne-gider"
+   onclick="viewBlogPost('zeytinyagli-yanina-ne-gider'); return false;">
+  Zeytinyağlı Yemeklerin Yanına Ne Gider?
+</a></strong>
 rehberimize de göz atabilirsiniz.
 </p>
 
 <p>
 Et yemeklerinin yanında sunabileceğiniz en doğru pilav önerileri için 
-<strong><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
+<strong><a href="/blog/pilav-yanina-hangi-yemek-gider"
+   onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+  pilav rehberi</a></strong>
 yazımızı inceleyebilirsiniz.
 </p>
 
 <p>
 Menünüzde çorba varsa, 
-<strong><a href="?page=blog&post=kis-corbasi-yanina-ne-gider">kış çorbalarının yanına ne gider</a></strong>
+<strong><a href="/blog/kis-corbasi-yanina-ne-gider"
+   onclick="viewBlogPost('kis-corbasi-yanina-ne-gider'); return false;">
+  Kış Çorbalarının Yanına Ne Gider?
+</a></strong>
 listesi size fikir verebilir.
 </p>
 `
