@@ -123,11 +123,12 @@
             </button>
 
             <!-- Logo + Title (home'a döndürür) -->
-            <button
-                type="button"
-                onclick="showPage('home')"
-                class="flex items-center gap-3 flex-1 text-left"
-            >
+<button
+    type="button"
+    onclick="navigateTo('/')"
+    class="flex items-center gap-3 flex-1 text-left"
+>
+
                 <img
                     src="./images/logo.png"
                     alt="Yanında Ne Yiyelim?"
@@ -146,13 +147,14 @@
 
             <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
-                <button
-                    type="button"
-                    onclick="showPage('home')"
-                    class="hover:text-blue-600 transition-colors"
-                >
-                    Ana Sayfa
-                </button>
+<button
+    type="button"
+    onclick="navigateTo('/')"
+    class="hover:text-blue-600 transition-colors"
+>
+    Ana Sayfa
+</button>
+
 <button
   type="button"
   onclick="navigateTo('/blog')"
