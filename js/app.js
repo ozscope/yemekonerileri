@@ -924,39 +924,58 @@ function renderYilbasiBlogPost(container, post) {
     }
 }
 
+
 /* ============ BLOG İÇERİK YÜKLEYİCİ ============ */
 
 function loadBlogContent(postSlug = null) {
     const container = document.getElementById('blog-posts-container');
     if (!container) return;
-    if (!window.blogPostsData) return;
+
+    // Hem window.blogPostsData hem de global blogPostsData üzerinden dene
+    const data =
+        (typeof window !== 'undefined' && Array.isArray(window.blogPostsData))
+            ? window.blogPostsData
+            : (typeof blogPostsData !== 'undefined' ? blogPostsData : null);
+
+    if (!data || !Array.isArray(data)) {
+        console.error('Blog verisi bulunamadı (blogPostsData).');
+        container.innerHTML = `
+            <div class="p-6 bg-white rounded-2xl shadow-xl">
+                <p class="text-red-600 font-semibold">
+                    Blog verisi yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.
+                </p>
+            </div>
+        `;
+        return;
+    }
 
     container.innerHTML = '';
 
+    // TEK YAZI GÖRÜNÜMÜ
     if (postSlug) {
-        const post = window.blogPostsData.find(p => p.slug === postSlug);
+        const post = data.find(p => p.slug === postSlug);
+
         if (post) {
-            // Meta title
+            // <title> ve <meta description> güncelle
             if (post.metaTitle) {
                 document.title = post.metaTitle;
             } else {
                 document.title = `${post.title} - Yanında Ne Yiyelim?`;
             }
 
-            // Meta description
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) {
                 if (post.metaDescription) {
-                    metaDesc.setAttribute("content", post.metaDescription);
+                    metaDesc.setAttribute('content', post.metaDescription);
                 } else {
                     metaDesc.setAttribute(
-                        "content",
-                        "Blog yazılarımızı keşfedin. Menü önerileri, özel gün sofraları ve yanına ne gider içerikleri."
+                        'content',
+                        'Blog yazılarımızı keşfedin. Menü önerileri, özel gün sofraları ve yanına ne gider içerikleri.'
                     );
                 }
             }
 
-            // Özel Render Fonksiyonları
+            // Özel layout’lar
             if (post.slug === 'glutensiz-menu-onerileri') {
                 renderGlutenFreeBlogPost(container, post);
             } else if (post.slug === 'pratik-menu-onerileri') {
@@ -967,50 +986,66 @@ function loadBlogContent(postSlug = null) {
                 renderDefaultBlogPost(container, post);
             }
 
-            // Twitter paylaşım linki
-            const twitterBtn = document.getElementById("twitterShareBtn");
+            // X (Twitter) paylaşım linki
+            const twitterBtn = document.getElementById('twitterShareBtn');
             if (twitterBtn) {
                 const shareUrl =
-                    "https://twitter.com/intent/tweet?text="
-                    + encodeURIComponent(post.title)
-                    + "&url="
-                    + encodeURIComponent(window.location.href);
+                    'https://twitter.com/intent/tweet?text=' +
+                    encodeURIComponent(post.title) +
+                    '&url=' +
+                    encodeURIComponent(window.location.href);
 
                 twitterBtn.href = shareUrl;
             }
-
         } else {
+            // slug bulunamadı → 404 mesajı
             container.innerHTML = `
-                <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">← Geri Dön</button>
+                <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
+                    ← Blog listesine dön
+                </button>
                 <div class="p-6 bg-white rounded-2xl shadow-xl">
-                    <p class="text-gray-700 font-semibold">Yazı bulunamadı.</p>
+                    <p class="text-gray-800 font-semibold mb-2">Yazı bulunamadı.</p>
+                    <p class="text-sm text-gray-500">Bağlantı eski olabilir veya yazı kaldırılmış olabilir.</p>
                 </div>
             `;
         }
-    } else {
-        // Blog liste
-        window.blogPostsData.forEach(post => {
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = post.content || `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
-            const firstP = tempDiv.querySelector("p");
-            const previewText = firstP ? firstP.innerText.substring(0, 100) : "İçerik önizlemesi...";
 
-            container.innerHTML += `
-                <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
-                    <span class="text-xs font-bold text-green-600 uppercase">${post.category || 'Blog'}</span>
-                    <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
-                    <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
-                    <a
-                        href="/blog/${post.slug}"
-                        onclick="viewBlogPost('${post.slug}'); return false;"
-                        class="text-blue-600 font-semibold text-sm hover:underline"
-                    >
-                        Devamını Oku →
-                    </a>
-                </div>
-            `;
-        });
+        return; // tek yazı modunda burada bitiriyoruz
     }
+
+    // LİSTE GÖRÜNÜMÜ
+    data.forEach(post => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML =
+            post.content ||
+            `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
+
+        const firstP = tempDiv.querySelector('p');
+        const previewText = firstP
+            ? firstP.innerText.substring(0, 100)
+            : 'İçerik önizlemesi...';
+
+        container.innerHTML += `
+            <article class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
+                <span class="text-xs font-bold text-green-600 uppercase">
+                    ${post.category || 'Blog'}
+                </span>
+                <h3 class="text-xl font-bold mt-1 mb-2">
+                    ${post.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    ${previewText}...
+                </p>
+                <button
+                    onclick="viewBlogPost('${post.slug}')"
+                    type="button"
+                    class="text-blue-600 font-semibold text-sm hover:underline"
+                >
+                    Devamını Oku →
+                </button>
+            </article>
+        `;
+    });
 }
 
 // --- ARAMA (performSearch) ---
