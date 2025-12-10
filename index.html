@@ -19,7 +19,11 @@
     ></script>
 
     <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind = { theme: { extend: {} } };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -528,8 +532,9 @@
 </template>
 
 <!-- JS -->
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+<script src="js/data.js" defer></script>
+<script src="js/app.js" defer></script>
+
 
 </body>
 </html>
