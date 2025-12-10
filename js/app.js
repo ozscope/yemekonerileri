@@ -1,105 +1,105 @@
 // app.js
 
-// --- yardimci fonksiyonlar ---
+// --- Yardımcı fonksiyonlar ---
 function normalizeText(text) {
-    if (!text) return '';
-    return text.toLowerCase()
-        .replace(/ı/g, 'i')
-        .replace(/ğ/g, 'g')
-        .replace(/ü/g, 'u')
-        .replace(/ş/g, 's')
-        .replace(/ö/g, 'o')
-        .replace(/ç/g, 'c');
+    if (!text) return "";
+    return text
+        .toLowerCase()
+        .replace(/ı/g, "i")
+        .replace(/ğ/g, "g")
+        .replace(/ü/g, "u")
+        .replace(/ş/g, "s")
+        .replace(/ö/g, "o")
+        .replace(/ç/g, "c");
 }
 
 function createListHtml(items, colorClass) {
-    // Renk sınıfları için varsayılan bir değer belirliyorum, çünkü Tailwind kullanılıyor.
-    const finalColorClass = colorClass || 'text-green-600';
+    const finalColorClass = colorClass || "text-green-600";
 
-    return items.map(item => `
+    return items
+        .map(
+            (item) => `
         <li class="flex items-start p-3 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50 transition duration-150">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${finalColorClass} mr-3 flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
             <span class="text-gray-700 font-medium">${item}</span>
         </li>
-    `).join('');
+    `
+        )
+        .join("");
 }
 
-// --- SIDEBAR Fonksiyonlari ---
+// --- SIDEBAR ---
 function showSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    sidebar.classList.remove('sidebar-closed');
-    sidebar.classList.add('sidebar-open');
-    overlay.classList.remove('hidden');
-    setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    if (!sidebar || !overlay) return;
+
+    sidebar.classList.remove("sidebar-closed");
+    sidebar.classList.add("sidebar-open");
+    overlay.classList.remove("hidden");
+    setTimeout(() => overlay.classList.remove("opacity-0"), 10);
 }
 
 function hideSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    sidebar.classList.remove('sidebar-open');
-    sidebar.classList.add('sidebar-closed');
-    overlay.classList.add('opacity-0');
-    setTimeout(() => overlay.classList.add('hidden'), 300);
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    if (!sidebar || !overlay) return;
+
+    sidebar.classList.remove("sidebar-open");
+    sidebar.classList.add("sidebar-closed");
+    overlay.classList.add("opacity-0");
+    setTimeout(() => overlay.classList.add("hidden"), 300);
 }
 
-// --- ÖZEL MENÜ TIKLAMALARI (Hero alanından) ---
+// --- HERO özel menü butonları ---
 function handleMenuClick(type) {
-    // Türden slug’a map’liyoruz
     let slug = null;
 
-    if (type === 'glutensiz') {
-        slug = 'glutensiz-menu-onerileri';
-    } else if (type === 'pratik') {
-        slug = 'pratik-menu-onerileri';
-    } else if (type === 'yilbasi') {
-        slug = 'yilbasi-sofra-menu-onerileri';
+    if (type === "glutensiz") {
+        slug = "glutensiz-menu-onerileri";
+    } else if (type === "pratik") {
+        slug = "pratik-menu-onerileri";
+    } else if (type === "yilbasi") {
+        slug = "yilbasi-sofra-menu-onerileri";
     }
 
     if (!slug) return;
 
-    // Blog sayfasına geç ve ilgili yazıyı aç
-    showPage('blog');
+    showPage("blog");
     viewBlogPost(slug);
 }
 
-
 // --- SAYFA GEÇİŞLERİ ---
 function showPage(pageId, fromSidebar = false) {
-    // Tüm sayfa elementlerini kontrol edip gizle
-    const pagesToHide = ['page-home', 'page-blog', 'page-privacy'];
+    const pagesToHide = ["page-home", "page-blog", "page-privacy"];
 
-    pagesToHide.forEach(id => {
+    pagesToHide.forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
-            element.classList.add('hidden');
-        } else {
-            console.warn(`Warning: Element with ID '${id}' not found in the DOM.`);
+            element.classList.add("hidden");
         }
     });
 
-    // İstenen sayfayı göster
     const targetPage = document.getElementById(`page-${pageId}`);
     if (targetPage) {
-        targetPage.classList.remove('hidden');
+        targetPage.classList.remove("hidden");
     } else {
         console.error(`Error: Target page element with ID 'page-${pageId}' not found!`);
     }
-    
 
-    // BLOG sayfasına geçerken URL'deki post parametresine göre içerik yükle
-    if (pageId === 'blog') {
+    // Blog sayfasına geçerken URL'deki ?post parametresine göre içerik yükle
+    if (pageId === "blog") {
         const params = new URLSearchParams(window.location.search);
-        const slug = params.get('post');
+        const slug = params.get("post");
         loadBlogContent(slug);
     }
 
-    // Title yönetimi (blog özelinde metaTitle ile override ediliyor)
-    if (pageId === 'blog') {
+    // Title yönetimi (tekil yazı için loadBlogContent içinde override ediliyor)
+    if (pageId === "blog") {
         document.title = "Blog - Yanında Ne Yiyelim?";
-    } else if (pageId === 'privacy') {
+    } else if (pageId === "privacy") {
         document.title = "Gizlilik Politikası - Yanında Ne Yiyelim?";
     } else {
         document.title = "Yanında Ne Yiyelim? - Menü Önerileri";
@@ -111,45 +111,40 @@ function showPage(pageId, fromSidebar = false) {
     // URL'de sadece page parametresini yönet, post'a dokunma
     try {
         const url = new URL(window.location);
-        if (pageId === 'blog') {
-            url.searchParams.set('page', 'blog');
-        }
-        else if (pageId === 'privacy') {
-            url.searchParams.set('page', 'privacy');
-            url.searchParams.delete('post');
-        }
-        else {
-            url.searchParams.delete('page');
-            url.searchParams.delete('post');
+        if (pageId === "blog") {
+            url.searchParams.set("page", "blog");
+        } else if (pageId === "privacy") {
+            url.searchParams.set("page", "privacy");
+            url.searchParams.delete("post");
+        } else {
+            url.searchParams.delete("page");
+            url.searchParams.delete("post");
         }
 
-        window.history.pushState({}, '', url);
-    } catch (e) {
-        // Local dosyalarda URL güncellemesi desteklenmez.
-        console.log("URL güncelleme bu ortamda desteklenmiyor");
+        window.history.pushState({}, "", url);
+    } catch {
+        // local file ortamında URL güncelleme çalışmayabilir; sessizce geç
     }
 }
 
-
 // --- ANA SAYFA BLOG ÖNERİLERİ ---
 function renderHomeBlogSection() {
-    // blogPostsData'nın js/data.js dosyasından geldiği varsayılır (Global variable)
     if (!window.blogPostsData || !Array.isArray(window.blogPostsData)) return;
 
-    const container = document.getElementById('home-blog-list');
+    const container = document.getElementById("home-blog-list");
     if (!container) return;
 
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     const sorted = [...window.blogPostsData].sort((a, b) => b.id - a.id);
     const latest = sorted.slice(0, 3);
 
-    latest.forEach(post => {
+    latest.forEach((post) => {
         container.innerHTML += `
             <article class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
                 <div>
-                    <span class="text-xs font-bold text-secondary-green uppercase">
-                        ${post.category || 'Blog'}
+                    <span class="text-xs font-bold text-green-600 uppercase">
+                        ${post.category || "Blog"}
                     </span>
                     <h3 class="text-lg font-bold mt-1 mb-2 line-clamp-2">
                         ${post.title}
@@ -157,7 +152,7 @@ function renderHomeBlogSection() {
                     ${
                         post.description
                             ? `<p class="text-gray-600 text-sm mb-3 line-clamp-3">${post.description}</p>`
-                            : ''
+                            : ""
                     }
                 </div>
                 <button
@@ -173,15 +168,14 @@ function renderHomeBlogSection() {
 }
 
 // --- BLOG NAVİGASYON ---
-
 function viewBlogPost(slug) {
     try {
         const url = new URL(window.location);
-        url.searchParams.set('page', 'blog');
-        url.searchParams.set('post', slug);
-        window.history.pushState({}, '', url);
-    } catch (e) {
-        console.log("URL güncelleme bu ortamda desteklenmiyor");
+        url.searchParams.set("page", "blog");
+        url.searchParams.set("post", slug);
+        window.history.pushState({}, "", url);
+    } catch {
+        // local file ortamında hata verirse sessiz geç
     }
 
     loadBlogContent(slug);
@@ -190,11 +184,11 @@ function viewBlogPost(slug) {
 function viewBlogList() {
     try {
         const url = new URL(window.location);
-        url.searchParams.set('page', 'blog');
-        url.searchParams.delete('post');
-        window.history.pushState({}, '', url);
-    } catch (e) {
-        console.log("URL güncelleme bu ortamda desteklenmiyor");
+        url.searchParams.set("page", "blog");
+        url.searchParams.delete("post");
+        window.history.pushState({}, "", url);
+    } catch {
+        // local ortam
     }
 
     loadBlogContent(null);
@@ -210,7 +204,7 @@ function renderDefaultBlogPost(container, post) {
         
         <article class="bg-white p-6 rounded-2xl shadow-xl content-area">
             <h1 class="text-2xl font-bold mb-2">${post.title}</h1>
-            <span class="text-xs font-bold text-green-600 uppercase mb-4 block">${post.category || ''}</span>
+            <span class="text-xs font-bold text-green-600 uppercase mb-4 block">${post.category || ""}</span>
             ${post.content}
         </article>
 
@@ -227,16 +221,12 @@ function renderDefaultBlogPost(container, post) {
                 X'te Paylaş
             </a>
         </div>
-
-
     `;
 }
 
 /* ============ GLUTENSİZ MENÜ ÖZEL SAYFA ============ */
 
 function renderGlutenFreeBlogPost(container, post) {
-    // GLÜTENSİZ MENÜ KOD BLOĞU (İçerik buraya)
-    // Not: Orijinal kodunuzdaki tüm 7 menü kartı ve HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
         <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Blog Listesine Dön
@@ -271,6 +261,7 @@ function renderGlutenFreeBlogPost(container, post) {
                 </div>
 
                 <div id="menusGridGluten" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 1 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">1. Tavuklu & Sebzeli Quinoa</h3>
@@ -302,6 +293,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
                     
+                    <!-- 2 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">2. Mercimek Köftesi & Yeşil Salata</h3>
@@ -333,6 +325,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
                     
+                    <!-- 3 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">3. Fırında Somon & Tatlı Patates</h3>
@@ -364,6 +357,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
 
+                    <!-- 4 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">4. Kırmızı Et ve Enginar</h3>
@@ -395,6 +389,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
 
+                    <!-- 5 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">5. Tavuklu Çorba ve Glutensiz Ekmek</h3>
@@ -426,6 +421,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
 
+                    <!-- 6 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">6. Mısır Unlu Hamsi Tava & Roka Salatası</h3>
@@ -457,6 +453,7 @@ function renderGlutenFreeBlogPost(container, post) {
                         </div>
                     </div>
 
+                    <!-- 7 -->
                     <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border border-indigo-100">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-indigo-600">7. Köri Soslu Tavuk & Pirinç Pilavı</h3>
@@ -487,7 +484,6 @@ function renderGlutenFreeBlogPost(container, post) {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
             
@@ -541,40 +537,57 @@ function renderGlutenFreeBlogPost(container, post) {
                 X'te Glutensiz Menü Yazısını Paylaş
             </a>
         </div>
-
-
     `;
 
     const glutenRulesData = [
-        { title: "Etiket Okuma", icon: "🏷️", desc: "Soslar, hazır karışımlar ve işlenmiş ürünler gizli gluten içerebilir. Daima etiketi kontrol edin." },
-        { title: "Çapraz Bulaş", icon: "❌", desc: "Aynı yağda kızartma, aynı tencerede pişirme veya aynı kesme tahtasını kullanma riskine dikkat edin." },
-        { title: "Çeşitlilik", icon: "🌾", desc: "Karabuğday, kinoa, mısır, pirinç, amarant gibi glutensiz tahılları menünüze yayın." },
-        { title: "Ev Yapımı", icon: "🏡", desc: "İçeriğini bildiğiniz ev yapımı tarifleri tercih edin. Kontrol sizde olsun." }
+        {
+            title: "Etiket Okuma",
+            icon: "🏷️",
+            desc: "Soslar, hazır karışımlar ve işlenmiş ürünler gizli gluten içerebilir. Daima etiketi kontrol edin.",
+        },
+        {
+            title: "Çapraz Bulaş",
+            icon: "❌",
+            desc: "Aynı yağda kızartma, aynı tencerede pişirme veya aynı kesme tahtasını kullanma riskine dikkat edin.",
+        },
+        {
+            title: "Çeşitlilik",
+            icon: "🌾",
+            desc: "Karabuğday, kinoa, mısır, pirinç, amarant gibi glutensiz tahılları menünüze yayın.",
+        },
+        {
+            title: "Ev Yapımı",
+            icon: "🏡",
+            desc: "İçeriğini bildiğiniz ev yapımı tarifleri tercih edin. Kontrol sizde olsun.",
+        },
     ];
 
-    const rulesContainer = document.getElementById('rulesContainerGluten');
+    const rulesContainer = document.getElementById("rulesContainerGluten");
     if (rulesContainer) {
-        rulesContainer.innerHTML = glutenRulesData.map(rule => `
+        rulesContainer.innerHTML = glutenRulesData
+            .map(
+                (rule) => `
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 hover:border-indigo-200 transition cursor-default group">
                 <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">${rule.icon}</div>
                 <h4 class="font-bold text-stone-800 mb-1 text-sm">${rule.title}</h4>
                 <p class="text-xs text-stone-500 leading-snug">${rule.desc}</p>
             </div>
-        `).join('');
+        `
+            )
+            .join("");
     }
 }
 
 /* ============ PRATİK MENÜ ÖZEL SAYFA ============ */
 
 function renderPratikBlogPost(container, post) {
-    // PRATİK MENÜ KOD BLOĞU (İçerik buraya)
-    // Not: Orijinal kodunuzdaki HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
         <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Blog Listesine Dön
         </button>
 
         <article class="space-y-10 bg-transparent">
+            <!-- Intro Section -->
             <header class="text-center max-w-3xl mx-auto space-y-4">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-orange-600">
                     30 Dakikada Sofranız Hazır
@@ -590,6 +603,7 @@ function renderPratikBlogPost(container, post) {
                 </div>
             </header>
 
+            <!-- Golden Rules -->
             <section>
                 <div class="flex flex-col md:flex-row justify-between items-end mb-6">
                     <div>
@@ -603,6 +617,7 @@ function renderPratikBlogPost(container, post) {
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="rulesContainerPratik"></div>
             </section>
 
+            <!-- Menu Explorer -->
             <section id="menu-explorer-pratik" class="scroll-mt-20">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <div>
@@ -610,6 +625,7 @@ function renderPratikBlogPost(container, post) {
                         <p class="text-stone-600 text-sm">Damak tadınıza ve vaktinize uygun menüyü seçin.</p>
                     </div>
                     
+                    <!-- Filters -->
                     <div class="flex bg-white p-1 rounded-lg border border-stone-200 shadow-sm">
                         <button onclick="filterPratikMenus('all')" id="btn-all-pratik" class="px-4 py-2 text-sm font-medium rounded-md bg-orange-500 text-white transition-colors">
                             Tümü
@@ -623,6 +639,7 @@ function renderPratikBlogPost(container, post) {
                 <div id="menusGridPratik" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
+            <!-- Footer / Extra Tips -->
             <section class="bg-stone-800 text-stone-300 rounded-2xl p-8 text-center space-y-4">
                 <h4 class="text-xl font-semibold text-white">Ekstra Hız İpuçları</h4>
                 <ul class="flex flex-wrap justify-center gap-6 text-sm">
@@ -643,6 +660,7 @@ function renderPratikBlogPost(container, post) {
             </section>
         </article>
 
+        <!-- X PAYLAŞ -->
         <div class="mt-6">
             <a 
                 id="twitterShareBtn"
@@ -656,49 +674,138 @@ function renderPratikBlogPost(container, post) {
                 X'te Pratik Menü Yazısını Paylaş
             </a>
         </div>
-
-
     `;
 
     const rulesData = [
-        { title: "Donuk Sebze", icon: "🧊", desc: "Doğrama süresini sıfırlar, besin değerini korur." },
-        { title: "Konserve", icon: "🥫", desc: "Nohut, domates, mısır... Hazırlığı dakikalara indirir." },
-        { title: "Tek Kap", icon: "🥘", desc: "Fırın yerine tencere/tava kullanın, bulaşığı azaltın." },
-        { title: "Porsiyonluk", icon: "📦", desc: "Buzlukta hazır porsiyon köfte/et saklayın." },
-        { title: "Hazır Sos", icon: "🥣", desc: "Salça-baharat-yağ karışımını kavanozda hazır tutun." }
+        {
+            title: "Donuk Sebze",
+            icon: "🧊",
+            desc: "Doğrama süresini sıfırlar, besin değerini korur.",
+        },
+        {
+            title: "Konserve",
+            icon: "🥫",
+            desc: "Nohut, domates, mısır... Hazırlığı dakikalara indirir.",
+        },
+        {
+            title: "Tek Kap",
+            icon: "🥘",
+            desc: "Fırın yerine tencere/tava kullanın, bulaşığı azaltın.",
+        },
+        {
+            title: "Porsiyonluk",
+            icon: "📦",
+            desc: "Buzlukta hazır porsiyon köfte/et saklayın.",
+        },
+        {
+            title: "Hazır Sos",
+            icon: "🥣",
+            desc: "Salça-baharat-yağ karışımını kavanozda hazır tutun.",
+        },
     ];
 
-    const rulesContainer = document.getElementById('rulesContainerPratik');
+    const rulesContainer = document.getElementById("rulesContainerPratik");
     if (rulesContainer) {
-        rulesContainer.innerHTML = rulesData.map(rule => `
+        rulesContainer.innerHTML = rulesData
+            .map(
+                (rule) => `
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 hover:border-orange-200 transition cursor-default group">
                 <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">${rule.icon}</div>
                 <h4 class="font-bold text-stone-800 mb-1 text-sm">${rule.title}</h4>
                 <p class="text-xs text-stone-500 leading-snug">${rule.desc}</p>
             </div>
-        `).join('');
+        `
+            )
+            .join("");
     }
 
     const menuData = [
-        { id: 1, title: "Somon Tava & Yeşillik", time: 20, desc: "Hafif, omega-3 zengini, tek tava menü.", main: "Tavada somon fileto (Tuz, karabiber, limon)", side: "Hazır salata karışımı (Yeşillik, domates, sos)", icon: "🐟" },
-        { id: 2, title: "Tek Kapta Tavuk", time: 25, desc: "Tek tavada hem protein hem sebze.", main: "Sebzeli tavuk sote (Tavuk, donuk sebze, soya sosu)", side: "Hızlı makarna / erişte (5 dk)", icon: "🍗" },
-        { id: 3, title: "Pratik Yumurta Ziyafeti", time: 15, desc: "Dolapta ne varsa yumurtayla taçlanır.", main: "Menemen veya hızlı omlet", side: "Peynir tabağı & Çay", icon: "🍳" },
-        { id: 4, title: "Konserve Kolaylığı", time: 15, desc: "Dolapta konserve varsa, aç-kapa menü.", main: "Nohut güveç (Konserve nohut, domates, baharat)", side: "Yoğurtlu sos / Cacık & Maden Suyu", icon: "🥫" },
-        { id: 5, title: "Tek Tencerede Makarna", time: 25, desc: "Karbonhidrat + protein dengeli, tek kap çözüm.", main: "Domatesli ton balıklı makarna", side: "Roka salatası (Limon, zeytinyağı)", icon: "🍝" },
-        { id: 6, title: "Hızlı Pizza Alternatifi", time: 10, desc: "Lavaşla mini pizza / tost hissi.", main: "Lavaş üstü tost / pizza (Salça, peynir, salamura sebze)", side: "Ayran", icon: "🍕" },
-        { id: 7, title: "Hazır Köfte Hızlandırıcısı", time: 20, desc: "Buzluktaki köfteyle 20 dakikada sofra.", main: "Hazır köfte ve hazır/toz püre", side: "Turşu veya köz biber konservesi", icon: "🧆" },
-        { id: 8, title: "Bakliyat Gücü", time: 20, desc: "Dolapta haşlanmış mercimek varsa, menü hazır.", main: "Hızlı mercimek yemeği (Haşlanmış mercimek, salça, soğan)", side: "Kuru soğan / pirinç sirkeli salata", icon: "🍲" }
+        {
+            id: 1,
+            title: "Somon Tava & Yeşillik",
+            time: 20,
+            desc: "Hafif, omega-3 zengini, tek tava menü.",
+            main: "Tavada somon fileto (Tuz, karabiber, limon)",
+            side: "Hazır salata karışımı (Yeşillik, domates, sos)",
+            icon: "🐟",
+        },
+        {
+            id: 2,
+            title: "Tek Kapta Tavuk",
+            time: 25,
+            desc: "Tek tavada hem protein hem sebze.",
+            main: "Sebzeli tavuk sote (Tavuk, donuk sebze, soya sosu)",
+            side: "Hızlı makarna / erişte (5 dk)",
+            icon: "🍗",
+        },
+        {
+            id: 3,
+            title: "Pratik Yumurta Ziyafeti",
+            time: 15,
+            desc: "Dolapta ne varsa yumurtayla taçlanır.",
+            main: "Menemen veya hızlı omlet",
+            side: "Peynir tabağı & Çay",
+            icon: "🍳",
+        },
+        {
+            id: 4,
+            title: "Konserve Kolaylığı",
+            time: 15,
+            desc: "Dolapta konserve varsa, aç-kapa menü.",
+            main: "Nohut güveç (Konserve nohut, domates, baharat)",
+            side: "Yoğurtlu sos / Cacık & Maden Suyu",
+            icon: "🥫",
+        },
+        {
+            id: 5,
+            title: "Tek Tencerede Makarna",
+            time: 25,
+            desc: "Karbonhidrat + protein dengeli, tek kap çözüm.",
+            main: "Domatesli ton balıklı makarna",
+            side: "Roka salatası (Limon, zeytinyağı)",
+            icon: "🍝",
+        },
+        {
+            id: 6,
+            title: "Hızlı Pizza Alternatifi",
+            time: 10,
+            desc: "Lavaşla mini pizza / tost hissi.",
+            main: "Lavaş üstü tost / pizza (Salça, peynir, salamura sebze)",
+            side: "Ayran",
+            icon: "🍕",
+        },
+        {
+            id: 7,
+            title: "Hazır Köfte Hızlandırıcısı",
+            time: 20,
+            desc: "Buzluktaki köfteyle 20 dakikada sofra.",
+            main: "Hazır köfte ve hazır/toz püre",
+            side: "Turşu veya köz biber konservesi",
+            icon: "🧆",
+        },
+        {
+            id: 8,
+            title: "Bakliyat Gücü",
+            time: 20,
+            desc: "Dolapta haşlanmış mercimek varsa, menü hazır.",
+            main: "Hızlı mercimek yemeği (Haşlanmış mercimek, salça, soğan)",
+            side: "Kuru soğan / pirinç sirkeli salata",
+            icon: "🍲",
+        },
     ];
 
-    function renderPratikMenus(filterType = 'all') {
-        const containerMenus = document.getElementById('menusGridPratik');
+    function renderPratikMenus(filterType = "all") {
+        const containerMenus = document.getElementById("menusGridPratik");
         if (!containerMenus) return;
 
-        const filteredData = filterType === 'fast'
-            ? menuData.filter(m => m.time < 20)
-            : menuData;
+        const filteredData =
+            filterType === "fast"
+                ? menuData.filter((m) => m.time < 20)
+                : menuData;
 
-        containerMenus.innerHTML = filteredData.map(menu => `
+        containerMenus.innerHTML = filteredData
+            .map(
+                (menu) => `
             <div class="bg-white rounded-xl border border-stone-200 p-6 flex flex-col h-full card-hover relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl pointer-events-none select-none">
                     ${menu.icon}
@@ -735,35 +842,38 @@ function renderPratikBlogPost(container, post) {
                     </div>
                 </div>
             </div>
-        `).join('');
+        `
+            )
+            .join("");
     }
 
-    // `window.`'a ekliyoruz, böylece HTML'den çağrılabilir
-    window.filterPratikMenus = function(type) {
-        const btnAll = document.getElementById('btn-all-pratik');
-        const btnFast = document.getElementById('btn-fast-pratik');
+    window.filterPratikMenus = function (type) {
+        const btnAll = document.getElementById("btn-all-pratik");
+        const btnFast = document.getElementById("btn-fast-pratik");
 
         if (btnAll && btnFast) {
-            if (type === 'all') {
-                btnAll.className = "px-4 py-2 text-sm font-medium rounded-md bg-orange-500 text-white shadow-sm transition-all";
-                btnFast.className = "px-4 py-2 text-sm font-medium rounded-md text-stone-600 hover:bg-stone-100 transition-all";
+            if (type === "all") {
+                btnAll.className =
+                    "px-4 py-2 text-sm font-medium rounded-md bg-orange-500 text-white shadow-sm transition-all";
+                btnFast.className =
+                    "px-4 py-2 text-sm font-medium rounded-md text-stone-600 hover:bg-stone-100 transition-all";
             } else {
-                btnAll.className = "px-4 py-2 text-sm font-medium rounded-md text-stone-600 hover:bg-stone-100 transition-all";
-                btnFast.className = "px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white shadow-sm transition-all";
+                btnAll.className =
+                    "px-4 py-2 text-sm font-medium rounded-md text-stone-600 hover:bg-stone-100 transition-all";
+                btnFast.className =
+                    "px-4 py-2 text-sm font-medium rounded-md bg-green-600 text-white shadow-sm transition-all";
             }
         }
 
         renderPratikMenus(type);
     };
 
-    renderPratikMenus('all');
+    renderPratikMenus("all");
 }
 
 /* ============ YILBAŞI MENÜ ÖZEL SAYFA ============ */
 
 function renderYilbasiBlogPost(container, post) {
-    // YILBAŞI MENÜ KOD BLOĞU (İçerik buraya)
-    // Not: Orijinal kodunuzdaki HTML içeriği buraya olduğu gibi eklenecektir.
     container.innerHTML = `
         <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
             ← Geri Dön
@@ -854,7 +964,7 @@ function renderYilbasiBlogPost(container, post) {
             dessert: "Cevizli kabak tatlısı",
             themeColor: "text-red-600",
             bgColor: "border-red-100",
-            icon: "🦃"
+            icon: "🦃",
         },
         {
             id: 2,
@@ -866,7 +976,7 @@ function renderYilbasiBlogPost(container, post) {
             dessert: "Hafif sütlaç veya taze meyve tabağı",
             themeColor: "text-blue-600",
             bgColor: "border-blue-100",
-            icon: "🐟"
+            icon: "🐟",
         },
         {
             id: 3,
@@ -878,7 +988,7 @@ function renderYilbasiBlogPost(container, post) {
             dessert: "Sıcak çikolatalı sufle",
             themeColor: "text-purple-600",
             bgColor: "border-purple-100",
-            icon: "🥩"
+            icon: "🥩",
         },
         {
             id: 4,
@@ -890,20 +1000,38 @@ function renderYilbasiBlogPost(container, post) {
             dessert: "Kaymaklı ayva tatlısı",
             themeColor: "text-green-600",
             bgColor: "border-green-100",
-            icon: "🥬"
-        }
+            icon: "🥬",
+        },
     ];
 
     const rulesDataYilbasi = [
-        { title: "Zamanlama", icon: "⏱️", desc: "Tüm yemeklerin pişirme ve servis saatlerini misafirlerin gelişine göre planlayın." },
-        { title: "Denge", icon: "⚖️", desc: "Ana yemek ne kadar ağırsa, başlangıç ve yan lezzetleri o kadar hafif tutarak dengeleyin." },
-        { title: "İçecek uyumu", icon: "🍷", desc: "Menüdeki ana protein türü (kırmızı et, balık vb.) ile uyumlu içecekleri belirleyin." },
-        { title: "Ambians", icon: "🕯️", desc: "Sofra düzeni, mumlar ve özel müzik listesi ile gecenin atmosferini tamamlayın." }
+        {
+            title: "Zamanlama",
+            icon: "⏱️",
+            desc: "Tüm yemeklerin pişirme ve servis saatlerini misafirlerin gelişine göre planlayın.",
+        },
+        {
+            title: "Denge",
+            icon: "⚖️",
+            desc: "Ana yemek ne kadar ağırsa, başlangıç ve yan lezzetleri o kadar hafif tutarak dengeleyin.",
+        },
+        {
+            title: "İçecek uyumu",
+            icon: "🍷",
+            desc: "Menüdeki ana protein türü (kırmızı et, balık vb.) ile uyumlu içecekleri belirleyin.",
+        },
+        {
+            title: "Ambians",
+            icon: "🕯️",
+            desc: "Sofra düzeni, mumlar ve özel müzik listesi ile gecenin atmosferini tamamlayın.",
+        },
     ];
 
-    const gridY = document.getElementById('menusGridYilbasi');
+    const gridY = document.getElementById("menusGridYilbasi");
     if (gridY) {
-        gridY.innerHTML = menuDataYilbasi.map(menu => `
+        gridY.innerHTML = menuDataYilbasi
+            .map(
+                (menu) => `
             <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col h-full card-hover border ${menu.bgColor}">
                 <div class="flex justify-between items-start mb-4">
                     <h3 class="text-xl font-bold ${menu.themeColor}">${menu.id}. ${menu.title}</h3>
@@ -938,39 +1066,48 @@ function renderYilbasiBlogPost(container, post) {
                     </div>
                 </div>
             </div>
-        `).join('');
+        `
+            )
+            .join("");
     }
 
-    const rulesY = document.getElementById('rulesContainerYilbasi');
+    const rulesY = document.getElementById("rulesContainerYilbasi");
     if (rulesY) {
-        rulesY.innerHTML = rulesDataYilbasi.map(rule => `
+        rulesY.innerHTML = rulesDataYilbasi
+            .map(
+                (rule) => `
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 hover:border-red-200 transition cursor-default group">
                 <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">${rule.icon}</div>
                 <h4 class="font-bold text-stone-800 mb-1 text-sm">${rule.title}</h4>
                 <p class="text-xs text-stone-500 leading-snug">${rule.desc}</p>
             </div>
-        `).join('');
+        `
+            )
+            .join("");
     }
 }
 
 /* ============ BLOG İÇERİK YÜKLEYİCİ ============ */
 
 function loadBlogContent(postSlug = null) {
-    const container = document.getElementById('blog-posts-container');
-    // blogPostsData'nın js/data.js'ten geldiği varsayılır (Global variable)
+    const container = document.getElementById("blog-posts-container");
+    if (!container) return;
+
     if (!window.blogPostsData) return;
 
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     if (postSlug) {
-        const post = window.blogPostsData.find(p => p.slug === postSlug);
+        const post = window.blogPostsData.find((p) => p.slug === postSlug);
         if (post) {
+            // Sayfa başlığı
             if (post.metaTitle) {
                 document.title = post.metaTitle;
             } else {
                 document.title = `${post.title} - Yanında Ne Yiyelim?`;
             }
 
+            // Meta description
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) {
                 if (post.metaDescription) {
@@ -983,28 +1120,28 @@ function loadBlogContent(postSlug = null) {
                 }
             }
 
-            // Özel Render Fonksiyonlarını Çağırma
-            if (post.slug === 'glutensiz-menu-onerileri') {
+            // Özel layout’lar
+            if (post.slug === "glutensiz-menu-onerileri") {
                 renderGlutenFreeBlogPost(container, post);
-            } else if (post.slug === 'pratik-menu-onerileri') {
+            } else if (post.slug === "pratik-menu-onerileri") {
                 renderPratikBlogPost(container, post);
-            } else if (post.slug === 'yilbasi-sofra-menu-onerileri') {
+            } else if (post.slug === "yilbasi-sofra-menu-onerileri") {
                 renderYilbasiBlogPost(container, post);
             } else {
                 renderDefaultBlogPost(container, post);
             }
 
+            // X paylaş linki
             const twitterBtn = document.getElementById("twitterShareBtn");
             if (twitterBtn) {
                 const shareUrl =
-                    "https://twitter.com/intent/tweet?text="
-                    + encodeURIComponent(post.title)
-                    + "&url="
-                    + encodeURIComponent(window.location.href);
+                    "https://twitter.com/intent/tweet?text=" +
+                    encodeURIComponent(post.title) +
+                    "&url=" +
+                    encodeURIComponent(window.location.href);
 
                 twitterBtn.href = shareUrl;
             }
-
         } else {
             container.innerHTML = `
                 <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">← Geri Dön</button>
@@ -1014,16 +1151,20 @@ function loadBlogContent(postSlug = null) {
             `;
         }
     } else {
-        // Blog Listesi
-        window.blogPostsData.forEach(post => {
+        // Blog listesi
+        window.blogPostsData.forEach((post) => {
             const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = post.content || `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
+            tempDiv.innerHTML =
+                post.content ||
+                `<p>${post.description || "İçerik önizlemesi..."}</p>`;
             const firstP = tempDiv.querySelector("p");
-            const previewText = firstP ? firstP.innerText.substring(0, 100) : "İçerik önizlemesi...";
+            const previewText = firstP
+                ? firstP.innerText.substring(0, 100)
+                : "İçerik önizlemesi...";
 
             container.innerHTML += `
                 <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
-                    <span class="text-xs font-bold text-green-600 uppercase">${post.category || 'Blog'}</span>
+                    <span class="text-xs font-bold text-green-600 uppercase">${post.category || "Blog"}</span>
                     <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
                     <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
                     <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-blue-600 font-semibold text-sm hover:underline">Devamını Oku →</button>
@@ -1033,46 +1174,44 @@ function loadBlogContent(postSlug = null) {
     }
 }
 
-// --- ARAMA (performSearch olarak güncellendi) ---
+/* ============ ARAMA ============ */
+
 function performSearch() {
-    const input = document.getElementById('mainDishInput');
-    const filter = document.getElementById('cuisineFilter');
-    const container = document.getElementById('resultsContainer');
-    
-    // HATA DÜZELTME: bottomAdContainer ID'li elementi tanımla
-    const bottomAd = document.getElementById('bottomAdContainer'); 
-    // Not: HTML'inizde bu ID'de bir div bulunmuyor, bu yüzden bu satır hata verebilir. 
-    // Çalışması için HTML'e eklemeniz gerekir.
+    const input = document.getElementById("mainDishInput");
+    const filter = document.getElementById("cuisineFilter");
+    const container = document.getElementById("resultsContainer");
 
-    // dishSuggestions ve suggestionCategories'in js/data.js'ten geldiği varsayılır (Global variable)
+    if (!input || !filter || !container) return;
+
     if (!window.dishSuggestions || !window.suggestionCategories) {
-        console.error('Data loading error: dishSuggestions or suggestionCategories not defined.');
-        container.innerHTML = '<p class="text-red-500 italic">Hata: Yemek öneri verileri yüklenemedi.</p>';
+        console.error(
+            "Data loading error: dishSuggestions or suggestionCategories not defined."
+        );
+        container.innerHTML =
+            '<p class="text-red-500 italic">Hata: Yemek öneri verileri yüklenemedi.</p>';
         return;
-    }
-
-    if (!document.getElementById('page-home').classList.contains('hidden') && bottomAd) {
-        bottomAd.classList.remove('hidden');
     }
 
     const rawQuery = input.value.trim();
     const cuisine = filter.value;
     const query = normalizeText(rawQuery);
 
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     let foundDish = null;
     let isRandom = false;
-    const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
+    const lowCalorieOnly =
+        document.getElementById("lowCalorieFilter")?.checked;
 
-
-    // 1. Durum: Boş arama (Günün Önerisi)
+    // 1) Boş arama → Günün Önerisi
     if (query.length < 2 && !rawQuery) {
-        const filteredDishes = window.dishSuggestions.filter(dish =>
-            cuisine === "" || dish.cuisine === cuisine
+        const filteredDishes = window.dishSuggestions.filter(
+            (dish) => cuisine === "" || dish.cuisine === cuisine
         );
         if (filteredDishes.length > 0) {
-            const randomIndex = Math.floor(Math.random() * filteredDishes.length);
+            const randomIndex = Math.floor(
+                Math.random() * filteredDishes.length
+            );
             foundDish = { ...filteredDishes[randomIndex] };
             if (!foundDish.main.startsWith("Günün Önerisi")) {
                 foundDish.main = `Günün Önerisi: ${foundDish.main}`;
@@ -1080,29 +1219,36 @@ function performSearch() {
             isRandom = true;
         }
     } else {
-        // 2. Durum: Anahtar kelime veya tam eşleşme
-        foundDish = window.dishSuggestions.find(d => {
+        // 2) Tam eşleşme (main veya anahtar kelime)
+        foundDish = window.dishSuggestions.find((d) => {
             const normMain = normalizeText(d.main);
             if (normMain === query) return true;
-            return d.keywords && d.keywords.some(k => normalizeText(k) === query);
+            return (
+                d.keywords &&
+                d.keywords.some((k) => normalizeText(k) === query)
+            );
         });
 
-        // 3. Durum: Kısmi eşleşme (startsWith veya includes)
+        // 3) Kısmi eşleşme
         if (!foundDish) {
-            foundDish = window.dishSuggestions.find(d => {
+            foundDish = window.dishSuggestions.find((d) => {
                 const normMain = normalizeText(d.main);
                 if (normMain.startsWith(query)) return true;
-                return normMain.includes(query) ||
-                    (d.keywords && d.keywords.some(k => normalizeText(k).includes(query)));
+                return (
+                    normMain.includes(query) ||
+                    (d.keywords &&
+                        d.keywords.some((k) =>
+                            normalizeText(k).includes(query)
+                        ))
+                );
             });
         }
     }
 
-
-    // Eşleşme Yok veya Boş Başlangıç Durumu
+    // Eşleşme yok / boş durum
     if (!foundDish && query.length < 2 && cuisine === "") {
-        container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
-        if(bottomAd) bottomAd.classList.add('hidden');
+        container.innerHTML =
+            '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
         return;
     } else if (!foundDish) {
         container.innerHTML = `
@@ -1111,182 +1257,202 @@ function performSearch() {
                 <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
             </div>
         `;
-        if(bottomAd) bottomAd.classList.add('hidden');
         return;
     }
-    
-    // Yemek Bulundu (Kalori ve Filtre Kontrolü)
-    if (foundDish) {
-        const hasCalories = foundDish.calories && foundDish.calories.total;
-        const totalCalOrig = hasCalories ? foundDish.calories.total : null;
-        const isHighCalorie = hasCalories && totalCalOrig > 1200;
 
-        let effectiveTotalCal = totalCalOrig;
-        let dessertCal = 0;
-        let extraNote = '';
+    // Yemek bulundu
+    const hasCalories =
+        foundDish.calories && foundDish.calories.total;
+    const totalCalOrig = hasCalories ? foundDish.calories.total : null;
+    const isHighCalorie = hasCalories && totalCalOrig > 1200;
 
-        if (lowCalorieOnly && isHighCalorie && foundDish.calories.breakdown) {
-            dessertCal = foundDish.calories.breakdown.dessert || 0;
-            effectiveTotalCal = totalCalOrig - dessertCal;
+    let effectiveTotalCal = totalCalOrig;
+    let extraNote = "";
 
-            // Filtrelemeye rağmen hala yüksek kalori ise uyarı ver
-            if (effectiveTotalCal > 1200) {
-                container.innerHTML = `
-                    <div class="w-full text-center p-4">
-                        <p class="text-gray-800 font-semibold mb-2">
-                            Bu yemek, tatlı çıkarılmasına rağmen hala 1200 kcal üzerindedir.
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            Filtreyi kapatarak tüm yemekleri görebilirsiniz.
-                        </p>
-                    </div>
-                `;
-                if(bottomAd) bottomAd.classList.add('hidden');
-                return;
-            }
+    if (
+        lowCalorieOnly &&
+        isHighCalorie &&
+        foundDish.calories.breakdown
+    ) {
+        const dessertCal = foundDish.calories.breakdown.dessert || 0;
+        effectiveTotalCal = totalCalOrig - dessertCal;
 
-            extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
-        }
-
-        let html = '';
-
-        window.suggestionCategories.forEach(cat => {
-            const items = foundDish.suggestions[cat.key];
-
-            // Düşük kalori filtresi aktifken tatlıyı atla
-            if (lowCalorieOnly && isHighCalorie && cat.key === 'dessert') {
-                return;
-            }
-
-            if (items && items.length) {
-                html += `
-                    <div class="mb-4">
-                        <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
-                        <ul class="space-y-2">${createListHtml(items, cat.color)}</ul>
-                    </div>
-                `;
-            }
-        });
-
-        // Kalori Bilgisi
-        if (hasCalories) {
-            const c = foundDish.calories;
-
-            html += `
-                <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
-                    <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
-                    <p class="mb-1">
-                        Toplam: <strong>${effectiveTotalCal} kcal</strong>
+        if (effectiveTotalCal > 1200) {
+            container.innerHTML = `
+                <div class="w-full text-center p-4">
+                    <p class="text-gray-800 font-semibold mb-2">
+                        Bu yemek, tatlı çıkarılmasına rağmen hala 1200 kcal üzerindedir.
                     </p>
-                    ${
-                        c.breakdown
-                            ? `<ul class="list-disc ml-4">
-                                ${c.breakdown.main ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>` : ''}
-                                ${c.breakdown.yanlar ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>` : ''}
-                                ${c.breakdown.drink ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>` : ''}
-                                ${
-                                    (lowCalorieOnly && isHighCalorie)
-                                        ? ''
-                                        : (c.breakdown.dessert ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>` : '')
-                                }
-                               </ul>`
-                            : ''
-                    }
-                    <p class="mt-1 text-xs text-amber-700">
-                        ${c.note || "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."}${extraNote}
+                    <p class="text-sm text-gray-500">
+                        Filtreyi kapatarak tüm yemekleri görebilirsiniz.
                     </p>
                 </div>
             `;
+            return;
         }
 
-        // Template'i kullanarak sonucu render et
-        const template = document
-            .getElementById('dishDetailTemplate')
-            .content
-            .cloneNode(true);
-
-        template.querySelector('h2').innerHTML =
-            `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
-
-        template.querySelector('#suggestionsListContainer').innerHTML = html;
-
-        const info = template.querySelector('#randomInfo');
-        if(info) info.style.display = isRandom ? 'block' : 'none';
-
-        container.appendChild(template);
+        extraNote =
+            " 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.";
     }
+
+    let html = "";
+
+    window.suggestionCategories.forEach((cat) => {
+        const items = foundDish.suggestions[cat.key];
+
+        if (lowCalorieOnly && isHighCalorie && cat.key === "dessert") {
+            return; // Tatlıyı atla
+        }
+
+        if (items && items.length) {
+            html += `
+                <div class="mb-4">
+                    <h4 class="font-bold ${cat.color} mb-2">${cat.icon} ${cat.title}</h4>
+                    <ul class="space-y-2">${createListHtml(
+                        items,
+                        cat.color
+                    )}</ul>
+                </div>
+            `;
+        }
+    });
+
+    if (hasCalories) {
+        const c = foundDish.calories;
+
+        html += `
+            <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 text-sm text-amber-900">
+                <div class="font-semibold mb-1">🔢 Tahmini Kalori Bilgisi</div>
+                <p class="mb-1">
+                    Toplam: <strong>${effectiveTotalCal} kcal</strong>
+                </p>
+                ${
+                    c.breakdown
+                        ? `<ul class="list-disc ml-4">
+                            ${
+                                c.breakdown.main
+                                    ? `<li>Ana yemek: ~${c.breakdown.main} kcal</li>`
+                                    : ""
+                            }
+                            ${
+                                c.breakdown.yanlar
+                                    ? `<li>Yan lezzetler: ~${c.breakdown.yanlar} kcal</li>`
+                                    : ""
+                            }
+                            ${
+                                c.breakdown.drink
+                                    ? `<li>İçecek: ~${c.breakdown.drink} kcal</li>`
+                                    : ""
+                            }
+                            ${
+                                lowCalorieOnly && isHighCalorie
+                                    ? ""
+                                    : c.breakdown.dessert
+                                    ? `<li>Tatlı: ~${c.breakdown.dessert} kcal</li>`
+                                    : ""
+                            }
+                           </ul>`
+                        : ""
+                }
+                <p class="mt-1 text-xs text-amber-700">
+                    ${
+                        c.note ||
+                        "Değerler yaklaşık olup porsiyon ve tarifinize göre değişebilir."
+                    }${extraNote}
+                </p>
+            </div>
+        `;
+    }
+
+    const template = document
+        .getElementById("dishDetailTemplate")
+        .content.cloneNode(true);
+
+    const h2 = template.querySelector("h2");
+    if (h2) {
+        h2.innerHTML = `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
+    }
+
+    const listContainer = template.querySelector(
+        "#suggestionsListContainer"
+    );
+    if (listContainer) {
+        listContainer.innerHTML = html;
+    }
+
+    const info = template.querySelector("#randomInfo");
+    if (info) info.style.display = isRandom ? "block" : "none";
+
+    container.appendChild(template);
 
     if (window.innerWidth < 768) {
         input.blur();
     }
 }
 
-
-// --- ÇEREZ / İZİN ---
-const COOKIE_CONSENT_KEY = 'cookieConsent';
-const COOKIE_CONSENT_GRANTED = 'granted';
+/* ============ ÇEREZ / İZİN ============ */
+const COOKIE_CONSENT_KEY = "cookieConsent";
+const COOKIE_CONSENT_GRANTED = "granted";
 
 function checkConsent() {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    const banner = document.getElementById('cookieBanner');
+    const banner = document.getElementById("cookieBanner");
 
-    if (banner && consent !== COOKIE_CONSENT_GRANTED && consent !== 'rejected') {
-        banner.classList.remove('hidden');
-        setTimeout(() => banner.classList.remove('opacity-0'), 10);
+    if (
+        banner &&
+        consent !== COOKIE_CONSENT_GRANTED &&
+        consent !== "rejected"
+    ) {
+        banner.classList.remove("hidden");
+        setTimeout(() => banner.classList.remove("opacity-0"), 10);
     }
 }
 
 function acceptCookies() {
     localStorage.setItem(COOKIE_CONSENT_KEY, COOKIE_CONSENT_GRANTED);
-    const banner = document.getElementById('cookieBanner');
+    const banner = document.getElementById("cookieBanner");
     if (banner) {
-        banner.classList.add('opacity-0');
-        setTimeout(() => banner.classList.add('hidden'), 300);
+        banner.classList.add("opacity-0");
+        setTimeout(() => banner.classList.add("hidden"), 300);
     }
 }
 
 function rejectCookies() {
-    localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
-    const banner = document.getElementById('cookieBanner');
+    localStorage.setItem(COOKIE_CONSENT_KEY, "rejected");
+    const banner = document.getElementById("cookieBanner");
     if (banner) {
-        banner.classList.add('opacity-0');
-        setTimeout(() => banner.classList.add('hidden'), 300);
+        banner.classList.add("opacity-0");
+        setTimeout(() => banner.classList.add("hidden"), 300);
     }
 }
 
-
-// ============== FONKSİYONLARI GLOBAL’E AÇ ==============
-// HTML'deki onclick event'leri tarafından çağrılan tüm fonksiyonlar
+/* ============ GLOBAL'E AÇILANLAR ============ */
 window.createListHtml = createListHtml;
 window.hideSidebar = hideSidebar;
 window.showSidebar = showSidebar;
-window.handleMenuClick = handleMenuClick; // Hero butonu için
+window.handleMenuClick = handleMenuClick;
 window.showPage = showPage;
-window.performSearch = performSearch; // Hata düzeltme: searchDish -> performSearch
+window.performSearch = performSearch;
 window.loadBlogContent = loadBlogContent;
 window.viewBlogPost = viewBlogPost;
 window.viewBlogList = viewBlogList;
 window.renderHomeBlogSection = renderHomeBlogSection;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
-// window.filterPratikMenus tanımı Pratik blog render fonksiyonunun içindedir (Bu da düzeltildi.)
 
-
-// İlk yükleme davranışı
-window.addEventListener('load', () => {
+/* ============ İLK YÜKLEME ============ */
+window.addEventListener("load", () => {
     const params = new URLSearchParams(window.location.search);
-    const page = params.get('page');
+    const page = params.get("page");
 
-    if (page === 'blog') {
-        showPage('blog');
-    } else if (page === 'privacy') {
-        showPage('privacy');
+    if (page === "blog") {
+        showPage("blog");
+    } else if (page === "privacy") {
+        showPage("privacy");
     } else {
-        showPage('home');
+        showPage("home");
         renderHomeBlogSection();
     }
 
-    const bottomAd = document.getElementById('bottomAdContainer');
-    if (bottomAd) bottomAd.classList.add('hidden');
     checkConsent();
 });
