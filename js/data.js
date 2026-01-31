@@ -3,6 +3,60 @@
 // --- BLOG VERİSİ ---
 const blogPostsData = [
   {
+    id: 9,
+    slug: "garnitur-onerileri",
+    title: "Garnitür Önerileri: En İyi 10 Garnitür ve Eşlikçi Rehberi",
+    metaTitle: "Garnitür Önerileri | En İyi 10 Garnitür ve Eşlikçi Rehberi",
+    metaDescription:
+      "Mükemmel bir akşam yemeği için ana yemeği doğru garnitürle tamamlamanın sırları. 10 farklı garnitür önerisi.",
+    excerpt:
+      "Mükemmel bir akşam yemeği için ana yemeği doğru garnitürle tamamlamanın sırları. 10 farklı garnitür önerisi. Yanına ne gider sorusuna cevaplar.",
+    category: "Beslenme",
+    tags: ["garnitür", "menü önerisi", "antrikot", "etin yanına"],
+    date: "2026-01-31",
+    content: `
+<p>Mutfakta harikalar yarattınız ve ana yemeği hazırladınız. Ancak tabağın yarısı hala boş mu görünüyor? Özellikle <strong>steak, antrikot</strong> veya geleneksel <strong>sulu et yemekleri</strong> pişirdiğinizde, yanına ne ekleyeceğiniz lezzet dengesi açısından kritiktir. Doğru bir garnitür, sadece tabağı doldurmaz; etin aromasını öne çıkarır ve sindirimi kolaylaştırır.</p>
+
+<hr />
+
+<strong><h2>1. Antrikot ve Steak İçin Modern Dokunuşlar</h2></strong>
+        <p>Yüksek ateşte mühürlenmiş bir etin yanına ağır soslar yerine, etin suyunu dengeleyecek seçenekler tercih edilmelidir.</p>
+        <ul>
+            <li><strong>Baharatlı Elma Dilim Patates:</strong> Taze kekik ve sarımsak tozuyla harmanlanmış fırın patates, dışı çıtır içi yumuşak dokusuyla steak türü etlerin en iyi dostudur.</li>
+            <li><strong>Kremalı Ispanak Sote:</strong> Restoran usulü bir sunum için muskat rendesi ve az miktar krema ile hazırlanan ıspanak, etin yanına şık bir eşlikçidir.</li>
+        </ul>
+
+<strong><h2>2. Sulu Et Yemeklerinin Geleneksel Eşlikçileri</h2></strong>
+        <p>Tencere yemeklerinde amaç, yemeğin sosuyla uyum sağlayacak ve o suyu emecek lezzetler sunmaktır.</p>
+        <ul>
+            <li><strong>Şehriyeli Pirinç Pilavı:</strong> Tane tane dökülen, tereyağı kokulu bir pilav, sulu et yemeklerinin vazgeçilmezidir.</li>
+            <li><strong>Sebzeli Bulgur Pilavı:</strong> Daha doyurucu ve lifli bir seçenek arayanlar için domatesli ve biberli bulgur pilavı harika bir alternatiftir.</li>
+        </ul>
+
+        <strong><h2>3. Hafif ve Fit Seçenekler (1200 Kalori Altı)</h2></strong>
+        <p>Sitemizin <strong>"1200 kcal altı"</strong> filtresine uygun, hafif bir akşam yemeği planlıyorsanız bu garnitürler tam size göre:</p>
+        <ul>
+            <li><strong>Izgara Kuşkonmaz ve Çeri Domates:</strong> Sadece zeytinyağı ve deniz tuzu ile fırınlanmış kuşkonmazlar, protein odaklı beslenenler için idealdir.</li>
+            <li><strong>Roka ve Parmesan Salatası:</strong> Limon ve zeytinyağı soslu sade bir roka salatası, etin ağırlığını dengeler ve ferahlık verir.</li>
+        </ul>
+
+        <blockquote style="background: #fdf2e9; border-left: 10px solid #e67e22; margin: 1.5em 10px; padding: 0.5em 10px;">
+            <strong>Şefin İpucu:</strong> Etinizi dinlendirirken garnitürlerinizi servis tabağına hazırlayın. Unutmayın, sıcak etin yanına soğuk garnitür (salata hariç) tabağın genel ısısını düşürebilir.
+        </blockquote>
+
+
+<h2>🔗 Diğer Popüler Yazılar</h2>
+<p>
+Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
+</p>
+<ul>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+</ul>
+`
+  },
+    {
     id: 8,
     slug: "glutensiz-menu-onerileri",
     title: "Glutensiz Menü Önerileri: 7 Farklı Tam Menü (Kalori Hesaplı)",
@@ -130,7 +184,6 @@ const blogPostsData = [
 <p>Glutensiz beslensen bile sofran tekdüze olmak zorunda değil. Yukarıdaki 7 menüyü, porsiyonlarını ve garnitürleri değiştirerek haftalık menü planına rahatça adapte edebilirsin.</p>
     `
   },
-
   {
     id: 7,
     slug: "pratik-menu-onerileri",
