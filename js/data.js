@@ -6,12 +6,12 @@ const blogPostsData = [
     id: 9,
     slug: "garnitur-onerileri",
     title: "Garnitür Önerileri: En İyi 10 Garnitür ve Eşlikçi Rehberi",
-    metaTitle: "Garnitür Önerileri | En İyi 10 Garnitür ve Eşlikçi Rehberi",
+    metaTitle: "Garnitür Önerileri: Et ve Ana Yemeklerin Yanına En İyi 10 Eşlikçi",
     metaDescription:
-      "Mükemmel bir akşam yemeği için ana yemeği doğru garnitürle tamamlamanın sırları. 10 farklı garnitür önerisi.",
+      "Ana yemeği tamamlayan en iyi garnitürler hangileri? Et ve sulu yemekler için 10 pratik, lezzetli ve dengeli garnitür önerisi.",
     excerpt:
       "Mükemmel bir akşam yemeği için ana yemeği doğru garnitürle tamamlamanın sırları. 10 farklı garnitür önerisi. Yanına ne gider sorusuna cevaplar.",
-    category: "Beslenme",
+    category: "Mutfak Sırları",
     tags: ["garnitür", "menü önerisi", "antrikot", "etin yanına"],
     date: "2026-01-31",
     content: `
@@ -19,21 +19,21 @@ const blogPostsData = [
 
 <hr />
 
-<strong><h2>1. Antrikot ve Steak İçin Modern Dokunuşlar</h2></strong>
+<h2><strong>1. Antrikot ve Steak İçin Modern Dokunuşlar</h2></strong>
         <p>Yüksek ateşte mühürlenmiş bir etin yanına ağır soslar yerine, etin suyunu dengeleyecek seçenekler tercih edilmelidir.</p>
         <ul>
             <li><strong>Baharatlı Elma Dilim Patates:</strong> Taze kekik ve sarımsak tozuyla harmanlanmış fırın patates, dışı çıtır içi yumuşak dokusuyla steak türü etlerin en iyi dostudur.</li>
             <li><strong>Kremalı Ispanak Sote:</strong> Restoran usulü bir sunum için muskat rendesi ve az miktar krema ile hazırlanan ıspanak, etin yanına şık bir eşlikçidir.</li>
         </ul>
 
-<strong><h2>2. Sulu Et Yemeklerinin Geleneksel Eşlikçileri</h2></strong>
+<h2><strong>2. Sulu Et Yemeklerinin Geleneksel Eşlikçileri</h2></strong>
         <p>Tencere yemeklerinde amaç, yemeğin sosuyla uyum sağlayacak ve o suyu emecek lezzetler sunmaktır.</p>
         <ul>
             <li><strong>Şehriyeli Pirinç Pilavı:</strong> Tane tane dökülen, tereyağı kokulu bir pilav, sulu et yemeklerinin vazgeçilmezidir.</li>
             <li><strong>Sebzeli Bulgur Pilavı:</strong> Daha doyurucu ve lifli bir seçenek arayanlar için domatesli ve biberli bulgur pilavı harika bir alternatiftir.</li>
         </ul>
 
-        <strong><h2>3. Hafif ve Fit Seçenekler (1200 Kalori Altı)</h2></strong>
+<h2><strong>3. Hafif ve Fit Seçenekler (1200 Kalori Altı)</h2></strong>
         <p>Sitemizin <strong>"1200 kcal altı"</strong> filtresine uygun, hafif bir akşam yemeği planlıyorsanız bu garnitürler tam size göre:</p>
         <ul>
             <li><strong>Izgara Kuşkonmaz ve Çeri Domates:</strong> Sadece zeytinyağı ve deniz tuzu ile fırınlanmış kuşkonmazlar, protein odaklı beslenenler için idealdir.</li>
@@ -75,7 +75,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</h2></strong>
+<h2><strong>1. Menü: Fırında Tavuk ile Glutensiz ve Doyurucu Sofra (~980 kcal)</strong></h2>
 
 <p>İç ısıtan, klasik ama güvenli bir kombinasyon: fırında tavuk, tahıllı bir salata ve hafif bir tatlı.</p>
 
@@ -89,7 +89,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</h2></strong>
+<h2><strong>2. Menü: Izgara Somon ile Hafif ve Omega-3 Deposu Menü (~695 kcal)</strong></h2>
 
 <p>Balık günlerinde, gluten içeren garnitürlere (örneğin klasik makarna veya ekmek) mecbur değilsin. Somonun yanına taze ve ferah eşlikçiler geliyor.</p>
 
@@ -103,7 +103,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</h2></strong>
+<h2><strong>3. Menü: Mercimek Köftesi ile Pratik ve Bitkisel Protein Ağırlıklı Menü (~610 kcal)</strong></h2>
 
 <p>Glutensiz, pratik, davet sofralarına da yakışan bir tabak: Mercimek köftesi menüsü.</p>
 
@@ -117,7 +117,8 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</h2></strong>
+<h2><strong>4. Menü: Kuzu Güveç ile Geleneksel ve Doyurucu Glutensiz Menü (~870 kcal)</strong></h2>
+
 
 <p>Daha klasik, restoran hissiyatı veren ama gluten açısından daha kontrollü bir menü istersen bu kombinasyon oldukça ideal.</p>
 
@@ -131,7 +132,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>5. Menü: Akdeniz Esintili Menü (Hafif ve Doyurucu) (~480 kcal)</h2></strong>
+<h2><strong>5. Menü: Akdeniz Esintili Menü (Hafif ve Doyurucu) (~480 kcal)</strong></h2>
 
 <p>Glutensiz, sağlıklı, hafif ve doyurucu Akdeniz mutfağı menüsü.</p>
 
@@ -144,7 +145,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>6. Menü: Bitkisel Protein Odaklı Menü (Düşük Yağlı) (~510 kcal)</h2></strong>
+<h2><strong>6. Menü: Bitkisel Protein Odaklı Menü (Düşük Yağlı) (~510 kcal)</strong></h2>
 
 <p>Düşük yağlı, protein içeriği yüksek bitkisel menü.</p>
 
@@ -158,7 +159,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</h2></strong>
+<h2><strong>7. Menü: Geleneksel ve Dengeli Menü (Kompleks Karbonhidrat) (~660 kcal)</strong></h2>
 
 <p>Düşük kalorili, karbonhidrat dengeli geleneksel menü.</p>
 
@@ -172,7 +173,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-<strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong>
+<strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</strong></h2>
 
 <ul>
   <li><strong>Etiket okuma alışkanlığı</strong> edin: Soslar, hazır karışımlar ve bazı işlenmiş ürünler gizli gluten içerebilir.</li>
@@ -197,7 +198,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
     tags: ["pratik menü", "hızlı yemek", "30 dakikada yemek"],
     date: "2025-12-06",
     content: `
-  <strong><h1>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</h1></strong>
+  <h1><strong>🥗 Pratik Menü Önerileri: 8 Hızlı, Ekonomik ve Lezzetli Menü Fikri</strong></h1>
 
   <p>
     “Akşam ne pişirsem?” diye düşünürken saat ilerliyor, dolap açılıp kapanıyor ve sonunda yine
@@ -223,7 +224,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
 <hr />
 
-  <strong><h2>Pratik Menü Hazırlamanın 5 Altın Kuralı</h2></strong>
+  <h2><strong>Pratik Menü Hazırlamanın 5 Altın Kuralı</strong></h2>
 <ol>
 <strong><li>Dondurulmuş Sebze Kullanımı:</strong> Dondurulmuş sebzeler hem doğrama süresini sıfırlar hem de besin değerini korur.</li>
 <strong><li>Konserve Malzemeler:</strong> Konserve nohut ve domates kullanımı, yemeğin hazırlık süresini dakikalara indirir.</li>
@@ -243,7 +244,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 <hr />
 
    <section id="menu-1">
-<strong><h3>1. Menü: Somon Tava & Yeşillik (~20 dakika)</h3></strong>
+<h3><strong>1. Menü: Somon Tava & Yeşillik (~20 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Tavada Somon Fileto: Somonu sadece tuz, karabiber ve limon suyu ile tavada 4'er dakika pişirme.</li>
   <li><strong>Yanına Gider:</strong> Hazır Salata Karışımı: Hazır yıkanmış yeşillik, cherry domates ve zeytinyağlı hızlı sos.</li>
@@ -251,7 +252,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
   </section>
 
   <section id="menu-2">
-<strong><h3>2. Menü: Tek Kapta Tavuk (~25 dakika)</h3></strong>
+<h3><strong>2. Menü: Tek Kapta Tavuk (~25 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Sebzeli Tavuk Sote: Doğranmış tavuk parçaları, dondurulmuş karışık sebze ve soya sosu ile tek tavada yüksek ateşte pişirme.</li>
   <li><strong>Yanına Gider:</strong> Hızlı Makarna/Erişte: Önceden haşlanmış veya 5 dakikalık hızlı makarna (yağ eklenmeden).</li>
@@ -259,7 +260,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
   </section>
 
   <section id="menu-3">
-<strong><h3>3. Menü: Pratik Yumurta Ziyafeti (~15 dakika)</h3></strong>
+<h3><strong>3. Menü: Pratik Yumurta Ziyafeti (~15 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Menemen veya Hızlı Omlet: Yumurta, biber ve domates (veya kapya biber konservesi) ile Menemen hazırlama.</li>
   <li><strong>Yanına Gider:</strong> Peynir Tabağı: Az tuzlu peynir, zeytin ve taze nane/maydanoz.</li>
@@ -268,7 +269,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
   </section>
 
   <section id="menu-4">
-<strong><h3>4. Menü: Konserve Kolaylığı (~15 dakika)</h3></strong>
+<h3><strong>4. Menü: Konserve Kolaylığı (~15 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Nohut Güveç: Hazır konserve nohut, küp doğranmış domates konservesi ve baharatlarla (kimyon, pul biber) ısıtma.</li>
   <li><strong>Yanına Gider:</strong> Yoğurtlu Sos: Sarımsaklı yoğurt veya Ev Yapımı Cacık.</li>
@@ -277,7 +278,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
   </section>
   
   <section id="menu-5">
-<strong><h3>5. Menü: Tek Tencere Makarna (~25 dakika)</h3></strong>
+<h3><strong>5. Menü: Tek Tencere Makarna (~25 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Domatesli Ton Balıklı Makarna: Haşlanan makarnanın suyunu süzmeden hemen ardından konserve domates, ton balığı, sarımsak ve zeytinyağı ekleyip karıştırma.</li>
   <li><strong>Yanına Gider:</strong> Roka Salatası: Sadece limon ve zeytinyağı ile tatlandırılmış roka.</li>
@@ -285,7 +286,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
   </section>
 
 <section id="menu-6">
-<strong><h3>6. Menü: Hızlı Pizza Alternatifi (~10 dakika)</h3></strong>
+<h3><strong>6. Menü: Hızlı Pizza Alternatifi (~10 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Lavaş Üstü Tost/Pizza: Lavaş ekmeği üzerine salça/ketçap, az peynir ve dilediğiniz ince dilimli salamura sebzeleri (biber, zeytin) koyup tavada veya tost makinesinde ısıtma.</li>
   <li><strong>İçecek:</strong> Ayran</li>
@@ -293,7 +294,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
  </section>
  
   <section id="menu-7">
-<strong><h3>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</h3></strong>
+<h3><strong>7. Menü: Hazır Köfte Hızlandırıcısı (~20 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Hazır Köfte ve Püre: Önceden hazırlanmış veya dondurulmuş köfteleri tavada veya fırında ısıtırken, hazır veya pratik toz patates püresi hazırlama.</li>
   <li><strong>Yanına Gider:</strong> Turşu veya Köz Biber Konservesi</li>
@@ -301,7 +302,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
  </section>
  
 <section id="menu-8">
-<strong><h3>8. Menü: Bakliyat Gücü (~20 dakika)</h3></strong>
+<h3><strong>8. Menü: Bakliyat Gücü (~20 dakika)</strong></h3>
 <ul>
   <li><strong>Ana Yemek:</strong> Hızlı Mercimek Yemeği: Önceden haşlanmış (veya konserve) yeşil mercimek, az soğan ve salça ile 10 dakika kadar pişirme.</li>
   <li><strong>Yanına Gider:</strong> Kuru Soğan/Pirinç Sirkeli Salata: Halka soğanları ince kesip, maydanoz ve pirinç sirkesi ile karıştırma.</li>
@@ -349,65 +350,65 @@ Köfte; ızgarası, fırını, sulu yemeği ve mangal versiyonlarıyla Türk mut
 Peki <strong>köftenin yanına ne gider?</strong> İşte sofranı tamamlayacak en iyi 12 eşlikçi önerisi!
 </p>
 
-<strong><h2>1) Pirinç Pilavı (Klasik Uyum)</h2></strong>
+<h2><strong>1) Pirinç Pilavı (Klasik Uyum)</strong></h2>
 <p>
 Tane tane tereyağlı pirinç pilavı, köfteyle en çok tercih edilen yardımcı yemektir. Hem doyurucu hem dengeli bir kombinasyon oluşturur.
 </p>
 
-<strong><h2>2) Piyaz (Antalya Usulü)</h2></strong>
+<h2><strong>2) Piyaz (Antalya Usulü)</strong></h2>
 <p>
 Köftenin yanına en çok yakışan lezzetlerden biri de piyazdır. 
 Özellikle tahinli Antalya piyazı, ızgara köfteyle mükemmel bir uyum sağlar.
 </p>
 
-<strong><h2>3) Domatesli Bulgur Pilavı</h2></strong>
+<h2><strong>3) Domatesli Bulgur Pilavı</strong></h2>
 <p>
 Daha hafif bir pilav alternatifi isterseniz bulgur pilavı ideal bir tercihtir. 
 Biber, soğan ve domates aroması köftenin lezzetini öne çıkarır.
 </p>
 
-<strong><h2>4) Közlenmiş Sebzeler</h2></strong>
+<h2><strong>4) Közlenmiş Sebzeler</strong></h2>
 <p>
 Köz biber, köz patlıcan ve köz domates; köftenin yoğun aromasını dengeleyerek tabağa hafiflik katar.
 </p>
 
-<strong><h2>5) Patates Kızartması</h2></strong>
+<h2><strong>5) Patates Kızartması</strong></h2>
 <p>
 Özellikle ev yapımı hamburger köftesi veya ızgara köfteyle harika bir uyum yakalar.
 </p>
 
-<strong><h2>6) Fırında Patates (Baharatlı)</h2></strong>
+<h2><strong>6) Fırında Patates (Baharatlı)</strong></h2>
 <p>
 Kızartma sevmeyenler için daha sağlıklı bir alternatiftir. Köftenin suyuyla birleştiğinde çok lezzetli olur.
 </p>
 
-<strong><h2>7) Mevsim Salatası</h2></strong>
+<h2><strong>7) Mevsim Salatası</strong></h2>
 <p>
 Tazelik isteyenler için mevsim salatası hem ferahlık hem de renk dengesi sağlar. 
 Nar ekşisi, limon ve zeytinyağı sosu ile servisi önerilir.
 </p>
 
-<strong><h2>8) Acılı Ezme</h2></strong>
+<h2><strong>8) Acılı Ezme</strong></h2>
 <p>
 Baharatlı ve hafif acılı yapısıyla köftenin yanına güçlü bir aroma ekler.
 </p>
 
-<strong><h2>9) Haydari & Yoğurtlu Mezeler</h2></strong>
+<h2><strong>9) Haydari & Yoğurtlu Mezeler</strong></h2>
 <p>
 Köfteyle yoğurt bazlı mezelerin uyumu tartışılmaz. Haydari, cacık ve yoğurtlu patlıcan mezesi en iyi seçeneklerdir.
 </p>
 
-<strong><h2>10) Köz Patlıcan Salatası</h2></strong>
+<h2><strong>10) Köz Patlıcan Salatası</strong></h2>
 <p>
 Et yemekleriyle harika eşleşen köz patlıcan salatası, köfte için de mükemmel bir tamamlayıcıdır.
 </p>
 
-<strong><h2>11) Şakşuka</h2></strong>
+<h2><strong>11) Şakşuka</strong></h2>
 <p>
 Kızarmış patlıcan ve domates sosunun birleşimi, köfteye yan lezzet olarak nefis bir alternatif oluşturur.
 </p>
 
-<strong><h2>12) Ayran veya Şalgam Suyu</h2></strong>
+<h2><strong>12) Ayran veya Şalgam Suyu</strong></h2>
 <p>
 Köftenin yanına içecek olarak en çok <strong>ayran</strong> tercih edilir. 
 Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşlikçidir.
@@ -415,7 +416,7 @@ Daha yoğun tat sevenler için <strong>şalgam suyu</strong> da güzel bir eşli
 
 <hr>
 
-<strong><h2>🍽️ Köfte Menü Önerisi (Pratik Tabak)</h2></strong>
+<h2><strong>🍽️ Köfte Menü Önerisi (Pratik Tabak)</strong></h2>
 <ul>
     <li>Izgara Köfte</li>
     <li>Piyaz veya Mevsim Salatası</li>
