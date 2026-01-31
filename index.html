@@ -26,21 +26,13 @@
     <style>
         body {
             font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #f5f5f7; /* daha premium açık gri */
+            background-color: #f5f5f7;
         }
 
-        .sidebar-open {
-            transform: translateX(0);
-        }
-        .sidebar-closed {
-            transform: translateX(-100%);
-        }
-        
-        /* blog içerik alanı */
-        .content-area p {
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
-        }
+        .sidebar-open { transform: translateX(0); }
+        .sidebar-closed { transform: translateX(-100%); }
+
+        .content-area p { margin-bottom: 0.75rem; line-height: 1.7; }
         .content-area h1,
         .content-area h2,
         .content-area h3,
@@ -50,23 +42,17 @@
             font-weight: 700;
         }
         .content-area ul,
-        .content-area ol {
-            margin-left: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-        .content-area li {
-            margin-bottom: 0.25rem;
-        }
+        .content-area ol { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+        .content-area li { margin-bottom: 0.25rem; }
 
-        .ad-placeholder {
-            border-style: dashed;
-        }
+        .ad-placeholder { border-style: dashed; }
     </style>
 
-    <!-- ADSENSE 1/2: GENEL ADSENSE KODU (Global Script) -->
+    <!-- ADSENSE: Global Script (kalsın) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4702518283120384"
             crossorigin="anonymous"></script>
 </head>
+
 <body class="text-slate-900">
 
 <div
@@ -109,7 +95,6 @@
             Ana Sayfa
         </button>
 
-        <!-- Sidebar'daki Blog butonunu viewBlogList ile yaptım -->
         <button
             type="button"
             onclick="viewBlogList();"
@@ -139,9 +124,7 @@
                 onclick="showSidebar()"
                 aria-label="Menüyü aç"
             >
-                <span class="inline-block w-6 h-6 text-slate-700">
-                    &#9776;
-                </span>
+                <span class="inline-block w-6 h-6 text-slate-700">&#9776;</span>
             </button>
 
             <button
@@ -169,7 +152,6 @@
                 <button type="button" onclick="showPage('home')" class="hover:text-blue-600 transition-colors">
                     Ana Sayfa
                 </button>
-                <!-- Header blog butonunu viewBlogList() çağıracak -->
                 <button type="button" onclick="viewBlogList()" class="hover:text-blue-600 transition-colors">
                     Blog
                 </button>
@@ -181,15 +163,13 @@
     </header>
 
     <main class="max-w-5xl mx-auto px-4 py-4 flex-1">
-        
-        <section id="page-home" class="space-y-6"> 
-            <section
-                class="relative overflow-hidden rounded-none md:rounded-3xl border border-slate-200/60 shadow-sm mb-4 md:mb-6 bg-slate-900"
-            >
-                <div
-                    class="w-full h-[320px] md:h-[360px] bg-cover bg-center"
-                    style="background-image: url('./images/hero-pasta.jpg');"
-                >
+
+        <!-- HOME -->
+        <section id="page-home" class="space-y-6">
+
+            <!-- HERO -->
+            <section class="relative overflow-hidden rounded-none md:rounded-3xl border border-slate-200/60 shadow-sm mb-4 md:mb-6 bg-slate-900">
+                <div class="w-full h-[320px] md:h-[360px] bg-cover bg-center" style="background-image: url('./images/hero-pasta.jpg');">
                     <div class="w-full h-full bg-gradient-to-l from-black/70 via-black/40 to-black/0">
                         <div class="max-w-6xl mx-auto h-full flex items-center px-4 md:px-8">
                             <div class="ml-auto max-w-md md:max-w-lg space-y-3 text-white">
@@ -220,8 +200,6 @@
                                     >
                                         PRATİK MENÜLER
                                     </button>
-
-
                                 </div>
                             </div>
                         </div>
@@ -229,6 +207,21 @@
                 </div>
             </section>
 
+            <!-- HOME: “publisher content” bloğu (AdSense ihlali riskini azaltır) -->
+            <section class="max-w-xl mx-auto bg-white rounded-2xl border border-slate-100 shadow-sm p-5 md:p-6 text-sm text-slate-700 leading-relaxed space-y-3">
+                <h2 class="text-base font-semibold text-slate-900">Ana yemeğin yanında ne gider?</h2>
+                <p>
+                    Günlük yemek planı yaparken “yanına ne yapsam?” sorusu çoğu kişinin yaşadığı bir kararsızlıktır.
+                    Et, tavuk, balık, sebze, pilav ve makarna gibi ana yemeklerin yanına uygun çorba, salata, meze,
+                    içecek ve tatlı önerilerini burada bulabilirsiniz.
+                </p>
+                <p>
+                    Arama alanına ana yemeğini yazıp mutfak türü seçerek menünü tamamlayabilir, istersen boş bırakarak
+                    “Günün Önerisi” ile hızlıca fikir alabilirsin.
+                </p>
+            </section>
+
+            <!-- ANA ARAMA -->
             <section class="mt-4 mb-6">
                 <div class="max-w-xl mx-auto card-soft p-5 md:p-6 space-y-4">
                     <h2 class="text-lg md:text-xl font-semibold text-slate-900 text-center">
@@ -285,8 +278,9 @@
                                     <span><strong>1200 kcal altı</strong> olsun</span>
                                 </label>
 
-                                <button 
-                                    class="w-full sm:w-auto bg-slate-200 text-slate-800 font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-slate-300 transition" 
+                                <button
+                                    type="button"
+                                    class="w-full sm:w-auto bg-slate-200 text-slate-800 font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-slate-300 transition"
                                     onclick="performSearch()">
                                     ARA 🔍
                                 </button>
@@ -296,55 +290,23 @@
                 </div>
             </section>
 
+            <!-- SONUÇLAR (Home) -->
             <section class="space-y-4">
-                <h2 class="text-base font-semibold text-slate-800">
-                    Sonuçlar
-                </h2>
+                <h2 class="text-base font-semibold text-slate-800">Sonuçlar</h2>
                 <div id="resultsContainer" class="space-y-4">
                     <p class="text-slate-500 text-sm italic">
                         Aramaya başlayın veya boş bırakıp “Günün Önerisi”ni keşfedin.
                     </p>
                 </div>
 
-                <!-- bottom ad (app.js bottomAdContainer referansı için eklendi) -->
-                <div id="bottomAdContainer" class="my-6 p-4 hidden">
-                    <div class="ad-placeholder bg-white border-slate-300 text-center flex items-center justify-center p-4 rounded-xl" style="height:120px; width:100%;">
-                        <ins class="adsbygoogle"
-                             style="display:block"
-                             data-ad-client="ca-pub-4702518283120384"
-                             data-ad-slot="1234567890"
-                             data-ad-format="auto"
-                             data-full-width-responsive="true"></ins>
-                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    </div>
-                </div>
+                <!-- ✅ AdSense birimi HOME'dan kaldırıldı (politika ihlali riskini azaltır) -->
+                <!-- bottomAdContainer kaldırıldı -->
             </section>
 
             <section class="space-y-3 pb-4">
                 <div class="flex items-center justify-between gap-2">
-                    <h2 class="text-base font-semibold text-slate-800">
-                        <!-- ADSENSE REKLAM ALANI YER TUTUCU -->
-                        <div id="topAdContainer" class="my-8 py-3 px-2 hidden">
-                            <p class="text-xs font-medium text-slate-500 mb-1">Reklam</p>
+                    <h2 class="text-base font-semibold text-slate-800">Blogdan Seçtiklerimiz</h2>
 
-                            <div class="ad-placeholder bg-white border-slate-300 text-center flex items-center justify-center p-4 rounded-xl"
-                                style="height: 250px; width: 100%;">
-                                <!-- ADSENSE 2/2: REKLAM BİRİMİ KODU (Slot Kodu) -->
-                                <ins class="adsbygoogle"
-                                     style="display:block"
-                                     data-ad-client="ca-pub-4702518283120384"
-                                     data-ad-slot="3374743614"
-                                     data-ad-format="auto"
-                                     data-full-width-responsive="true"></ins>
-                                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                            </div>
-                        </div>
-                        <!-- ADSENSE REKLAM ALANI YER TUTUCU SONU -->
-
-                        Blogdan Seçtiklerimiz
-                    </h2>
-
-                    <!-- "Tüm yazıları gör" blog listesine gitmeli -->
                     <button
                         type="button"
                         onclick="viewBlogList()"
@@ -358,21 +320,38 @@
             </section>
         </section>
 
+        <!-- BLOG -->
         <section id="page-blog" class="hidden space-y-6">
             <header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div>
-                    <h1 class="text-2xl font-semibold text-slate-900">
-                        Blog
-                    </h1>
+                    <h1 class="text-2xl font-semibold text-slate-900">Blog</h1>
                     <p class="text-sm text-slate-600">
                         Menü planlama, özel gün sofraları ve “yanında ne gider” rehberleri.
                     </p>
                 </div>
             </header>
 
+            <!-- ✅ Reklam alanı BLOG'a taşındı (içeriğe yakın) -->
+            <div id="topAdContainer" class="my-6 py-3 px-2 hidden">
+                <p class="text-xs font-medium text-slate-500 mb-1">Reklam</p>
+                <div
+                    class="ad-placeholder bg-white border-slate-300 text-center flex items-center justify-center p-4 rounded-xl"
+                    style="height: 250px; width: 100%;"
+                >
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4702518283120384"
+                         data-ad-slot="3374743614"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+
             <div id="blog-posts-container" class="space-y-4"></div>
         </section>
 
+        <!-- PRIVACY -->
         <section id="page-privacy" class="hidden space-y-4">
             <h1 class="text-2xl font-semibold text-slate-900">Gizlilik Politikası</h1>
             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 md:p-6 content-area text-sm text-slate-700">
@@ -416,6 +395,7 @@
                 </form>
             </div>
         </section>
+
     </main>
 
     <div id="cookieBanner" class="fixed bottom-3 inset-x-0 mx-auto max-w-xl bg-slate-900 text-slate-50 rounded-2xl shadow-2xl px-4 py-4 text-xs flex flex-col sm:flex-row items-start sm:items-center gap-3 border border-slate-700 hidden opacity-0 transition-opacity duration-300 z-50">
@@ -423,7 +403,7 @@
             <p class="font-semibold mb-1">Çerez Kullanımı</p>
             <p class="text-[11px] text-slate-300">
                 Deneyiminizi iyileştirmek, anonim analizler yapmak ve size reklam göstermek için çerezler kullanıyoruz. Detaylar için
-                <button onclick="showPage('privacy')" class="underline">Gizlilik Politikası</button>'nı inceleyebilirsiniz.
+                <button type="button" onclick="showPage('privacy')" class="underline">Gizlilik Politikası</button>'nı inceleyebilirsiniz.
             </p>
         </div>
         <div class="flex items-center gap-2">
@@ -431,6 +411,7 @@
             <button type="button" class="btn-soft text-[11px] px-3 py-1.5" onclick="acceptCookies()">Kabul Et</button>
         </div>
     </div>
+
 </div>
 
 <template id="dishDetailTemplate">
