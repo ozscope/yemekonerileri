@@ -19,26 +19,40 @@ const blogPostsData = [
 
 <hr />
 
-<h2><strong>1. Antrikot ve Steak İçin Modern Dokunuşlar</h2></strong>
+<h2><strong>1. Antrikot ve Steak İçin Modern Dokunuşlar</strong></h2>
         <p>Yüksek ateşte mühürlenmiş bir etin yanına ağır soslar yerine, etin suyunu dengeleyecek seçenekler tercih edilmelidir.</p>
         <ul>
             <li><strong>Baharatlı Elma Dilim Patates:</strong> Taze kekik ve sarımsak tozuyla harmanlanmış fırın patates, dışı çıtır içi yumuşak dokusuyla steak türü etlerin en iyi dostudur.</li>
             <li><strong>Kremalı Ispanak Sote:</strong> Restoran usulü bir sunum için muskat rendesi ve az miktar krema ile hazırlanan ıspanak, etin yanına şık bir eşlikçidir.</li>
         </ul>
 
-<h2><strong>2. Sulu Et Yemeklerinin Geleneksel Eşlikçileri</h2></strong>
+<h2><strong>2. Sulu Et Yemeklerinin Geleneksel Eşlikçileri</strong></h2>
         <p>Tencere yemeklerinde amaç, yemeğin sosuyla uyum sağlayacak ve o suyu emecek lezzetler sunmaktır.</p>
         <ul>
             <li><strong>Şehriyeli Pirinç Pilavı:</strong> Tane tane dökülen, tereyağı kokulu bir pilav, sulu et yemeklerinin vazgeçilmezidir.</li>
             <li><strong>Sebzeli Bulgur Pilavı:</strong> Daha doyurucu ve lifli bir seçenek arayanlar için domatesli ve biberli bulgur pilavı harika bir alternatiftir.</li>
         </ul>
 
-<h2><strong>3. Hafif ve Fit Seçenekler (1200 Kalori Altı)</h2></strong>
+<h2><strong>3. Hafif ve Fit Seçenekler (1200 Kalori Altı)</strong></h2>
         <p>Sitemizin <strong>"1200 kcal altı"</strong> filtresine uygun, hafif bir akşam yemeği planlıyorsanız bu garnitürler tam size göre:</p>
         <ul>
             <li><strong>Izgara Kuşkonmaz ve Çeri Domates:</strong> Sadece zeytinyağı ve deniz tuzu ile fırınlanmış kuşkonmazlar, protein odaklı beslenenler için idealdir.</li>
             <li><strong>Roka ve Parmesan Salatası:</strong> Limon ve zeytinyağı soslu sade bir roka salatası, etin ağırlığını dengeler ve ferahlık verir.</li>
         </ul>
+       
+<h2><strong>4. Klasik ve Zamansız Garnitürler</strong></h2>
+<p>Her sofraya uyum sağlayan, et ve tavuk yemeklerinin yanında güvenle tercih edilebilecek klasik garnitürler:</p>
+
+<ul>
+  <li><strong>Patates Püresi:</strong> Tereyağı ve az süt ile hazırlanan pürüzsüz patates püresi, özellikle sulu et ve köfte yemekleriyle mükemmel uyum sağlar.</li>
+
+  <li><strong>Zeytinyağlı Bezelye:</strong> Hafif ve sebze ağırlıklı bir tabak isteyenler için dengeli bir eşlikçidir.</li>
+
+  <li><strong>Yoğurtlu Havuç Salatası:</strong> Sarımsaklı yoğurt ve rendelenmiş havuçla hazırlanan bu meze, etin yoğunluğunu dengeler.</li>
+
+  <li><strong>Mantar Sote:</strong> Tereyağı ve kekikle sotelenmiş mantarlar, özellikle steak ve ızgara etlerin yanında çok yakışır.</li>
+</ul>
+
 
         <blockquote style="background: #fdf2e9; border-left: 10px solid #e67e22; margin: 1.5em 10px; padding: 0.5em 10px;">
             <strong>Şefin İpucu:</strong> Etinizi dinlendirirken garnitürlerinizi servis tabağına hazırlayın. Unutmayın, sıcak etin yanına soğuk garnitür (salata hariç) tabağın genel ısısını düşürebilir.
