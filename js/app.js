@@ -328,9 +328,9 @@ function renderGlutenFreeBlogPost(container, post) {
 
         <article class="space-y-6 bg-transparent">
             <header class="text-center max-w-3xl mx-auto space-y-4 mb-8">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-indigo-600">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-600">
                     🌾 Glutensiz Menü Rehberi
-                </h2>
+                </h1>
                 <p class="text-lg text-stone-600 leading-relaxed">
                     Glutensiz beslenmenize çeşitlilik katacak, dengeli ve doyurucu
                     <strong>7 farklı tam menü</strong> önerisi. Her menü ana yemek, yan lezzet
@@ -349,25 +349,17 @@ function renderGlutenFreeBlogPost(container, post) {
             <section id="menu-explorer-gluten" class="scroll-mt-20">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <div>
-                        <h3 class="text-2xl font-bold text-stone-900">7 Günlük Tam Menüler</h3>
-                        <p class="text-stone-600 text-sm">Haftanın her günü için farklı bir glutensiz sofra deneyimi.</p>
+                        <h2 class="text-2xl font-bold text-stone-900">7 Günlük Tam Menüler</h2>
+                        <p class="text-stone-600 text-sm">Her biri ana yemek + yan lezzet + (varsa) tatlı/meyve içerir.</p>
                     </div>
                 </div>
 
                 <div id="menusGridGluten" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
-            <section class="mt-12">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-6">
-                    <div>
-                        <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2">
-                            <span>🔒</span> Glutensiz Beslenmenin Temel Prensipleri
-                        </h3>
-                        <p class="text-stone-600 text-sm mt-1">Hassasiyetinizi korumak için bilmeniz gerekenler.</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="rulesContainerGluten"></div>
+            <section class="mt-10">
+                <h2 class="text-xl font-bold text-stone-800 mb-3">🔒 Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2>
+                <div id="glutenTipsContainer" class="bg-white p-5 rounded-2xl shadow-sm border border-stone-100 text-sm text-stone-700 content-area"></div>
             </section>
 
             <hr class="my-6 border-stone-200">
@@ -376,17 +368,20 @@ function renderGlutenFreeBlogPost(container, post) {
                 <h2 class="text-lg font-semibold mb-2">İlgini Çekebilecek Diğer Menü Rehberleri</h2>
                 <ul class="list-disc list-inside text-sm text-indigo-600 space-y-1 ml-4">
                     <li>
-                        <a href="?page=blog&post=pratik-menu-onerileri" class="underline hover:text-indigo-800 transition" onclick="viewBlogPost('pratik-menu-onerileri'); return false;">
+                        <a href="?page=blog&post=pratik-menu-onerileri" class="underline hover:text-indigo-800 transition"
+                           onclick="viewBlogPost('pratik-menu-onerileri'); return false;">
                             Pratik Menü Önerileri: 30 Dakikada Hazırlanan Menüler
                         </a>
                     </li>
                     <li>
-                        <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="underline hover:text-indigo-800 transition" onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
+                        <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="underline hover:text-indigo-800 transition"
+                           onclick="viewBlogPost('pilav-yanina-hangi-yemek-gider'); return false;">
                             Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
                         </a>
                     </li>
                     <li>
-                        <a href="?page=blog&post=etin-yanina-ne-gider" class="underline hover:text-indigo-800 transition" onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
+                        <a href="?page=blog&post=etin-yanina-ne-gider" class="underline hover:text-indigo-800 transition"
+                           onclick="viewBlogPost('etin-yanina-ne-gider'); return false;">
                             Et Yemeklerinin Yanına Ne Gider?
                         </a>
                     </li>
@@ -409,23 +404,176 @@ function renderGlutenFreeBlogPost(container, post) {
         </div>
     `;
 
-    const glutenRulesData = [
-        { title: "Etiket Okuma", icon: "🏷️", desc: "Soslar, hazır karışımlar ve işlenmiş ürünler gizli gluten içerebilir. Daima etiketi kontrol edin." },
-        { title: "Çapraz Bulaş", icon: "❌", desc: "Aynı yağda kızartma, aynı tencerede pişirme veya aynı kesme tahtasını kullanma riskine dikkat edin." },
-        { title: "Çeşitlilik", icon: "🌾", desc: "Karabuğday, kinoa, mısır, pirinç, amarant gibi glutensiz tahılları menünüze yayın." },
-        { title: "Ev Yapımı", icon: "🏡", desc: "İçeriğini bildiğiniz ev yapımı tarifleri tercih edin. Kontrol sizde olsun." }
-    ];
+    // --- 1) data.js içindeki post.content'ten 7 menüyü ayrıştır ---
+    const parsed = parseGlutenMenusFromHtml(post?.content || '');
 
-    const rulesContainer = document.getElementById('rulesContainerGluten');
-    if (rulesContainer) {
-        rulesContainer.innerHTML = glutenRulesData.map(rule => `
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 hover:border-indigo-200 transition cursor-default group">
-                <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">${rule.icon}</div>
-                <h4 class="font-bold text-stone-800 mb-1 text-sm">${rule.title}</h4>
-                <p class="text-xs text-stone-500 leading-snug">${rule.desc}</p>
-            </div>
-        `).join('');
+    // --- 2) Menü kartlarını bas ---
+    const grid = document.getElementById('menusGridGluten');
+    if (grid) {
+        if (!parsed.menus.length) {
+            grid.innerHTML = `
+                <div class="md:col-span-2 bg-white rounded-2xl border border-stone-200 p-5 text-sm text-stone-600">
+                    Menü listesi bulunamadı. İçerikteki <code>&lt;h2&gt;</code> başlık formatı değişmiş olabilir.
+                </div>
+            `;
+        } else {
+            grid.innerHTML = parsed.menus.map(m => `
+                <article class="bg-white rounded-2xl shadow-sm border border-stone-100 p-5 hover:border-indigo-200 transition">
+                    <div class="flex items-start justify-between gap-3">
+                        <h3 class="text-base md:text-lg font-extrabold text-stone-900 leading-snug">
+                            ${escapeHtml(m.title)}
+                        </h3>
+                        ${m.kcal ? `<span class="shrink-0 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">${escapeHtml(m.kcal)}</span>` : ''}
+                    </div>
+
+                    ${m.intro ? `<p class="mt-2 text-sm text-stone-600 leading-relaxed">${escapeHtml(m.intro)}</p>` : ''}
+
+                    ${m.itemsHtml ? `
+                        <div class="mt-4">
+                            <ul class="space-y-2">
+                                ${m.itemsHtml}
+                            </ul>
+                        </div>
+                    ` : ''}
+
+                    ${m.total ? `
+                        <div class="mt-4 text-sm font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-xl px-3 py-2">
+                            ${escapeHtml(m.total)}
+                        </div>
+                    ` : ''}
+                </article>
+            `).join('');
+        }
     }
+
+    // --- 3) "Nelere Dikkat Etmeli?" kısmını bas ---
+    const tips = document.getElementById('glutenTipsContainer');
+    if (tips) {
+        tips.innerHTML = parsed.tipsHtml || `
+            <p>İpuçları bölümü bulunamadı.</p>
+        `;
+    }
+
+    // --- Twitter share ---
+    const twitterBtn = document.getElementById("twitterShareBtn");
+    if (twitterBtn) {
+        twitterBtn.href =
+            'https://twitter.com/intent/tweet?text=' +
+            encodeURIComponent(post.title) +
+            '&url=' +
+            encodeURIComponent(window.location.href);
+    }
+}
+
+/**
+ * post.content HTML'inden:
+ * - Menü 1..7 bloklarını (h2 ile başlayan) çıkarır
+ * - Her menünün: başlık, kcal etiketi, intro paragraf, ul maddeleri, toplam satırını yakalar
+ * - "Glutensiz Menü Planlarken..." bölümünü ayrı alır
+ */
+function parseGlutenMenusFromHtml(contentHtml) {
+    const html = String(contentHtml || '');
+
+    // Menüler genellikle: <h2><strong>1. Menü: ... (~980 kcal)</strong></h2>
+    // Bölümler arası: <hr />
+    // Bu yüzden menüleri h2'lere göre yakalıyoruz.
+    const menuRegex = /<h2>\s*<strong>\s*(\d+)\.\s*Menü:\s*([\s\S]*?)<\/strong>\s*<\/h2>\s*([\s\S]*?)(?=(<hr\s*\/?>\s*<h2>\s*<strong>\s*\d+\.\s*Menü:)|(<strong>\s*<h2>)|$)/gi;
+
+    const menus = [];
+    let match;
+
+    while ((match = menuRegex.exec(html)) !== null) {
+        const index = match[1]; // "1"
+        const fullTitle = stripTags(match[2]).trim(); // başlık + (~kcal)
+        const bodyHtml = match[3] || '';
+
+        // kcal parçasını ayıkla: "(~980 kcal)" veya "~980 kcal"
+        const kcalMatch = fullTitle.match(/\(~?\s*\d+\s*kcal\)/i) || fullTitle.match(/~?\s*\d+\s*kcal/i);
+        const kcal = kcalMatch ? kcalMatch[0].replace(/[()]/g, '').trim() : '';
+
+        // intro: ilk <p> (menü açıklaması)
+        const introMatch = bodyHtml.match(/<p>\s*([\s\S]*?)<\/p>/i);
+        const intro = introMatch ? stripTags(introMatch[1]).trim() : '';
+
+        // liste maddeleri: ilk <ul>...</ul>
+        const ulMatch = bodyHtml.match(/<ul>\s*([\s\S]*?)<\/ul>/i);
+        let itemsHtml = '';
+        if (ulMatch) {
+            // li'leri al, her birini basit kart satırı yap
+            const liRegex = /<li>\s*([\s\S]*?)<\/li>/gi;
+            const lis = [];
+            let lim;
+            while ((lim = liRegex.exec(ulMatch[1])) !== null) {
+                const clean = stripTags(lim[1]).trim();
+                if (!clean) continue;
+                lis.push(`
+                    <li class="flex items-start gap-3 bg-stone-50 border border-stone-200 rounded-xl p-3">
+                        <span class="mt-0.5">✅</span>
+                        <span class="text-sm text-stone-700 leading-relaxed">${escapeHtml(clean)}</span>
+                    </li>
+                `);
+            }
+            itemsHtml = lis.join('');
+        }
+
+        // toplam: "Toplam tahmini enerji" geçen satır
+        const totalMatch = bodyHtml.match(/<p>\s*<strong>\s*Toplam[\s\S]*?<\/strong>\s*([\s\S]*?)<\/p>/i)
+            || bodyHtml.match(/<p>\s*<strong>\s*Toplam[\s\S]*?<\/strong>\s*<\/p>/i)
+            || bodyHtml.match(/<p>\s*<strong>\s*Toplam[\s\S]*?<\/strong>\s*([^<]*)<\/p>/i);
+
+        let total = '';
+        if (totalMatch) {
+            total = stripTags(totalMatch[0]).replace(/\s+/g, ' ').trim();
+        }
+
+        menus.push({
+            index: Number(index),
+            title: `${index}. Menü: ${fullTitle.replace(/\s*\(~?\s*\d+\s*kcal\)\s*/i, '').trim()}`,
+            kcal,
+            intro,
+            itemsHtml,
+            total
+        });
+    }
+
+    // İpuçları bölümü: <strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong> şeklinde gelmiş
+    // Bunu güvenli yakalayalım:
+    let tipsHtml = '';
+    const tipsRegex = /<strong>\s*<h2>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/h2>\s*<\/strong>\s*([\s\S]*)$/i;
+    const tipsMatch = html.match(tipsRegex);
+    if (tipsMatch && tipsMatch[1]) {
+        // Bu bölümden ilk <ul> ... </ul> + altındaki <p> (varsa) alınsın
+        const tipsUl = tipsMatch[1].match(/<ul>\s*[\s\S]*?<\/ul>/i);
+        const tipsP = tipsMatch[1].match(/<p>\s*[\s\S]*?<\/p>/i);
+
+        tipsHtml = `
+            ${tipsUl ? tipsUl[0] : ''}
+            ${tipsP ? tipsP[0] : ''}
+        `.trim();
+
+        // Eğer ul/p yoksa direkt kalan texti basitçe ver
+        if (!tipsHtml) {
+            tipsHtml = `<p>${escapeHtml(stripTags(tipsMatch[1]).trim())}</p>`;
+        }
+    }
+
+    // Menüler mutlaka 1..7 sırada olsun
+    menus.sort((a, b) => a.index - b.index);
+
+    return { menus, tipsHtml };
+}
+
+// --- küçük yardımcılar ---
+function stripTags(s) {
+    return String(s || '').replace(/<[^>]*>/g, '');
+}
+function escapeHtml(s) {
+    return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
 
 // ============================
