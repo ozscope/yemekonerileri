@@ -562,14 +562,12 @@ yazısından çok faydalanacaktır.
 `
   },
 
-  {
+      {  
     id: 3,
     category: "Özel Gün",
-    title:
-      "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi) – En Şık ve Doyurucu Seçenekler",
+    title: "🎄 Yılbaşı Sofrası İçin 10 Özel Menü (2025 Rehberi) – En Şık ve Doyurucu Seçenekler",
     slug: "yilbasi-sofra-menu-onerileri",
-    description:
-      "2025 için yılbaşı sofrasına uygun 10 özel menü! Etli, deniz ürünlü, vegan, glutensiz ve klasik seçeneklerle şık ve doyurucu yılbaşı menüleri keşfedin.",
+    description: "2025 için yılbaşı sofrasına uygun 10 özel menü! Etli, deniz ürünlü, vegan, glutensiz ve klasik seçeneklerle şık ve doyurucu yılbaşı menüleri keşfedin.",
     content: `
 <p>
 Yılbaşı akşamı sofranın hem göze hem mideye hitap etmesini istiyorsan, planlı bir menü hazırlamak büyük fark yaratır.
@@ -584,8 +582,586 @@ tarifine ve porsiyon büyüklüğüne göre değişebilir.
 
 <hr>
 
+<h2>🕯️ 1) Klasik Türk Yılbaşı Menüsü</h2>
+<p>Türk mutfağının sevilen tatlarıyla, geleneksel bir yılbaşı sofrası.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Haydari, Acılı Ezme, Köz Patlıcan, Rus Salatası</td>
+      <td>~600 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Ezogelin Çorbası</td>
+      <td>~150 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Cevizli Gavurdağı Salatası</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Fırında Bütün Hindi + İç Pilav</td>
+      <td>~550 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Fırın Sütlaç</td>
+      <td>~350 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Rakı veya Kırmızı Şarap</td>
+      <td>~150 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Şalgam Suyu veya Ayran</td>
+      <td>~80 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1920 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1850 kcal</strong></p>
+
+<hr>
+
+<h2>🎅 2) Izgara Etli Yılbaşı Menüsü</h2>
+<p>Kırmızı et severler için doyurucu ve şık bir yılbaşı menüsü.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Humus, Fava, Köz Biber, Mantar Sote</td>
+      <td>~650 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Kremalı Mantar Çorbası</td>
+      <td>~180 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Roka, Parmesan &amp; Nar Ekşili Salata</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Izgara Antrikot (Mantar soslu)</td>
+      <td>~900 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Çikolatalı Sufle</td>
+      <td>~400 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Kırmızı Şarap</td>
+      <td>~160 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Soda + Limon</td>
+      <td>~70 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~2410 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~2320 kcal</strong></p>
+
+<hr>
+
+<h2>🥂 3) Deniz Ürünlü Şık Yılbaşı Menüsü</h2>
+<p>Daha hafif ama gösterişli bir yılbaşı sofrası isteyenlere.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Deniz Börülcesi, Fava, Hardal Soslu Hamsi, Girit Ezmesi</td>
+      <td>~500 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Kremalı Mantar Çorbası</td>
+      <td>~230 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Akdeniz yeşillikli salata</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Fırında Somon + Kuşkonmaz</td>
+      <td>~400 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Limonlu Cheesecake</td>
+      <td>~300 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Beyaz Şarap</td>
+      <td>~140 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Soda + Limon</td>
+      <td>~10 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1690 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1560 kcal</strong></p>
+
+<hr>
+
+<h2>🌿 4) Vejetaryen Yılbaşı Menüsü</h2>
+<p>Et tercih etmeyenler için dengeli ve renkli bir yılbaşı menüsü. (Vejetaryen)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Kabak Mücver, Yoğurtlu Havuç Tarator, Patlıcan Ezmesi, Zeytinyağlı Enginar</td>
+      <td>~520 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Mercimek Çorbası</td>
+      <td>~150 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Kırmızı lahana &amp; Yeşillik Salatası</td>
+      <td>~110 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Sebzeli Kremalı Fırın Makarna</td>
+      <td>~650 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Fırın Helva veya İrmik Helvası</td>
+      <td>~320 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Beyaz Şarap</td>
+      <td>~140 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Ayran</td>
+      <td>~90 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1890 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1840 kcal</strong></p>
+
+<hr>
+
+<h2>🌱 5) Vegan Yılbaşı Menüsü</h2>
+<p>Tamamen hayvansal ürün içermeyen, hafif ama doyurucu bir yılbaşı sofrası. (Vegan)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Zeytinyağlı Barbunya, Köz Sebze Trio, Avokadolu Humus, Zeytinyağlı Brokoli</td>
+      <td>~480 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Zerdeçallı Bal Kabağı Çorbası</td>
+      <td>~200 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Limonlu Roka &amp; Domates Salatası</td>
+      <td>~100 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Fırında Sebzeli Kinoa</td>
+      <td>~600 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Şekersiz Kakao &amp; Hurma Topları</td>
+      <td>~260 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Vegan uyumlu Beyaz Şarap</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Maden Suyu + Limon</td>
+      <td>~5 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1760 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1645 kcal</strong></p>
+
+<hr>
+
+<h2>✨ 6) Glutensiz Yılbaşı Menüsü</h2>
+<p>Bu menüde ekmek, makarna, bulgur gibi gluten içeren ürünler yer almıyor. (Glutensiz)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Yoğurtlu Semizotu, Zeytinyağlı Bamya, Fırınlanmış Kabak, Somonlu Avokado Ezmesi</td>
+      <td>~450 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Sebzeli Pirinç Çorbası</td>
+      <td>~130 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Turunçlu Yeşil Salata</td>
+      <td>~90 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Izgara Levrek</td>
+      <td>~550 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Unsuz Çikolatalı Bitter Mousse</td>
+      <td>~280 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Beyaz Şarap</td>
+      <td>~130 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Şekersiz Limonata</td>
+      <td>~110 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1630 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1610 kcal</strong></p>
+
+<hr>
+
+<h2>🍽️ 7) Hafif &amp; Şık Yılbaşı Menüsü</h2>
+<p>Hem göze hitap eden hem de nispeten hafif bir yılbaşı sofrası.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Yoğurtlu Semizotu, Fırın Mantar, Köz Biber, Nohutlu Humus</td>
+      <td>~420 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Domates Çorbası</td>
+      <td>~70 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Mevsim Salatası</td>
+      <td>~90 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Tavuk Sote + Az Yağlı Pirinç Pilavı</td>
+      <td>~600 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Meyveli Parfe</td>
+      <td>~250 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Beyaz Şarap</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Soda</td>
+      <td>~50 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~1550 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~1480 kcal</strong></p>
+
+<hr>
+
+<h2>🔥 8) Acılı Sevenlere Yılbaşı Menüsü</h2>
+<p>Baharat ve acı sevenler için, bol lezzetli bir yılbaşı menüsü.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Acılı Ezme, Şakşuka, Atom, Jalapeno Turşusu</td>
+      <td>~600 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Yayla Çorbası</td>
+      <td>~170 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Soğanlı Domates Salatası</td>
+      <td>~100 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Adana Kebap + Lavaş + Bulgur Pilavı</td>
+      <td>~1050 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Künefe</td>
+      <td>~380 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Rakı</td>
+      <td>~220 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Acılı Şalgam Suyu</td>
+      <td>~40 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~2520 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~2340 kcal</strong></p>
+
+<hr>
+
+<h2>🍷 9) Gurme Yılbaşı Menüsü</h2>
+<p>Özenli sunumlar ve yoğun aromalarla “fine dining” havasında bir yılbaşı sofrası.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Trüflü Patates Püresi, Somon Carpaccio, Zeytinyağlı Enginar, Köz Süt Kabağı</td>
+      <td>~650 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Kremalı Bal Kabağı Çorbası</td>
+      <td>~180 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Balsamikli Roka Salatası</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Kuzu incik + Firik Pilavı</td>
+      <td>~1080 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Tiramisu</td>
+      <td>~420 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Kırmızı Şarap</td>
+      <td>~170 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Soğuk Bitki Çayı veya Hafif gazoz</td>
+      <td>~60 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~2620 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~2510 kcal</strong></p>
+
+<hr>
+
+<h2>🧀 10) Peynir Ağırlıklı Yılbaşı Sofrası</h2>
+<p>Peynir sevenler için zengin ve doyurucu bir yılbaşı menüsü.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>İçerik</th>
+      <th>Yaklaşık Kalori</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mezeler</strong></td>
+      <td>Beyaz Peynir Tabağı, Lorlu Kabak, Zeytin Ezmeli Ekmek Üstü, Köz Domates &amp; Peynirli Meze</td>
+      <td>~580 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Çorba</strong></td>
+      <td>Domates Çorbası (Kaşarlı)</td>
+      <td>~150 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Salata</strong></td>
+      <td>Akdeniz Salatası (Peynirli)</td>
+      <td>~120 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Ana Yemek</strong></td>
+      <td>Fırında Kaşarlı Mantarlı Tavuk</td>
+      <td>~800 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>Tatlı</strong></td>
+      <td>Fırın Kazandibi</td>
+      <td>~350 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkollü)</strong></td>
+      <td>Kırmızı Şarap</td>
+      <td>~150 kcal</td>
+    </tr>
+    <tr>
+      <td><strong>İçecek (Alkolsüz)</strong></td>
+      <td>Ayran</td>
+      <td>~90 kcal</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Toplam (Alkollü içecek ile): ~2150 kcal</strong><br>
+<strong>Toplam (Alkolsüz içecek ile): ~2090 kcal</strong></p>
+
+<hr>
+
+<h2>🎁 Son Söz: Yılbaşı Sofranı Kişiselleştir</h2>
+
+<p>
+Bu 10 yılbaşı menüsü; et severler, deniz ürünlerini sevenler, 
+<strong>vejetaryen</strong>, <strong>vegan</strong> ve <strong>glutensiz</strong> beslenenler için çeşitli seçenekler sunuyor.
+</p>
+
+<p>İstersen aynı kategorideki mezeleri değiştirerek kendi tarzını yaratabilir, tatlıyı daha hafif seçeneklerle değiştirebilir,
+alkollü veya alkolsüz içeceğe göre toplam kalorini dengeleyebilirsin. </p>
+
+<p>
+Yılbaşı menünüzde kırmızı et yer alıyorsa, 
+<strong><a href="https://yanindanevar.com/?page=blog&post=etin-yanina-ne-gider">etin yanına ne gider</a></strong>
+rehberine göz atabilirsiniz.
+</p>
+
+<p>
+Pilav çeşitlerini doğru ana yemekle eşleştirmek için 
+<strong><a href="https://yanindanevar.com/?page=blog&post=pilav-yanina-hangi-yemek-gider">pilav rehberi</a></strong>
+yazımızı inceleyebilirsiniz.
+</p>
+
+<p>
+Menünüzü hafifletmek isterseniz,
+<strong><a href="https://yanindanevar.com/?page=blog&post=zeytinyagli-yanina-ne-gider">zeytinyağlı yemeklerin yanına ne gider</a></strong>
+listesi size ilham verebilir.
+</p>
+
 `
-  },
+    },
 
   {
     id: 2,
