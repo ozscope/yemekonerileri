@@ -1,6 +1,8 @@
 // app.js - tek dosya, query-param router kullanır (?page=blog&post=slug)
 
-// --- Yardımcı fonksiyonlar ---
+// ============================
+// Yardımcı fonksiyonlar
+// ============================
 function normalizeText(text) {
     if (!text) return '';
     return text.toLowerCase()
@@ -25,7 +27,9 @@ function createListHtml(items, colorClass) {
     `).join('');
 }
 
-// --- Sidebar ---
+// ============================
+// Sidebar
+// ============================
 function showSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -46,26 +50,61 @@ function hideSidebar() {
     setTimeout(() => overlay.classList.add('hidden'), 300);
 }
 
-// --- Ad yönetimi ---
+// ============================
+// AdSense yönetimi (GÜNCEL)
+// Kural: Home'da reklam yok. Blog listesinde reklam yok.
+// Sadece tekil blog yazısı (postSlug var) açılınca göster.
+// ============================
+let adsInitialized = false;
+
+function safeAdsPush() {
+    if (!window.adsbygoogle) window.adsbygoogle = [];
+    try {
+        window.adsbygoogle.push({});
+    } catch (e) {
+        console.warn("adsbygoogle push hatası (görmezden gelinebilir):", e);
+    }
+}
+
 function hideTopAd() {
     const topAd = document.getElementById('topAdContainer');
     if (topAd && !topAd.classList.contains('hidden')) topAd.classList.add('hidden');
 }
+
 function showTopAd() {
     const topAd = document.getElementById('topAdContainer');
-    if (topAd && topAd.classList.contains('hidden')) topAd.classList.remove('hidden');
+    if (!topAd) return;
+
+    if (topAd.classList.contains('hidden')) topAd.classList.remove('hidden');
+
+    // Reklamı tek sefer initialize et (SPA içinde tekrar tekrar basmasın)
+    if (!adsInitialized) {
+        adsInitialized = true;
+        requestAnimationFrame(() => safeAdsPush());
+    }
 }
 
 function hideBottomAd() {
     const bottomAd = document.getElementById('bottomAdContainer');
     if (bottomAd && !bottomAd.classList.contains('hidden')) bottomAd.classList.add('hidden');
 }
+
 function showBottomAd() {
+    // Home'da reklam göstermiyoruz; bu fonksiyon güvenlik için kalsın.
     const bottomAd = document.getElementById('bottomAdContainer');
-    if (bottomAd && bottomAd.classList.contains('hidden')) bottomAd.classList.remove('hidden');
+    if (!bottomAd) return;
+
+    if (bottomAd.classList.contains('hidden')) bottomAd.classList.remove('hidden');
+
+    if (!adsInitialized) {
+        adsInitialized = true;
+        requestAnimationFrame(() => safeAdsPush());
+    }
 }
 
-// --- Hero butonları ---
+// ============================
+// Hero butonları
+// ============================
 function handleMenuClick(type) {
     let slug = null;
     if (type === 'glutensiz') slug = 'glutensiz-menu-onerileri';
@@ -76,7 +115,9 @@ function handleMenuClick(type) {
     viewBlogPost(slug);
 }
 
-// --- Router & sayfa geçişleri (query-param based) ---
+// ============================
+// Router & sayfa geçişleri (query-param based)
+// ============================
 function showPage(pageId, fromSidebar = false) {
     const pagesToHide = ['page-home', 'page-blog', 'page-privacy'];
     pagesToHide.forEach(id => {
@@ -87,7 +128,7 @@ function showPage(pageId, fromSidebar = false) {
     const target = document.getElementById(`page-${pageId}`);
     if (target) target.classList.remove('hidden');
 
-    // Reklamları başlangıçta gizle
+    // Reklamları her sayfa geçişinde kapat (kararı loadBlogContent verir)
     hideTopAd();
     hideBottomAd();
 
@@ -109,17 +150,15 @@ function showPage(pageId, fromSidebar = false) {
             params.delete('post');
         } else if (pageId === 'blog') {
             params.set('page', 'blog');
-            // post param'ını değiştirmiyoruz burada; viewBlogPost ile set edilebilir
+            // post param'ını değiştirmiyoruz; viewBlogPost set edebilir
         } else if (pageId === 'privacy') {
             params.set('page', 'privacy');
             params.delete('post');
         }
 
-        // pushState ile URL güncelle
-        window.history.pushState({}, '', url.pathname + '?' + params.toString());
+        window.history.pushState({}, '', url.pathname + (params.toString() ? '?' + params.toString() : ''));
     } catch (e) {
-        // Local dosyalarda URL güncellemesi desteklenmez.
-        // sessizce devam et.
+        // Local dosyalarda URL güncellemesi desteklenmeyebilir
     }
 
     // Blog sayfası için query'den içerik yükle
@@ -127,6 +166,11 @@ function showPage(pageId, fromSidebar = false) {
         const params = new URLSearchParams(window.location.search);
         const slug = params.get('post');
         loadBlogContent(slug);
+    }
+
+    // Home'a dönünce önerileri yenile
+    if (pageId === 'home') {
+        renderHomeBlogSection();
     }
 }
 
@@ -156,23 +200,27 @@ function navigateToQuery(paramsObj) {
     try {
         const url = new URL(window.location);
         const params = url.searchParams;
-        // apply paramsObj (object of key:value or value null to delete)
+
         Object.keys(paramsObj).forEach(k => {
             const v = paramsObj[k];
             if (v === null) params.delete(k);
             else params.set(k, v);
         });
+
         window.history.pushState({}, '', url.pathname + (params.toString() ? '?' + params.toString() : ''));
     } catch (e) {}
     handleRouteFromLocation();
 }
 window.navigateToQuery = navigateToQuery;
 
-// --- Home blog önerileri ---
+// ============================
+// Home blog önerileri
+// ============================
 function renderHomeBlogSection() {
     if (!window.blogPostsData || !Array.isArray(window.blogPostsData)) return;
     const container = document.getElementById('home-blog-list');
     if (!container) return;
+
     container.innerHTML = '';
     const sorted = [...window.blogPostsData].sort((a, b) => b.id - a.id);
     const latest = sorted.slice(0, 3);
@@ -205,10 +253,12 @@ function renderHomeBlogSection() {
     });
 }
 
-// --- Blog navigation (query param) ---
+// ============================
+// Blog navigation (query param)
+// ============================
 function viewBlogPost(slug) {
     if (!slug) return;
-    // set query params page=blog & post=slug
+
     try {
         const url = new URL(window.location);
         const params = url.searchParams;
@@ -238,9 +288,10 @@ function viewBlogList() {
     loadBlogContent(null);
 }
 
-/* ============ ÖZEL BLOG LAYOUT FONKSİYONLARI ============ */
-
-/* renderDefaultBlogPost */
+// ============================
+// ÖZEL BLOG LAYOUT FONKSİYONLARI
+// (Senin mevcut fonksiyonların korunmuştur.)
+// ============================
 function renderDefaultBlogPost(container, post) {
     container.innerHTML = `
         <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
@@ -269,7 +320,6 @@ function renderDefaultBlogPost(container, post) {
     `;
 }
 
-/* renderGlutenFreeBlogPost */
 function renderGlutenFreeBlogPost(container, post) {
     container.innerHTML = `
         <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
@@ -304,9 +354,7 @@ function renderGlutenFreeBlogPost(container, post) {
                     </div>
                 </div>
 
-                <div id="menusGridGluten" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <!-- Menü kartları burada render ediliyor (kod daha önceki halinde korunmuştur) -->
-                </div>
+                <div id="menusGridGluten" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </section>
 
             <section class="mt-12">
@@ -361,7 +409,6 @@ function renderGlutenFreeBlogPost(container, post) {
         </div>
     `;
 
-    // Basit kurallar render - örnek veri:
     const glutenRulesData = [
         { title: "Etiket Okuma", icon: "🏷️", desc: "Soslar, hazır karışımlar ve işlenmiş ürünler gizli gluten içerebilir. Daima etiketi kontrol edin." },
         { title: "Çapraz Bulaş", icon: "❌", desc: "Aynı yağda kızartma, aynı tencerede pişirme veya aynı kesme tahtasını kullanma riskine dikkat edin." },
@@ -381,14 +428,16 @@ function renderGlutenFreeBlogPost(container, post) {
     }
 }
 
-/* ============ PRATİK & YILBAŞI RENDERS (özet) ============ */
-/* Not: Burada pratik/yılbaşı işlevleri orijinal kodunla birebir aynı şekilde bırakıldı.
-   Eğer tam kod bloğunu da istersen tekrar ekleyebilirim; mevcut dosyanda zaten fonksiyonlar vardı. */
-
-/* ============ BLOG İÇERİK YÜKLEYİCİ ============ */
+// ============================
+// BLOG İÇERİK YÜKLEYİCİ (GÜNCEL)
+// Reklam yalnızca tekil yazıda gösterilir
+// ============================
 function loadBlogContent(postSlug = null) {
     const container = document.getElementById('blog-posts-container');
     if (!container) return;
+
+    // Güvenlik: Home reklamı yok, bottom reklamı yok
+    hideBottomAd();
 
     const data = (typeof window !== 'undefined' && Array.isArray(window.blogPostsData))
         ? window.blogPostsData
@@ -406,71 +455,85 @@ function loadBlogContent(postSlug = null) {
 
     container.innerHTML = '';
 
-    if (postSlug) {
-        const post = data.find(p => p.slug === postSlug);
-        if (!post) {
-            container.innerHTML = `
-                <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">← Blog listesine dön</button>
-                <div class="p-6 bg-white rounded-2xl shadow-xl">
-                    <p class="text-gray-800 font-semibold mb-2">Yazı bulunamadı.</p>
-                    <p class="text-sm text-gray-500">Bağlantı eski olabilir veya yazı kaldırılmış olabilir.</p>
-                </div>
+    // ✅ Blog liste: reklam yok
+    if (!postSlug) {
+        hideTopAd();
+        document.title = "Blog - Yanında Ne Yiyelim?";
+
+        data.forEach(post => {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = post.content || `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
+            const firstP = tempDiv.querySelector('p');
+            const previewText = firstP ? firstP.innerText.substring(0, 100) : 'İçerik önizlemesi...';
+
+            container.innerHTML += `
+                <article class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
+                    <span class="text-xs font-bold text-green-600 uppercase">${post.category || 'Blog'}</span>
+                    <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
+                    <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
+                    <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-blue-600 font-semibold text-sm hover:underline">
+                        Devamını Oku →
+                    </button>
+                </article>
             `;
-            hideTopAd();
-            return;
-        }
+        });
 
-        if (post.metaTitle) document.title = post.metaTitle;
-        else document.title = `${post.title} - Yanında Ne Yiyelim?`;
-
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            if (post.metaDescription) metaDesc.setAttribute('content', post.metaDescription);
-            else metaDesc.setAttribute('content', 'Blog yazılarımızı keşfedin. Menü önerileri, özel gün sofraları ve yanına ne gider içerikleri.');
-        }
-
-        // Eğer özel render fonksiyonların varsa çağır
-        if (typeof renderGlutenFreeBlogPost === 'function' && post.slug === 'glutensiz-menu-onerileri') {
-            renderGlutenFreeBlogPost(container, post);
-        } else if (typeof renderPratikBlogPost === 'function' && post.slug === 'pratik-menu-onerileri') {
-            renderPratikBlogPost(container, post);
-        } else if (typeof renderYilbasiBlogPost === 'function' && post.slug === 'yilbasi-sofra-menu-onerileri') {
-            renderYilbasiBlogPost(container, post);
-        } else {
-            renderDefaultBlogPost(container, post);
-        }
-
-        const twitterBtn = document.getElementById("twitterShareBtn");
-        if (twitterBtn) {
-            twitterBtn.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(post.title) + '&url=' + encodeURIComponent(window.location.href);
-        }
-
-        // Tekil yazı yüklendi → üst reklamı göster
-        showTopAd();
         return;
     }
 
-    // Liste görünümü
-    data.forEach(post => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = post.content || `<p>${post.description || 'İçerik önizlemesi...'}</p>`;
-        const firstP = tempDiv.querySelector('p');
-        const previewText = firstP ? firstP.innerText.substring(0, 100) : 'İçerik önizlemesi...';
-
-        container.innerHTML += `
-            <article class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 mb-4">
-                <span class="text-xs font-bold text-green-600 uppercase">${post.category || 'Blog'}</span>
-                <h3 class="text-xl font-bold mt-1 mb-2">${post.title}</h3>
-                <p class="text-gray-600 text-sm mb-4">${previewText}...</p>
-                <button onclick="viewBlogPost('${post.slug}')" type="button" class="text-blue-600 font-semibold text-sm hover:underline">Devamını Oku →</button>
-            </article>
+    // ✅ Tekil yazı: reklam var
+    const post = data.find(p => p.slug === postSlug);
+    if (!post) {
+        container.innerHTML = `
+            <button onclick="viewBlogList()" class="text-blue-600 font-semibold mb-4 hover:underline" type="button">
+                ← Blog listesine dön
+            </button>
+            <div class="p-6 bg-white rounded-2xl shadow-xl">
+                <p class="text-gray-800 font-semibold mb-2">Yazı bulunamadı.</p>
+                <p class="text-sm text-gray-500">Bağlantı eski olabilir veya yazı kaldırılmış olabilir.</p>
+            </div>
         `;
-    });
+        hideTopAd();
+        return;
+    }
 
-    hideTopAd();
+    if (post.metaTitle) document.title = post.metaTitle;
+    else document.title = `${post.title} - Yanında Ne Yiyelim?`;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        if (post.metaDescription) metaDesc.setAttribute('content', post.metaDescription);
+        else metaDesc.setAttribute('content', 'Blog yazılarımızı keşfedin. Menü önerileri, özel gün sofraları ve yanına ne gider içerikleri.');
+    }
+
+    // Özel render fonksiyonların varsa çağır
+    if (typeof renderGlutenFreeBlogPost === 'function' && post.slug === 'glutensiz-menu-onerileri') {
+        renderGlutenFreeBlogPost(container, post);
+    } else if (typeof renderPratikBlogPost === 'function' && post.slug === 'pratik-menu-onerileri') {
+        renderPratikBlogPost(container, post);
+    } else if (typeof renderYilbasiBlogPost === 'function' && post.slug === 'yilbasi-sofra-menu-onerileri') {
+        renderYilbasiBlogPost(container, post);
+    } else {
+        renderDefaultBlogPost(container, post);
+    }
+
+    const twitterBtn = document.getElementById("twitterShareBtn");
+    if (twitterBtn) {
+        twitterBtn.href = 'https://twitter.com/intent/tweet?text='
+            + encodeURIComponent(post.title)
+            + '&url=' + encodeURIComponent(window.location.href);
+    }
+
+    // Tekil içerik render olduktan sonra reklamı aç
+    requestAnimationFrame(() => {
+        showTopAd();
+    });
 }
 
-/* ============ ARAMA (performSearch) ============ */
+// ============================
+// ARAMA (performSearch)
+// Kural: Home'da reklam göstermiyoruz
+// ============================
 function performSearch() {
     const input = document.getElementById('mainDishInput');
     const filter = document.getElementById('cuisineFilter');
@@ -478,11 +541,11 @@ function performSearch() {
 
     if (!input || !filter || !container) return;
 
-    const bottomAd = document.getElementById('bottomAdContainer');
+    // Home'da bottom reklam yok; her ihtimale karşı gizle
+    hideBottomAd();
 
     if (!window.dishSuggestions || !window.suggestionCategories) {
         container.innerHTML = '<p class="text-red-500 italic">Hata: Yemek öneri verileri yüklenemedi.</p>';
-        if (bottomAd) bottomAd.classList.add('hidden');
         return;
     }
 
@@ -495,6 +558,7 @@ function performSearch() {
     let isRandom = false;
     const lowCalorieOnly = document.getElementById('lowCalorieFilter')?.checked;
 
+    // Boş bırakıldıysa "Günün önerisi"
     if (query.length < 2 && !rawQuery) {
         const filtered = window.dishSuggestions.filter(d => cuisine === "" || d.cuisine === cuisine);
         if (filtered.length > 0) {
@@ -521,7 +585,6 @@ function performSearch() {
 
     if (!foundDish && query.length < 2 && cuisine === "") {
         container.innerHTML = '<p class="text-gray-500 italic">Aramaya başlayın...</p>';
-        if (bottomAd) bottomAd.classList.add('hidden');
         return;
     } else if (!foundDish) {
         container.innerHTML = `
@@ -530,11 +593,8 @@ function performSearch() {
                 <p class="text-sm text-gray-500">Farklı bir arama yapın veya seçili filtreyi kaldırın.</p>
             </div>
         `;
-        if (bottomAd) bottomAd.classList.add('hidden');
         return;
     }
-
-    if (foundDish && bottomAd) showBottomAd();
 
     const hasCalories = foundDish.calories && foundDish.calories.total;
     const totalCalOrig = hasCalories ? foundDish.calories.total : null;
@@ -543,9 +603,10 @@ function performSearch() {
     let effectiveTotalCal = totalCalOrig;
     let extraNote = '';
 
-    if (lowCalorieOnly && isHighCalorie && foundDish.calories.breakdown) {
+    if (lowCalorieOnly && isHighCalorie && foundDish.calories?.breakdown) {
         const dessertCal = foundDish.calories.breakdown.dessert || 0;
         effectiveTotalCal = totalCalOrig - dessertCal;
+
         if (effectiveTotalCal > 1200) {
             container.innerHTML = `
                 <div class="w-full text-center p-4">
@@ -555,9 +616,9 @@ function performSearch() {
                     <p class="text-sm text-gray-500">Filtreyi kapatarak tüm yemekleri görebilirsiniz.</p>
                 </div>
             `;
-            if (bottomAd) bottomAd.classList.add('hidden');
             return;
         }
+
         extraNote = ' 1200 kcal filtresi aktif olduğu için tatlı menüden çıkarılmıştır; kalori toplamı buna göre yaklaşık olarak güncellenmiştir.';
     }
 
@@ -592,19 +653,26 @@ function performSearch() {
         `;
     }
 
-    const template = document.getElementById('dishDetailTemplate').content.cloneNode(true);
+    const template = document.getElementById('dishDetailTemplate')?.content?.cloneNode(true);
+    if (!template) return;
+
     template.querySelector('h2').innerHTML = `<span class="text-base text-gray-600">(${foundDish.cuisine})</span><br>"${foundDish.main}" Yanına Ne Gider?`;
     template.querySelector('#suggestionsListContainer').innerHTML = html;
+
     const info = template.querySelector('#randomInfo');
     if (info) info.style.display = isRandom ? 'block' : 'none';
+
     container.appendChild(template);
 
     if (window.innerWidth < 768) input.blur();
 }
 
-/* ============ ÇEREZ / İZİN ============ */
+// ============================
+// ÇEREZ / İZİN
+// ============================
 const COOKIE_CONSENT_KEY = 'cookieConsent';
 const COOKIE_CONSENT_GRANTED = 'granted';
+
 function checkConsent() {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
     const banner = document.getElementById('cookieBanner');
@@ -613,6 +681,7 @@ function checkConsent() {
         setTimeout(() => banner.classList.remove('opacity-0'), 10);
     }
 }
+
 function acceptCookies() {
     localStorage.setItem(COOKIE_CONSENT_KEY, COOKIE_CONSENT_GRANTED);
     const banner = document.getElementById('cookieBanner');
@@ -621,6 +690,7 @@ function acceptCookies() {
         setTimeout(() => banner.classList.add('hidden'), 300);
     }
 }
+
 function rejectCookies() {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
     const banner = document.getElementById('cookieBanner');
@@ -630,7 +700,9 @@ function rejectCookies() {
     }
 }
 
-/* ============== GLOBAL EXPORT ============== */
+// ============================
+// GLOBAL EXPORT
+// ============================
 window.createListHtml = createListHtml;
 window.hideSidebar = hideSidebar;
 window.showSidebar = showSidebar;
@@ -644,7 +716,9 @@ window.renderHomeBlogSection = renderHomeBlogSection;
 window.acceptCookies = acceptCookies;
 window.rejectCookies = rejectCookies;
 
-/* ============== İLK YÜKLEME ============== */
+// ============================
+// İLK YÜKLEME
+// ============================
 window.addEventListener('load', () => {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -653,13 +727,16 @@ window.addEventListener('load', () => {
 
     handleRouteFromLocation();
 
+    // Güvenlik: ilk yükte reklam kapalı başlasın
     hideTopAd();
     hideBottomAd();
 
     checkConsent();
 });
 
-/* ============== POPSTATE ============== */
-window.addEventListener('popstate', (event) => {
+// ============================
+// POPSTATE
+// ============================
+window.addEventListener('popstate', () => {
     handleRouteFromLocation();
 });
