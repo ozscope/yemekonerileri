@@ -1,7 +1,8 @@
 // data.js
 
 // --- BLOG VERİSİ ---
-const blogPostsData = [
+export const blogPostsData = [
+
   {
     id: 11,
     slug: "baligin-yanina-ne-gider",
@@ -6913,11 +6914,4 @@ if (typeof window !== "undefined") {
   window.suggestionCategories = suggestionCategories;
 }
 
-// Node (CommonJS) için:
-if (typeof module !== "undefined") {
-  module.exports = {
-    blogPostsData,
-    dishSuggestions,
-    suggestionCategories
-  };
-}
+
