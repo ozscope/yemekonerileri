@@ -536,26 +536,48 @@ function parseGlutenMenusFromHtml(contentHtml) {
         });
     }
 
-    // İpuçları bölümü: <strong><h2>Glutensiz Menü Planlarken Nelere Dikkat Etmeli?</h2></strong> şeklinde gelmiş
-    // Bunu güvenli yakalayalım:
-    let tipsHtml = '';
-    const tipsRegex = /<strong>\s*<h2>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/h2>\s*<\/strong>\s*([\s\S]*)$/i;
-    const tipsMatch = html.match(tipsRegex);
-    if (tipsMatch && tipsMatch[1]) {
-        // Bu bölümden ilk <ul> ... </ul> + altındaki <p> (varsa) alınsın
-        const tipsUl = tipsMatch[1].match(/<ul>\s*[\s\S]*?<\/ul>/i);
-        const tipsP = tipsMatch[1].match(/<p>\s*[\s\S]*?<\/p>/i);
+// --- İpuçları bölümü: farklı HTML varyasyonlarını yakala ---
+let tipsHtml = '';
 
-        tipsHtml = `
-            ${tipsUl ? tipsUl[0] : ''}
-            ${tipsP ? tipsP[0] : ''}
-        `.trim();
+const tipsHeadingPatterns = [
+  /<strong>\s*<h2[^>]*>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/h2>\s*<\/strong>/i, // ideal
+  /<h2[^>]*>\s*<strong>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/strong>\s*<\/h2>/i, // h2 içinde strong
+  /<strong>\s*<h2[^>]*>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/strong>\s*<\/h2>/i, // SENDEKİ HATALI KAPANIŞ
+  /<h2[^>]*>\s*Glutensiz Menü Planlarken Nelere Dikkat Etmeli\?\s*<\/h2>/i // strong yoksa
+];
 
-        // Eğer ul/p yoksa direkt kalan texti basitçe ver
-        if (!tipsHtml) {
-            tipsHtml = `<p>${escapeHtml(stripTags(tipsMatch[1]).trim())}</p>`;
-        }
-    }
+// heading'i bul, sonrası = tips section
+let tipsStartIdx = -1;
+let tipsHeadLen = 0;
+
+for (const re of tipsHeadingPatterns) {
+  const m = html.match(re);
+  if (m && typeof m.index === 'number') {
+    tipsStartIdx = m.index;
+    tipsHeadLen = m[0].length;
+    break;
+  }
+}
+
+if (tipsStartIdx !== -1) {
+  const afterHeading = html.slice(tipsStartIdx + tipsHeadLen);
+
+  // tips bölümünde ilk <ul>...</ul> + hemen ardından gelen ilk <p>...</p> (varsa)
+  const tipsUl = afterHeading.match(/<ul>\s*[\s\S]*?<\/ul>/i);
+  const tipsP  = afterHeading.match(/<p>\s*[\s\S]*?<\/p>/i);
+
+  tipsHtml = `
+    ${tipsUl ? tipsUl[0] : ''}
+    ${tipsP ? tipsP[0] : ''}
+  `.trim();
+
+  // hiç ul/p yakalanmadıysa fallback: metin olarak bas
+  if (!tipsHtml) {
+    const plain = stripTags(afterHeading).trim();
+    tipsHtml = plain ? `<p>${escapeHtml(plain)}</p>` : '';
+  }
+}
+
 
     // Menüler mutlaka 1..7 sırada olsun
     menus.sort((a, b) => a.index - b.index);
