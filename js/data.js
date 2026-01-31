@@ -3,6 +3,140 @@
 // --- BLOG VERİSİ ---
 const blogPostsData = [
   {
+    id: 11,
+    slug: "baligin-yanina-ne-gider",
+    title: "Balığın Yanına Ne Gider? Hafif ve Ferah Menü Önerileri",
+    metaTitle:
+      "Balığın Yanına Ne Gider? Salata, Meze ve İçecek Önerileri",
+    metaDescription:
+      "Balığın yanına ne gider? Izgara ve fırın balık için en hafif salata, meze ve içecek önerileri.",
+    excerpt:
+      "Balık sofralarını tamamlayan en hafif ve ferah eşlikçiler. Balığın yanına ne yapılır sorusuna net cevaplar.",
+    category: "Deniz Ürünleri",
+    tags: ["balık", "balığın yanına", "balık menüsü", "yanına ne gider"],
+    date: "2026-01-31",
+    content: `
+<p><strong>Balığın yanına ne gider?</strong> Balık yemeklerinin yanında genellikle hafif, ferah ve sindirimi kolay lezzetler tercih edilir. Balığın doğal tadını bastırmayan yan yemekler en doğru seçimdir.</p>
+
+<hr />
+
+<h2><strong>Balığın Yanına En Çok Yakışanlar</strong></h2>
+
+<h3>🥗 Salata Çeşitleri</h3>
+<ul>
+  <li>Yeşil salata</li>
+  <li>Roka salatası</li>
+  <li>Soğan ve maydanoz salatası</li>
+</ul>
+
+<h3>🍋 Mezeler</h3>
+<ul>
+  <li>Haydari</li>
+  <li>Yoğurtlu kabak</li>
+  <li>Zeytinyağlı enginar</li>
+</ul>
+
+<h2><strong>Fırında veya Izgara Balığın Yanına Ne Gider?</strong></h2>
+<ul>
+  <li>Fırın patates</li>
+  <li>Haşlanmış sebzeler</li>
+  <li>Mevsim salatası</li>
+</ul>
+
+<h2><strong>Sıkça Sorulan Sorular</strong></h2>
+<p><strong>Balığın yanına ne gider?</strong><br />Salata ve hafif mezeler balığın yanına en çok yakışanlardır.</p>
+
+<p><strong>Balığın yanına pilav gider mi?</strong><br />Genelde önerilmez ancak az yağlı pilav tercih edilebilir.</p>
+
+<h2>🔗 Diğer Popüler Yazılar</h2>
+<ul>
+  <li>
+    <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">
+      Kış Çorbalarının Yanına Ne Gider?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">
+      Pilav Rehberi: Hangi Pilav Hangi Yemeğe?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">
+      Et Yemeklerinin Yanına Ne Gider?
+    </a>
+  </li>
+  <li>
+    <a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">
+      Zeytinyağlılar İçin Uyumlu Yan Lezzetler
+    </a>
+  </li>
+</ul>
+    `
+  },
+
+  {
+    id: 10,
+    slug: "mercimek-corbasinin-yanina-ne-gider",
+    title: "Mercimek Çorbasının Yanına Ne Gider? Pratik Menü Önerileri",
+    metaTitle:
+      "Mercimek Çorbasının Yanına Ne Gider? Hafif ve Doyurucu Seçenekler",
+    metaDescription:
+      "Mercimek çorbasının yanına ne gider? Salata, ekmek ve ana yemek önerileriyle dengeli menü fikirleri.",
+    excerpt:
+      "Mercimek çorbasını tamamlayan en iyi yan lezzetler. Günlük ve hafif akşam menüleri için öneriler.",
+    category: "Çorbalar",
+    tags: ["mercimek çorbası", "çorbanın yanına", "hafif menü", "yanına ne gider"],
+    date: "2026-01-31",
+    content: `
+<p><strong>Mercimek çorbasının yanına ne gider?</strong> Mercimek çorbası tek başına doyurucu olsa da doğru eşlikçilerle tam bir öğüne dönüşebilir.</p>
+
+<hr />
+
+<h2><strong>Mercimek Çorbasının Yanına En Çok Yapılanlar</strong></h2>
+
+<h3>🥖 Ekmek ve Hamur İşleri</h3>
+<ul>
+  <li>Taze ekmek</li>
+  <li>Lavaş</li>
+  <li>Peynirli börek</li>
+</ul>
+
+<h3>🥗 Hafif Yan Lezzetler</h3>
+<ul>
+  <li>Çoban salata</li>
+  <li>Mevsim salatası</li>
+  <li>Turşu</li>
+</ul>
+
+<h3>🍚 Ana Yemek Alternatifleri</h3>
+<ul>
+  <li>Pilav</li>
+  <li>Sebze yemeği</li>
+  <li>Köfte</li>
+</ul>
+
+<h2><strong>Hafif Bir Menü Nasıl Olur?</strong></h2>
+<p>Mercimek çorbası, mevsim salatası ve yoğurt ile hafif ve dengeli bir akşam menüsü hazırlanabilir.</p>
+
+<h2><strong>Sıkça Sorulan Sorular</strong></h2>
+<p><strong>Mercimek çorbasının yanına ne gider?</strong><br />Salata, ekmek ve hafif ana yemekler uygundur.</p>
+
+<p><strong>Mercimek çorbası tek başına yeterli mi?</strong><br />Yanına salata eklenirse doyurucu olur.</p>
+
+<h2>🔗 Diğer Popüler Yazılar</h2>
+<p>
+Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
+</p>
+<ul>
+    <li><a href="?page=blog&post=pilav-yanina-hangi-yemek-gider" class="text-primary-blue underline">Pilav Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=etin-yanina-ne-gider" class="text-primary-blue underline">Etin Yanına Ne Gider?</a></li>
+    <li><a href="?page=blog&post=zeytinyagli-yanina-ne-gider" class="text-primary-blue underline">Zeytinyağlı Yemeklerin Yanına Ne Gider?</a></li>
+</ul>
+`
+  },
+
+   
+  {
     id: 9,
     slug: "garnitur-onerileri",
     title: "Garnitür Önerileri: En İyi 10 Garnitür ve Eşlikçi Rehberi",
@@ -324,8 +458,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
  </section>
 
 <hr />
-
-<h2>Popüler Menü Rehberleri</h2>
+<h2>🔗 Diğer Popüler Yazılar</h2>
 <ul>
   <li>
     <a href="?page=blog&post=kis-corbasi-yanina-ne-gider" class="text-primary-blue underline">
@@ -454,7 +587,7 @@ Aşağıdaki içerikler de sofranızı planlarken işinize yarayabilir:
 
   {
     id: 5,
-    category: "Mutfak Sırları",
+    category: "Çorbalar",
     title:
       "🥣 Kış Çorbalarının Yanına Ne Gider? Ekmek Dışında 5 Pratik Eşlikçi",
     slug: "kis-corbasi-yanina-ne-gider",
@@ -1410,6 +1543,1636 @@ listesi size fikir verebilir.
 `
   }
 ];
+
+// ---- ŞARAP ÖNERİLERİ -----
+// data.js
+// Şarap seç → yemek öner (wine-first) + frontend dostu indeksler + internal linkler
+// Not: internalLink formatını mevcut sitendeki gibi verdim: ?page=blog&post=SLUG
+
+export const wineFoodData = {
+  id: 201,
+  slug: "sarap-sec-yemek-oner",
+  title: "Şarap Seç, Yanına Ne Yenir? Şarap–Yemek Eşleşme Rehberi",
+  metaTitle: "Şarap Seç → Yanına Hangi Yemek Gider? Kırmızı, Beyaz, Roze Rehberi",
+  metaDescription:
+    "Şarabını seç, yanına en uygun yemekleri gör. Kırmızı, beyaz, roze, köpüklü ve tatlı şaraplar için pratik eşleşmeler + ipuçları + sık hatalar.",
+  excerpt:
+    "Şarabını seç, yanına en uygun yemekleri filtrele. Pratik eşleşmeler, ipuçları ve ilgili içerik linkleriyle menünü tamamla.",
+  category: "İçecek Rehberleri",
+  tags: [
+    "şarap yemek uyumu",
+    "hangi şarabın yanına hangi yemek",
+    "kırmızı şarap",
+    "beyaz şarap",
+    "roze şarap",
+    "şarap seç yemek öner",
+  ],
+  date: "2026-01-31",
+
+  // Site içi link şablonu (tek yerden değiştirmen kolay)
+  routes: {
+    blogPost: (postSlug) => `?page=blog&post=${postSlug}`,
+    blogIndex: `?page=blog`,
+  },
+
+  // UI için hazır select seçenekleri + defaultlar
+  ui: {
+    defaults: {
+      selectedWineId: "cabernet-sauvignon",
+      foodCategory: "Tümü",
+      cookingMethod: "Tümü",
+      sauce: "Tümü",
+      intensity: "Tümü",
+      spiceLevel: "Tümü",
+      maxResults: 8,
+      sortBy: "matchScoreDesc", // matchScoreDesc | popularFirst | easyFirst
+    },
+    selectOptions: {
+      foodCategory: [
+        "Tümü",
+        "Kırmızı Et",
+        "Beyaz Et",
+        "Balık & Deniz Ürünleri",
+        "Makarna & Pizza",
+        "Sebze & Zeytinyağlı",
+        "Peynir",
+        "Tatlı",
+        "Baharatlı & Dünya Mutfağı",
+      ],
+      cookingMethod: ["Tümü", "Izgara", "Fırın", "Tava", "Haşlama", "Sote", "Tencere"],
+      sauce: ["Tümü", "Kremalı", "Domatesli", "Baharatlı", "Tereyağlı", "Narenciye", "Sade"],
+      intensity: ["Tümü", "Hafif", "Orta", "Yoğun"],
+      spiceLevel: ["Tümü", "Az", "Orta", "Çok"],
+    },
+  },
+
+  // Şaraplar (seçim dropdown’ında gösterilecek ana liste)
+  wines: [
+    {
+      id: "cabernet-sauvignon",
+      label: "Cabernet Sauvignon",
+      style: "Kırmızı",
+      intensity: "Yoğun",
+      sweetness: "Sek",
+      profile: ["taneli", "gövde yüksek", "koyu meyve"],
+      summary:
+        "Gövdesi güçlü, taneni belirgin. Yağlı kırmızı et ve yoğun yemeklerle iyi gider.",
+      // bu şarap için sayfada gösterilecek alakalı internal linkler (senin blog post slug’larına göre genişletebilirsin)
+      internalLinks: [
+        { label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" },
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "merlot",
+      label: "Merlot",
+      style: "Kırmızı",
+      intensity: "Orta",
+      sweetness: "Sek",
+      profile: ["yumuşak tanen", "kırmızı meyve", "kolay içim"],
+      summary:
+        "Daha yumuşak, günlük eşleşmelere uygun. Köfte ve domatesli soslarla iyi çalışır.",
+      internalLinks: [
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "syrah",
+      label: "Syrah / Shiraz",
+      style: "Kırmızı",
+      intensity: "Yoğun",
+      sweetness: "Sek",
+      profile: ["baharatlı", "füme", "gövde yüksek"],
+      summary:
+        "Baharatlı karakteriyle ızgara ve barbekü tarzı etlere çok yakışır.",
+      internalLinks: [
+        { label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" },
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "pinot-noir",
+      label: "Pinot Noir",
+      style: "Kırmızı",
+      intensity: "Hafif",
+      sweetness: "Sek",
+      profile: ["zarif", "ince gövde", "kırmızı meyve"],
+      summary:
+        "Hafif kırmızı sevenlere. Somon gibi yağlı balıklarda ‘istisna’ olarak iyi olabilir.",
+      internalLinks: [
+        { label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" },
+        { label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "sauvignon-blanc",
+      label: "Sauvignon Blanc",
+      style: "Beyaz",
+      intensity: "Hafif",
+      sweetness: "Sek",
+      profile: ["yüksek asidite", "narenciye", "ferah"],
+      summary:
+        "Balık, zeytinyağlı ve hafif yemeklerde en güvenli tercihlerden.",
+      internalLinks: [
+        { label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" },
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "chardonnay",
+      label: "Chardonnay",
+      style: "Beyaz",
+      intensity: "Orta",
+      sweetness: "Sek",
+      profile: ["dengeli", "kremamsı (bazı stiller)", "elmamsı"],
+      summary:
+        "Kremalı soslar ve tavuklu yemeklerde çok iyi sonuç verir.",
+      internalLinks: [
+        { label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" },
+        { label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "dry-rose",
+      label: "Sek Roze",
+      style: "Roze",
+      intensity: "Orta",
+      sweetness: "Sek",
+      profile: ["ferah", "kırmızı meyve", "akdeniz"],
+      summary:
+        "Pizza–makarna–zeytinyağlılar üçlüsünde yıldız. Kalabalık sofralarda joker şarap.",
+      internalLinks: [
+        { label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" },
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "sparkling-brut",
+      label: "Köpüklü (Brut)",
+      style: "Köpüklü",
+      intensity: "Hafif",
+      sweetness: "Sek",
+      profile: ["kabarcıklı", "ferah", "aperitif"],
+      summary:
+        "Deniz ürünleri, kızartmalar ve başlangıçlarda çok iyi. Asidite yağlı dokuyu dengeler.",
+      internalLinks: [
+        { label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "moscato",
+      label: "Moscato",
+      style: "Tatlı Şarap",
+      intensity: "Hafif",
+      sweetness: "Tatlı",
+      profile: ["aromatik", "meyvemsi", "tatlı"],
+      summary:
+        "Meyveli tatlılarda çok uyumlu. Tatlıyla sek şarap içmek istemeyenler için ideal.",
+      internalLinks: [
+        { label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "port",
+      label: "Porto",
+      style: "Güçlendirilmiş",
+      intensity: "Yoğun",
+      sweetness: "Tatlı",
+      profile: ["yoğun", "kuru meyve", "çikolata uyumu"],
+      summary:
+        "Çikolatalı tatlı ve küflü peynirle mükemmel kontrast uyumu yakalar.",
+      internalLinks: [
+        { label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" },
+      ],
+    },
+  ],
+
+  // Yemek havuzu (kart basmak + filtrelemek için)
+  foods: [
+    {
+      id: "antrikot-izgara",
+      label: "Antrikot (Izgara)",
+      category: "Kırmızı Et",
+      cookingMethod: "Izgara",
+      sauce: "Sade",
+      intensity: "Yoğun",
+      spiceLevel: "Az",
+      keywords: ["steak", "antrikot", "ızgara et"],
+      internalLinks: [{ label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" }],
+    },
+    {
+      id: "kofte",
+      label: "Köfte",
+      category: "Kırmızı Et",
+      cookingMethod: "Tava",
+      sauce: "Sade",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["köfte", "ev köftesi", "ızgara köfte"],
+      internalLinks: [{ label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" }],
+    },
+    {
+      id: "et-sote",
+      label: "Et Sote",
+      category: "Kırmızı Et",
+      cookingMethod: "Sote",
+      sauce: "Sade",
+      intensity: "Yoğun",
+      spiceLevel: "Orta",
+      keywords: ["et sote", "sote", "tencere"],
+      internalLinks: [{ label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" }],
+    },
+    {
+      id: "tavuk-kremali",
+      label: "Kremalı Tavuk",
+      category: "Beyaz Et",
+      cookingMethod: "Sote",
+      sauce: "Kremalı",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["kremalı tavuk", "tavuk sote", "krema"],
+      internalLinks: [{ label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" }],
+    },
+    {
+      id: "levrek-izgara",
+      label: "Levrek (Izgara)",
+      category: "Balık & Deniz Ürünleri",
+      cookingMethod: "Izgara",
+      sauce: "Narenciye",
+      intensity: "Hafif",
+      spiceLevel: "Az",
+      keywords: ["levrek", "ızgara balık"],
+      internalLinks: [{ label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" }],
+    },
+    {
+      id: "somon-firin",
+      label: "Somon (Fırın)",
+      category: "Balık & Deniz Ürünleri",
+      cookingMethod: "Fırın",
+      sauce: "Sade",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["somon", "fırın somon"],
+      internalLinks: [{ label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" }],
+    },
+    {
+      id: "makarna-domatesli",
+      label: "Domatesli Makarna",
+      category: "Makarna & Pizza",
+      cookingMethod: "Haşlama",
+      sauce: "Domatesli",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["makarna", "domates sos", "napoli"],
+      internalLinks: [{ label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" }],
+    },
+    {
+      id: "pizza-margarita",
+      label: "Pizza (Margherita)",
+      category: "Makarna & Pizza",
+      cookingMethod: "Fırın",
+      sauce: "Domatesli",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["pizza", "margherita"],
+      internalLinks: [{ label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" }],
+    },
+    {
+      id: "zeytinyagli",
+      label: "Zeytinyağlı Sebze",
+      category: "Sebze & Zeytinyağlı",
+      cookingMethod: "Tencere",
+      sauce: "Sade",
+      intensity: "Hafif",
+      spiceLevel: "Az",
+      keywords: ["zeytinyağlı", "sebze", "enginar"],
+      internalLinks: [{ label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" }],
+    },
+    {
+      id: "peynir-tabagi",
+      label: "Peynir Tabağı (Karışık)",
+      category: "Peynir",
+      cookingMethod: "Sade",
+      sauce: "Sade",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["peynir", "brie", "cheddar", "ezine", "küflü peynir"],
+      internalLinks: [{ label: "Garnitür önerileri", postSlug: "garnitur-onerileri" }],
+    },
+    {
+      id: "cikolatalı-tatlı",
+      label: "Çikolatalı Tatlı (Brownie/Sufle)",
+      category: "Tatlı",
+      cookingMethod: "Fırın",
+      sauce: "Sade",
+      intensity: "Yoğun",
+      spiceLevel: "Az",
+      keywords: ["çikolata", "brownie", "sufle"],
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+    {
+      id: "meyveli-tatlı",
+      label: "Meyveli Tatlı (Tart/Pasta)",
+      category: "Tatlı",
+      cookingMethod: "Fırın",
+      sauce: "Sade",
+      intensity: "Orta",
+      spiceLevel: "Az",
+      keywords: ["meyveli", "tart", "pasta", "cheesecake"],
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+    {
+      id: "baharatli-yemek",
+      label: "Baharatlı Yemek (Acılı / Uzak Doğu)",
+      category: "Baharatlı & Dünya Mutfağı",
+      cookingMethod: "Sote",
+      sauce: "Baharatlı",
+      intensity: "Yoğun",
+      spiceLevel: "Çok",
+      keywords: ["acı", "baharat", "uzak doğu", "köri"],
+      internalLinks: [{ label: "Garnitür önerileri", postSlug: "garnitur-onerileri" }],
+    },
+  ],
+
+  // WINE-FIRST eşleşmeler: wineId → önerilen foodIds
+  // Her eşleşmeye açıklama + puan + rozet + internal link önerisi ekledim.
+  winePairings: [
+    {
+      id: "w1",
+      wineId: "cabernet-sauvignon",
+      recommendedFoodIds: ["antrikot-izgara", "et-sote", "kofte", "peynir-tabagi"],
+      why:
+        "Güçlü gövde ve tanen; yağlı kırmızı et ve yoğun yemeklerde lezzeti dengeler. Sert peynirlerle de harika uyum sağlar.",
+      badges: ["Klasik", "Yoğun", "Et uyumu"],
+      confidence: 0.95,
+      relatedPosts: [
+        { label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" },
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w2",
+      wineId: "merlot",
+      recommendedFoodIds: ["kofte", "makarna-domatesli", "pizza-margarita", "et-sote"],
+      why:
+        "Daha yumuşak tanen ve orta gövde sayesinde köfte ve domatesli soslarla kolay eşleşir; kalabalık sofralarda risksiz seçimdir.",
+      badges: ["Kolay içim", "Günlük", "Domatesli sos"],
+      confidence: 0.9,
+      relatedPosts: [
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+        { label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w3",
+      wineId: "syrah",
+      recommendedFoodIds: ["antrikot-izgara", "et-sote", "baharatli-yemek", "kofte"],
+      why:
+        "Baharatlı aroması ızgara ve barbekü lezzetlerini taşır. Çok acılı yemeklerde ise daha ‘yumuşak’ Syrah stilleri daha iyi sonuç verir.",
+      badges: ["Izgara", "Baharatlı karakter", "Gövde yüksek"],
+      confidence: 0.9,
+      relatedPosts: [
+        { label: "Etin yanına ne gider?", postSlug: "etin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w4",
+      wineId: "pinot-noir",
+      recommendedFoodIds: ["somon-firin", "tavuk-kremali", "makarna-domatesli", "peynir-tabagi"],
+      why:
+        "Hafif ve zarif yapısı sayesinde somon gibi yağlı balıklarda ‘kırmızı istisnası’ olabilir. Tavuk ve mantar benzeri aromalarda da güzel çalışır.",
+      badges: ["Zarif", "Somon istisnası", "Hafif kırmızı"],
+      confidence: 0.88,
+      relatedPosts: [
+        { label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w5",
+      wineId: "sauvignon-blanc",
+      recommendedFoodIds: ["levrek-izgara", "zeytinyagli", "peynir-tabagi"],
+      why:
+        "Yüksek asidite ve ferahlık; balık, zeytinyağlı ve yeşillik ağırlıklı tabaklarda en güvenli eşleşmelerden biridir.",
+      badges: ["Ferah", "Hafif", "Balık & zeytinyağlı"],
+      confidence: 0.92,
+      relatedPosts: [
+        { label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" },
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w6",
+      wineId: "chardonnay",
+      recommendedFoodIds: ["tavuk-kremali", "somon-firin", "peynir-tabagi", "makarna-domatesli"],
+      why:
+        "Orta gövde ve (bazı stillerde) kremamsı yapı; kremalı sosları taşır. Somon gibi orta yoğunlukta balıklarda da iyi sonuç verir.",
+      badges: ["Kremalı sos", "Orta gövde", "Şık menü"],
+      confidence: 0.9,
+      relatedPosts: [
+        { label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w7",
+      wineId: "dry-rose",
+      recommendedFoodIds: ["pizza-margarita", "makarna-domatesli", "zeytinyagli", "tavuk-kremali"],
+      why:
+        "Sek roze, hem ferah hem de yeterince ‘gövde’ sunar. Akdeniz tarzı yemeklerde joker gibi çalışır.",
+      badges: ["Joker", "Akdeniz", "Kalabalık sofra"],
+      confidence: 0.88,
+      relatedPosts: [
+        { label: "Makarna yanına ne gider?", postSlug: "makarna-yanina-ne-gider" },
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+      ],
+    },
+    {
+      id: "w8",
+      wineId: "sparkling-brut",
+      recommendedFoodIds: ["levrek-izgara", "peynir-tabagi", "pizza-margarita"],
+      why:
+        "Kabarcık + asidite, yağlı dokuları dengeler. Deniz ürünleri ve atıştırmalık tarzı tabaklarda çok iyi gider.",
+      badges: ["Aperitif", "Ferah", "Başlangıç"],
+      confidence: 0.86,
+      relatedPosts: [{ label: "Balığın yanına ne gider?", postSlug: "baligin-yanina-ne-gider" }],
+    },
+    {
+      id: "w9",
+      wineId: "moscato",
+      recommendedFoodIds: ["meyveli-tatlı"],
+      why:
+        "Meyvemsi tatlı şaraplar; meyveli tatlılarla uyumludur. Tatlıyla sek şarap içme hatasını engeller.",
+      badges: ["Tatlı", "Meyveli", "Hafif"],
+      confidence: 0.9,
+      relatedPosts: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+    {
+      id: "w10",
+      wineId: "port",
+      recommendedFoodIds: ["cikolatalı-tatlı", "peynir-tabagi"],
+      why:
+        "Porto gibi yoğun tatlı şaraplar; çikolatalı tatlılarda en iyi eşleşmelerden. Küflü peynirle kontrast uyumu verir.",
+      badges: ["Çikolata uyumu", "Kontrast", "Yoğun"],
+      confidence: 0.96,
+      relatedPosts: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+  ],
+
+  // SEO + “zengin içerik” blokları (sayfada üst-alt bölümler)
+  blocks: [
+    {
+      type: "intro",
+      html: `
+<p><strong>Şarabını seç</strong>, yanına en uygun yemek önerilerini anında gör. Şarap–yemek uyumunda en temel kural: <em>yoğunluklar birbirini dengelemeli</em>. Gövdeli şarap → yoğun yemek; ferah şarap → hafif yemek.</p>
+`,
+    },
+    {
+      type: "tips",
+      title: "Hızlı İpuçları",
+      items: [
+        "Kırmızı et + gövdeli kırmızı: tanen yağla dengelenir.",
+        "Balık + ferah beyaz: yemeğin tadı baskılanmaz.",
+        "Kremalı sos + Chardonnay gibi gövdeli beyaz: sosu taşır.",
+        "Tatlı + tatlı şarap: sek şarap + tatlı genelde iyi sonuç vermez.",
+      ],
+    },
+    {
+      type: "mistakes",
+      title: "En Sık Yapılan Hatalar",
+      items: [
+        "Balıkla çok ağır/tanenli kırmızı seçmek.",
+        "Tatlıyla sek şarap içmek (ağızda sert bir his bırakabilir).",
+        "Çok acılı yemeklerde yüksek tanenli kırmızı seçmek (acı algısını artırabilir).",
+      ],
+    },
+  ],
+
+  faq: [
+    {
+      q: "Şarap seçince yanına yemek nasıl öneriliyor?",
+      a: "Seçtiğin şarabın gövde, asidite, tatlılık ve aromatik profilinə göre en uyumlu yemekler önerilir. Filtrelerle yemeği daha da daraltabilirsin.",
+    },
+    {
+      q: "Kırmızı şarapla balık olur mu?",
+      a: "Bazı istisnalar var. Somon gibi yağlı balıklarda hafif kırmızı (Pinot Noir gibi) denenebilir; ağır kırmızılardan kaçın.",
+    },
+    {
+      q: "Roze şarap en çok neyle gider?",
+      a: "Pizza, makarna, zeytinyağlılar ve ızgara tavuk gibi Akdeniz tarzı tabaklarla çok iyi uyum sağlar.",
+    },
+  ],
+};
+
+// ---------- Frontend Helpers (optional) ----------
+export const wineFoodHelpers = {
+  // Map indexler (performans: O(1) erişim)
+  createIndex: (data) => {
+    const wineById = Object.fromEntries(data.wines.map((w) => [w.id, w]));
+    const foodById = Object.fromEntries(data.foods.map((f) => [f.id, f]));
+    const pairingByWineId = Object.fromEntries(
+      data.winePairings.map((p) => [p.wineId, p])
+    );
+    return { wineById, foodById, pairingByWineId };
+  },
+
+  // Şaraba göre önerileri getir (food kartları + linkler dahil)
+  getRecommendationsByWine: (data, wineId, filters = {}) => {
+    const { wineById, foodById, pairingByWineId } = wineFoodHelpers.createIndex(data);
+    const wine = wineById[wineId];
+    const pairing = pairingByWineId[wineId];
+    if (!wine || !pairing) return { wine: wine || null, pairing: null, foods: [] };
+
+    const selected = pairing.recommendedFoodIds
+      .map((id) => foodById[id])
+      .filter(Boolean);
+
+    // Filtre uygula
+    const entries = Object.entries(filters).filter(
+      ([, v]) => v != null && v !== "" && v !== "Tümü"
+    );
+
+    const filtered = selected.filter((f) =>
+      entries.every(([k, v]) => f[k] === v)
+    );
+
+    return {
+      wine,
+      pairing,
+      foods: filtered,
+      // “internal links” tek formatta hazır dönsün
+      internalLinks: {
+        wine: (wine.internalLinks || []).map((x) => ({
+          label: x.label,
+          href: data.routes.blogPost(x.postSlug),
+        })),
+        foods: filtered
+          .flatMap((f) => f.internalLinks || [])
+          .map((x) => ({
+            label: x.label,
+            href: data.routes.blogPost(x.postSlug),
+          })),
+        relatedPosts: (pairing.relatedPosts || []).map((x) => ({
+          label: x.label,
+          href: data.routes.blogPost(x.postSlug),
+        })),
+      },
+    };
+  },
+
+  // Basit şarap araması (dropdown + search için)
+  searchWines: (data, query = "") => {
+    const q = query.trim().toLowerCase();
+    if (!q) return data.wines;
+    return data.wines.filter((w) => {
+      const hay = [w.label, w.style, w.intensity, w.sweetness, ...(w.profile || []), w.summary]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(q);
+    });
+  },
+};
+
+
+// ---- RAMAZAN SOFRALARI -----
+// data.js
+export const ramadanData = {
+  id: 301,
+  slug: "ramazan-sofralari-menu-onerileri",
+  title: "Ramazan Sofraları: İftar ve Sahur İçin Menü Önerileri",
+  metaTitle: "Ramazan Sofraları: İftar Menüsü, Sahur Önerileri ve Yan Lezzetler",
+  metaDescription:
+    "Ramazan sofraları için hızlı, ekonomik, hafif ve misafirlik iftar menüsü önerileri. Sahurda tok tutan seçenekler + yanına ne gider linkleri.",
+  excerpt:
+    "Kriter seç → sana uygun iftar/sahur menüsü önerelim. Hazırlık süreleri, alışveriş listesi ve iç linklerle tam rehber.",
+  category: "Ramazan",
+  tags: ["ramazan sofraları", "iftar menüsü", "sahur", "yanına ne gider", "menü önerisi"],
+  date: "2026-01-31",
+
+  routes: {
+    blogPost: (postSlug) => `?page=blog&post=${postSlug}`,
+    blogIndex: `?page=blog`,
+  },
+
+  ui: {
+    defaults: {
+      mealType: "İftar", // İftar | Sahur
+      maxTimeMinutes: 60, // toplam hazırlık hedefi
+      budget: "Orta", // Ekonomik | Orta | Premium
+      crowd: "Aile", // Tek | Aile | Misafir
+      heaviness: "Dengeli", // Hafif | Dengeli | Doyurucu
+      protein: "Karışık", // Karışık | Et | Tavuk | Balık | Bakliyat | Vejetaryen
+      includeSoup: "Farketmez", // Evet | Hayır | Farketmez
+      includeDessert: "Farketmez", // Evet | Hayır | Farketmez
+      maxResults: 8,
+      sortBy: "matchScoreDesc",
+    },
+    selectOptions: {
+      mealType: ["İftar", "Sahur"],
+      budget: ["Ekonomik", "Orta", "Premium"],
+      crowd: ["Tek", "Aile", "Misafir"],
+      heaviness: ["Hafif", "Dengeli", "Doyurucu"],
+      protein: ["Karışık", "Et", "Tavuk", "Balık", "Bakliyat", "Vejetaryen"],
+      includeSoup: ["Farketmez", "Evet", "Hayır"],
+      includeDessert: ["Farketmez", "Evet", "Hayır"],
+      maxTimeMinutes: [20, 30, 45, 60, 90, 120],
+    },
+  },
+
+  // Menüde kullanılacak “öğe” havuzu (istersen genişletiriz)
+  items: [
+    // ---- Çorbalar
+    {
+      id: "mercimek-corbasi",
+      type: "Çorba",
+      label: "Mercimek Çorbası",
+      prepMinutes: 25,
+      heaviness: "Dengeli",
+      protein: "Bakliyat",
+      tags: ["klasik", "pratik"],
+      internalLinks: [{ label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" }],
+    },
+    {
+      id: "ezogelin-corbasi",
+      type: "Çorba",
+      label: "Ezogelin Çorbası",
+      prepMinutes: 30,
+      heaviness: "Dengeli",
+      protein: "Bakliyat",
+      tags: ["tok tutar"],
+      internalLinks: [],
+    },
+
+    // ---- Ana Yemekler
+    {
+      id: "kofte",
+      type: "Ana Yemek",
+      label: "Köfte",
+      prepMinutes: 35,
+      heaviness: "Doyurucu",
+      protein: "Et",
+      tags: ["sevilen", "misafir"],
+      internalLinks: [{ label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" }],
+    },
+    {
+      id: "tavuk-sote",
+      type: "Ana Yemek",
+      label: "Tavuk Sote",
+      prepMinutes: 30,
+      heaviness: "Dengeli",
+      protein: "Tavuk",
+      tags: ["pratik"],
+      internalLinks: [{ label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" }],
+    },
+    {
+      id: "kuru-fasulye",
+      type: "Ana Yemek",
+      label: "Kuru Fasulye",
+      prepMinutes: 75,
+      heaviness: "Doyurucu",
+      protein: "Bakliyat",
+      tags: ["klasik", "kalabalık"],
+      internalLinks: [{ label: "Kuru fasulyenin yanına ne gider?", postSlug: "kuru-fasulyenin-yanina-ne-gider" }],
+    },
+    {
+      id: "firinda-sebzeli-tavuk",
+      type: "Ana Yemek",
+      label: "Fırında Sebzeli Tavuk",
+      prepMinutes: 60,
+      heaviness: "Dengeli",
+      protein: "Tavuk",
+      tags: ["fırın", "az uğraş"],
+      internalLinks: [],
+    },
+    {
+      id: "zeytinyagli-sebze",
+      type: "Ana Yemek",
+      label: "Zeytinyağlı Sebze (Enginar/Kabak vb.)",
+      prepMinutes: 45,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["hafif", "yazlık"],
+      internalLinks: [{ label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" }],
+    },
+
+    // ---- Yan Yemekler
+    {
+      id: "pirinc-pilavi",
+      type: "Yan Yemek",
+      label: "Pirinç Pilavı",
+      prepMinutes: 25,
+      heaviness: "Doyurucu",
+      protein: "Karışık",
+      tags: ["klasik"],
+      internalLinks: [{ label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" }],
+    },
+    {
+      id: "bulgur-pilavi",
+      type: "Yan Yemek",
+      label: "Bulgur Pilavı",
+      prepMinutes: 25,
+      heaviness: "Doyurucu",
+      protein: "Karışık",
+      tags: ["ekonomik"],
+      internalLinks: [{ label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" }],
+    },
+    {
+      id: "cacik",
+      type: "Meze/Yoğurt",
+      label: "Cacık",
+      prepMinutes: 10,
+      heaviness: "Hafif",
+      protein: "Karışık",
+      tags: ["ferah"],
+      internalLinks: [],
+    },
+    {
+      id: "coban-salata",
+      type: "Salata",
+      label: "Çoban Salata",
+      prepMinutes: 10,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["klasik"],
+      internalLinks: [],
+    },
+    {
+      id: "hurma-zeytin",
+      type: "İftariyelik",
+      label: "Hurma + Zeytin",
+      prepMinutes: 2,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["iftar açılışı"],
+      internalLinks: [],
+    },
+
+    // ---- İçecek
+    {
+      id: "ayran",
+      type: "İçecek",
+      label: "Ayran",
+      prepMinutes: 2,
+      heaviness: "Hafif",
+      protein: "Karışık",
+      tags: ["klasik"],
+      internalLinks: [],
+    },
+    {
+      id: "komposto",
+      type: "İçecek",
+      label: "Komposto",
+      prepMinutes: 20,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["ramazan klasiği"],
+      internalLinks: [],
+    },
+
+    // ---- Tatlı
+    {
+      id: "gullac",
+      type: "Tatlı",
+      label: "Güllaç",
+      prepMinutes: 25,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["ramazan klasiği", "hafif tatlı"],
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+    {
+      id: "sutlac",
+      type: "Tatlı",
+      label: "Sütlaç",
+      prepMinutes: 45,
+      heaviness: "Dengeli",
+      protein: "Vejetaryen",
+      tags: ["klasik"],
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+    },
+  ],
+
+  // Menü şablonları: frontend’de “kart” basmak için ideal
+  menus: [
+    {
+      id: "iftar-pratik-1",
+      mealType: "İftar",
+      title: "Pratik İftar Menüsü (45–60 dk)",
+      budget: "Orta",
+      crowd: "Aile",
+      heaviness: "Dengeli",
+      protein: ["Tavuk", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 60,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "hurma-zeytin" },
+        { slot: "Çorba", itemId: "mercimek-corbasi" },
+        { slot: "Ana Yemek", itemId: "tavuk-sote" },
+        { slot: "Yan Yemek", itemId: "bulgur-pilavi" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "Meze/Yoğurt", itemId: "cacik" },
+        { slot: "İçecek", itemId: "ayran" },
+        { slot: "Tatlı", itemId: "gullac" },
+      ],
+      why:
+        "Hem tok tutar hem de ağır gelmez. Tavuk + bulgur dengeli, mercimek çorbası hızlı, güllaç ramazana yakışır.",
+      prepTimeline: [
+        "0–10 dk: İftariyelik + salata doğrama",
+        "10–35 dk: Mercimek çorbası",
+        "20–50 dk: Tavuk sote + bulgur pilavı",
+        "50–60 dk: Cacık + servis hazırlığı",
+      ],
+      internalLinks: [
+        { label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" },
+        { label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" },
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+      popularity: 0.9,
+    },
+
+    {
+      id: "iftar-misafir-1",
+      mealType: "İftar",
+      title: "Misafirlik İftar Menüsü (Şık & Doyurucu)",
+      budget: "Premium",
+      crowd: "Misafir",
+      heaviness: "Doyurucu",
+      protein: ["Et", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 90,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "hurma-zeytin" },
+        { slot: "Çorba", itemId: "ezogelin-corbasi" },
+        { slot: "Ana Yemek", itemId: "kofte" },
+        { slot: "Yan Yemek", itemId: "pirinc-pilavi" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "İçecek", itemId: "komposto" },
+        { slot: "Tatlı", itemId: "sutlac" },
+      ],
+      why:
+        "Klasik ama garanti bir misafir menüsü: çorba + köfte + pilav üçlüsü, komposto ve sütlaçla Ramazan hissi yükselir.",
+      prepTimeline: [
+        "0–15 dk: Çorbayı başlat",
+        "15–40 dk: Pilav + salata",
+        "30–70 dk: Köfte hazırlık + pişirme",
+        "70–90 dk: Komposto/sütlaç servis hazırlığı",
+      ],
+      internalLinks: [
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+      popularity: 0.85,
+    },
+
+    {
+      id: "iftar-hafif-1",
+      mealType: "İftar",
+      title: "Hafif İftar Menüsü (Şişkinlik Yapmaz)",
+      budget: "Orta",
+      crowd: "Aile",
+      heaviness: "Hafif",
+      protein: ["Vejetaryen", "Bakliyat", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 60,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "hurma-zeytin" },
+        { slot: "Çorba", itemId: "mercimek-corbasi" },
+        { slot: "Ana Yemek", itemId: "zeytinyagli-sebze" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "Meze/Yoğurt", itemId: "cacik" },
+        { slot: "Tatlı", itemId: "gullac" },
+      ],
+      why:
+        "Zeytinyağlı + salata + cacık ferah bir denge kurar. Güllaç hafif tatlı isteyenler için ideal.",
+      prepTimeline: [
+        "0–10 dk: İftariyelik + salata",
+        "10–35 dk: Çorba",
+        "15–55 dk: Zeytinyağlı",
+        "55–60 dk: Servis",
+      ],
+      internalLinks: [
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+        { label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" },
+      ],
+      popularity: 0.78,
+    },
+
+    // ---- SAHUR
+    {
+      id: "sahur-tok-tutar-1",
+      mealType: "Sahur",
+      title: "Tok Tutan Sahur (Uzun Süre Acıktırmaz)",
+      budget: "Orta",
+      crowd: "Aile",
+      heaviness: "Dengeli",
+      protein: ["Karışık", "Bakliyat", "Tavuk"],
+      includeSoup: false,
+      includeDessert: false,
+      approxTimeMinutes: 20,
+      menuItems: [
+        { slot: "Ana", itemId: "peynir-tabagi-quick" }, // aşağıda “quick item” olarak tanımlayacağız
+        { slot: "Yan", itemId: "zeytin-yesillik-quick" },
+        { slot: "İçecek", itemId: "ayran" },
+      ],
+      why:
+        "Sahurda amaç: protein + yağ + lif dengesini kurmak. Tuzlu, aşırı yağlı ve şekerli seçenekler gün içinde susatabilir.",
+      prepTimeline: ["0–10 dk: hazırlık", "10–20 dk: servis"],
+      internalLinks: [
+        { label: "Ramazan sahurda ne yenir?", postSlug: "sahurda-ne-yenir" },
+      ],
+      popularity: 0.8,
+    },
+  ],
+
+  // Sahur için 2 “quick item” ekleyelim (hazırlık gerektirmeyen)
+  quickItems: [
+    {
+      id: "peynir-tabagi-quick",
+      type: "Sahur Tabağı",
+      label: "Peynir + Yumurta + Tam Tahıllı Ekmek",
+      prepMinutes: 10,
+      heaviness: "Dengeli",
+      protein: "Karışık",
+      tags: ["tok tutar", "pratik"],
+      internalLinks: [{ label: "Peynirin yanına ne gider?", postSlug: "peynirin-yanina-ne-gider" }],
+    },
+    {
+      id: "zeytin-yesillik-quick",
+      type: "Sahur Tabağı",
+      label: "Zeytin + Yeşillik + Domates/Salatalık",
+      prepMinutes: 5,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      tags: ["ferah"],
+      internalLinks: [],
+    },
+  ],
+
+  // SEO içerik blokları
+  blocks: [
+    {
+      type: "intro",
+      html: `
+<p><strong>Ramazan sofraları</strong> için menü seçmek bazen zor: hem tok tutsun hem hafif olsun, hem de hazırlaması pratik… Aşağıdaki filtrelerden kriterlerini seç, sana uygun <strong>iftar</strong> veya <strong>sahur</strong> menülerini listeleyelim.</p>
+`,
+    },
+    {
+      type: "tips",
+      title: "İftar İçin Altın İpuçları",
+      items: [
+        "İftarı hurma + su ile açıp 5–10 dk sonra çorbaya geçmek daha rahat hissettirebilir.",
+        "Ağır kızartmalar yerine fırın/ızgara tercih etmek şişkinliği azaltır.",
+        "Komposto/ayran gibi içecekler sofrayı dengeler.",
+        "Tatlıyı hafif seç (güllaç gibi) veya porsiyonu küçük tut.",
+      ],
+    },
+    {
+      type: "tips",
+      title: "Sahur İçin Altın İpuçları",
+      items: [
+        "Protein + lif dengesini kur (yumurta/peynir + tam tahıl + yeşillik).",
+        "Aşırı tuzlu/şekerli yiyecekler gün içinde susatabilir.",
+        "Bol su + sade içecekler daha iyi gider.",
+      ],
+    },
+  ],
+
+  faq: [
+    {
+      q: "Ramazan sofralarında iftarda ne yenir?",
+      a: "Genelde hurma/su ile açılış → çorba → ana yemek + yan lezzetler → hafif tatlı şeklinde ilerler. Filtreyle hedefini seçip menü önerilerini görebilirsin.",
+    },
+    {
+      q: "Sahurda tok tutan ne yenir?",
+      a: "Protein (yumurta/peynir) + lif (tam tahıl/yeşillik) + sağlıklı yağ (zeytin/avokado vb.) kombinasyonları uzun süre tok tutar.",
+    },
+    {
+      q: "Hafif iftar menüsü nasıl olur?",
+      a: "Çorba + zeytinyağlı/sebze ağırlıklı ana + salata + yoğurt/cacık + hafif tatlı (güllaç gibi) iyi bir dengedir.",
+    },
+  ],
+};
+
+// ---------- Helpers ----------
+export const ramadanHelpers = {
+  createIndex: (data) => {
+    const itemPool = [...(data.items || []), ...(data.quickItems || [])];
+    const itemById = Object.fromEntries(itemPool.map((x) => [x.id, x]));
+    return { itemById, itemPool };
+  },
+
+  // Menüleri filtrele + kartlara item detaylarını göm
+  getMenus: (data, filters = {}) => {
+    const { itemById } = ramadanHelpers.createIndex(data);
+
+    const norm = (v) => (v == null ? "" : String(v));
+    const f = {
+      mealType: norm(filters.mealType),
+      maxTimeMinutes: Number(filters.maxTimeMinutes || 9999),
+      budget: norm(filters.budget),
+      crowd: norm(filters.crowd),
+      heaviness: norm(filters.heaviness),
+      protein: norm(filters.protein),
+      includeSoup: norm(filters.includeSoup),
+      includeDessert: norm(filters.includeDessert),
+      maxResults: Number(filters.maxResults || 8),
+      sortBy: norm(filters.sortBy || "matchScoreDesc"),
+    };
+
+    const scoreMenu = (m) => {
+      let s = 0;
+
+      if (f.mealType && m.mealType === f.mealType) s += 3;
+      if (m.approxTimeMinutes <= f.maxTimeMinutes) s += 2;
+      else s -= 1;
+
+      if (f.budget && f.budget !== "Tümü" && m.budget === f.budget) s += 1;
+      if (f.crowd && f.crowd !== "Tümü" && m.crowd === f.crowd) s += 1;
+
+      if (f.heaviness && f.heaviness !== "Tümü" && m.heaviness === f.heaviness) s += 2;
+
+      if (f.protein && f.protein !== "Karışık" && Array.isArray(m.protein)) {
+        if (m.protein.includes(f.protein)) s += 2;
+        else s -= 1;
+      }
+
+      if (f.includeSoup !== "Farketmez") {
+        const want = f.includeSoup === "Evet";
+        if (!!m.includeSoup === want) s += 1;
+        else s -= 1;
+      }
+
+      if (f.includeDessert !== "Farketmez") {
+        const want = f.includeDessert === "Evet";
+        if (!!m.includeDessert === want) s += 1;
+        else s -= 1;
+      }
+
+      // popülerliğe ufak katkı
+      s += (m.popularity || 0) * 0.5;
+
+      return s;
+    };
+
+    const enrichMenu = (m) => {
+      const items = (m.menuItems || []).map((mi) => ({
+        ...mi,
+        item: itemById[mi.itemId] || null,
+        internalLinks:
+          (itemById[mi.itemId]?.internalLinks || []).map((x) => ({
+            label: x.label,
+            href: data.routes.blogPost(x.postSlug),
+          })) || [],
+      }));
+
+      const menuLinks = (m.internalLinks || []).map((x) => ({
+        label: x.label,
+        href: data.routes.blogPost(x.postSlug),
+      }));
+
+      return { ...m, items, menuLinks, matchScore: scoreMenu(m) };
+    };
+
+    let list = (data.menus || [])
+      .map(enrichMenu)
+      .filter((m) => m.mealType === f.mealType)
+      .filter((m) => m.approxTimeMinutes <= f.maxTimeMinutes + 30); // esnek aralık
+
+    // sıralama
+    if (f.sortBy === "popularFirst") list.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    else if (f.sortBy === "easyFirst") list.sort((a, b) => a.approxTimeMinutes - b.approxTimeMinutes);
+    else list.sort((a, b) => b.matchScore - a.matchScore);
+
+    return list.slice(0, f.maxResults);
+  },
+};
+
+// --- İFTAR MENÜLERİ ---
+
+// data.js
+export const iftarData = {
+  id: 401,
+  slug: "iftar-menuleri",
+  title: "İftar Menüsü Önerileri: Kriter Seç, Menü Bul",
+  metaTitle: "İftar Menüsü Önerileri (Pratik, Hafif, Misafirlik) + Yanına Ne Gider",
+  metaDescription:
+    "İftar menüsü önerileri: pratik, ekonomik, hafif ve misafirlik menüler. Hazırlık süresi, alışveriş listesi ve yanına ne gider linkleriyle tam rehber.",
+  excerpt:
+    "İftara ne pişirsem? Süre, bütçe ve kişi sayısına göre iftar menüsü seç; adım adım hazırlık planı ve iç linklerle menünü tamamla.",
+  category: "Ramazan",
+  tags: ["iftar menüsü", "iftara ne pişirsem", "ramazan sofraları", "yanına ne gider", "menü önerisi"],
+  date: "2026-01-31",
+
+  routes: {
+    blogPost: (postSlug) => `?page=blog&post=${postSlug}`,
+    blogIndex: `?page=blog`,
+  },
+
+  // UI: filtreler
+  ui: {
+    defaults: {
+      maxTimeMinutes: 60,
+      budget: "Orta", // Ekonomik | Orta | Premium
+      crowd: "Aile", // Tek | Aile | Misafir
+      heaviness: "Dengeli", // Hafif | Dengeli | Doyurucu
+      protein: "Karışık", // Karışık | Et | Tavuk | Balık | Bakliyat | Vejetaryen
+      includeDessert: "Evet", // Evet | Hayır | Farketmez
+      includeSoup: "Evet", // Evet | Hayır | Farketmez
+      maxResults: 8,
+      sortBy: "matchScoreDesc", // matchScoreDesc | popularFirst | easyFirst
+    },
+    selectOptions: {
+      budget: ["Ekonomik", "Orta", "Premium"],
+      crowd: ["Tek", "Aile", "Misafir"],
+      heaviness: ["Hafif", "Dengeli", "Doyurucu"],
+      protein: ["Karışık", "Et", "Tavuk", "Balık", "Bakliyat", "Vejetaryen"],
+      includeDessert: ["Farketmez", "Evet", "Hayır"],
+      includeSoup: ["Farketmez", "Evet", "Hayır"],
+      maxTimeMinutes: [30, 45, 60, 90, 120],
+      sortBy: ["matchScoreDesc", "popularFirst", "easyFirst"],
+    },
+  },
+
+  // İftar landing içeriği (sayfada üstte okunur blok)
+  blocks: [
+    {
+      type: "intro",
+      html: `
+<p><strong>İftara ne pişirsem?</strong> Süre, bütçe ve kişi sayısına göre menü seçmek bazen zor. Aşağıdaki filtrelerden kriterlerini seç, sana uygun <strong>iftar menüsü</strong> önerilerini hemen listeleyelim. Her menüde <em>hazırlık planı</em>, <em>alışveriş listesi</em> ve “<strong>yanına ne gider</strong>” iç linkleri var.</p>
+`,
+    },
+    {
+      type: "tips",
+      title: "İftar Sofrası İçin Altın İpuçları",
+      items: [
+        "İftarı hurma + su ile açıp 5–10 dk sonra çorbaya geçmek rahatlatabilir.",
+        "Ağır kızartmalar yerine fırın/ızgara tercih etmek şişkinliği azaltır.",
+        "Komposto/ayran gibi içecekler sofrayı dengeler.",
+        "Tatlıyı hafif seç (güllaç gibi) veya porsiyonu küçük tut.",
+      ],
+    },
+  ],
+
+  // Blog linkleri (iftar sayfandan hub gibi linkle)
+  hubLinks: [
+    { label: "Ramazan Sofraları: İftar Fikirleri", postSlug: "iftar-menusu-onerileri" },
+    { label: "Hafif İftar Menüsü", postSlug: "hafif-iftar-menusu" },
+    { label: "Misafirlik İftar Menüsü", postSlug: "misafir-iftar-menusu" },
+  ],
+
+  // Menü öğeleri (kart basmak için)
+  items: [
+    // İftariyelik
+    {
+      id: "iftariyelik",
+      type: "İftariyelik",
+      label: "Hurma + Zeytin + Su",
+      prepMinutes: 2,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      internalLinks: [],
+    },
+
+    // Çorbalar
+    {
+      id: "mercimek-corbasi",
+      type: "Çorba",
+      label: "Mercimek Çorbası",
+      prepMinutes: 25,
+      heaviness: "Dengeli",
+      protein: "Bakliyat",
+      internalLinks: [
+        { label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" },
+      ],
+      shopping: ["kırmızı mercimek", "soğan", "havuç (ops.)", "salça (ops.)", "baharatlar", "limon"],
+    },
+    {
+      id: "ezogelin-corbasi",
+      type: "Çorba",
+      label: "Ezogelin Çorbası",
+      prepMinutes: 30,
+      heaviness: "Dengeli",
+      protein: "Bakliyat",
+      internalLinks: [],
+      shopping: ["kırmızı mercimek", "bulgur", "pirinç", "soğan", "salça", "baharatlar"],
+    },
+
+    // Ana yemekler
+    {
+      id: "kofte",
+      type: "Ana Yemek",
+      label: "Köfte",
+      prepMinutes: 35,
+      heaviness: "Doyurucu",
+      protein: "Et",
+      internalLinks: [{ label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" }],
+      shopping: ["kıyma", "soğan", "baharat", "galeta unu/ekmek içi", "yağ"],
+    },
+    {
+      id: "tavuk-sote",
+      type: "Ana Yemek",
+      label: "Tavuk Sote",
+      prepMinutes: 30,
+      heaviness: "Dengeli",
+      protein: "Tavuk",
+      internalLinks: [{ label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" }],
+      shopping: ["tavuk", "biber", "soğan", "domates/salça", "baharat", "yağ"],
+    },
+    {
+      id: "firinda-sebzeli-tavuk",
+      type: "Ana Yemek",
+      label: "Fırında Sebzeli Tavuk",
+      prepMinutes: 60,
+      heaviness: "Dengeli",
+      protein: "Tavuk",
+      internalLinks: [],
+      shopping: ["tavuk", "patates", "havuç", "soğan", "baharat", "yağ"],
+    },
+    {
+      id: "zeytinyagli-sebze",
+      type: "Ana Yemek",
+      label: "Zeytinyağlı Sebze (Enginar/Kabak vb.)",
+      prepMinutes: 45,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      internalLinks: [{ label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" }],
+      shopping: ["sebze (enginar/kabak)", "zeytinyağı", "soğan", "limon", "dereotu (ops.)"],
+    },
+
+    // Yan yemekler
+    {
+      id: "pirinc-pilavi",
+      type: "Yan Yemek",
+      label: "Pirinç Pilavı",
+      prepMinutes: 25,
+      heaviness: "Doyurucu",
+      protein: "Karışık",
+      internalLinks: [{ label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" }],
+      shopping: ["pirinç", "tereyağı/yağ", "tuz", "şehriye (ops.)"],
+    },
+    {
+      id: "bulgur-pilavi",
+      type: "Yan Yemek",
+      label: "Bulgur Pilavı",
+      prepMinutes: 25,
+      heaviness: "Doyurucu",
+      protein: "Karışık",
+      internalLinks: [{ label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" }],
+      shopping: ["bulgur", "salça/domates", "soğan", "yağ", "baharat"],
+    },
+    {
+      id: "firin-patates",
+      type: "Yan Yemek",
+      label: "Fırın Patates",
+      prepMinutes: 35,
+      heaviness: "Dengeli",
+      protein: "Vejetaryen",
+      internalLinks: [],
+      shopping: ["patates", "baharat", "yağ"],
+    },
+
+    // Salata / yoğurt
+    {
+      id: "coban-salata",
+      type: "Salata",
+      label: "Çoban Salata",
+      prepMinutes: 10,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      internalLinks: [],
+      shopping: ["domates", "salatalık", "soğan", "maydanoz", "limon", "zeytinyağı"],
+    },
+    {
+      id: "cacik",
+      type: "Meze/Yoğurt",
+      label: "Cacık",
+      prepMinutes: 10,
+      heaviness: "Hafif",
+      protein: "Karışık",
+      internalLinks: [],
+      shopping: ["yoğurt", "salatalık", "nane", "tuz", "su"],
+    },
+
+    // İçecek
+    {
+      id: "ayran",
+      type: "İçecek",
+      label: "Ayran",
+      prepMinutes: 2,
+      heaviness: "Hafif",
+      protein: "Karışık",
+      internalLinks: [],
+      shopping: ["yoğurt", "su", "tuz"],
+    },
+    {
+      id: "komposto",
+      type: "İçecek",
+      label: "Komposto",
+      prepMinutes: 20,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      internalLinks: [],
+      shopping: ["kuru kayısı/erik", "su", "az şeker (ops.)", "tarçın (ops.)"],
+    },
+
+    // Tatlı
+    {
+      id: "gullac",
+      type: "Tatlı",
+      label: "Güllaç",
+      prepMinutes: 25,
+      heaviness: "Hafif",
+      protein: "Vejetaryen",
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+      shopping: ["güllaç yaprağı", "süt", "ceviz/fındık", "nar (ops.)"],
+    },
+    {
+      id: "sutlac",
+      type: "Tatlı",
+      label: "Sütlaç",
+      prepMinutes: 45,
+      heaviness: "Dengeli",
+      protein: "Vejetaryen",
+      internalLinks: [{ label: "Tatlıların yanına ne gider?", postSlug: "tatlinin-yanina-ne-gider" }],
+      shopping: ["süt", "pirinç", "şeker", "vanilya (ops.)", "tarçın (ops.)"],
+    },
+  ],
+
+  // Menü şablonları (iftar odaklı)
+  menus: [
+    {
+      id: "iftar-pratik-60",
+      title: "Pratik İftar Menüsü (60 dk)",
+      budget: "Orta",
+      crowd: "Aile",
+      heaviness: "Dengeli",
+      protein: ["Tavuk", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 60,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "iftariyelik" },
+        { slot: "Çorba", itemId: "mercimek-corbasi" },
+        { slot: "Ana Yemek", itemId: "tavuk-sote" },
+        { slot: "Yan Yemek", itemId: "bulgur-pilavi" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "Meze/Yoğurt", itemId: "cacik" },
+        { slot: "İçecek", itemId: "ayran" },
+        { slot: "Tatlı", itemId: "gullac" },
+      ],
+      why:
+        "Tok tutar ama ağır gelmez. Mercimek çorbası hızlı; tavuk sote + bulgur dengeli; güllaç Ramazan klasiği.",
+      prepTimeline: [
+        "0–10 dk: Salata + cacık hazırlığı",
+        "10–35 dk: Mercimek çorbası",
+        "20–50 dk: Tavuk sote + bulgur pilavı",
+        "50–60 dk: Servis & sofra",
+      ],
+      internalLinks: [
+        { label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" },
+        { label: "Tavuk sotenin yanına ne gider?", postSlug: "tavuk-sotenin-yanina-ne-gider" },
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+      popularity: 0.9,
+    },
+
+    {
+      id: "iftar-misafir-sik",
+      title: "Misafirlik İftar Menüsü (Şık & Doyurucu)",
+      budget: "Premium",
+      crowd: "Misafir",
+      heaviness: "Doyurucu",
+      protein: ["Et", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 90,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "iftariyelik" },
+        { slot: "Çorba", itemId: "ezogelin-corbasi" },
+        { slot: "Ana Yemek", itemId: "kofte" },
+        { slot: "Yan Yemek", itemId: "pirinc-pilavi" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "İçecek", itemId: "komposto" },
+        { slot: "Tatlı", itemId: "sutlac" },
+      ],
+      why:
+        "Klasik ama garanti: çorba + köfte + pilav. Komposto ve sütlaç Ramazan ruhunu tamamlar.",
+      prepTimeline: [
+        "0–15 dk: Çorbayı başlat",
+        "15–40 dk: Pilav + salata",
+        "30–70 dk: Köfte hazırlık + pişirme",
+        "70–90 dk: Komposto/sütlaç servis hazırlığı",
+      ],
+      internalLinks: [
+        { label: "Köftenin yanına ne gider?", postSlug: "koftenin-yanina-ne-gider" },
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+      popularity: 0.85,
+    },
+
+    {
+      id: "iftar-hafif",
+      title: "Hafif İftar Menüsü (Şişkinlik Yapmaz)",
+      budget: "Orta",
+      crowd: "Aile",
+      heaviness: "Hafif",
+      protein: ["Vejetaryen", "Bakliyat", "Karışık"],
+      includeSoup: true,
+      includeDessert: true,
+      approxTimeMinutes: 60,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "iftariyelik" },
+        { slot: "Çorba", itemId: "mercimek-corbasi" },
+        { slot: "Ana Yemek", itemId: "zeytinyagli-sebze" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "Meze/Yoğurt", itemId: "cacik" },
+        { slot: "Tatlı", itemId: "gullac" },
+      ],
+      why:
+        "Zeytinyağlı + salata + cacık ferah bir denge kurar. Güllaç hafif tatlı isteyenler için ideal.",
+      prepTimeline: [
+        "0–10 dk: Salata + cacık",
+        "10–35 dk: Çorba",
+        "15–55 dk: Zeytinyağlı",
+        "55–60 dk: Servis",
+      ],
+      internalLinks: [
+        { label: "Zeytinyağlının yanına ne gider?", postSlug: "zeytinyagli-yanina-ne-gider" },
+        { label: "Mercimek çorbasının yanına ne gider?", postSlug: "mercimek-corbasinin-yanina-ne-gider" },
+      ],
+      popularity: 0.78,
+    },
+
+    {
+      id: "iftar-ekonomik",
+      title: "Ekonomik İftar Menüsü (Az Malzemeyle)",
+      budget: "Ekonomik",
+      crowd: "Aile",
+      heaviness: "Doyurucu",
+      protein: ["Bakliyat", "Karışık"],
+      includeSoup: true,
+      includeDessert: false,
+      approxTimeMinutes: 75,
+      menuItems: [
+        { slot: "İftariyelik", itemId: "iftariyelik" },
+        { slot: "Çorba", itemId: "mercimek-corbasi" },
+        { slot: "Ana Yemek", itemId: "kuru-fasulye-placeholder" }, // placeholder
+        { slot: "Yan Yemek", itemId: "bulgur-pilavi" },
+        { slot: "Salata", itemId: "coban-salata" },
+        { slot: "İçecek", itemId: "ayran" },
+      ],
+      why:
+        "Bakliyat + pilav doyurucudur ve bütçeyi zorlamaz. Tatlı şart değil; istersen meyve ile kapatabilirsin.",
+      prepTimeline: [
+        "0–10 dk: Salata",
+        "10–35 dk: Çorba",
+        "20–75 dk: Ana yemek + pilav",
+      ],
+      internalLinks: [
+        { label: "Pilavın yanına ne gider?", postSlug: "pilavin-yanina-ne-gider" },
+      ],
+      popularity: 0.7,
+    },
+  ],
+
+  // Placeholder item (henüz içeriği olmayan menüler için kırılmaz)
+  placeholders: [
+    {
+      id: "kuru-fasulye-placeholder",
+      type: "Ana Yemek",
+      label: "Kuru Fasulye (yakında)",
+      prepMinutes: 75,
+      heaviness: "Doyurucu",
+      protein: "Bakliyat",
+      internalLinks: [{ label: "Kuru fasulyenin yanına ne gider?", postSlug: "kuru-fasulyenin-yanina-ne-gider" }],
+      shopping: ["kuru fasulye", "soğan", "salça", "yağ", "baharat"],
+    },
+  ],
+
+  faq: [
+    {
+      q: "İftar menüsü nasıl hazırlanır?",
+      a: "Klasik sıra: iftariyelik → çorba → ana yemek + yan → salata/yoğurt → içecek → (isteğe bağlı) tatlı. Filtreleyerek sana uygun menüyü seçebilirsin.",
+    },
+    {
+      q: "Hafif iftar menüsü ne olabilir?",
+      a: "Çorba + zeytinyağlı/sebze ağırlıklı ana + salata + yoğurt/cacık + hafif tatlı (güllaç) iyi bir dengedir.",
+    },
+    {
+      q: "Misafirlik iftar menüsünde ne olur?",
+      a: "Çorba + köfte/etli ana + pilav + salata + komposto + sütlaç gibi klasikler hem şık hem garantidir.",
+    },
+  ],
+};
+
+// -------- Helpers (iftar odaklı) --------
+export const iftarHelpers = {
+  createIndex: (data) => {
+    const allItems = [...(data.items || []), ...(data.placeholders || [])];
+    const itemById = Object.fromEntries(allItems.map((x) => [x.id, x]));
+    return { itemById, allItems };
+  },
+
+  // Filtre → iftar menüsü listesi
+  getIftarMenus: (data, filters = {}) => {
+    const { itemById } = iftarHelpers.createIndex(data);
+
+    const f = {
+      maxTimeMinutes: Number(filters.maxTimeMinutes ?? data.ui.defaults.maxTimeMinutes),
+      budget: filters.budget ?? data.ui.defaults.budget,
+      crowd: filters.crowd ?? data.ui.defaults.crowd,
+      heaviness: filters.heaviness ?? data.ui.defaults.heaviness,
+      protein: filters.protein ?? data.ui.defaults.protein,
+      includeSoup: filters.includeSoup ?? data.ui.defaults.includeSoup,
+      includeDessert: filters.includeDessert ?? data.ui.defaults.includeDessert,
+      maxResults: Number(filters.maxResults ?? data.ui.defaults.maxResults),
+      sortBy: filters.sortBy ?? data.ui.defaults.sortBy,
+    };
+
+    const wantBool = (v) => (v === "Evet" ? true : v === "Hayır" ? false : null);
+
+    const score = (m) => {
+      let s = 0;
+      if (m.approxTimeMinutes <= f.maxTimeMinutes) s += 2;
+      else s -= 1;
+
+      if (m.budget === f.budget) s += 1;
+      if (m.crowd === f.crowd) s += 1;
+      if (m.heaviness === f.heaviness) s += 2;
+
+      if (f.protein !== "Karışık" && Array.isArray(m.protein)) {
+        s += m.protein.includes(f.protein) ? 2 : -1;
+      }
+
+      const soupPref = wantBool(f.includeSoup);
+      if (soupPref !== null) s += (m.includeSoup === soupPref ? 1 : -1);
+
+      const dessertPref = wantBool(f.includeDessert);
+      if (dessertPref !== null) s += (m.includeDessert === dessertPref ? 1 : -1);
+
+      s += (m.popularity || 0) * 0.5;
+      return s;
+    };
+
+    const enrich = (m) => {
+      const items = (m.menuItems || []).map((mi) => {
+        const item = itemById[mi.itemId] || null;
+        return {
+          ...mi,
+          item,
+          internalLinks:
+            (item?.internalLinks || []).map((x) => ({
+              label: x.label,
+              href: data.routes.blogPost(x.postSlug),
+            })) || [],
+        };
+      });
+
+      const menuLinks = (m.internalLinks || []).map((x) => ({
+        label: x.label,
+        href: data.routes.blogPost(x.postSlug),
+      }));
+
+      // alışveriş listesi birleştir
+      const shopping = Array.from(
+        new Set(
+          items
+            .flatMap((x) => x.item?.shopping || [])
+            .map((s) => String(s).trim())
+            .filter(Boolean)
+        )
+      );
+
+      return { ...m, items, menuLinks, shopping, matchScore: score(m) };
+    };
+
+    let list = (data.menus || [])
+      .map(enrich)
+      .filter((m) => m.approxTimeMinutes <= f.maxTimeMinutes + 30);
+
+    if (f.sortBy === "popularFirst") list.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    else if (f.sortBy === "easyFirst") list.sort((a, b) => a.approxTimeMinutes - b.approxTimeMinutes);
+    else list.sort((a, b) => b.matchScore - a.matchScore);
+
+    return list.slice(0, f.maxResults);
+  },
+
+  // Hub linkleri hazır href’li dönsün
+  getHubLinks: (data) =>
+    (data.hubLinks || []).map((x) => ({
+      label: x.label,
+      href: data.routes.blogPost(x.postSlug),
+    })),
+};
+
+
+
+
+
+
+
 
 // --- ANA VERİ SETİ (ARAYÜZ ÖNERİLERİ) ---
 const dishSuggestions = [
