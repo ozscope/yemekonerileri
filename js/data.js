@@ -1550,7 +1550,7 @@ listesi size fikir verebilir.
 // Şarap seç → yemek öner (wine-first) + frontend dostu indeksler + internal linkler
 // Not: internalLink formatını mevcut sitendeki gibi verdim: ?page=blog&post=SLUG
 
-export const wineFoodData = {
+const wineFoodData = {
   id: 201,
   slug: "sarap-sec-yemek-oner",
   title: "Şarap Seç, Yanına Ne Yenir? Şarap–Yemek Eşleşme Rehberi",
@@ -2065,7 +2065,7 @@ export const wineFoodData = {
 };
 
 // ---------- Frontend Helpers (optional) ----------
-export const wineFoodHelpers = {
+const wineFoodHelpers = {
   // Map indexler (performans: O(1) erişim)
   createIndex: (data) => {
     const wineById = Object.fromEntries(data.wines.map((w) => [w.id, w]));
@@ -2136,7 +2136,7 @@ export const wineFoodHelpers = {
 
 // ---- RAMAZAN SOFRALARI -----
 // data.js
-export const ramadanData = {
+const ramadanData = {
   id: 301,
   slug: "ramazan-sofralari-menu-onerileri",
   title: "Ramazan Sofraları: İftar ve Sahur İçin Menü Önerileri",
@@ -2557,7 +2557,7 @@ export const ramadanData = {
 };
 
 // ---------- Helpers ----------
-export const ramadanHelpers = {
+const ramadanHelpers = {
   createIndex: (data) => {
     const itemPool = [...(data.items || []), ...(data.quickItems || [])];
     const itemById = Object.fromEntries(itemPool.map((x) => [x.id, x]));
@@ -2653,7 +2653,7 @@ export const ramadanHelpers = {
 // --- İFTAR MENÜLERİ ---
 
 // data.js
-export const iftarData = {
+const iftarData = {
   id: 401,
   slug: "iftar-menuleri",
   title: "İftar Menüsü Önerileri: Kriter Seç, Menü Bul",
@@ -3069,7 +3069,7 @@ export const iftarData = {
 };
 
 // -------- Helpers (iftar odaklı) --------
-export const iftarHelpers = {
+const iftarHelpers = {
   createIndex: (data) => {
     const allItems = [...(data.items || []), ...(data.placeholders || [])];
     const itemById = Object.fromEntries(allItems.map((x) => [x.id, x]));
@@ -6912,6 +6912,13 @@ if (typeof window !== "undefined") {
   window.dishSuggestions = dishSuggestions;
   window.blogPostsData = blogPostsData;
   window.suggestionCategories = suggestionCategories;
+    window.blogPostsData = blogPostsData;
+  window.wineFoodData = wineFoodData;
+  window.ramadanData = ramadanData;
+  window.iftarData = iftarData;
+  window.wineFoodHelpers = wineFoodHelpers;
+  window.ramadanHelpers = ramadanHelpers;
+  window.iftarHelpers = iftarHelpers;
 }
 
 
