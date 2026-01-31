@@ -1,7 +1,7 @@
 // data.js
 
 // --- BLOG VERİSİ ---
-export const blogPostsData = [
+window.blogPostsData = [
 
   {
     id: 11,
