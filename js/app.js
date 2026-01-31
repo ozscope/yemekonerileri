@@ -910,3 +910,6 @@ window.addEventListener('load', () => {
 window.addEventListener('popstate', () => {
     handleRouteFromLocation();
 });
+
+
+console.log(window.blogPostsData);
